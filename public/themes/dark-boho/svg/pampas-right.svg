@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 360" fill="none" aria-hidden="true">
+  <g id="pampas-right-stem-1" class="db-pampas-stem db-pampas-stem--1" style="transform-origin: 202px 354px;">
+    <path d="M202 354 C184 274 160 190 124 80" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" opacity="0.88" />
+    <path d="M124 80 C134 54 128 28 112 16 C106 36 112 60 124 80 Z" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.16" />
+    <path d="M124 80 C140 64 148 44 140 26 M127 92 C146 80 156 58 150 40 M131 106 C152 96 164 76 160 56 M135 120 C156 114 170 96 168 76 M140 136 C160 130 174 116 174 96 M145 152 C164 148 178 136 180 118" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.95" stroke-linecap="round" opacity="0.78" />
+    <path d="M124 80 C108 66 96 46 100 26 M127 94 C108 84 92 68 94 48 M131 108 C110 102 94 88 92 68 M135 124 C114 120 98 108 96 88 M140 140 C120 138 104 126 102 108 M146 156 C126 154 112 144 108 126" stroke="currentColor" stroke-width="0.9" stroke-linecap="round" opacity="0.65" />
+  </g>
+  <g id="pampas-right-stem-2" class="db-pampas-stem db-pampas-stem--2" style="transform-origin: 212px 358px;">
+    <path d="M212 358 C176 294 134 224 74 134" stroke="var(--db-accent, currentColor)" stroke-width="1.25" stroke-linecap="round" opacity="0.82" />
+    <path d="M74 134 C72 108 58 90 38 84 C44 106 56 124 74 134 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.14" />
+    <path d="M74 134 C86 112 86 92 74 78 M82 144 C96 124 98 102 88 86 M90 156 C106 138 110 116 102 100 M99 168 C116 152 122 132 116 114 M108 180 C126 166 134 148 130 130" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.9" stroke-linecap="round" opacity="0.72" />
+    <path d="M74 134 C54 128 36 114 28 94 M81 145 C60 142 40 132 30 112 M89 156 C68 156 48 148 38 130 M98 168 C76 170 56 162 48 146 M107 180 C86 182 68 176 60 160" stroke="var(--db-accent, currentColor)" stroke-width="0.88" stroke-linecap="round" opacity="0.68" />
+  </g>
+  <g id="pampas-right-stem-3" class="db-pampas-stem db-pampas-stem--3" style="transform-origin: 216px 356px;">
+    <path d="M216 356 C198 302 186 250 172 182" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.68" />
+    <path d="M172 182 C184 166 186 144 176 130 M176 196 C190 182 194 162 186 146 M180 212 C194 200 200 182 194 166 M172 182 C160 170 150 152 152 134 M176 198 C162 188 152 172 152 154 M180 214 C166 206 156 192 154 174" stroke="currentColor" stroke-width="0.82" stroke-linecap="round" opacity="0.56" />
+    <path d="M198 330 C168 308 138 292 106 282 C128 302 158 318 198 330 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.18" stroke="var(--db-accent, currentColor)" stroke-width="0.9" />
+    <path d="M208 346 C176 334 142 330 104 334 C134 344 170 348 208 346 Z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="0.85" />
+  </g>
+</svg>
+

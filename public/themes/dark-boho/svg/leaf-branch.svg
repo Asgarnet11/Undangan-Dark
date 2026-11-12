@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 64" fill="none" aria-hidden="true">
+  <g id="branch-stem">
+    <path d="M12 46 C46 38 96 28 148 16" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" opacity="0.8" />
+  </g>
+  <g id="branch-leaves">
+    <path d="M38 40 C30 28 34 16 46 12 C48 24 44 34 38 40 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.16" stroke="var(--db-accent, currentColor)" stroke-width="0.95" />
+    <path d="M56 36 C60 48 54 58 42 58 C44 48 48 40 56 36 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="0.9" />
+    <path d="M78 31 C72 18 78 8 90 6 C90 18 86 26 78 31 Z" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.18" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.95" />
+    <path d="M98 27 C104 38 100 48 88 50 C88 38 92 31 98 27 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.16" stroke="var(--db-accent, currentColor)" stroke-width="0.95" />
+    <path d="M118 22 C114 11 122 4 134 5 C132 15 126 20 118 22 Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="0.9" />
+    <path d="M138 18 C144 26 142 35 132 38 C131 29 133 23 138 18 Z" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.18" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.9" />
+    <circle cx="151" cy="14" r="2" fill="var(--db-accent-secondary, currentColor)" opacity="0.75" />
+  </g>
+</svg>
+

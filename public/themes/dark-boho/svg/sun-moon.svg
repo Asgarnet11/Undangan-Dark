@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" fill="none" aria-hidden="true">
+  <g id="celestial-sun">
+    <circle cx="66" cy="40" r="13" stroke="var(--db-accent-secondary, currentColor)" stroke-width="1.2" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.1" />
+    <circle cx="66" cy="40" r="7" stroke="var(--db-accent, currentColor)" stroke-width="0.9" opacity="0.7" />
+  </g>
+  <g id="celestial-moon">
+    <path d="M48 22 C35 25 27 37 30 50 C33 61 43 68 54 67 C43 62 38 50 40 39 C42 31 45 26 48 22 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.22" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round" />
+  </g>
+  <g id="celestial-rays">
+    <path d="M66 14 V21 M66 59 V66 M92 40 H85 M84 22 L79 27 M84 58 L79 53 M54 18 L57 24 M54 62 L57 56" stroke="var(--db-accent-secondary, currentColor)" stroke-width="1.05" stroke-linecap="round" opacity="0.82" />
+    <path d="M20 28 L21.8 32.2 L26 34 L21.8 35.8 L20 40 L18.2 35.8 L14 34 L18.2 32.2 Z" fill="var(--db-accent-secondary, currentColor)" opacity="0.78" />
+    <circle cx="98" cy="24" r="1.5" fill="currentColor" opacity="0.6" />
+    <circle cx="96" cy="56" r="1.2" fill="var(--db-accent, currentColor)" opacity="0.75" />
+  </g>
+</svg>
+

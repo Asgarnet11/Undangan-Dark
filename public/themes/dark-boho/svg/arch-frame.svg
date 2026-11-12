@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 420" fill="none" aria-hidden="true">
+  <g id="arch-outer">
+    <path d="M26 404 V160 C26 86 86 26 160 26 C234 26 294 86 294 160 V404 Z" stroke="var(--db-accent-secondary, currentColor)" stroke-width="1.2" opacity="0.72" />
+    <path d="M36 394 V162 C36 93 91 38 160 38 C229 38 284 93 284 162 V394" stroke="currentColor" stroke-width="0.85" opacity="0.4" />
+  </g>
+  <g id="arch-crown">
+    <path d="M160 12 L163 20 L171 23 L163 26 L160 34 L157 26 L149 23 L157 20 Z" fill="var(--db-accent, currentColor)" opacity="0.9" />
+    <circle cx="136" cy="24" r="1.8" fill="var(--db-accent-secondary, currentColor)" opacity="0.75" />
+    <circle cx="184" cy="24" r="1.8" fill="var(--db-accent-secondary, currentColor)" opacity="0.75" />
+  </g>
+  <g id="arch-foliage">
+    <path d="M20 398 C18 358 26 322 44 294" stroke="var(--db-accent, currentColor)" stroke-width="1.15" stroke-linecap="round" opacity="0.8" />
+    <path d="M36 312 C22 308 16 296 22 284 C32 290 38 302 36 312 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.22" stroke="var(--db-accent, currentColor)" stroke-width="0.9" />
+    <path d="M28 342 C14 338 10 324 18 314 C28 320 32 332 28 342 Z" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.16" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.9" />
+    <path d="M300 398 C302 358 294 322 276 294" stroke="var(--db-accent, currentColor)" stroke-width="1.15" stroke-linecap="round" opacity="0.8" />
+    <path d="M284 312 C298 308 304 296 298 284 C288 290 282 302 284 312 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.22" stroke="var(--db-accent, currentColor)" stroke-width="0.9" />
+    <path d="M292 342 C306 338 310 324 302 314 C292 320 288 332 292 342 Z" fill="var(--db-accent-secondary, currentColor)" fill-opacity="0.16" stroke="var(--db-accent-secondary, currentColor)" stroke-width="0.9" />
+  </g>
+</svg>
+

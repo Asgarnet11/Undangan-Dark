@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+  <g id="monogram-ring">
+    <path d="M22 96 V52 C22 30 39 14 60 14 C81 14 98 30 98 52 V96 C86 104 74 108 60 108 C46 108 34 104 22 96 Z" stroke="var(--db-accent-secondary, currentColor)" stroke-width="1.1" opacity="0.85" />
+    <path d="M28 92 V53 C28 34 42 20 60 20 C78 20 92 34 92 53 V92" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.45" />
+  </g>
+  <g id="monogram-accents">
+    <path d="M60 4 L62 9 L67 11 L62 13 L60 18 L58 13 L53 11 L58 9 Z" fill="var(--db-accent, currentColor)" opacity="0.92" />
+    <circle cx="60" cy="112" r="2" fill="var(--db-accent-secondary, currentColor)" opacity="0.85" />
+    <path d="M16 62 C11 58 11 50 16 46 C19 52 19 56 16 62 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.25" stroke="var(--db-accent, currentColor)" stroke-width="0.85" />
+    <path d="M104 62 C109 58 109 50 104 46 C101 52 101 56 104 62 Z" fill="var(--db-accent, currentColor)" fill-opacity="0.25" stroke="var(--db-accent, currentColor)" stroke-width="0.85" />
+  </g>
+</svg>
+
