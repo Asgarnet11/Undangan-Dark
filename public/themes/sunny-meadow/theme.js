@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const cover = document.getElementById('sm-cover');
     const confetti = document.getElementById('sm-confetti-container');
     const bottomNav = document.getElementById('sm-bottom-nav');
+    const giftFabEl = document.getElementById('sm-gift-fab');
+    const giftModalEl = document.getElementById('sm-gift-modal');
     const body = document.body;
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bottomNav) {
                 bottomNav.hidden = false;
             }
+            if (giftFabEl && body.dataset.giftInline === 'false') {
+                giftFabEl.hidden = false;
+            }
+            hydrateGifts();
             if (bgm && bgm.paused) {
                 bgm.play().then(() => {
                     if (musicToggle) {
@@ -223,11 +229,205 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             if (touchStartX - touchEndX > 50) {
-                showLightbox(currentIndex + 1); // swipe left -> next
+                showLightbox(currentIndex + 1);
             } else if (touchEndX - touchStartX > 50) {
-                showLightbox(currentIndex - 1); // swipe right -> prev
+                showLightbox(currentIndex - 1);
             }
         }, { passive: true });
+    }
+
+    /* Gift Section & Copy */
+    const panels = Array.from(document.querySelectorAll('[data-gift-panel]'));
+    let giftsHydrated = false;
+
+    async function hydrateGifts() {
+        if (giftsHydrated || panels.length === 0) return;
+        const endpoint = panels[0].dataset.giftsEndpoint;
+        if (!endpoint) return;
+
+        try {
+            const res = await fetch(endpoint, {
+                headers: { Accept: 'application/json' }
+            });
+            if (!res.ok) return;
+            const data = await res.json();
+            const accountMap = new Map((data.accounts || []).map(a => [String(a.id), a]));
+            const addressMap = new Map((data.addresses || []).map(a => [String(a.id), a]));
+
+            panels.forEach(panel => {
+                panel.querySelectorAll('[data-gift-account-id]').forEach(card => {
+                    const acc = accountMap.get(card.dataset.giftAccountId);
+                    if (!acc) return;
+                    const numEl = card.querySelector('[data-gift-number]');
+                    const copyBtn = card.querySelector('[data-copy-btn]');
+                    if (numEl) numEl.textContent = acc.account_number;
+                    if (copyBtn) {
+                        copyBtn.dataset.copyText = acc.account_number;
+                        copyBtn.disabled = false;
+                    }
+                });
+
+                panel.querySelectorAll('[data-gift-address-id]').forEach(card => {
+                    const addr = addressMap.get(card.dataset.giftAddressId);
+                    const textEl = card.querySelector('[data-gift-address-text]');
+                    if (addr && textEl) textEl.textContent = addr.address;
+                });
+
+                const revealBtn = panel.querySelector('[data-gift-reveal-btn]');
+                if (revealBtn) revealBtn.hidden = true;
+            });
+
+            giftsHydrated = true;
+        } catch {
+            // allow user retry
+        }
+    }
+
+    panels.forEach(panel => {
+        const revealBtn = panel.querySelector('[data-gift-reveal-btn]');
+        if (revealBtn) {
+            revealBtn.addEventListener('click', hydrateGifts);
+        }
+
+        const copyLabel = panel.dataset.labelCopy || 'Salin';
+        const copiedLabel = panel.dataset.labelCopied || 'Tersalin';
+        const failedLabel = panel.dataset.labelCopyFailed || 'Gagal menyalin otomatis.';
+
+        panel.addEventListener('click', async (e) => {
+            const btn = e.target.closest('[data-copy-btn]');
+            if (!btn || btn.disabled) return;
+            const text = btn.dataset.copyText;
+            if (!text) return;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                btn.textContent = copiedLabel;
+                setTimeout(() => {
+                    btn.textContent = copyLabel;
+                }, 2000);
+            } catch {
+                alert(failedLabel);
+            }
+        });
+    });
+
+    /* Gift Modal */
+    if (giftFabEl && giftModalEl) {
+        const closeBtn = document.getElementById('sm-gift-modal-close');
+        function openGiftModal() {
+            hydrateGifts();
+            giftModalEl.hidden = false;
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function closeGiftModal() {
+            giftModalEl.hidden = true;
+            document.body.style.overflow = '';
+            giftFabEl.focus();
+        }
+
+        giftFabEl.addEventListener('click', openGiftModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeGiftModal);
+        giftModalEl.querySelectorAll('[data-gift-modal-close]').forEach(el => {
+            el.addEventListener('click', closeGiftModal);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!giftModalEl.hidden && e.key === 'Escape') {
+                closeGiftModal();
+            }
+        });
+    }
+
+    /* RSVP Form Pax Toggle */
+    const rsvpForm = document.getElementById('sm-rsvp-form');
+    if (rsvpForm) {
+        const yesRadio = document.getElementById('sm-rsvp-yes');
+        const noRadio = document.getElementById('sm-rsvp-no');
+        const paxWrap = document.getElementById('sm-rsvp-pax-wrap');
+        const paxInput = document.getElementById('sm-rsvp-pax');
+
+        function togglePax() {
+            if (noRadio && noRadio.checked) {
+                if (paxWrap) paxWrap.hidden = true;
+                if (paxInput) paxInput.disabled = true;
+            } else {
+                if (paxWrap) paxWrap.hidden = false;
+                if (paxInput) paxInput.disabled = false;
+            }
+        }
+
+        if (yesRadio) yesRadio.addEventListener('change', togglePax);
+        if (noRadio) noRadio.addEventListener('change', togglePax);
+    }
+
+    /* Wishes Char Count & Load More */
+    const wishMsg = document.getElementById('sm-wish-message');
+    const wishCount = document.getElementById('sm-wish-char-count');
+    if (wishMsg && wishCount) {
+        wishMsg.addEventListener('input', () => {
+            wishCount.textContent = `${wishMsg.value.length} / 500`;
+        });
+    }
+
+    const loadMoreBtn = document.getElementById('sm-wishes-load-more');
+    const wishesList = document.getElementById('sm-wishes-list');
+    if (loadMoreBtn && wishesList) {
+        loadMoreBtn.addEventListener('click', async () => {
+            const endpoint = loadMoreBtn.dataset.endpoint;
+            const nextPage = loadMoreBtn.dataset.nextPage;
+            if (!endpoint || !nextPage) return;
+
+            const defaultLabel = loadMoreBtn.dataset.labelDefault || 'Muat Lebih Banyak';
+            const loadingLabel = loadMoreBtn.dataset.labelLoading || 'Memuat ucapan...';
+
+            loadMoreBtn.disabled = true;
+            loadMoreBtn.textContent = loadingLabel;
+
+            try {
+                const res = await fetch(`${endpoint}?page=${nextPage}`, {
+                    headers: { Accept: 'application/json' }
+                });
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+
+                const items = data.data || [];
+                const accentClasses = ['sm-wish-card--sun', 'sm-wish-card--coral', 'sm-wish-card--mint', 'sm-wish-card--sky'];
+
+                items.forEach((w, idx) => {
+                    const card = document.createElement('article');
+                    card.className = `sm-card sm-wish-card ${accentClasses[idx % accentClasses.length]}`;
+                    card.innerHTML = `
+                        <div class="sm-wish-header">
+                            <strong class="sm-wish-name">${escapeHtml(w.name)}</strong>
+                            ${w.origin ? `<span class="sm-wish-origin">${escapeHtml(w.origin)}</span>` : ''}
+                            <time class="sm-wish-time">${escapeHtml(w.created_at_human || '')}</time>
+                        </div>
+                        <p class="sm-wish-message">${escapeHtml(w.message)}</p>
+                    `;
+                    wishesList.appendChild(card);
+                });
+
+                if (data.next_page_url) {
+                    loadMoreBtn.dataset.nextPage = String(Number(nextPage) + 1);
+                    loadMoreBtn.disabled = false;
+                    loadMoreBtn.textContent = defaultLabel;
+                } else {
+                    loadMoreBtn.parentElement.remove();
+                }
+            } catch {
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.textContent = defaultLabel;
+            }
+        });
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 
     /* Bottom Navigation Active Section Tracking */

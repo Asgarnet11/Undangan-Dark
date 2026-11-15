@@ -839,6 +839,465 @@ body.theme-sunny-meadow.is-locked {
   margin-top: 0.4rem;
 }
 
+/* Form Styles */
+.sm-form-card {
+  text-align: left;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.sm-field {
+  margin-bottom: 1.25rem;
+}
+
+.sm-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--sm-ink);
+  margin-bottom: 0.35rem;
+}
+
+.sm-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.sm-char-count {
+  font-size: 0.75rem;
+  color: var(--sm-ink-soft);
+}
+
+.sm-input, .sm-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--sm-line);
+  border-radius: var(--sm-radius-sm);
+  background: #ffffff;
+  color: var(--sm-ink);
+  font-family: var(--sm-font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--sm-dur-fast) var(--sm-ease), box-shadow var(--sm-dur-fast) var(--sm-ease);
+}
+
+.sm-input:focus, .sm-textarea:focus {
+  border-color: var(--sm-primary);
+  box-shadow: 0 0 0 3px rgba(246, 185, 59, 0.25);
+}
+
+.sm-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+}
+
+.sm-radio-group {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.sm-radio-pill {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1rem;
+  border: 1.5px solid var(--sm-line);
+  border-radius: var(--sm-radius-pill);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background var(--sm-dur-fast) var(--sm-ease), border-color var(--sm-dur-fast) var(--sm-ease);
+}
+
+.sm-radio-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sm-radio-pill:has(input:checked) {
+  background: var(--sm-bg-soft);
+  border-color: var(--sm-primary);
+  font-weight: 700;
+  color: var(--sm-ink);
+}
+
+.sm-field-error {
+  color: #d93829;
+  font-size: 0.78rem;
+  margin: 0.3rem 0 0 0;
+}
+
+.sm-field-hint {
+  font-size: 0.78rem;
+  color: var(--sm-ink-soft);
+  margin: 0.3rem 0 0 0;
+}
+
+.sm-form-feedback {
+  padding: 0.75rem 1rem;
+  border-radius: var(--sm-radius-sm);
+  font-size: 0.88rem;
+  margin-bottom: 1.25rem;
+  background: #fdf2e9;
+  color: var(--sm-ink);
+  border: 1px solid var(--sm-line);
+}
+
+.sm-form-feedback.is-success {
+  background: #eef8f3;
+  color: #24684a;
+  border-color: var(--sm-mint);
+}
+
+.sm-btn--block {
+  width: 100%;
+}
+
+.sm-btn--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Love Story Timeline */
+.sm-story-timeline {
+  position: relative;
+  max-width: 420px;
+  margin: 2rem auto 0 auto;
+  padding-left: 2rem;
+}
+
+.sm-story-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 11px;
+  width: 2.5px;
+  background: var(--sm-primary);
+  border-radius: var(--sm-radius-pill);
+}
+
+.sm-story-step {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.sm-story-marker {
+  position: absolute;
+  left: -2rem;
+  top: 10px;
+  width: 24px;
+  height: 24px;
+  background: var(--sm-bg-card);
+  border: 2px solid var(--sm-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sm-svg-story-marker {
+  width: 12px;
+  height: 12px;
+}
+
+.sm-story-card {
+  text-align: left;
+}
+
+.sm-story-date {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--sm-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3rem;
+}
+
+.sm-story-title {
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.sm-story-photo-wrap {
+  margin: 0.75rem 0;
+  border-radius: var(--sm-radius-md);
+  overflow: hidden;
+}
+
+.sm-story-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sm-story-body {
+  font-size: 0.9rem;
+  color: var(--sm-ink-soft);
+  margin: 0;
+}
+
+/* Gift Section */
+.sm-gift-panel {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.sm-gift-accounts, .sm-gift-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.sm-gift-card, .sm-gift-address-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.sm-gift-bank {
+  font-family: var(--sm-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.sm-gift-number {
+  font-family: monospace;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
+  color: var(--sm-secondary);
+  font-weight: 700;
+  margin: 0.25rem 0;
+}
+
+.sm-gift-holder {
+  font-size: 0.85rem;
+  color: var(--sm-ink-soft);
+  margin: 0 0 0.75rem 0;
+}
+
+.sm-gift-fab {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 1.25rem;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--sm-radius-pill);
+  background: var(--sm-secondary);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  box-shadow: 0 6px 18px rgba(239, 111, 97, 0.4);
+  cursor: pointer;
+  transition: transform var(--sm-dur-fast) var(--sm-ease-bounce);
+}
+
+.sm-gift-fab:hover {
+  transform: scale(1.05);
+}
+
+.sm-gift-fab[hidden] {
+  display: none !important;
+}
+
+.sm-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.sm-modal[hidden] {
+  display: none !important;
+}
+
+.sm-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(59, 47, 42, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.sm-modal-dialog {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.sm-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--sm-ink-soft);
+}
+
+/* Wishes List */
+.sm-wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 440px;
+  margin: 2rem auto 0 auto;
+}
+
+.sm-wish-card {
+  text-align: left;
+  padding: 1.25rem;
+  border-left-width: 5px;
+}
+
+.sm-wish-card--sun {
+  border-left-color: var(--sm-sun);
+}
+
+.sm-wish-card--coral {
+  border-left-color: var(--sm-coral);
+}
+
+.sm-wish-card--mint {
+  border-left-color: var(--sm-mint);
+}
+
+.sm-wish-card--sky {
+  border-left-color: var(--sm-sky);
+}
+
+.sm-wish-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.sm-wish-name {
+  font-size: 0.95rem;
+  color: var(--sm-ink);
+}
+
+.sm-wish-origin {
+  font-size: 0.8rem;
+  color: var(--sm-ink-soft);
+}
+
+.sm-wish-time {
+  font-size: 0.75rem;
+  color: var(--sm-ink-soft);
+  margin-left: auto;
+}
+
+.sm-wish-message {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--sm-ink);
+  line-height: 1.5;
+}
+
+.sm-wishes-more {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+/* Closing Section */
+.sm-closing {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 6rem;
+  background-color: var(--sm-bg-deep);
+  color: var(--sm-ink-on-deep);
+}
+
+.sm-closing-ornament {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.sm-closing-ornament--tl {
+  top: 1.5rem;
+  left: 0;
+}
+
+.sm-closing-ornament--br {
+  bottom: 2rem;
+  right: 0;
+}
+
+.sm-svg-heart-closing {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 1rem auto;
+}
+
+.sm-closing-text {
+  max-width: 380px;
+  margin: 1rem auto;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 248, 236, 0.85);
+}
+
+.sm-closing-names {
+  font-size: 2.2rem;
+  margin: 1.5rem 0;
+  color: var(--sm-primary);
+}
+
+.sm-co-inviters {
+  margin: 2rem auto;
+  max-width: 380px;
+}
+
+.sm-co-inviters-heading {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 248, 236, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.sm-co-inviters-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: rgba(255, 248, 236, 0.9);
+}
+
+.sm-closing-copyright {
+  font-size: 0.78rem;
+  color: rgba(255, 248, 236, 0.5);
+  margin-top: 2.5rem;
+}
+
 /* Bottom Nav */
 .sm-bottom-nav {
   position: fixed;
