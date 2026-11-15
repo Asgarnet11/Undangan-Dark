@@ -402,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 items.forEach((w, idx) => {
                     const card = document.createElement('article');
-                    card.className = `sm-card sm-wish-card ${accentClasses[idx % accentClasses.length]}`;
+                    card.className = `sm-card sm-wish-card sm-wish-card.is-new-wish ${accentClasses[idx % accentClasses.length]}`;
                     card.innerHTML = `
                         <div class="sm-wish-header">
                             <strong class="sm-wish-name">${escapeHtml(w.name)}</strong>
@@ -461,6 +461,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         sections.forEach(sec => observer.observe(sec));
+    }
+
+    /* Scroll Pop-in Bounce Observer */
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const revealElements = document.querySelectorAll('.sm-card, .sm-section-header, .sm-photo-frame-wrap');
+        revealElements.forEach((el, index) => {
+            el.classList.add('sm-reveal');
+            el.style.transitionDelay = `${(index % 4) * 80}ms`;
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-in-view');
+                    if (entry.target.classList.contains('sm-photo-frame-wrap')) {
+                        entry.target.classList.add('is-bloomed');
+                    }
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
     }
 
     /* Live Preview postMessage Handler */

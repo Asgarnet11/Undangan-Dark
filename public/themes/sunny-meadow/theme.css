@@ -1545,16 +1545,95 @@ body.theme-sunny-meadow.is-locked {
   animation: sm-bobbing 5s ease-in-out infinite;
 }
 
+/* Scroll Reveal Bounce Animation */
+.sm-reveal {
+  opacity: 0;
+  transform: translateY(22px) scale(0.92);
+  transition: opacity var(--sm-dur-base) var(--sm-ease), transform var(--sm-dur-base) var(--sm-ease-bounce);
+  will-change: transform, opacity;
+}
+
+.sm-reveal.is-in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Wave Divider Flowing Motion */
+@keyframes sm-wave-flow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-35px); }
+}
+
+.sm-wave-divider svg {
+  animation: sm-wave-flow 10s ease-in-out infinite alternate;
+}
+
+/* Photo Blooming Animation */
+@keyframes sm-bloom {
+  0% { transform: scale(0.85) rotate(-3deg); }
+  60% { transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.sm-photo-frame-wrap.is-bloomed {
+  animation: sm-bloom 1s var(--sm-ease-bounce) forwards;
+}
+
+/* Twinkling Small Stars */
+@keyframes sm-twinkle {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.sm-btn-star, .sm-svg-star-tiny {
+  animation: sm-twinkle 2.5s ease-in-out infinite;
+}
+
+/* Nav Item Hop */
+@keyframes sm-hop {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px) scale(1.18); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.sm-nav-item.is-active svg {
+  animation: sm-hop 400ms var(--sm-ease-bounce);
+}
+
+/* New Wish Highlight Pop-in */
+@keyframes sm-wish-pop {
+  0% { opacity: 0; transform: scale(0.85) translateY(-12px); background-color: var(--sm-bg-soft); }
+  60% { transform: scale(1.03) translateY(2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.sm-wish-card.is-new-wish {
+  animation: sm-wish-pop 700ms var(--sm-ease-bounce) forwards;
+}
+
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 0.001ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
   .sm-anim-bobbing,
-  .sm-music-btn.is-playing svg {
+  .sm-music-btn.is-playing svg,
+  .sm-svg-sun #sm-sun-rays,
+  .sm-cover-cloud-wrap,
+  .sm-wave-divider svg,
+  .sm-btn-star,
+  .sm-svg-star-tiny,
+  .sm-nav-item.is-active svg,
+  .sm-photo-frame-wrap.is-bloomed,
+  .sm-wish-card.is-new-wish {
     animation: none !important;
+    transform: none !important;
+  }
+  .sm-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
