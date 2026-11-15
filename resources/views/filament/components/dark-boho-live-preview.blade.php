@@ -41,6 +41,10 @@
                         { type: 'dark-boho:preview-config', config: payload },
                         window.location.origin
                     );
+                    frame.contentWindow.postMessage(
+                        { type: 'sunny-meadow:preview-config', config: payload },
+                        window.location.origin
+                    );
                 },
                 sendAction(type, extra = {}) {
                     const frame = this.$refs.previewFrame;
@@ -51,6 +55,12 @@
                         { type, ...extra },
                         window.location.origin
                     );
+                    if (type.startsWith('dark-boho:')) {
+                        frame.contentWindow.postMessage(
+                            { type: type.replace('dark-boho:', 'sunny-meadow:'), ...extra },
+                            window.location.origin
+                        );
+                    }
                 },
                 reloadFrame() {
                     const frame = this.$refs.previewFrame;
@@ -61,7 +71,7 @@
             }"
             x-init="
                 window.addEventListener('message', (event) => {
-                    if (event.origin === window.location.origin && event.data?.type === 'dark-boho:preview-ready') {
+                    if (event.origin === window.location.origin && (event.data?.type === 'dark-boho:preview-ready' || event.data?.type === 'sunny-meadow:preview-ready')) {
                         syncPreview();
                     }
                 });

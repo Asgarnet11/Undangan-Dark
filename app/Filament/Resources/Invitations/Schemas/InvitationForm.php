@@ -47,8 +47,14 @@ class InvitationForm
                                                         ->live(),
                                                     Select::make('theme_config.preset')
                                                         ->label('Preset Warna')
-                                                        ->options($presets)
-                                                        ->default('terracotta')
+                                                        ->options(function ($get) {
+                                                            $theme = $get('theme') ?: 'dark-boho';
+
+                                                            return collect(ThemeRegistry::presets($theme))
+                                                                ->mapWithKeys(fn (array $preset, string $key): array => [$key => (string) ($preset['label'] ?? $key)])
+                                                                ->all();
+                                                        })
+                                                        ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? 'sunny' : 'terracotta')
                                                         ->required()
                                                         ->live(),
                                                 ]),
@@ -59,10 +65,22 @@ class InvitationForm
                                                     ->schema([
                                                         Select::make('theme_config.cover.style')
                                                             ->label('Gaya Cover')
-                                                            ->options([
-                                                                'default' => 'Klasik Terracotta',
-                                                                'new' => 'Bingkai Emas Modern',
-                                                            ])
+                                                            ->options(function ($get) {
+                                                                $theme = $get('theme') ?: 'dark-boho';
+                                                                if ($theme === 'sunny-meadow') {
+                                                                    return [
+                                                                        'default' => 'Komposisi Tengah (Default)',
+                                                                        'top' => 'Teks di Atas',
+                                                                        'space-between' => 'Teks Terpisah Atas-Bawah',
+                                                                        'frame' => 'Bingkai Bunga Ceria',
+                                                                    ];
+                                                                }
+
+                                                                return [
+                                                                    'default' => 'Klasik Terracotta',
+                                                                    'new' => 'Bingkai Emas Modern',
+                                                                ];
+                                                            })
                                                             ->default('default')
                                                             ->live(),
                                                         TextInput::make('theme_config.cover.overlayOpacity')
@@ -75,11 +93,11 @@ class InvitationForm
                                                             ->live(onBlur: true),
                                                         ColorPicker::make('theme_config.cover.overlayColor')
                                                             ->label('Warna Overlay Cover')
-                                                            ->default('#1d1d1b')
+                                                            ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? '#fff8ec' : '#1d1d1b')
                                                             ->live(),
                                                         ColorPicker::make('theme_config.cover.textColor')
                                                             ->label('Warna Teks Cover')
-                                                            ->default('#efe6d8')
+                                                            ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? '#3b2f2a' : '#efe6d8')
                                                             ->live(),
                                                         Toggle::make('theme_config.cover.usephoto')
                                                             ->label('Tampilkan Foto Latar Cover')
@@ -102,6 +120,17 @@ class InvitationForm
                                                                 'minimal' => 'Minimalis',
                                                             ])
                                                             ->default('illustrated')
+                                                            ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'dark-boho')
+                                                            ->live(),
+                                                        Select::make('theme_config.layout.photoFrame')
+                                                            ->label('Bentuk Bingkai Foto')
+                                                            ->options([
+                                                                'flower' => 'Bunga Ceria (Flower)',
+                                                                'blob' => 'Blob Organik (Blob)',
+                                                                'arch' => 'Lengkung Elegan (Arch)',
+                                                            ])
+                                                            ->default('flower')
+                                                            ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow')
                                                             ->live(),
                                                         Toggle::make('theme_config.layout.brideFirst')
                                                             ->label('Tampilkan Mempelai Wanita Terlebih Dahulu')
@@ -117,6 +146,21 @@ class InvitationForm
                                                             ->live(),
                                                     ]),
 
+                                                Section::make('Animasi & Gerak (Sunny Meadow)')
+                                                    ->compact()
+                                                    ->columns(2)
+                                                    ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow')
+                                                    ->schema([
+                                                        Toggle::make('theme_config.motion.confetti')
+                                                            ->label('Efek Ledakan Konfeti')
+                                                            ->default(true)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.motion.floatingDecor')
+                                                            ->label('Animasi Bunga Bobbing & Awan')
+                                                            ->default(true)
+                                                            ->live(),
+                                                    ]),
+
                                                 Section::make('Visibilitas Section')
                                                     ->compact()
                                                     ->columns(3)
@@ -128,6 +172,10 @@ class InvitationForm
                                                         Toggle::make('theme_config.sections.video')
                                                             ->label('Video YouTube')
                                                             ->default(false)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.sections.loveStory')
+                                                            ->label('Kisah Cinta')
+                                                            ->default(true)
                                                             ->live(),
                                                         Toggle::make('theme_config.sections.gallery')
                                                             ->label('Galeri Foto')

@@ -16,11 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const motionConfetti = body.dataset.motionConfetti !== 'false' && !prefersReducedMotion;
     const motionDecor = body.dataset.motionDecor !== 'false' && !prefersReducedMotion;
 
+    window.SunnyMeadowTheme = {
+        opened: false,
+        openInvitation: unlockInvitation
+    };
+
     if (!motionDecor) {
         document.querySelectorAll('.sm-anim-bobbing').forEach(el => el.classList.remove('sm-anim-bobbing'));
     }
 
     function unlockInvitation() {
+        window.SunnyMeadowTheme.opened = true;
         if (cover) {
             cover.classList.add('is-opening');
         }
@@ -219,7 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Touch swipe support for lightbox
         let touchStartX = 0;
         let touchEndX = 0;
         lightbox.addEventListener('touchstart', (e) => {
@@ -456,5 +461,93 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         sections.forEach(sec => observer.observe(sec));
+    }
+
+    /* Live Preview postMessage Handler */
+    function applyPreviewConfig(config) {
+        if (!config || typeof config !== 'object') return;
+
+        if (config.preset) {
+            body.dataset.preset = config.preset;
+        }
+
+        const coverCfg = config.cover || {};
+        if (coverCfg.style) {
+            body.dataset.coverStyle = coverCfg.style;
+            if (cover) {
+                cover.className = `sm-cover sm-cover--${coverCfg.style}${window.SunnyMeadowTheme.opened ? ' is-opening' : ''}`;
+            }
+        }
+        if (coverCfg.overlayColor) {
+            body.style.setProperty('--sm-cover-overlay-color', coverCfg.overlayColor);
+        }
+        if (coverCfg.overlayOpacity !== undefined) {
+            body.style.setProperty('--sm-cover-overlay-opacity', coverCfg.overlayOpacity);
+        }
+        if (coverCfg.textColor) {
+            body.style.setProperty('--sm-cover-text-color', coverCfg.textColor);
+        }
+        if (coverCfg.showGuestName !== undefined) {
+            const guestEl = document.querySelector('.sm-cover-guest');
+            if (guestEl) guestEl.hidden = !coverCfg.showGuestName;
+        }
+
+        const layout = config.layout || {};
+        if (layout.photoFrame) {
+            body.dataset.photoFrame = layout.photoFrame;
+            document.querySelectorAll('.sm-photo-frame-wrap').forEach(wrap => {
+                wrap.className = `sm-photo-frame-wrap sm-photo-frame--${layout.photoFrame}`;
+            });
+        }
+        if (layout.brideFirst !== undefined) {
+            body.dataset.brideFirst = layout.brideFirst ? 'true' : 'false';
+        }
+        if (layout.giftInline !== undefined) {
+            body.dataset.giftInline = layout.giftInline ? 'true' : 'false';
+            if (giftFabEl) {
+                giftFabEl.hidden = !(window.SunnyMeadowTheme.opened && !layout.giftInline);
+            }
+        }
+
+        const sections = config.sections || {};
+        const sectionMap = {
+            verse: sections.verse !== false,
+            loveStory: sections.loveStory !== false,
+            gallery: sections.gallery !== false,
+            livestream: sections.livestream === true,
+            'gift-inline': sections.gift !== false && layout.giftInline !== false,
+            gift: sections.gift !== false,
+            wishes: sections.wishes !== false,
+        };
+
+        Object.entries(sectionMap).forEach(([key, visible]) => {
+            const el = document.querySelector(`[data-preview-section="${key}"]`);
+            if (el) el.hidden = !visible;
+        });
+    }
+
+    window.addEventListener('message', (e) => {
+        if (e.origin !== window.location.origin || !e.data || typeof e.data !== 'object') return;
+        if (e.data.type === 'sunny-meadow:preview-config') {
+            applyPreviewConfig(e.data.config);
+        } else if (e.data.type === 'sunny-meadow:preview-toggle-cover') {
+            if (!window.SunnyMeadowTheme.opened) {
+                unlockInvitation();
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } else if (e.data.type === 'sunny-meadow:preview-scroll' && typeof e.data.target === 'string') {
+            if (!window.SunnyMeadowTheme.opened) {
+                unlockInvitation();
+            }
+            const targetEl = document.getElementById(e.data.target);
+            if (targetEl) {
+                targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    });
+
+    if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'sunny-meadow:preview-ready' }, window.location.origin);
     }
 });
