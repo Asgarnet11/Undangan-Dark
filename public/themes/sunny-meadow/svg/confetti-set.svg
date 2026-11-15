@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+  <g id="sm-confetti-dots">
+    <circle cx="18" cy="22" r="3.5" fill="var(--sm-primary, #f6b93b)" />
+    <circle cx="82" cy="18" r="4" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="76" cy="74" r="3" fill="var(--sm-mint, #7cc9a8)" />
+    <circle cx="28" cy="80" r="3.5" fill="var(--sm-sky, #8ec5e8)" />
+    <circle cx="50" cy="50" r="2.5" fill="var(--sm-lilac, #b9a3e3)" />
+  </g>
+  <g id="sm-confetti-stars" fill="var(--sm-primary, #f6b93b)">
+    <path d="M50 14 L52 20 L58 20 L53 24 L55 30 L50 26 L45 30 L47 24 L42 20 L48 20 Z" />
+    <path d="M84 46 L85 50 L89 50 L86 53 L87 57 L84 54 L81 57 L82 53 L79 50 L83 50 Z" />
+    <path d="M16 54 L17 58 L21 58 L18 61 L19 65 L16 62 L13 65 L14 61 L11 58 L15 58 Z" />
+  </g>
+  <g id="sm-confetti-strips" stroke-width="2.5" stroke-linecap="round">
+    <path d="M30 35 Q35 40 32 46" stroke="var(--sm-secondary, #ef6f61)" />
+    <path d="M68 32 Q62 38 66 44" stroke="var(--sm-mint, #7cc9a8)" />
+    <path d="M42 70 Q48 76 44 82" stroke="var(--sm-lilac, #b9a3e3)" />
+  </g>
+</svg>

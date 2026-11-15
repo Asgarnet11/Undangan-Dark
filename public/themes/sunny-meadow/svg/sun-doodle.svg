@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+  <g id="sm-sun-rays" stroke="var(--sm-primary, #f6b93b)" stroke-width="3" stroke-linecap="round">
+    <line x1="50" y1="12" x2="50" y2="20" />
+    <line x1="77" y1="23" x2="71" y2="29" />
+    <line x1="88" y1="50" x2="80" y2="50" />
+    <line x1="77" y1="77" x2="71" y2="71" />
+    <line x1="50" y1="88" x2="50" y2="80" />
+    <line x1="23" y1="77" x2="29" y2="71" />
+    <line x1="12" y1="50" x2="20" y2="50" />
+    <line x1="23" y1="23" x2="29" y2="29" />
+  </g>
+  <g id="sm-sun-body" stroke="var(--sm-ink, #3b2f2a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="50" r="23" fill="var(--sm-primary, #f6b93b)" />
+    <!-- Cheerful gentle smile and eyes -->
+    <circle cx="43" cy="46" r="2" fill="var(--sm-ink, #3b2f2a)" stroke="none" />
+    <circle cx="57" cy="46" r="2" fill="var(--sm-ink, #3b2f2a)" stroke="none" />
+    <path d="M44 54 Q50 60 56 54" stroke="var(--sm-ink, #3b2f2a)" stroke-width="2" fill="none" />
+    <!-- Rosy cheeks -->
+    <ellipse cx="40" cy="51" rx="2.5" ry="1.5" fill="var(--sm-secondary, #ef6f61)" fill-opacity="0.6" stroke="none" />
+    <ellipse cx="60" cy="51" rx="2.5" ry="1.5" fill="var(--sm-secondary, #ef6f61)" fill-opacity="0.6" stroke="none" />
+  </g>
+</svg>

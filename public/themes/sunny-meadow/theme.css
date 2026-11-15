@@ -153,6 +153,278 @@ body.theme-sunny-meadow.is-locked {
   text-align: center;
 }
 
+/* Cover Styling */
+.sm-cover {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: var(--sm-bg);
+}
+
+.sm-cover-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.sm-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--sm-cover-overlay-color, #fff8ec);
+  opacity: var(--sm-cover-overlay-opacity, 0.35);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sm-cover-inner {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+}
+
+/* Cover Styles */
+.sm-cover--default .sm-cover-inner {
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+.sm-cover--top .sm-cover-inner {
+  justify-content: flex-start;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+.sm-cover--space-between .sm-cover-inner {
+  justify-content: space-between;
+}
+
+.sm-cover--frame {
+  border: 12px solid var(--sm-primary);
+  border-radius: var(--sm-radius-lg);
+  margin: 10px;
+}
+
+/* Cover Ornaments */
+.sm-cover-ornament {
+  position: absolute;
+  z-index: 2;
+  width: 95px;
+  height: 95px;
+  pointer-events: none;
+  transition: transform var(--sm-dur-slow) var(--sm-ease-bounce);
+}
+
+.sm-cover-ornament--tl {
+  top: 0;
+  left: 0;
+}
+
+.sm-cover-ornament--br {
+  bottom: 0;
+  right: 0;
+}
+
+.sm-cover.is-opening .sm-cover-ornament--tl {
+  transform: scale(1.2) translate(-8px, -8px);
+}
+
+.sm-cover.is-opening .sm-cover-ornament--br {
+  transform: scale(1.2) translate(8px, 8px);
+}
+
+/* Sun & Cloud Decor */
+.sm-cover-sun-wrap {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 58px;
+  height: 58px;
+  z-index: 2;
+}
+
+.sm-svg-sun #sm-sun-rays {
+  transform-origin: 50px 50px;
+  animation: sm-spin 36s linear infinite;
+}
+
+.sm-cover-cloud-wrap {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.sm-cover-cloud--left {
+  top: 4.5rem;
+  left: -20px;
+  width: 80px;
+  animation: sm-drift-left 45s ease-in-out infinite alternate;
+}
+
+.sm-cover-cloud--right {
+  top: 8rem;
+  right: -25px;
+  width: 95px;
+  animation: sm-drift-right 55s ease-in-out infinite alternate;
+}
+
+@keyframes sm-drift-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(35px); }
+}
+
+@keyframes sm-drift-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-40px); }
+}
+
+/* Bobbing Flower on Cover */
+.sm-cover-bobbing {
+  position: absolute;
+  bottom: 3.5rem;
+  left: 1rem;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Monogram */
+.sm-cover-monogram {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 0.75rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sm-svg-monogram {
+  width: 100%;
+  height: 100%;
+}
+
+.sm-monogram-initials {
+  position: absolute;
+  font-family: var(--sm-font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--sm-ink);
+}
+
+.sm-cover-kicker {
+  font-family: var(--sm-font-script);
+  font-size: 1.45rem;
+  color: var(--sm-secondary);
+  margin: 0 0 0.5rem 0;
+}
+
+.sm-cover-names {
+  font-size: 2.35rem;
+  margin: 0 0 0.75rem 0;
+  color: var(--sm-ink);
+  transition: transform var(--sm-dur-slow) var(--sm-ease-bounce);
+}
+
+.sm-cover.is-opening .sm-cover-names {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.sm-cover-amp {
+  display: block;
+  font-size: 1.85rem;
+  line-height: 1;
+  margin: 0.15rem 0;
+  color: var(--sm-secondary);
+}
+
+.sm-cover-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--sm-line);
+  border-radius: var(--sm-radius-pill);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--sm-ink-soft);
+  margin-top: 0.35rem;
+}
+
+.sm-svg-star-tiny {
+  width: 12px;
+  height: 12px;
+}
+
+/* Guest Greeting */
+.sm-cover-guest {
+  margin-bottom: 1.25rem;
+}
+
+.sm-cover-guest-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--sm-ink-soft);
+}
+
+.sm-cover-guest-name {
+  display: block;
+  font-family: var(--sm-font-display);
+  font-size: 1.25rem;
+  color: var(--sm-ink);
+  margin-top: 0.2rem;
+}
+
+/* Open Button */
+.sm-cover-open {
+  padding: 0.95rem 2rem;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(246, 185, 59, 0.45);
+}
+
+.sm-btn-star {
+  width: 16px;
+  height: 16px;
+}
+
+/* Confetti Burst */
+.sm-confetti-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: transform 1.2s var(--sm-ease-bounce), opacity 1.2s var(--sm-ease);
+}
+
+.sm-confetti-container.is-bursting {
+  transform: translate(-50%, -50%) scale(1.6);
+  opacity: 1;
+}
+
 .sm-section--soft {
   background-color: var(--sm-bg-soft);
 }

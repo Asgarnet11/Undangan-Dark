@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+  <g id="sm-corner-tl-leaves" stroke="var(--sm-mint, #7cc9a8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 45 C15 30 28 20 42 16" />
+    <path d="M24 33 C22 25 28 22 32 27" fill="var(--sm-mint, #7cc9a8)" fill-opacity="0.35" />
+    <path d="M35 24 C38 18 45 20 42 27" fill="var(--sm-mint, #7cc9a8)" fill-opacity="0.35" />
+    <path d="M45 12 C30 15 20 28 16 42" />
+    <path d="M33 24 C25 22 22 28 27 32" fill="var(--sm-mint, #7cc9a8)" fill-opacity="0.35" />
+  </g>
+  <g id="sm-corner-tl-blossom" stroke="var(--sm-ink, #3b2f2a)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="28" cy="28" r="9" fill="var(--sm-primary, #f6b93b)" />
+    <!-- Petals around (28,28) -->
+    <path d="M28 13 C25 8 31 8 28 13 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M39 17 C44 14 46 20 39 21 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M43 28 C48 25 48 31 43 28 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M39 39 C44 42 38 46 35 41 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M28 43 C31 48 25 48 28 43 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M17 39 C12 42 14 36 19 35 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M13 28 C8 31 8 25 13 28 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <path d="M17 17 C12 14 18 10 21 15 Z" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="28" cy="28" r="4.5" fill="#ffffff" />
+  </g>
+  <g id="sm-corner-tl-accent">
+    <circle cx="58" cy="22" r="3.5" fill="var(--sm-lilac, #b9a3e3)" />
+    <circle cx="22" cy="58" r="3.5" fill="var(--sm-sky, #8ec5e8)" />
+    <path d="M52 32 Q56 36 60 32 Q56 28 52 32 Z" fill="var(--sm-primary, #f6b93b)" />
+    <path d="M32 52 Q36 56 32 60 Q28 56 32 52 Z" fill="var(--sm-primary, #f6b93b)" />
+  </g>
+</svg>

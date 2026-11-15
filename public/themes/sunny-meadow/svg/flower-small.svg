@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none" aria-hidden="true">
+  <g id="sm-flower-small" stroke="var(--sm-ink, #3b2f2a)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="25" cy="14" r="6" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="34" cy="20" r="6" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="31" cy="31" r="6" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="19" cy="31" r="6" fill="var(--sm-secondary, #ef6f61)" />
+    <circle cx="16" cy="20" r="6" fill="var(--sm-secondary, #ef6f61)" />
+    <!-- Center -->
+    <circle cx="25" cy="25" r="7" fill="var(--sm-primary, #f6b93b)" />
+    <circle cx="25" cy="25" r="3" fill="#ffffff" />
+  </g>
+</svg>

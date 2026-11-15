@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <defs>
+    <clipPath id="sm-flower-mask" clipPathUnits="userSpaceOnUse">
+      <path d="M100 20 
+               C118 4 146 14 152 38 
+               C172 32 192 52 186 72 
+               C206 90 196 118 178 126 
+               C186 148 166 172 144 168 
+               C132 188 104 196 86 182 
+               C66 196 40 182 34 160 
+               C12 158 4 130 18 112 
+               C0 94 8 66 30 60 
+               C26 36 50 14 74 24 
+               Z" />
+    </clipPath>
+  </defs>
+  <!-- Decorative border contour -->
+  <path d="M100 20 
+           C118 4 146 14 152 38 
+           C172 32 192 52 186 72 
+           C206 90 196 118 178 126 
+           C186 148 166 172 144 168 
+           C132 188 104 196 86 182 
+           C66 196 40 182 34 160 
+           C12 158 4 130 18 112 
+           C0 94 8 66 30 60 
+           C26 36 50 14 74 24 
+           Z" 
+        stroke="var(--sm-primary, #f6b93b)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+</svg>
