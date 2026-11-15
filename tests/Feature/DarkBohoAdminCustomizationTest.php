@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Filament\Resources\Invitations\Pages\EditInvitation;
 use App\Filament\Resources\Invitations\Pages\ListInvitations;
+use App\Filament\Resources\Invitations\RelationManagers\GuestsRelationManager;
 use App\Filament\Resources\Rsvps\Pages\ListRsvps;
 use App\Filament\Resources\Wishes\Pages\ListWishes;
 use App\Models\Invitation;
@@ -130,5 +131,28 @@ class DarkBohoAdminCustomizationTest extends TestCase
 
         $this->assertTrue($wish->fresh()->is_visible);
         $this->get('/raka-nadia')->assertOk()->assertSee($wish->message);
+    }
+
+    public function test_guests_relation_manager_renders_complete_url_and_opens_successfully(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $invitation = Invitation::where('slug', 'raka-nadia')->firstOrFail();
+        $admin = User::where('email', 'admin@undangan.test')->firstOrFail();
+        $guest = $invitation->guests()->firstOrFail();
+
+        $this->actingAs($admin);
+
+        Livewire::test(GuestsRelationManager::class, [
+            'ownerRecord' => $invitation,
+            'pageClass' => EditInvitation::class,
+        ])
+            ->assertOk()
+            ->assertCanSeeTableRecords([$guest]);
+
+        $guestUrl = route('invitation.show', ['slug' => $invitation->slug, 'to' => $guest->code]);
+
+        $this->assertStringContainsString('to='.$guest->code, $guestUrl);
+        $this->get($guestUrl)->assertOk()->assertSee($guest->name);
     }
 }

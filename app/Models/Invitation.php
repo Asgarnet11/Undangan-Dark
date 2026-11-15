@@ -6,6 +6,7 @@ use App\Support\ThemeRegistry;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -57,6 +58,7 @@ class Invitation extends Model implements HasMedia
         'closing_text',
         'thank_you_gift_note',
         'is_published',
+        'active_days_after_event',
     ];
 
     /**
@@ -67,6 +69,7 @@ class Invitation extends Model implements HasMedia
         return [
             'theme_config' => 'array',
             'is_published' => 'boolean',
+            'active_days_after_event' => 'integer',
         ];
     }
 
@@ -236,5 +239,31 @@ class Invitation extends Model implements HasMedia
         }
 
         return Storage::url($columnValue);
+    }
+
+    public function lastEventDate(): ?Carbon
+    {
+        $lastEvent = $this->events()->latest('starts_at')->first();
+
+        return $lastEvent?->starts_at;
+    }
+
+    public function expiresAt(): ?Carbon
+    {
+        $lastDate = $this->lastEventDate();
+        if ($lastDate === null) {
+            return null;
+        }
+
+        $days = max(1, (int) ($this->active_days_after_event ?: 30));
+
+        return $lastDate->copy()->addDays($days)->endOfDay();
+    }
+
+    public function isExpired(): bool
+    {
+        $expiry = $this->expiresAt();
+
+        return $expiry !== null && now()->greaterThan($expiry);
     }
 }

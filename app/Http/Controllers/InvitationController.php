@@ -26,6 +26,12 @@ class InvitationController extends Controller
             'media',
         ]);
 
+        if ($invitation->isExpired() && ! auth()->check()) {
+            return view('themes.dark-boho.expired', [
+                'invitation' => $invitation,
+            ]);
+        }
+
         $guest = $this->resolveGuestByCode($invitation, (string) $request->query('to', ''));
         if ($guest !== null) {
             if ($guest->opened_at === null) {
@@ -117,10 +123,10 @@ class InvitationController extends Controller
         $pax = $attending ? max(1, min($maxPax, (int) ($validated['pax'] ?? 1))) : 0;
 
         $payload = [
-            'name' => $this->cleanText($validated['name']),
+            'name' => $this->cleanText($validated['name'], false),
             'attending' => $attending,
             'pax' => $pax,
-            'message' => $this->cleanText($validated['message'] ?? '') ?: null,
+            'message' => $this->cleanText($validated['message'] ?? '', true) ?: null,
         ];
 
         $rsvp = $guest !== null
@@ -196,9 +202,9 @@ class InvitationController extends Controller
         /** @var Wish $wish */
         $wish = $invitation->wishes()->create([
             'guest_id' => $guest?->id,
-            'name' => $this->cleanText($validated['name']),
-            'origin' => $this->cleanText($validated['origin'] ?? '') ?: null,
-            'message' => $this->cleanText($validated['message']),
+            'name' => $this->cleanText($validated['name'], false),
+            'origin' => $this->cleanText($validated['origin'] ?? '', false) ?: null,
+            'message' => $this->cleanText($validated['message'], true),
             'is_visible' => true,
         ]);
 
@@ -312,12 +318,17 @@ class InvitationController extends Controller
             ->first();
     }
 
-    private function cleanText(?string $value): string
+    private function cleanText(?string $value, bool $allowMultiline = true): string
     {
         $stripped = strip_tags((string) $value);
         $normalized = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/u', '', $stripped) ?? '';
+        $sanitized = preg_replace('/(?i)javascript\s*:/', '', $normalized) ?? '';
 
-        return trim($normalized);
+        if (! $allowMultiline) {
+            $sanitized = preg_replace('/[\r\n\t]+/', ' ', $sanitized) ?? '';
+        }
+
+        return trim($sanitized);
     }
 
     /**

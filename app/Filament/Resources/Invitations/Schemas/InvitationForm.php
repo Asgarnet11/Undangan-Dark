@@ -185,6 +185,14 @@ class InvitationForm
                                         Toggle::make('is_published')
                                             ->label('Publikasikan Undangan')
                                             ->default(true),
+                                        TextInput::make('active_days_after_event')
+                                            ->label('Masa Aktif Setelah Acara (Hari)')
+                                            ->numeric()
+                                            ->minValue(1)
+                                            ->maxValue(365)
+                                            ->default(30)
+                                            ->helperText('Undangan tetap aktif diakses publik selama N hari setelah acara terakhir selesai.')
+                                            ->required(),
                                         Textarea::make('opening_text')
                                             ->label('Kalimat Pembuka')
                                             ->rows(3)
