@@ -1,0 +1,328 @@
+/* Sunny Meadow Theme CSS */
+
+:root {
+  --sm-bg: #fff8ec;
+  --sm-bg-soft: #fff0d4;
+  --sm-bg-card: #ffffff;
+  --sm-bg-deep: #3b2f2a;
+
+  --sm-ink: #3b2f2a;
+  --sm-ink-soft: #7a6a60;
+  --sm-ink-on-deep: #fff8ec;
+
+  --sm-sun: #f6b93b;
+  --sm-coral: #ef6f61;
+  --sm-mint: #7cc9a8;
+  --sm-sky: #8ec5e8;
+  --sm-lilac: #b9a3e3;
+
+  --sm-primary: var(--sm-sun);
+  --sm-secondary: var(--sm-coral);
+
+  --sm-line: rgba(59, 47, 42, 0.14);
+  --sm-shadow: 0 10px 30px rgba(239, 111, 97, 0.18);
+  --sm-shadow-soft: 0 6px 20px rgba(59, 47, 42, 0.08);
+  --sm-radius-sm: 14px;
+  --sm-radius-md: 20px;
+  --sm-radius-lg: 28px;
+  --sm-radius-pill: 999px;
+
+  --sm-font-display: "Fraunces", Georgia, serif;
+  --sm-font-script: "Caveat", cursive;
+  --sm-font-body: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --sm-font-arabic: "Amiri", serif;
+
+  --sm-ease: cubic-bezier(.22, .61, .36, 1);
+  --sm-ease-bounce: cubic-bezier(.34, 1.56, .64, 1);
+  --sm-dur-fast: 220ms;
+  --sm-dur-base: 650ms;
+  --sm-dur-slow: 1200ms;
+}
+
+/* Presets */
+.theme-sunny-meadow[data-preset="sunny"] {
+  --sm-primary: #f6b93b;
+  --sm-secondary: #ef6f61;
+  --sm-bg-soft: #fff0d4;
+}
+
+.theme-sunny-meadow[data-preset="mint-fresh"] {
+  --sm-primary: #7cc9a8;
+  --sm-secondary: #f6b93b;
+  --sm-bg-soft: #eef8f3;
+}
+
+.theme-sunny-meadow[data-preset="coral-blush"] {
+  --sm-primary: #ef6f61;
+  --sm-secondary: #b9a3e3;
+  --sm-bg-soft: #fef0ee;
+}
+
+.theme-sunny-meadow[data-preset="sky-pastel"] {
+  --sm-primary: #8ec5e8;
+  --sm-secondary: #ef6f61;
+  --sm-bg-soft: #f0f7fc;
+}
+
+/* Base Body & Reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--sm-bg);
+  color: var(--sm-ink);
+  font-family: var(--sm-font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body.theme-sunny-meadow {
+  position: relative;
+  overflow-x: hidden;
+  background-color: #f7eee1;
+}
+
+body.theme-sunny-meadow.is-locked {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* Desktop Lateral Pattern Background */
+.sm-desktop-backdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #f5ece0;
+  background-image: url('svg/bg-pattern.svg');
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 0.75;
+}
+
+/* Stage & Centered Column Container */
+.sm-stage {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.sm-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100vh;
+  background-color: var(--sm-bg);
+  box-shadow: 0 0 45px rgba(59, 47, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography Helpers */
+.sm-title-display {
+  font-family: var(--sm-font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--sm-ink);
+}
+
+.sm-title-script {
+  font-family: var(--sm-font-script);
+  font-size: 1.6rem;
+  color: var(--sm-secondary);
+}
+
+.sm-text-arabic {
+  font-family: var(--sm-font-arabic);
+  font-size: 1.45rem;
+  line-height: 2.2;
+  direction: rtl;
+  text-align: center;
+}
+
+/* Common Section */
+.sm-section {
+  position: relative;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+
+.sm-section--soft {
+  background-color: var(--sm-bg-soft);
+}
+
+.sm-section--deep {
+  background-color: var(--sm-bg-deep);
+  color: var(--sm-ink-on-deep);
+}
+
+.sm-section-header {
+  margin-bottom: 2rem;
+}
+
+.sm-section-subtitle {
+  font-family: var(--sm-font-script);
+  font-size: 1.5rem;
+  color: var(--sm-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.sm-section-title {
+  font-family: var(--sm-font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--sm-ink);
+}
+
+.sm-section--deep .sm-section-title {
+  color: var(--sm-ink-on-deep);
+}
+
+/* Common Card */
+.sm-card {
+  background: var(--sm-bg-card);
+  border-radius: var(--sm-radius-lg);
+  padding: 1.75rem 1.25rem;
+  box-shadow: var(--sm-shadow-soft);
+  border: 1.5px solid var(--sm-line);
+}
+
+/* Buttons */
+.sm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--sm-radius-pill);
+  font-family: var(--sm-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--sm-dur-fast) var(--sm-ease-bounce), box-shadow var(--sm-dur-fast) var(--sm-ease);
+}
+
+.sm-btn-primary {
+  background: var(--sm-primary);
+  color: var(--sm-ink);
+  box-shadow: 0 4px 14px rgba(246, 185, 59, 0.4);
+}
+
+.sm-btn-primary:hover, .sm-btn-primary:focus-visible {
+  transform: scale(1.04);
+  box-shadow: 0 8px 22px rgba(246, 185, 59, 0.5);
+}
+
+.sm-btn-primary:active {
+  transform: scale(0.96);
+}
+
+.sm-btn-secondary {
+  background: var(--sm-secondary);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(239, 111, 97, 0.35);
+}
+
+.sm-btn-secondary:hover, .sm-btn-secondary:focus-visible {
+  transform: scale(1.04);
+  box-shadow: 0 8px 22px rgba(239, 111, 97, 0.45);
+}
+
+.sm-btn-secondary:active {
+  transform: scale(0.96);
+}
+
+.sm-btn-outline {
+  background: transparent;
+  color: var(--sm-ink);
+  border: 1.5px solid var(--sm-line);
+}
+
+.sm-btn-outline:hover {
+  background: rgba(59, 47, 42, 0.04);
+  transform: scale(1.02);
+}
+
+/* Floating Music Button */
+.sm-music-btn {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1.25rem;
+  z-index: 90;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--sm-bg-card);
+  border: 1.5px solid var(--sm-line);
+  color: var(--sm-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sm-shadow-soft);
+  cursor: pointer;
+  transition: transform var(--sm-dur-fast) var(--sm-ease-bounce);
+}
+
+.sm-music-btn:hover {
+  transform: scale(1.08);
+}
+
+.sm-music-btn.is-playing svg {
+  animation: sm-spin 4s linear infinite;
+}
+
+@keyframes sm-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Wave Divider Component */
+.sm-wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin: -1px 0;
+}
+
+.sm-wave-divider svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 38px;
+}
+
+/* Floating Bobbing Animation */
+@keyframes sm-bobbing {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+
+.sm-anim-bobbing {
+  animation: sm-bobbing 5s ease-in-out infinite;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sm-anim-bobbing,
+  .sm-music-btn.is-playing svg {
+    animation: none !important;
+  }
+}

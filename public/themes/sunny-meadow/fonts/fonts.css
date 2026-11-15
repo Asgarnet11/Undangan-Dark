@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Fraunces';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: url('fraunces-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Caveat';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: url('caveat-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('dm-sans-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 500 700;
+    font-display: swap;
+    src: url('dm-sans-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Amiri';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('amiri-arabic-400-normal.woff2') format('woff2');
+}
