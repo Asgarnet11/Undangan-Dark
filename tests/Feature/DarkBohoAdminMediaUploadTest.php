@@ -78,3 +78,4 @@ class DarkBohoAdminMediaUploadTest extends TestCase
         $response->assertSee($musicUrl, false);
     }
 }
+
