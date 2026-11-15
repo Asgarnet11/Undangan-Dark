@@ -16,6 +16,15 @@ Route::get('/', function () {
     return redirect('/admin');
 })->name('home');
 
+Route::get('/supardin', function () {
+    $target = Invitation::query()->where('slug', 'alfian-yuli')->first()
+        ?? Invitation::query()->where('is_published', true)->first();
+
+    return $target !== null
+        ? redirect()->route('invitation.show', ['slug' => $target->slug])
+        : redirect('/');
+});
+
 Route::get('/preview/invitations/{invitation}', [InvitationController::class, 'preview'])
     ->middleware('auth')
     ->name('invitation.preview');

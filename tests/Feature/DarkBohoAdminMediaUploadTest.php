@@ -22,7 +22,7 @@ class DarkBohoAdminMediaUploadTest extends TestCase
 
         $this->seed(SupardinInvitationSeeder::class);
 
-        $invitation = Invitation::query()->where('slug', 'supardin')->firstOrFail();
+        $invitation = Invitation::query()->where('slug', 'alfian-yuli')->firstOrFail();
         $admin = User::query()->where('email', 'admin@undangan.test')->firstOrFail();
 
         $this->actingAs($admin);
@@ -70,7 +70,7 @@ class DarkBohoAdminMediaUploadTest extends TestCase
         $this->assertNotNull($coverUrl);
         $this->assertNotNull($musicUrl);
 
-        $response = $this->get(route('invitation.show', ['slug' => 'supardin']));
+        $response = $this->get(route('invitation.show', ['slug' => 'alfian-yuli']));
         $response->assertOk();
         $response->assertSee($brideUrl, false);
         $response->assertSee($groomUrl, false);
@@ -78,4 +78,3 @@ class DarkBohoAdminMediaUploadTest extends TestCase
         $response->assertSee($musicUrl, false);
     }
 }
-

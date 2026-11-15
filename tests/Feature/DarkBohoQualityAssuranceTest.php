@@ -48,4 +48,3 @@ class DarkBohoQualityAssuranceTest extends TestCase
         $this->assertFileExists(public_path('build/manifest.json'));
     }
 }
-
