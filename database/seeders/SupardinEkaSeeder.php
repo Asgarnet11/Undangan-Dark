@@ -53,7 +53,7 @@ class SupardinEkaSeeder extends Seeder
         );
 
         // Acara Mempelai Pria: Minggu, 29 November 2026 jam 18:00 WITA - selesai
-        $eventDate = Carbon::create(2026, 11, 29, 18, 0, 0, 'Asia/Makassar');
+        $eventDate = Carbon::create(2026, 11, 29, 18, 0, 0, 'Asia/Makassar')->setTimezone('UTC');
 
         $invitation->events()->delete();
         $invitation->events()->create([
