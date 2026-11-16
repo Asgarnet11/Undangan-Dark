@@ -22,6 +22,14 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        User::query()->firstOrCreate(
+            ['email' => 'admin@undangan.test'],
+            [
+                'name' => 'Admin Undangan',
+                'password' => bcrypt('password'),
+            ]
+        );
+
         $invitation = Invitation::query()->updateOrCreate(
             ['slug' => 'raka-nadia'],
             [
@@ -146,5 +154,7 @@ class DatabaseSeeder extends Seeder
                 ],
             ]);
         }
+
+        $this->call(SupardinEkaSeeder::class);
     }
 }

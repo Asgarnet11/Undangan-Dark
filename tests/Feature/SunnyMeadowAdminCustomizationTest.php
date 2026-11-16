@@ -46,4 +46,3 @@ class SunnyMeadowAdminCustomizationTest extends TestCase
         $response->assertSee('data-preview-mode="true"', false);
     }
 }
-
