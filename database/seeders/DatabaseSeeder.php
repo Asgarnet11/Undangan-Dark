@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $user = User::query()->firstOrCreate(
-            ['email' => 'admin@undangan.test'],
+            ['email' => 'asgar@undangan.test'],
             [
                 'name' => 'Admin Undangan',
                 'password' => bcrypt('password'),

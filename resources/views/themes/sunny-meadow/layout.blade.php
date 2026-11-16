@@ -76,3 +76,4 @@
     <script src="{{ asset('themes/sunny-meadow/theme.js') }}" defer></script>
 </body>
 </html>
+

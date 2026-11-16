@@ -36,3 +36,4 @@
 
     <p class="sm-closing-copyright">{{ __('invitation.closing.copyright_note') }}</p>
 </footer>
+

@@ -20,3 +20,4 @@ Semua aset SVG di bawah ini dibuat orisinal, berukuran di bawah 30 KB, dan diran
 | `star-small.svg` | Bintang kecil berkelip | `resources/views/themes/sunny-meadow/partials/cover.blade.php`, `wishes.blade.php` |
 | `bg-pattern.svg` | Pola latar desktop bunga dan bintang berulang | `public/themes/sunny-meadow/theme.css` (`.sm-desktop-backdrop`) |
 | `monogram-badge.svg` | Lencana lingkaran inisial mempelai | `resources/views/themes/sunny-meadow/partials/cover.blade.php`, `bottom-nav.blade.php` |
+
