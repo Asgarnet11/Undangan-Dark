@@ -75,11 +75,45 @@ class SupardinEkaSeeder extends Seeder
             'sort_order' => 1,
         ]);
 
-        // Tamu awal untuk memudahkan pengujian link personal undangan
+        // Daftar tamu undangan Supardin & Eka
         $guests = [
             ['name' => 'Tamu Undangan', 'code' => 'SE-TAMU01', 'group' => 'Umum', 'max_pax' => 2],
-            ['name' => 'Keluarga Besar', 'code' => 'SE-KEL01', 'group' => 'Keluarga', 'max_pax' => 4],
-            ['name' => 'Sahabat & Rekan', 'code' => 'SE-SHB01', 'group' => 'Sahabat', 'max_pax' => 2],
+            ['name' => 'Jetriawan', 'code' => 'SE-JET01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Andi', 'code' => 'SE-AND01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Bima Sakti', 'code' => 'SE-BIM01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Endriyano', 'code' => 'SE-END01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Amar', 'code' => 'SE-AMR01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Amir', 'code' => 'SE-AMI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Muh. Syahrul', 'code' => 'SE-SYA01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Rifki', 'code' => 'SE-RIF01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Eka', 'code' => 'SE-EKA01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Eko', 'code' => 'SE-EKO01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Arul', 'code' => 'SE-ARU01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Hasrul', 'code' => 'SE-HAS01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Aris Amril', 'code' => 'SE-ARI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Muh. Aksan, S.Pi. dan Ibu', 'code' => 'SE-AKS01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Haikal', 'code' => 'SE-HAI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Rian', 'code' => 'SE-RIA01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ahmad Nuriangsyah', 'code' => 'SE-NUR01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Rendi dan Ibu', 'code' => 'SE-REN01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Filla Aferial', 'code' => 'SE-FIL01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Novaldiansyah, S.T.', 'code' => 'SE-NOV01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Asnur', 'code' => 'SE-ASN01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Aksan dan Ibu', 'code' => 'SE-AKS02', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Darmawan', 'code' => 'SE-DAR01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Fitrianingsih', 'code' => 'SE-FIT01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Sapriawan', 'code' => 'SE-SAP01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ariani, S.Pi.', 'code' => 'SE-ARN01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Risdayanti, S.AP.', 'code' => 'SE-RIS01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Deni Sulistian, S.AP.', 'code' => 'SE-DEN01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Serly, S.H.', 'code' => 'SE-SER01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Astrid Mustavani', 'code' => 'SE-AST01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Suci Handayani Farma', 'code' => 'SE-SUC01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Septiana', 'code' => 'SE-SEP01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Elsa Asrilia, S.E.', 'code' => 'SE-ELS01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Noviana, S.E.', 'code' => 'SE-NOV02', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Zamaeni', 'code' => 'SE-ZAM01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Adam', 'code' => 'SE-ADM01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
         ];
 
         foreach ($guests as $guestData) {
