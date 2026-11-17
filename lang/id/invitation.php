@@ -104,6 +104,8 @@ return [
     'closing' => [
         'co_inviters_heading' => 'Turut Mengundang',
         'copyright_note' => 'Undangan Pernikahan Digital',
+        'watermark_prompt' => 'Tertarik membuat undangan seperti ini?',
+        'watermark_cta' => 'Pesan di :vendor',
     ],
     'nav' => [
         'couple' => 'Mempelai',

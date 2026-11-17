@@ -1292,10 +1292,64 @@ body.theme-sunny-meadow.is-locked {
   color: rgba(255, 248, 236, 0.9);
 }
 
-.sm-closing-copyright {
-  font-size: 0.78rem;
-  color: rgba(255, 248, 236, 0.5);
+/* Watermark & Hak Cipta Vendor */
+.sm-watermark {
   margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed rgba(255, 248, 236, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.sm-watermark-prompt {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 248, 236, 0.75);
+}
+
+.sm-watermark-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #fff8ec;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 248, 236, 0.3);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.sm-watermark-link:hover,
+.sm-watermark-link:focus-visible {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 248, 236, 0.6);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.sm-watermark-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.sm-closing-copyright {
+  font-size: 0.72rem;
+  color: rgba(255, 248, 236, 0.45);
+  margin: 0.35rem 0 0;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Bottom Nav */

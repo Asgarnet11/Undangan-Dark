@@ -93,5 +93,8 @@ class SunnyMeadowInteractiveTest extends TestCase
         $response->assertSee('section-closing', false);
         $response->assertSee('sm-closing-names', false);
         $response->assertSee('sm-svg-heart-closing', false);
+        $response->assertSee('sm-watermark', false);
+        $response->assertSee('https://a2dev.my.id', false);
+        $response->assertSee('Pesan di a2dev.my.id', false);
     }
 }

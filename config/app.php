@@ -54,6 +54,10 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+    'vendor_url' => env('VENDOR_URL', 'https://a2dev.my.id'),
+
+    'vendor_name' => env('VENDOR_NAME', 'a2dev.my.id'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

@@ -29,6 +29,13 @@
         <p class="db-script" style="font-size: 1.6rem; color: var(--db-gold, #c5a059); margin-top: 1.5rem;">
             {{ $invitation->bride_nickname }} &amp; {{ $invitation->groom_nickname }}
         </p>
+
+        <p class="db-body-soft" style="margin-top: 2rem; font-size: 0.78rem; opacity: 0.7;">
+            Tertarik membuat undangan seperti ini?
+            <a href="{{ config('app.vendor_url', 'https://a2dev.my.id') }}" target="_blank" rel="noopener noreferrer" style="color: var(--db-gold, #c5a059); text-decoration: underline;">
+                Pesan di a2dev.my.id
+            </a>
+        </p>
     </main>
 </body>
 </html>

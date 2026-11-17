@@ -179,4 +179,15 @@ class DarkBohoSectionsTest extends TestCase
         $withoutCoInviters->assertOk();
         $withoutCoInviters->assertDontSee('Turut Mengundang');
     }
+
+    public function test_closing_renders_watermark_with_vendor_link(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get('/raka-nadia');
+        $response->assertOk();
+        $response->assertSee('db-watermark', false);
+        $response->assertSee('https://a2dev.my.id', false);
+        $response->assertSee('Pesan di a2dev.my.id', false);
+    }
 }
