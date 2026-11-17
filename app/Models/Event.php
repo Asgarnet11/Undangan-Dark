@@ -60,7 +60,21 @@ class Event extends Model
     public function resolvedMapsQuery(): string
     {
         if (! empty($this->maps_query)) {
-            return trim($this->maps_query);
+            $query = trim($this->maps_query);
+            if (str_starts_with($query, 'http://') || str_starts_with($query, 'https://')) {
+                $parts = parse_url($query);
+                if (isset($parts['query'])) {
+                    parse_str($parts['query'], $queryParams);
+                    if (! empty($queryParams['q'])) {
+                        return trim($queryParams['q']);
+                    }
+                }
+                if (preg_match('/@(-?\d+\.\d+),(-?\d+\.\d+)/', $query, $matches)) {
+                    return $matches[1].','.$matches[2];
+                }
+            }
+
+            return $query;
         }
 
         return trim($this->venue_name.', '.$this->address);
@@ -68,6 +82,10 @@ class Event extends Model
 
     public function googleMapsUrl(): string
     {
+        if (! empty($this->maps_query) && (str_starts_with(trim($this->maps_query), 'http://') || str_starts_with(trim($this->maps_query), 'https://'))) {
+            return trim($this->maps_query);
+        }
+
         return 'https://www.google.com/maps/search/?api=1&query='.rawurlencode($this->resolvedMapsQuery());
     }
 

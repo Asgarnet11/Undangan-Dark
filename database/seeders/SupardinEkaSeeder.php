@@ -62,7 +62,7 @@ class SupardinEkaSeeder extends Seeder
             'ends_at' => null,
             'venue_name' => 'Kediaman Mempelai Pria',
             'address' => 'Desa Wadonggo, Kec. Tinanggea, Kab. Konawe Selatan, Sulawesi Tenggara',
-            'maps_query' => 'Desa Wadonggo, Tinanggea, Konawe Selatan, Sulawesi Tenggara',
+            'maps_query' => 'https://www.google.com/maps?q=-4.4725533,122.2729199&z=17&hl=id',
             'sort_order' => 1,
         ]);
 
