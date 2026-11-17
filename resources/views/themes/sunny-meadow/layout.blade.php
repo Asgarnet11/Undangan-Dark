@@ -14,8 +14,8 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/sunny-meadow/fonts/fraunces-latin-700.woff2') }}">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/sunny-meadow/fonts/dm-sans-latin-400.woff2') }}">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/sunny-meadow/fonts/caveat-latin-600.woff2') }}">
-    <link rel="stylesheet" href="{{ asset('themes/sunny-meadow/fonts/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/sunny-meadow/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/sunny-meadow/fonts/fonts.css') }}?v={{ @filemtime(public_path('themes/sunny-meadow/fonts/fonts.css')) }}">
+    <link rel="stylesheet" href="{{ asset('themes/sunny-meadow/theme.css') }}?v={{ @filemtime(public_path('themes/sunny-meadow/theme.css')) }}">
     @vite(['resources/js/app.js'])
 </head>
 @php
@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <script src="{{ asset('themes/sunny-meadow/theme.js') }}" defer></script>
+    <script src="{{ asset('themes/sunny-meadow/theme.js') }}?v={{ @filemtime(public_path('themes/sunny-meadow/theme.js')) }}" defer></script>
 </body>
 </html>
 

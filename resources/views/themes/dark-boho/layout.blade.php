@@ -13,8 +13,8 @@
 
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/dark-boho/fonts/cormorant-garamond-latin-600-normal.woff2') }}">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/dark-boho/fonts/jost-latin-400-normal.woff2') }}">
-    <link rel="stylesheet" href="{{ asset('themes/dark-boho/fonts/fonts.css') }}">
-    <link rel="stylesheet" href="{{ asset('themes/dark-boho/theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/dark-boho/fonts/fonts.css') }}?v={{ @filemtime(public_path('themes/dark-boho/fonts/fonts.css')) }}">
+    <link rel="stylesheet" href="{{ asset('themes/dark-boho/theme.css') }}?v={{ @filemtime(public_path('themes/dark-boho/theme.css')) }}">
     @vite(['resources/js/app.js'])
 </head>
 @php
@@ -77,6 +77,6 @@
         </div>
     </div>
 
-    <script src="{{ asset('themes/dark-boho/theme.js') }}" defer></script>
+    <script src="{{ asset('themes/dark-boho/theme.js') }}?v={{ @filemtime(public_path('themes/dark-boho/theme.js')) }}" defer></script>
 </body>
 </html>
