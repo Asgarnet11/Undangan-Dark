@@ -6,7 +6,30 @@
         return;
     }
 
-    root.classList.add('db-js', 'is-locked');
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
+
+    const OPEN_STORAGE_KEY = 'dark_boho_invitation_opened_' + (window.location.pathname.replace(/\/+$/, '') || 'home');
+    let wasAlreadyOpened = false;
+    try {
+        wasAlreadyOpened = sessionStorage.getItem(OPEN_STORAGE_KEY) === '1';
+    } catch (_) {
+        wasAlreadyOpened = false;
+    }
+
+    if (wasAlreadyOpened) {
+        root.classList.add('db-js', 'is-opened');
+    } else {
+        root.classList.add('db-js', 'is-locked');
+        window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('scroll', () => {
+        if (root.classList.contains('is-locked') && window.scrollY > 40) {
+            window.scrollTo(0, 0);
+        }
+    }, { passive: true });
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const openButton = document.getElementById('db-open-invitation');
@@ -130,6 +153,10 @@
     let openedAnimationsStarted = false;
 
     const finishOpening = () => {
+        try {
+            sessionStorage.setItem(OPEN_STORAGE_KEY, '1');
+        } catch (_) {}
+
         root.classList.remove('is-locked');
         root.classList.add('is-opened');
 
@@ -1409,7 +1436,13 @@
         music: musicController,
 
         openInvitation() {
+            try {
+                sessionStorage.setItem(OPEN_STORAGE_KEY, '1');
+            } catch (_) {}
+
             if (this.opened) {
+                root.classList.remove('is-locked');
+                root.classList.add('is-opened');
                 if (mainEl) {
                     mainEl.scrollIntoView({ behavior: prefersReducedMotion ? 'auto' : 'smooth', block: 'start' });
                 }
@@ -1473,7 +1506,38 @@
     }
 
     const bootstrap = () => {
-        runCoverEntrance();
+        if (wasAlreadyOpened) {
+            window.DarkBohoTheme.opened = true;
+            root.classList.remove('is-locked');
+            root.classList.add('is-opened');
+
+            if (coverEl) {
+                coverEl.classList.add('is-opened');
+                coverEl.setAttribute('data-opened', 'true');
+            }
+
+            const leftDoor = document.querySelector('.db-arch-door--left');
+            const rightDoor = document.querySelector('.db-arch-door--right');
+            if (leftDoor && rightDoor) {
+                leftDoor.style.transform = 'translate3d(-102%, 0, 0)';
+                rightDoor.style.transform = 'translate3d(102%, 0, 0)';
+            }
+
+            if (bottomNavEl) {
+                bottomNavEl.hidden = false;
+            }
+
+            if (giftFabEl) {
+                giftFabEl.hidden = false;
+            }
+
+            musicController.revealButton();
+            startOpenedAnimations();
+            document.dispatchEvent(new CustomEvent('dark-boho:opened'));
+        } else {
+            runCoverEntrance();
+        }
+
         initCountdown();
         initVideoFacade();
         initGalleryLightbox();

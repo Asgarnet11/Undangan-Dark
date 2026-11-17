@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="{{ asset('themes/dark-boho/fonts/fonts.css') }}?v={{ @filemtime(public_path('themes/dark-boho/fonts/fonts.css')) }}">
     <link rel="stylesheet" href="{{ asset('themes/dark-boho/theme.css') }}?v={{ @filemtime(public_path('themes/dark-boho/theme.css')) }}">
     @vite(['resources/js/app.js'])
+    <script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }</script>
 </head>
 @php
     $preset = data_get($themeConfig, 'preset', 'terracotta');
