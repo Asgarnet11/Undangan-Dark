@@ -10,7 +10,7 @@
         <x-dark-boho.svg name="dried-flower-cluster" class="db-svg-cluster" />
     </div>
 
-    <p class="db-kicker">{{ __('invitation.events.heading') }}</p>
+    <p class="db-kicker">{{ __('invitation.events.kicker') }}</p>
     <h2 class="db-display db-section-title">{{ __('invitation.events.heading') }}</h2>
 
     <div class="db-events-list">

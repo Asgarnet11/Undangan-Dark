@@ -24,8 +24,8 @@ class SupardinEkaSeeder extends Seeder
             ['slug' => 'supardin-eka'],
             [
                 'user_id' => $user->id,
-                'theme' => 'sunny-meadow',
-                'theme_config' => ThemeRegistry::defaultConfig('sunny-meadow'),
+                'theme' => 'dark-boho',
+                'theme_config' => ThemeRegistry::defaultConfig('dark-boho'),
                 'timezone' => 'Asia/Makassar',
                 'title' => 'Pernikahan Supardin & Eka',
                 'bride_name' => 'Eka Rahmawati',

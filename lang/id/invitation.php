@@ -29,12 +29,14 @@ return [
         'play_label' => 'Putar Video',
     ],
     'gallery' => [
+        'kicker' => 'Momen Indah',
         'heading' => 'Galeri Momen',
         'close_lightbox' => 'Tutup pratinjau foto',
         'prev_photo' => 'Foto sebelumnya',
         'next_photo' => 'Foto berikutnya',
     ],
     'events' => [
+        'kicker' => 'Waktu & Tempat',
         'heading' => 'Rangkaian Acara',
         'until_finished' => 'Selesai',
         'view_location' => 'Lihat Lokasi',
@@ -47,6 +49,7 @@ return [
         ],
     ],
     'rsvp' => [
+        'kicker' => 'Kehadiran',
         'heading' => 'Konfirmasi Kehadiran',
         'subtitle' => 'Mohon kesediaan Anda untuk mengonfirmasi kehadiran agar kami dapat mempersiapkan jamuan terbaik.',
         'name_label' => 'Nama Lengkap',
@@ -69,6 +72,7 @@ return [
         'watch_button' => 'Saksikan Siaran Langsung',
     ],
     'gift' => [
+        'kicker' => 'Amplop Digital',
         'heading' => 'Tanda Kasih',
         'copy' => 'Salin',
         'copied' => 'Tersalin',
@@ -80,6 +84,7 @@ return [
         'close_modal' => 'Tutup jendela tanda kasih',
     ],
     'wishes' => [
+        'kicker' => 'Doa & Restu',
         'heading' => 'Ucapan dan Doa',
         'subtitle' => 'Bagikan doa restu serta harapan hangat untuk perjalanan baru kedua mempelai.',
         'name_label' => 'Nama',

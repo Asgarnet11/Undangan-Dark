@@ -1,5 +1,5 @@
 <section id="section-wishes" class="db-section db-reveal-section">
-    <p class="db-kicker">{{ __('invitation.wishes.heading') }}</p>
+    <p class="db-kicker">{{ __('invitation.wishes.kicker') }}</p>
     <h2 class="db-display db-section-title">{{ __('invitation.wishes.heading') }}</h2>
     <p class="db-body-soft db-section-subtitle">{{ __('invitation.wishes.subtitle') }}</p>
 

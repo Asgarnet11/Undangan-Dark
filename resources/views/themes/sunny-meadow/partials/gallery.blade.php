@@ -9,7 +9,7 @@
     </div>
 
     <div class="sm-section-header">
-        <p class="sm-section-subtitle">{{ __('invitation.gallery.heading') }}</p>
+        <p class="sm-section-subtitle">{{ __('invitation.gallery.kicker') }}</p>
         <h2 class="sm-section-title">{{ $invitation->gallery_title ?: __('invitation.gallery.heading') }}</h2>
     </div>
 

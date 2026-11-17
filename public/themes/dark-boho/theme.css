@@ -10,8 +10,8 @@
 
     /* Teks (WCAG AA >= 4.5:1 di atas --db-bg dan --db-bg-elevated) */
     --db-ink: #efe6d8;
-    --db-ink-soft: #c5baa8;
-    --db-ink-faint: #a59b8a;
+    --db-ink-soft: #dfd6c7;
+    --db-ink-faint: #b8ad9c;
 
     /* Aksen boho */
     --db-terracotta: #c0714f;
@@ -26,7 +26,7 @@
     --db-accent-secondary: var(--db-sand);
 
     /* Garis, permukaan, & efek */
-    --db-line: rgba(239, 230, 216, 0.16);
+    --db-line: rgba(239, 230, 216, 0.22);
     --db-border: var(--db-line);
     --db-surface: var(--db-bg-elevated);
     --db-surface-alt: #2e2c28;
@@ -67,9 +67,9 @@
     background-color: var(--db-bg-deep);
     color: var(--db-ink);
     font-family: var(--db-font-body);
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.68;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
@@ -357,14 +357,16 @@
 }
 
 .db-btn--ghost {
-    background-color: transparent;
-    color: var(--db-ink);
-    border-color: var(--db-line);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f0e7db;
+    border: 1px solid rgba(239, 230, 216, 0.35);
+    backdrop-filter: blur(4px);
 }
 
 .db-btn--ghost:hover {
-    border-color: var(--db-accent);
-    color: var(--db-accent-secondary);
+    border-color: var(--db-accent-secondary);
+    background-color: rgba(201, 164, 92, 0.16);
+    color: #ffffff;
 }
 
 /* ==========================================================================
@@ -633,6 +635,10 @@
 .db-cover-subtitle {
     color: var(--db-accent-secondary);
     margin-bottom: 0.45rem;
+    font-size: 0.84rem;
+    letter-spacing: 0.28em;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .db-cover-names {
@@ -642,48 +648,61 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.85), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.db-cover-name {
+    font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
 .db-cover-amp {
-    font-size: 0.62em;
+    font-size: 0.68em;
     color: var(--db-accent-secondary);
     line-height: 0.95;
     margin: 0.05em 0;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
 .db-cover-date {
     margin: 0;
-    font-size: 0.92rem;
-    letter-spacing: 0.08em;
-    color: var(--db-cover-text-color, var(--db-ink-soft));
-    opacity: 0.88;
+    font-size: 0.96rem;
+    letter-spacing: 0.14em;
+    color: var(--db-accent-secondary, #d8c3a0);
+    font-weight: 500;
+    text-transform: uppercase;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85);
 }
 
 .db-cover-guest {
     margin: 0 0 1.25rem;
-    padding: 0.85rem 1.2rem;
-    border: 1px solid rgba(239, 230, 216, 0.2);
-    border-radius: 14px;
-    background-color: rgba(21, 21, 19, 0.56);
-    backdrop-filter: blur(6px);
+    padding: 0.95rem 1.35rem;
+    border: 1px solid rgba(201, 164, 92, 0.35);
+    border-radius: 16px;
+    background-color: rgba(29, 29, 27, 0.82);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(239, 230, 216, 0.1);
     width: 100%;
-    max-width: 300px;
+    max-width: 320px;
 }
 
 .db-cover-guest-label {
     display: block;
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--db-ink-soft);
-    margin-bottom: 0.25rem;
+    color: var(--db-accent-secondary);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
 }
 
 .db-cover-guest-name {
     font-family: var(--db-font-display);
     font-weight: 600;
-    font-size: 1.25rem;
-    color: var(--db-cover-text-color, var(--db-ink));
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 /* Variasi gaya cover: top */
@@ -795,15 +814,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 0.65rem;
-    margin-top: 1.35rem;
+    margin-top: 1.5rem;
 }
 
 .db-btn--sm {
-    padding: 0.68rem 1.05rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.09em;
-    min-height: 40px;
+    padding: 0.72rem 1.15rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    min-height: 42px;
 }
 
 /* Countdown */
@@ -872,7 +893,9 @@
 .db-verse-quote p {
     margin: 0;
     font-style: italic;
-    font-size: 0.94rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #ded5c6;
 }
 
 .db-verse-source {
@@ -952,24 +975,26 @@
 }
 
 .db-person-parents {
-    margin: 0 0 0.4rem;
-    font-size: 0.88rem;
+    margin: 0 0 0.45rem;
+    font-size: 0.94rem;
+    color: #ded5c6;
 }
 
 .db-person-origin {
     margin: 0 0 0.55rem;
-    font-size: 0.8rem;
-    color: var(--db-text-muted);
+    font-size: 0.86rem;
+    color: #c4b9a9;
     letter-spacing: 0.04em;
 }
 
 .db-person-social {
     display: inline-block;
     margin-top: 0.2rem;
-    font-size: 0.82rem;
+    font-size: 0.86rem;
+    font-weight: 500;
     color: var(--db-accent-secondary);
     text-decoration: none;
-    border-bottom: 1px solid rgba(201, 169, 110, 0.35);
+    border-bottom: 1px solid rgba(201, 169, 110, 0.45);
     padding-bottom: 0.1rem;
 }
 
@@ -1187,42 +1212,55 @@
 }
 
 .db-event-card {
-    padding: 1.75rem 1.25rem;
+    padding: 2.1rem 1.35rem;
+    border: 1px solid rgba(201, 164, 92, 0.28);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.42);
 }
 
 .db-event-title {
-    margin: 0 0 0.65rem;
-    font-size: 1.45rem;
+    margin: 0 0 0.75rem;
+    font-size: 1.6rem;
+    font-weight: 600;
     color: var(--db-accent-secondary);
+    letter-spacing: 0.02em;
 }
 
 .db-event-date {
-    margin: 0 0 0.2rem;
-    font-weight: 500;
+    margin: 0 0 0.35rem;
+    font-weight: 600;
+    font-size: 1.15rem;
     color: var(--db-text-primary);
 }
 
 .db-event-time {
-    margin: 0 0 1rem;
-    font-size: 0.9rem;
-    color: var(--db-text-secondary);
+    margin: 0 0 1.15rem;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: var(--db-accent-secondary);
+    letter-spacing: 0.03em;
 }
 
 .db-event-location {
-    padding-top: 0.85rem;
-    border-top: 1px solid rgba(201, 169, 110, 0.18);
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(201, 164, 92, 0.22);
+    margin-top: 0.85rem;
 }
 
 .db-event-venue {
     display: block;
     font-weight: 600;
+    font-size: 1.1rem;
     color: var(--db-text-primary);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.35rem;
 }
 
 .db-event-address {
-    margin: 0;
-    font-size: 0.86rem;
+    margin: 0.35rem auto 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #ded5c6;
+    max-width: 36ch;
 }
 
 .db-map-embed {
@@ -1252,9 +1290,11 @@
 }
 
 .db-closing-text {
-    max-width: 35ch;
-    margin: 0 auto 1.25rem;
-    font-size: 0.93rem;
+    max-width: 36ch;
+    margin: 0 auto 1.35rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #ded5c6;
 }
 
 .db-closing-names {
@@ -1276,9 +1316,9 @@
     margin: 0.55rem 0 0;
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    font-size: 0.9rem;
-    color: var(--db-text-secondary);
+    gap: 0.45rem;
+    font-size: 0.94rem;
+    color: #ded5c6;
 }
 
 /* Sticky Bottom Navigation (Bagian 5.14 & 9) */
@@ -1609,17 +1649,17 @@
 
 .db-gift-number {
     margin: 0.1rem 0;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--db-ink);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #ffffff;
     font-variant-numeric: tabular-nums;
 }
 
 .db-gift-holder {
     margin: 0 0 0.55rem;
-    font-size: 0.86rem;
-    color: var(--db-ink-soft);
+    font-size: 0.92rem;
+    color: #ded5c6;
 }
 
 .db-gift-addresses {
@@ -1757,29 +1797,30 @@
 }
 
 .db-wish-name {
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.98rem;
     color: var(--db-accent-secondary);
 }
 
 .db-wish-origin {
-    font-size: 0.76rem;
-    padding: 0.1rem 0.5rem;
+    font-size: 0.78rem;
+    padding: 0.15rem 0.6rem;
     border-radius: 999px;
     border: 1px solid var(--db-line);
-    color: var(--db-ink-soft);
+    color: #ded5c6;
 }
 
 .db-wish-time {
     margin-left: auto;
-    font-size: 0.74rem;
-    color: var(--db-ink-faint);
+    font-size: 0.76rem;
+    color: #c4b9a9;
 }
 
 .db-wish-message {
     margin: 0;
-    font-size: 0.92rem;
-    line-height: 1.55;
-    color: var(--db-ink);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #efe6d8;
     white-space: pre-line;
     overflow-wrap: anywhere;
 }

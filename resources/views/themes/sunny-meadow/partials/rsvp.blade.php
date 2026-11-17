@@ -11,7 +11,7 @@
 
 <section id="section-rsvp" class="sm-section sm-section-rsvp">
     <div class="sm-section-header">
-        <p class="sm-section-subtitle">{{ __('invitation.rsvp.heading') }}</p>
+        <p class="sm-section-subtitle">{{ __('invitation.rsvp.kicker') }}</p>
         <h2 class="sm-section-title">{{ __('invitation.rsvp.heading') }}</h2>
         <p class="sm-section-desc">{{ __('invitation.rsvp.subtitle') }}</p>
     </div>

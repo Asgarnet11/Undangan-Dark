@@ -10,7 +10,7 @@
 @endphp
 
 <section id="section-rsvp" class="db-section db-reveal-section">
-    <p class="db-kicker">{{ __('invitation.rsvp.heading') }}</p>
+    <p class="db-kicker">{{ __('invitation.rsvp.kicker') }}</p>
     <h2 class="db-display db-section-title">{{ __('invitation.rsvp.heading') }}</h2>
     <p class="db-body-soft db-section-subtitle">{{ __('invitation.rsvp.subtitle') }}</p>
 

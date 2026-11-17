@@ -8,7 +8,7 @@
         <x-dark-boho.svg name="leaf-branch" class="db-svg-branch" />
     </div>
 
-    <p class="db-kicker">{{ __('invitation.gallery.heading') }}</p>
+    <p class="db-kicker">{{ __('invitation.gallery.kicker') }}</p>
     <h2 class="db-display db-section-title">{{ $invitation->gallery_title ?: __('invitation.gallery.heading') }}</h2>
 
     @if($invitation->gallery_quote)

@@ -3,7 +3,7 @@
         <div class="sm-decor-heart-center" aria-hidden="true">
             <x-sunny-meadow.svg name="heart-line" class="sm-svg-heart-sm" />
         </div>
-        <p class="sm-section-subtitle">{{ __('invitation.wishes.heading') }}</p>
+        <p class="sm-section-subtitle">{{ __('invitation.wishes.kicker') }}</p>
         <h2 class="sm-section-title">{{ __('invitation.wishes.heading') }}</h2>
         <p class="sm-section-desc">{{ __('invitation.wishes.subtitle') }}</p>
     </div>

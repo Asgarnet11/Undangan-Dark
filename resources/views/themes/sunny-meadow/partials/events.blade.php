@@ -11,7 +11,7 @@
     </div>
 
     <div class="sm-section-header">
-        <p class="sm-section-subtitle">{{ __('invitation.events.heading') }}</p>
+        <p class="sm-section-subtitle">{{ __('invitation.events.kicker') }}</p>
         <h2 class="sm-section-title">{{ __('invitation.events.heading') }}</h2>
     </div>
 

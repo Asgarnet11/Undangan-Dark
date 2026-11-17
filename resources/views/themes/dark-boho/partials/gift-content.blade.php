@@ -2,7 +2,7 @@
     <x-dark-boho.svg name="dried-flower-cluster" class="db-svg-cluster" />
 </div>
 
-<p class="db-kicker">{{ __('invitation.gift.heading') }}</p>
+<p class="db-kicker">{{ __('invitation.gift.kicker') }}</p>
 <h2 class="db-display db-section-title">{{ __('invitation.gift.heading') }}</h2>
 
 @if($invitation->thank_you_gift_note)

@@ -2,7 +2,7 @@
     <div class="sm-decor-flower-center" aria-hidden="true">
         <x-sunny-meadow.svg name="flower-small" class="sm-svg-flower-sm" />
     </div>
-    <p class="sm-section-subtitle">{{ __('invitation.gift.heading') }}</p>
+    <p class="sm-section-subtitle">{{ __('invitation.gift.kicker') }}</p>
     <h2 class="sm-section-title">{{ __('invitation.gift.heading') }}</h2>
 </div>
 
