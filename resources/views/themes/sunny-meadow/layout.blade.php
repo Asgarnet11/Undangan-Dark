@@ -5,11 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#fff8ec">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $invitation->title }}</title>
-    <meta name="description" content="{{ $invitation->opening_text ?? $invitation->title }}">
-    <meta property="og:title" content="{{ $invitation->title }}">
-    <meta property="og:description" content="{{ $invitation->opening_text ?? $invitation->title }}">
+@php
+    $ogTitle = $invitation->title;
+    if (!empty($guest)) {
+        $ogDescription = 'Kepada Yth. ' . $guest->name . '. ' . ($invitation->opening_text ?? ('Pernikahan ' . $invitation->bride_nickname . ' & ' . $invitation->groom_nickname));
+    } else {
+        $ogDescription = $invitation->opening_text ?? ('Pernikahan ' . $invitation->bride_nickname . ' & ' . $invitation->groom_nickname);
+    }
+
+    $resolvedCover = $invitation->resolveMediaOrPathUrl('cover', $invitation->cover_photo)
+        ?: ($invitation->resolveMediaOrPathUrl('bride', $invitation->bride_photo)
+        ?: asset('themes/sunny-meadow/img/og-preview.jpg'));
+
+    $ogImage = (!str_starts_with($resolvedCover, 'http://') && !str_starts_with($resolvedCover, 'https://'))
+        ? url($resolvedCover)
+        : $resolvedCover;
+
+    $currentFullUrl = request()->fullUrl();
+@endphp
+    <title>{{ $ogTitle }}</title>
+    <meta name="description" content="{{ $ogDescription }}">
+    <link rel="canonical" href="{{ $currentFullUrl }}">
+
+    <!-- Open Graph / WhatsApp / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ config('app.name', 'Undangan Pernikahan Digital') }}">
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDescription }}">
+    <meta property="og:url" content="{{ $currentFullUrl }}">
+    <meta property="og:image" content="{{ $ogImage }}">
+    <meta property="og:image:secure_url" content="{{ $ogImage }}">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDescription }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
 
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/sunny-meadow/fonts/fraunces-latin-700.woff2') }}">
     <link rel="preload" as="font" type="font/woff2" crossorigin href="{{ asset('themes/sunny-meadow/fonts/dm-sans-latin-400.woff2') }}">

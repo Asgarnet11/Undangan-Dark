@@ -190,4 +190,16 @@ class DarkBohoSectionsTest extends TestCase
         $response->assertSee('https://a2dev.my.id', false);
         $response->assertSee('Pesan di a2dev.my.id', false);
     }
+
+    public function test_opengraph_meta_tags_rendered_with_image_and_metadata(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $response = $this->get('/raka-nadia');
+        $response->assertOk();
+        $response->assertSee('property="og:image"', false);
+        $response->assertSee('property="og:title"', false);
+        $response->assertSee('property="og:description"', false);
+        $response->assertSee('name="twitter:card"', false);
+    }
 }
