@@ -114,6 +114,22 @@ class SupardinEkaSeeder extends Seeder
             ['name' => 'Noviana, S.E. & Partner', 'code' => 'SE-NOV02', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
             ['name' => 'Zamaeni & Partner', 'code' => 'SE-ZAM01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
             ['name' => 'Adam & Partner', 'code' => 'SE-ADM01', 'group' => 'Rekan & Kolega', 'max_pax' => 2],
+            ['name' => 'Patra Jumadil & Partner', 'code' => 'SE-PAT01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ebing Sastrawan & Partner', 'code' => 'SE-EBI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ilham Agus Prasetyo & Partner', 'code' => 'SE-ILH01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Tito Desprianto & Partner', 'code' => 'SE-TIT01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Fitria Nurandini, S.Kom. & Partner', 'code' => 'SE-FIT02', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Alifah Rudi Syakur, S.Kom. & Partner', 'code' => 'SE-ALI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Danang Sutowijoyo, S.H. & Partner', 'code' => 'SE-DAN01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ayu Mugirahayu & Partner', 'code' => 'SE-AYU01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Silvia Nurfaidzah dan Suami', 'code' => 'SE-SIL01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Fifi Anjasari & Partner', 'code' => 'SE-FIF01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Dwi Setia Ningsih & Partner', 'code' => 'SE-DWI01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Andi Amul Wahyu & Partner', 'code' => 'SE-AND02', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Nurfadilah, S.Pd. & Partner', 'code' => 'SE-NUR02', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Andi Andrea Destriana & Partner', 'code' => 'SE-AND03', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Ekmun & Partner', 'code' => 'SE-EKM01', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
+            ['name' => 'Andi Sastra & Partner', 'code' => 'SE-AND04', 'group' => 'Sahabat & Teman', 'max_pax' => 2],
         ];
 
         foreach ($guests as $guestData) {
