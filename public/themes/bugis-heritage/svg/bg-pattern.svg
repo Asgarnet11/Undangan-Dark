@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+    <!-- Background Desktop Pattern: Lateral traditional Bugis diamond lattice backdrop -->
+    <path d="M60 0 L120 60 L60 120 L0 60 Z" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.09"/>
+    <path d="M60 15 L105 60 L60 105 L15 60 Z" stroke="currentColor" stroke-width="0.5" stroke-opacity="0.06"/>
+    <polygon points="60,35 85,60 60,85 35,60" stroke="currentColor" stroke-width="0.4" stroke-opacity="0.04" fill="none"/>
+    <circle cx="60" cy="60" r="1.5" fill="currentColor" fill-opacity="0.08"/>
+    <!-- Quarter diamonds at corners -->
+    <path d="M0 0 L25 0 L0 25 Z" fill="currentColor" fill-opacity="0.03"/>
+    <path d="M120 0 L95 0 L120 25 Z" fill="currentColor" fill-opacity="0.03"/>
+    <path d="M0 120 L25 120 L0 95 Z" fill="currentColor" fill-opacity="0.03"/>
+    <path d="M120 120 L95 120 L120 95 Z" fill="currentColor" fill-opacity="0.03"/>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+    <!-- Walasuji Tile: Diamond lattice pattern -->
+    <path d="M40 0 L80 40 L40 80 L0 40 Z" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.35"/>
+    <path d="M40 8 L72 40 L40 72 L8 40 Z" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.22"/>
+    <path d="M40 18 L62 40 L40 62 L18 40 Z" stroke="currentColor" stroke-width="0.6" stroke-opacity="0.15"/>
+    <circle cx="40" cy="40" r="2" fill="currentColor" fill-opacity="0.35"/>
+    <circle cx="0" cy="0" r="1.5" fill="currentColor" fill-opacity="0.25"/>
+    <circle cx="80" cy="0" r="1.5" fill="currentColor" fill-opacity="0.25"/>
+    <circle cx="0" cy="80" r="1.5" fill="currentColor" fill-opacity="0.25"/>
+    <circle cx="80" cy="80" r="1.5" fill="currentColor" fill-opacity="0.25"/>
+</svg>

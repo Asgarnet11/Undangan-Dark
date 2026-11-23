@@ -1,0 +1,370 @@
+/* Bugis Heritage Theme CSS
+   Aesthetic: Warm, classic, solemn, dignified Bugis traditional wedding theme.
+   Silk, antique gold, walasuji geometric diamonds, and local local fonts.
+   Zero external CDN dependencies. */
+
+:root {
+    --bh-bg: #1f1a17;
+    --bh-bg-elevated: #2a2320;
+    --bh-bg-deep: #161210;
+    --bh-bg-silk: #f3e6cf;
+
+    --bh-ink: #f3e6cf;
+    --bh-ink-soft: #c9b99d;
+    --bh-ink-faint: #8a7d68;
+    --bh-ink-on-silk: #2a1f1a;
+
+    --bh-gold: #c9a45c;
+    --bh-gold-soft: #e2c98f;
+    --bh-maroon: #6b2a2f;
+    --bh-moss: #3f5a3a;
+    --bh-aubergine: #5b3a54;
+
+    --bh-accent: #c9a45c;
+    --bh-accent-sub: #6b2a2f;
+
+    --bh-line: rgba(201, 164, 92, 0.35);
+    --bh-glow: rgba(201, 164, 92, 0.22);
+    --bh-radius: 4px;
+
+    --bh-font-display: "Cormorant Garamond", Georgia, serif;
+    --bh-font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --bh-font-serif: Georgia, "Times New Roman", serif;
+    --bh-font-label: "Jost", system-ui, sans-serif;
+    --bh-font-script: "Allura", cursive;
+    --bh-font-arabic: "Amiri", serif;
+    --bh-font-lontara: "Noto Sans Buginese", sans-serif;
+
+    --bh-ease: cubic-bezier(.25, .46, .45, .94);
+    --bh-dur-fast: 260ms;
+    --bh-dur-base: 800ms;
+    --bh-dur-slow: 1600ms;
+}
+
+/* Preset Overrides */
+[data-preset="marun-emas"] {
+    --bh-accent: var(--bh-gold);
+    --bh-accent-sub: var(--bh-maroon);
+}
+
+[data-preset="lumut-emas"] {
+    --bh-accent: var(--bh-gold);
+    --bh-accent-sub: var(--bh-moss);
+}
+
+[data-preset="terong-emas"] {
+    --bh-accent: var(--bh-gold);
+    --bh-accent-sub: var(--bh-aubergine);
+}
+
+[data-preset="krem-sutra"] {
+    --bh-bg: #f3e6cf;
+    --bh-bg-elevated: #eae0cb;
+    --bh-bg-deep: #ded2bd;
+    --bh-ink: #2a1f1a;
+    --bh-ink-soft: #4a3c33;
+    --bh-ink-faint: #7a6659;
+    --bh-accent: var(--bh-maroon);
+    --bh-accent-sub: var(--bh-gold);
+    --bh-line: rgba(107, 42, 47, 0.3);
+    --bh-glow: rgba(201, 164, 92, 0.25);
+}
+
+/* Global Reset & Base */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bh-bg-deep);
+    color: var(--bh-ink);
+    font-family: var(--bh-font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.theme-bugis-heritage {
+    background-color: var(--bh-bg-deep);
+    color: var(--bh-ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Desktop Backdrop Frame & Grain */
+.bh-desktop-frame {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .bh-desktop-frame {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-color: var(--bh-bg-deep);
+        background-image: url('svg/bg-pattern.svg');
+        background-repeat: repeat;
+        background-size: 180px 180px;
+        opacity: 0.18;
+    }
+}
+
+.bh-grain {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    pointer-events: none;
+    background-image: url('svg/grain-silk.svg');
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.04;
+    mix-blend-mode: overlay;
+}
+
+/* Stage & Centered Canvas (Mobile 360px up to 480px on desktop) */
+.bh-stage {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.bh-canvas {
+    width: 100%;
+    max-width: 480px;
+    min-width: 360px;
+    min-height: 100vh;
+    background-color: var(--bh-bg);
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Walasuji & Lipa Patterns */
+.bh-pattern-walasuji {
+    background-image: url('svg/walasuji-tile.svg');
+    background-repeat: repeat;
+    background-size: 48px 48px;
+}
+
+.bh-pattern-lipa {
+    background-image: url('svg/lipa-check-tile.svg');
+    background-repeat: repeat;
+    background-size: 40px 40px;
+}
+
+/* Typography Utility */
+.bh-display {
+    font-family: var(--bh-font-display);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--bh-ink);
+}
+
+.bh-script {
+    font-family: var(--bh-font-script);
+    color: var(--bh-accent);
+}
+
+.bh-kicker {
+    font-family: var(--bh-font-label);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--bh-accent);
+}
+
+.bh-body-serif {
+    font-family: var(--bh-font-serif);
+    color: var(--bh-ink-soft);
+}
+
+.bh-arabic {
+    font-family: var(--bh-font-arabic);
+    font-size: 1.4rem;
+    line-height: 2.2;
+    direction: rtl;
+    text-align: right;
+    color: var(--bh-ink);
+}
+
+.bh-lontara {
+    font-family: var(--bh-font-lontara);
+    letter-spacing: 0.05em;
+    color: var(--bh-accent);
+}
+
+/* Section Common Structure */
+.bh-section {
+    padding: 3.5rem 1.5rem;
+    position: relative;
+    text-align: center;
+}
+
+.bh-section-title {
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+}
+
+.bh-section-subtitle {
+    font-size: 0.92rem;
+    color: var(--bh-ink-soft);
+    max-width: 380px;
+    margin: 0 auto 2rem;
+}
+
+/* Ornaments & Borders */
+.bh-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem auto;
+    color: var(--bh-accent);
+}
+
+.bh-divider svg {
+    max-width: 140px;
+    height: auto;
+}
+
+.bh-corner-ornament {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    color: var(--bh-accent);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+.bh-corner-ornament--tl { top: 12px; left: 12px; }
+.bh-corner-ornament--tr { top: 12px; right: 12px; transform: scaleX(-1); }
+.bh-corner-ornament--bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
+.bh-corner-ornament--br { bottom: 12px; right: 12px; transform: scale(-1); }
+
+/* Card Components */
+.bh-card {
+    background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    border-radius: var(--bh-radius);
+    padding: 1.75rem 1.25rem;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.bh-card--gold-border {
+    border: 1px solid var(--bh-gold);
+}
+
+/* Buttons */
+.bh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    font-family: var(--bh-font-label);
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    border-radius: var(--bh-radius);
+    border: 1px solid var(--bh-accent);
+    background-color: var(--bh-bg-elevated);
+    color: var(--bh-ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-btn:hover, .bh-btn:focus-visible {
+    background-color: var(--bh-accent);
+    color: var(--bh-bg-deep);
+    box-shadow: 0 0 16px var(--bh-glow);
+    outline: none;
+}
+
+.bh-btn--primary {
+    background-color: var(--bh-accent);
+    color: var(--bh-bg-deep);
+}
+
+.bh-btn--primary:hover {
+    background-color: var(--bh-gold-soft);
+    color: var(--bh-bg-deep);
+}
+
+/* Floating Music Button */
+.bh-music-btn {
+    position: fixed;
+    bottom: 5.5rem;
+    right: max(1rem, calc((100vw - 480px) / 2 + 1rem));
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-accent);
+    color: var(--bh-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 90;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    transition: transform var(--bh-dur-fast) var(--bh-ease), background var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-music-btn:hover {
+    transform: scale(1.08);
+    background: var(--bh-bg);
+}
+
+.bh-music-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.bh-music-icon--play {
+    animation: bh-spin 12s linear infinite;
+}
+
+.bh-music-btn[aria-pressed="false"] .bh-music-icon--play {
+    display: none;
+}
+
+.bh-music-btn[aria-pressed="false"] .bh-music-icon--muted {
+    display: block;
+}
+
+.bh-music-btn[aria-pressed="true"] .bh-music-icon--play {
+    display: block;
+}
+
+.bh-music-btn[aria-pressed="true"] .bh-music-icon--muted {
+    display: none;
+}
+
+@keyframes bh-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Reduced Motion Safeguard */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .bh-music-icon--play {
+        animation: none !important;
+    }
+}

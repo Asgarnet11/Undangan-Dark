@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 24" width="240" height="24" fill="none">
+    <!-- Divider Diamond: Elegant section divider with diamond rhythm -->
+    <line x1="10" y1="12" x2="84" y2="12" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.45"/>
+    <line x1="156" y1="12" x2="230" y2="12" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.45"/>
+    <circle cx="92" cy="12" r="1.5" fill="currentColor" fill-opacity="0.6"/>
+    <polygon points="104,8 108,12 104,16 100,12" stroke="currentColor" stroke-width="0.8" fill="none"/>
+    <polygon points="120,4 128,12 120,20 112,12" stroke="currentColor" stroke-width="1.2" fill="none"/>
+    <polygon points="120,7 125,12 120,17 115,12" fill="currentColor" fill-opacity="0.75"/>
+    <polygon points="136,8 140,12 136,16 132,12" stroke="currentColor" stroke-width="0.8" fill="none"/>
+    <circle cx="148" cy="12" r="1.5" fill="currentColor" fill-opacity="0.6"/>
+</svg>

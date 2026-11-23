@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" width="160" height="120" fill="none">
+    <!-- Rumah Panggung: Clean architectural silhouette of traditional Bugis stilt house (Saoraja / Bola Sobbi) -->
+    <!-- Gable roof with timpa laja (layered gables) -->
+    <path d="M80 8 L142 48 L18 48 Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" fill="none"/>
+    <path d="M80 18 L130 50 L30 50 Z" stroke="currentColor" stroke-width="0.8" stroke-opacity="0.45" fill="none"/>
+    <!-- Ridge crest & finial (anjong) -->
+    <line x1="80" y1="2" x2="80" y2="8" stroke="currentColor" stroke-width="1.8"/>
+    <polygon points="80,0 83,4 80,7 77,4" fill="currentColor"/>
+    <!-- House body wall -->
+    <rect x="28" y="48" width="104" height="36" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.8" fill="none"/>
+    <!-- Window slats (tange') -->
+    <rect x="42" y="56" width="18" height="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.6"/>
+    <rect x="100" y="56" width="18" height="18" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.6"/>
+    <line x1="51" y1="56" x2="51" y2="74" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.5"/>
+    <line x1="109" y1="56" x2="109" y2="74" stroke="currentColor" stroke-width="0.7" stroke-opacity="0.5"/>
+    <!-- Main door -->
+    <rect x="72" y="54" width="16" height="30" stroke="currentColor" stroke-width="0.9" stroke-opacity="0.7"/>
+    <!-- Stilt pillars (alliri) -->
+    <line x1="32" y1="84" x2="32" y2="114" stroke="currentColor" stroke-width="1.6"/>
+    <line x1="52" y1="84" x2="52" y2="114" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="72" y1="84" x2="72" y2="114" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="88" y1="84" x2="88" y2="114" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="108" y1="84" x2="108" y2="114" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="128" y1="84" x2="128" y2="114" stroke="currentColor" stroke-width="1.6"/>
+    <!-- Base ground line -->
+    <line x1="12" y1="114" x2="148" y2="114" stroke="currentColor" stroke-width="1" stroke-opacity="0.5"/>
+</svg>

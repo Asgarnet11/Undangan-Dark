@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+    <!-- Pacci Leaf: Delicate henna (lawsonia inermis) leaf and tendril for mappacci motif -->
+    <path d="M40 70 C40 50 36 32 40 10" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Left leaves -->
+    <path d="M39 52 C28 50 20 42 22 34 C28 36 34 44 39 52 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="0.8"/>
+    <path d="M39 36 C26 34 18 24 22 18 C28 20 34 28 39 36 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="0.8"/>
+    <!-- Right leaves -->
+    <path d="M41 44 C52 42 60 34 58 26 C52 28 46 36 41 44 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="0.8"/>
+    <path d="M41 28 C52 26 58 16 54 12 C48 14 44 22 41 28 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-width="0.8"/>
+    <!-- Top bud -->
+    <path d="M40 10 C36 4 44 4 40 10 Z" fill="currentColor" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="40" cy="14" r="1.5" fill="currentColor"/>
+</svg>

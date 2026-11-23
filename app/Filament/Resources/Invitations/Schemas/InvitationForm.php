@@ -61,6 +61,7 @@ class InvitationForm
                                                             return match ($theme) {
                                                                 'sunny-meadow' => 'sunny',
                                                                 'minimalist-botanical' => 'olive',
+                                                                'bugis-heritage' => 'marun-emas',
                                                                 default => 'terracotta',
                                                             };
                                                         })
@@ -93,6 +94,15 @@ class InvitationForm
                                                                     ];
                                                                 }
 
+                                                                if ($theme === 'bugis-heritage') {
+                                                                    return [
+                                                                        'default' => 'Komposisi Tengah (Default)',
+                                                                        'top' => 'Teks di Atas',
+                                                                        'space-between' => 'Teks Terpisah Atas-Bawah',
+                                                                        'frame' => 'Bingkai Walasuji Emas',
+                                                                    ];
+                                                                }
+
                                                                 return [
                                                                     'default' => 'Klasik Terracotta',
                                                                     'new' => 'Bingkai Emas Modern',
@@ -116,6 +126,7 @@ class InvitationForm
                                                                 return match ($theme) {
                                                                     'sunny-meadow' => '#fff8ec',
                                                                     'minimalist-botanical' => '#ffffff',
+                                                                    'bugis-heritage' => '#1f1a17',
                                                                     default => '#1d1d1b',
                                                                 };
                                                             })
@@ -128,6 +139,7 @@ class InvitationForm
                                                                 return match ($theme) {
                                                                     'sunny-meadow' => '#3b2f2a',
                                                                     'minimalist-botanical' => '#232b24',
+                                                                    'bugis-heritage' => '#f3e6cf',
                                                                     default => '#efe6d8',
                                                                 };
                                                             })
@@ -157,13 +169,26 @@ class InvitationForm
                                                             ->live(),
                                                         Select::make('theme_config.layout.photoFrame')
                                                             ->label('Bentuk Bingkai Foto')
-                                                            ->options([
-                                                                'flower' => 'Bunga Ceria (Flower)',
-                                                                'blob' => 'Blob Organik (Blob)',
-                                                                'arch' => 'Lengkung Elegan (Arch)',
-                                                            ])
-                                                            ->default('flower')
-                                                            ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow')
+                                                            ->options(function ($get) {
+                                                                $theme = $get('theme') ?: 'dark-boho';
+                                                                if ($theme === 'bugis-heritage') {
+                                                                    return [
+                                                                        'diamond' => 'Belah Ketupat Walasuji (Default)',
+                                                                        'arch' => 'Lengkung Elegan (Arch)',
+                                                                        'round' => 'Lingkaran (Round)',
+                                                                    ];
+                                                                }
+
+                                                                return [
+                                                                    'flower' => 'Bunga Ceria (Flower)',
+                                                                    'blob' => 'Blob Organik (Blob)',
+                                                                    'arch' => 'Lengkung Elegan (Arch)',
+                                                                ];
+                                                            })
+                                                            ->default(function ($get) {
+                                                                return ($get('theme') === 'bugis-heritage') ? 'diamond' : 'flower';
+                                                            })
+                                                            ->visible(fn ($get) => in_array($get('theme') ?: 'dark-boho', ['sunny-meadow', 'bugis-heritage']))
                                                             ->live(),
                                                         Toggle::make('theme_config.layout.brideFirst')
                                                             ->label('Tampilkan Mempelai Wanita Terlebih Dahulu')
@@ -191,6 +216,36 @@ class InvitationForm
                                                         Toggle::make('theme_config.motion.floatingDecor')
                                                             ->label('Animasi Bunga Bobbing & Awan')
                                                             ->default(true)
+                                                            ->live(),
+                                                    ]),
+
+                                                Section::make('Adat & Budaya (Bugis Heritage)')
+                                                    ->compact()
+                                                    ->columns(2)
+                                                    ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'bugis-heritage')
+                                                    ->schema([
+                                                        Select::make('theme_config.pattern.walasuji')
+                                                            ->label('Intensitas Pola Walasuji')
+                                                            ->options([
+                                                                'subtle' => 'Halus (Subtle - Default)',
+                                                                'prominent' => 'Tegas (Prominent)',
+                                                                'none' => 'Tanpa Pola (None)',
+                                                            ])
+                                                            ->default('subtle')
+                                                            ->live(),
+                                                        Toggle::make('theme_config.motion.ambient')
+                                                            ->label('Animasi Ambient Tenang & Khidmat')
+                                                            ->default(true)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.adat.showGlossary')
+                                                            ->label('Tampilkan Tombol Glosarium Adat (Mengenal Istilah)')
+                                                            ->helperText('Hanya menampilkan istilah yang telah diverifikasi.')
+                                                            ->default(false)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.adat.showLontara')
+                                                            ->label('Tampilkan Aksara Lontara')
+                                                            ->helperText('Hanya untuk teks yang telah diverifikasi.')
+                                                            ->default(false)
                                                             ->live(),
                                                     ]),
 

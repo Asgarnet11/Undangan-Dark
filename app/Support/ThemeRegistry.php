@@ -149,6 +149,31 @@ class ThemeRegistry
                 $config['cover']['overlayColor'] = '#ffffff';
                 $config['cover']['overlayOpacity'] = 0.35;
             }
+        } elseif ($key === 'bugis-heritage') {
+            $preset = $config['preset'] ?? 'marun-emas';
+            if ($preset === 'krem-sutra') {
+                // Light preset (Krem Sutra)
+                $textColor = $config['cover']['textColor'] ?? null;
+                if ($textColor !== null && $isLightHex($textColor) === true) {
+                    $config['cover']['textColor'] = '#2a1f1a';
+                }
+                $overlayColor = $config['cover']['overlayColor'] ?? null;
+                if ($overlayColor !== null && $isLightHex($overlayColor) === false) {
+                    $config['cover']['overlayColor'] = '#f3e6cf';
+                    $config['cover']['overlayOpacity'] = 0.45;
+                }
+            } else {
+                // Dark presets (Marun & Emas, Lumut & Emas, Terong & Emas)
+                $textColor = $config['cover']['textColor'] ?? null;
+                if ($textColor !== null && $isLightHex($textColor) === false) {
+                    $config['cover']['textColor'] = '#f3e6cf';
+                }
+                $overlayColor = $config['cover']['overlayColor'] ?? null;
+                if ($overlayColor !== null && $isLightHex($overlayColor) === true) {
+                    $config['cover']['overlayColor'] = '#1f1a17';
+                    $config['cover']['overlayOpacity'] = 0.50;
+                }
+            }
         }
 
         return $config;
