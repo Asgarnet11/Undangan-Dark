@@ -18,6 +18,9 @@
 @endphp
 
 <section id="bh-cover" class="bh-cover bh-cover--{{ $coverStyle }}" aria-label="Sampul Undangan">
+    <div class="bh-cover-door bh-cover-door--left bh-pattern-walasuji" aria-hidden="true"></div>
+    <div class="bh-cover-door bh-cover-door--right bh-pattern-walasuji" aria-hidden="true"></div>
+
     @if($coverPhoto)
         <img src="{{ $coverPhoto }}" alt="Foto Sampul {{ $invitation->title }}" class="bh-cover-bg" loading="eager">
     @endif

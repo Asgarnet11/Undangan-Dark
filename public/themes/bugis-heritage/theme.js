@@ -396,6 +396,88 @@
         });
     };
 
+    let openedAnimationsStarted = false;
+
+    const startOpenedAnimations = () => {
+        if (openedAnimationsStarted || prefersReducedMotion || typeof window.gsap === 'undefined') {
+            return;
+        }
+        openedAnimationsStarted = true;
+
+        const gsap = window.gsap;
+        const ScrollTrigger = window.ScrollTrigger;
+        if (ScrollTrigger && typeof gsap.registerPlugin === 'function') {
+            gsap.registerPlugin(ScrollTrigger);
+        }
+
+        // 1. Scroll reveal for titles and cards
+        document.querySelectorAll('.bh-section').forEach((section) => {
+            const titleEl = section.querySelector('.bh-section-title');
+            if (titleEl && ScrollTrigger) {
+                gsap.from(titleEl, {
+                    y: 28,
+                    opacity: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: titleEl,
+                        start: 'top 88%',
+                        once: true,
+                    },
+                });
+            }
+
+            const items = section.querySelectorAll('.bh-card, .bh-story-step, .bh-gallery-item');
+            if (items.length > 0 && ScrollTrigger) {
+                gsap.from(items, {
+                    y: 32,
+                    opacity: 0,
+                    duration: 0.85,
+                    stagger: 0.12,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        once: true,
+                    },
+                });
+            }
+        });
+
+        // 2. Photo frames entrance
+        document.querySelectorAll('.bh-photo-frame').forEach((frame) => {
+            if (ScrollTrigger) {
+                gsap.from(frame, {
+                    scale: 0.92,
+                    opacity: 0,
+                    duration: 1.0,
+                    ease: 'power2.out',
+                    scrollTrigger: {
+                        trigger: frame,
+                        start: 'top 85%',
+                        once: true,
+                    },
+                });
+            }
+        });
+
+        // 3. Silhouette rumah panggung gentle rise
+        const silhouette = document.querySelector('.bh-closing-silhouette');
+        if (silhouette && ScrollTrigger) {
+            gsap.from(silhouette, {
+                y: 35,
+                opacity: 0,
+                duration: 1.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: silhouette,
+                    start: 'top 90%',
+                    once: true,
+                },
+            });
+        }
+    };
+
     const finishOpening = () => {
         try {
             sessionStorage.setItem(OPEN_STORAGE_KEY, '1');
@@ -414,6 +496,7 @@
             bottomNavEl.hidden = false;
         }
 
+        startOpenedAnimations();
         musicController.startAfterOpen();
 
         if (mainEl) {
@@ -463,6 +546,7 @@
                 bottomNavEl.hidden = false;
             }
 
+            startOpenedAnimations();
             musicController.revealButton();
             if (mainEl) {
                 mainEl.scrollIntoView({ behavior: 'auto', block: 'start' });
