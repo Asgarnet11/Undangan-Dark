@@ -26,6 +26,9 @@
     <title>{{ $ogTitle }}</title>
     <meta name="description" content="{{ $ogDescription }}">
     <link rel="canonical" href="{{ $currentFullUrl }}">
+    @if($invitation->no_index)
+        <meta name="robots" content="noindex, nofollow">
+    @endif
 
     <!-- Open Graph / WhatsApp / Facebook -->
     <meta property="og:type" content="website">
@@ -63,7 +66,7 @@
     $giftInline = data_get($themeConfig, 'layout.giftInline', true);
     $brideFirst = data_get($themeConfig, 'layout.brideFirst', true);
     $mapsBelow = data_get($themeConfig, 'layout.mapsAndRsvpBelowEvents', true);
-    $musicSrc = $invitation->resolveMediaOrPathUrl('music', $invitation->music_file, '') ?: asset('themes/dark-boho/audio/boho-serenade.mp3');
+    $musicSrc = $invitation->effectiveMusicUrl() ?: asset('themes/dark-boho/audio/boho-serenade.mp3');
 @endphp
 <body
     class="theme-dark-boho"

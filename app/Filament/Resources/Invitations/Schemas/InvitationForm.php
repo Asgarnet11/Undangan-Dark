@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Invitations\Schemas;
 
+use App\Models\Invitation;
 use App\Support\ThemeRegistry;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Select;
@@ -233,6 +234,10 @@ class InvitationForm
                                         Toggle::make('is_published')
                                             ->label('Publikasikan Undangan')
                                             ->default(true),
+                                        Toggle::make('no_index')
+                                            ->label('Sembunyikan dari Mesin Pencari (noindex)')
+                                            ->helperText('Jika aktif, Google dan mesin pencari lainnya tidak akan mengindeks undangan.')
+                                            ->default(false),
                                         TextInput::make('active_days_after_event')
                                             ->label('Masa Aktif Setelah Acara (Hari)')
                                             ->numeric()
@@ -307,6 +312,12 @@ class InvitationForm
                                 Section::make('Cover & Musik Latar')
                                     ->columns(2)
                                     ->schema([
+                                        Select::make('preset_music')
+                                            ->label('Pilihan Musik Bawaan (Royalty-Free)')
+                                            ->options(collect(config('invitation_music.presets', []))->mapWithKeys(fn ($item, $key) => [$key => $item['label'] ?? $key])->all())
+                                            ->placeholder('Pilih dari pustaka musik...')
+                                            ->helperText('Jika berkas musik kustom diunggah di bawah, berkas kustom akan diutamakan.')
+                                            ->columnSpanFull(),
                                         SpatieMediaLibraryFileUpload::make('cover_media')
                                             ->label('Foto Cover Undangan')
                                             ->collection('cover')
@@ -350,6 +361,20 @@ class InvitationForm
                                         Textarea::make('gallery_quote')->label('Kutipan Galeri')->rows(2),
                                         Textarea::make('thank_you_gift_note')->label('Catatan Terima Kasih Hadiah')->rows(2),
                                         Textarea::make('closing_text')->label('Kalimat Penutup')->rows(3),
+                                    ]),
+                            ]),
+
+                        Tab::make('Pesan WhatsApp')
+                            ->schema([
+                                Section::make('Format Draft Pesan WhatsApp')
+                                    ->description('Kustomisasi template pesan WhatsApp yang akan dikirimkan kepada para tamu undangan.')
+                                    ->schema([
+                                        Textarea::make('wa_template')
+                                            ->label('Template Pesan WhatsApp')
+                                            ->rows(8)
+                                            ->placeholder(fn ($record) => $record?->defaultWaTemplate() ?? (new Invitation)->defaultWaTemplate())
+                                            ->helperText('Gunakan variabel: {nama} (Nama Tamu), {link} (Tautan Undangan), {mempelai} (Nama Mempelai), {tanggal} (Tanggal Acara), {lokasi} (Lokasi Acara). Kosongkan untuk menggunakan format bawaan sistem.')
+                                            ->columnSpanFull(),
                                     ]),
                             ]),
                     ]),

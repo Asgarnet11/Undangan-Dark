@@ -10,6 +10,7 @@ use App\Filament\Resources\Invitations\RelationManagers\EventsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GalleryPhotosRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GiftAccountsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GiftAddressesRelationManager;
+use App\Filament\Resources\Invitations\RelationManagers\GiftConfirmationsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GuestsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\RsvpsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\WishesRelationManager;
@@ -53,6 +54,7 @@ class InvitationResource extends Resource
             GalleryPhotosRelationManager::class,
             GiftAccountsRelationManager::class,
             GiftAddressesRelationManager::class,
+            GiftConfirmationsRelationManager::class,
             CoInvitersRelationManager::class,
             GuestsRelationManager::class,
             RsvpsRelationManager::class,

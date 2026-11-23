@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use chillerlan\QRCode\QRCode;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Guest extends Model
@@ -19,6 +21,8 @@ class Guest extends Model
         'max_pax',
         'phone',
         'opened_at',
+        'checked_in_at',
+        'allowed_event_ids',
     ];
 
     /**
@@ -29,6 +33,8 @@ class Guest extends Model
         return [
             'max_pax' => 'integer',
             'opened_at' => 'datetime',
+            'checked_in_at' => 'datetime',
+            'allowed_event_ids' => 'array',
         ];
     }
 
@@ -40,5 +46,20 @@ class Guest extends Model
     public function rsvp(): HasOne
     {
         return $this->hasOne(Rsvp::class);
+    }
+
+    public function giftConfirmations(): HasMany
+    {
+        return $this->hasMany(GiftConfirmation::class);
+    }
+
+    public function qrCodeDataUri(): string
+    {
+        return (new QRCode)->render($this->code);
+    }
+
+    public function isCheckedIn(): bool
+    {
+        return $this->checked_in_at !== null;
     }
 }

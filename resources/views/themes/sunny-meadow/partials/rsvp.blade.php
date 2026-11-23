@@ -16,6 +16,28 @@
         <p class="sm-section-desc">{{ __('invitation.rsvp.subtitle') }}</p>
     </div>
 
+    @if($guest !== null)
+        <div class="sm-card" style="text-align: center; margin-bottom: 2rem; padding: 1.5rem 1rem;">
+            <p class="sm-section-subtitle" style="font-size: 0.75rem; letter-spacing: 0.15em; margin-bottom: 0.5rem;">BUKU TAMU DIGITAL</p>
+            <h3 class="sm-title-display" style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #3b2f2a;">QR Code Kehadiran Tamu</h3>
+            <p class="sm-section-desc" style="font-size: 0.85rem; max-width: 320px; margin: 0 auto 1.25rem;">
+                Tunjukkan QR Code ini kepada panitia saat tiba di lokasi untuk konfirmasi kehadiran langsung.
+            </p>
+            <div style="display: inline-block; background: #ffffff; padding: 0.75rem; border-radius: 0.75rem; box-shadow: 0 4px 15px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.06);">
+                <img src="{{ $guest->qrCodeDataUri() }}" alt="QR Code Kehadiran {{ $guest->name }}" style="width: 160px; height: 160px; display: block;" loading="lazy">
+            </div>
+            <div style="margin-top: 1rem;">
+                <span style="font-family: monospace; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em; color: var(--sm-primary, #f6b93b);">{{ $guest->code }}</span>
+                <p style="font-size: 0.95rem; font-weight: 600; color: #3b2f2a; margin-top: 0.25rem;">{{ $guest->name }}</p>
+                @if($guest->checked_in_at)
+                    <div style="display: inline-block; margin-top: 0.75rem; padding: 0.35rem 0.85rem; background: rgba(34, 197, 94, 0.15); color: #15803d; border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 9999px; font-size: 0.8rem; font-weight: 600;">
+                        Telah Check-In ({{ $guest->checked_in_at->translatedFormat('d M Y, H:i') }} {{ $invitation->timezoneAbbreviation() }})
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
     <div class="sm-card sm-form-card">
         <form
             id="sm-rsvp-form"

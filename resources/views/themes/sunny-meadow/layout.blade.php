@@ -26,6 +26,9 @@
     <title>{{ $ogTitle }}</title>
     <meta name="description" content="{{ $ogDescription }}">
     <link rel="canonical" href="{{ $currentFullUrl }}">
+    @if($invitation->no_index)
+        <meta name="robots" content="noindex, nofollow">
+    @endif
 
     <!-- Open Graph / WhatsApp / Facebook -->
     <meta property="og:type" content="website">
@@ -65,7 +68,7 @@
     $giftInline = data_get($themeConfig, 'layout.giftInline', true);
     $motionConfetti = data_get($themeConfig, 'motion.confetti', true);
     $motionFloatingDecor = data_get($themeConfig, 'motion.floatingDecor', true);
-    $musicSrc = $invitation->resolveMediaOrPathUrl('music', $invitation->music_file, '') ?: asset('themes/sunny-meadow/audio/sunny-acoustic.mp3');
+    $musicSrc = $invitation->effectiveMusicUrl() ?: asset('themes/sunny-meadow/audio/sunny-acoustic.mp3');
 @endphp
 <body
     class="theme-sunny-meadow is-locked"

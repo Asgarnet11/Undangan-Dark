@@ -38,6 +38,13 @@ class InvitationController extends Controller
                 $guest->update(['opened_at' => now()]);
             }
             $guest->load('rsvp');
+
+            if (! empty($guest->allowed_event_ids) && is_array($guest->allowed_event_ids)) {
+                $invitation->setRelation(
+                    'events',
+                    $invitation->events->whereIn('id', $guest->allowed_event_ids)->values()
+                );
+            }
         }
 
         $wishes = $invitation->visibleWishes()->paginate(5);
@@ -76,6 +83,12 @@ class InvitationController extends Controller
         ]);
 
         $guest = $invitation->guests()->with('rsvp')->first();
+        if ($guest !== null && ! empty($guest->allowed_event_ids) && is_array($guest->allowed_event_ids)) {
+            $invitation->setRelation(
+                'events',
+                $invitation->events->whereIn('id', $guest->allowed_event_ids)->values()
+            );
+        }
         $wishes = $invitation->visibleWishes()->paginate(5);
         $themeConfig = $invitation->resolvedThemeConfig();
 
@@ -352,5 +365,123 @@ class InvitationController extends Controller
             ['\\\\', '\;', '\,', '\n', '\n', '\n'],
             $value
         );
+    }
+
+    public function checkInPage(Request $request, string $slug): View
+    {
+        $invitation = $this->resolvePublishedInvitation($slug);
+        $guests = $invitation->guests()->with('rsvp')->orderByRaw('checked_in_at IS NULL, checked_in_at DESC')->orderBy('name')->get();
+
+        $totalGuests = $guests->count();
+        $checkedInCount = $guests->whereNotNull('checked_in_at')->count();
+        $totalPaxPresent = $guests->whereNotNull('checked_in_at')->sum(fn (Guest $g) => $g->rsvp?->attending ? max(1, (int) $g->rsvp->pax) : 1);
+        $pendingCount = max(0, $totalGuests - $checkedInCount);
+
+        return view('check-in.reception', [
+            'invitation' => $invitation,
+            'guests' => $guests,
+            'stats' => [
+                'total' => $totalGuests,
+                'checked_in' => $checkedInCount,
+                'pax_present' => $totalPaxPresent,
+                'pending' => $pendingCount,
+            ],
+        ]);
+    }
+
+    public function processCheckIn(Request $request, string $slug): JsonResponse
+    {
+        $invitation = $this->resolvePublishedInvitation($slug);
+        $code = strtoupper(trim((string) $request->input('code', '')));
+        $guestId = $request->input('guest_id');
+
+        $guest = null;
+        if ($guestId !== null) {
+            $guest = $invitation->guests()->with('rsvp')->find($guestId);
+        } elseif ($code !== '') {
+            $guest = $invitation->guests()->with('rsvp')->where('code', $code)->first();
+        }
+
+        if ($guest === null) {
+            return response()->json([
+                'ok' => false,
+                'message' => 'Tamu dengan kode atau data tersebut tidak ditemukan.',
+            ], 404);
+        }
+
+        $wasCheckedIn = $guest->checked_in_at !== null;
+        if (! $wasCheckedIn) {
+            $guest->update(['checked_in_at' => now()]);
+        }
+
+        $pax = $guest->rsvp?->attending ? max(1, (int) $guest->rsvp->pax) : max(1, (int) $guest->max_pax);
+
+        return response()->json([
+            'ok' => true,
+            'already_checked_in' => $wasCheckedIn,
+            'message' => $wasCheckedIn
+                ? "Tamu {$guest->name} sudah check-in sebelumnya pada {$guest->checked_in_at?->format('H:i d/m')}."
+                : "Check-in berhasil! Selamat datang, {$guest->name}.",
+            'guest' => [
+                'id' => $guest->id,
+                'name' => $guest->name,
+                'code' => $guest->code,
+                'group' => $guest->group ?: 'Umum',
+                'pax' => $pax,
+                'checked_in_at' => $guest->checked_in_at?->format('H:i:s d/m/Y'),
+            ],
+        ]);
+    }
+
+    public function undoCheckIn(Request $request, string $slug, Guest $guest): JsonResponse
+    {
+        $invitation = $this->resolvePublishedInvitation($slug);
+        if ($guest->invitation_id !== $invitation->id) {
+            abort(404);
+        }
+
+        $guest->update(['checked_in_at' => null]);
+
+        return response()->json([
+            'ok' => true,
+            'message' => "Status kehadiran {$guest->name} berhasil dibatalkan.",
+        ]);
+    }
+
+    public function storeGiftConfirmation(Request $request, string $slug): JsonResponse
+    {
+        $invitation = $this->resolvePublishedInvitation($slug);
+        $guest = $this->resolveGuestByCode($invitation, (string) $request->input('guest_code', ''));
+
+        $validated = $request->validate([
+            'sender_name' => ['required', 'string', 'min:2', 'max:120'],
+            'target_account' => ['nullable', 'string', 'max:120'],
+            'amount' => ['nullable', 'string', 'max:60'],
+            'notes' => ['nullable', 'string', 'max:500'],
+            'proof_file' => ['nullable', 'image', 'max:5120'],
+        ]);
+
+        $proofPath = null;
+        if ($request->hasFile('proof_file')) {
+            $proofPath = $request->file('proof_file')->store('gift-proofs', 'public');
+        }
+
+        $confirmation = $invitation->giftConfirmations()->create([
+            'guest_id' => $guest?->id,
+            'sender_name' => $this->cleanText($validated['sender_name'], false),
+            'target_account' => $this->cleanText($validated['target_account'] ?? '', false) ?: null,
+            'amount' => $this->cleanText($validated['amount'] ?? '', false) ?: null,
+            'notes' => $this->cleanText($validated['notes'] ?? '', true) ?: null,
+            'proof_file' => $proofPath,
+        ]);
+
+        return response()->json([
+            'ok' => true,
+            'message' => 'Konfirmasi tanda kasih berhasil dikirim. Terima kasih banyak atas perhatian dan doa restu Anda.',
+            'confirmation' => [
+                'id' => $confirmation->id,
+                'sender_name' => $confirmation->sender_name,
+            ],
+        ]);
     }
 }

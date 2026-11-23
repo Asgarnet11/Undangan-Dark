@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Invitations\RelationManagers;
 
+use App\Models\Event;
 use App\Models\Guest;
 use App\Models\Invitation;
 use Filament\Actions\Action;
@@ -11,6 +12,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
@@ -57,6 +59,12 @@ class GuestsRelationManager extends RelationManager
                     ->label('Nomor WhatsApp (Contoh: 0812xxxx atau 62812xxxx)')
                     ->tel()
                     ->maxLength(32),
+                Select::make('allowed_event_ids')
+                    ->label('Akses Acara Tertentu')
+                    ->options(fn () => Event::where('invitation_id', $this->getOwnerRecord()->id)->pluck('title', 'id')->toArray())
+                    ->multiple()
+                    ->placeholder('Semua Acara (Default)')
+                    ->helperText('Kosongkan bila tamu dapat melihat seluruh acara. Pilih sesi jika khusus (misal: Resepsi saja).'),
             ]);
     }
 
@@ -90,6 +98,16 @@ class GuestsRelationManager extends RelationManager
                 TextColumn::make('max_pax')
                     ->label('Maks. Pax')
                     ->sortable(),
+                TextColumn::make('allowed_events')
+                    ->label('Akses Acara')
+                    ->state(fn (Guest $record): string => empty($record->allowed_event_ids) ? 'Semua Acara' : count($record->allowed_event_ids).' Acara')
+                    ->badge()
+                    ->color(fn (Guest $record): string => empty($record->allowed_event_ids) ? 'gray' : 'info'),
+                TextColumn::make('checked_in_at')
+                    ->label('Status Check-In')
+                    ->state(fn (Guest $record): string => $record->checked_in_at ? $record->checked_in_at->format('d M H:i') : 'Belum Check-In')
+                    ->badge()
+                    ->color(fn (Guest $record): string => $record->checked_in_at ? 'success' : 'gray'),
                 TextColumn::make('opened_at')
                     ->label('Status Buka')
                     ->state(fn (Guest $record): string => $record->opened_at ? $record->opened_at->format('d M H:i') : 'Belum Dibuka')
@@ -140,6 +158,15 @@ class GuestsRelationManager extends RelationManager
                         true: fn ($query) => $query->whereNotNull('opened_at'),
                         false: fn ($query) => $query->whereNull('opened_at'),
                     ),
+                TernaryFilter::make('checked_in')
+                    ->label('Status Check-In')
+                    ->placeholder('Semua')
+                    ->trueLabel('Sudah Check-In')
+                    ->falseLabel('Belum Check-In')
+                    ->queries(
+                        true: fn ($query) => $query->whereNotNull('checked_in_at'),
+                        false: fn ($query) => $query->whereNull('checked_in_at'),
+                    ),
                 SelectFilter::make('group')
                     ->label('Kategori / Grup')
                     ->options(fn () => Guest::query()
@@ -151,6 +178,11 @@ class GuestsRelationManager extends RelationManager
                     ),
             ])
             ->headerActions([
+                Action::make('open_reception')
+                    ->label('Meja Resepsi (Check-In)')
+                    ->icon('heroicon-o-qr-code')
+                    ->color('primary')
+                    ->url(fn (): string => route('invitation.check-in', ['slug' => $this->getOwnerRecord()->slug]), shouldOpenInNewTab: true),
                 CreateAction::make()->label('Tambah Tamu'),
                 Action::make('import_csv')
                     ->label('Impor CSV')
@@ -288,12 +320,7 @@ class GuestsRelationManager extends RelationManager
                                     ? 'Belum Menjawab'
                                     : ($guest->rsvp->attending ? "Hadir ({$guest->rsvp->pax} pax)" : 'Tidak Hadir');
                                 $openedText = $guest->opened_at ? $guest->opened_at->format('d/m/Y H:i') : 'Belum Dibuka';
-                                $waDraft = "Kepada Yth. {$guest->name},\n\n"
-                                    ."Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia pernikahan kami.\n\n"
-                                    ."Tautan undangan resmi:\n{$url}\n\n"
-                                    ."Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila berkenan hadir dan memberikan doa restu.\n\n"
-                                    ."Terima kasih.\n"
-                                    ."{$invitation->bride_nickname} & {$invitation->groom_nickname}";
+                                $waDraft = $invitation->generateWaMessage($guest);
 
                                 fputcsv($handle, [
                                     $index++,
@@ -314,6 +341,19 @@ class GuestsRelationManager extends RelationManager
                     }),
             ])
             ->recordActions([
+                Action::make('toggle_check_in')
+                    ->label(fn (Guest $record): string => $record->checked_in_at ? 'Batal Hadir' : 'Tandai Hadir')
+                    ->icon(fn (Guest $record): string => $record->checked_in_at ? 'heroicon-o-x-circle' : 'heroicon-o-check-circle')
+                    ->color(fn (Guest $record): string => $record->checked_in_at ? 'warning' : 'success')
+                    ->action(function (Guest $record): void {
+                        $record->update([
+                            'checked_in_at' => $record->checked_in_at ? null : now(),
+                        ]);
+                        Notification::make()
+                            ->title($record->checked_in_at ? "Tamu {$record->name} berhasil ditandai hadir" : "Status kehadiran {$record->name} dibatalkan")
+                            ->success()
+                            ->send();
+                    }),
                 Action::make('open_invitation')
                     ->label('Buka')
                     ->icon('heroicon-o-arrow-top-right-on-square')
@@ -328,13 +368,7 @@ class GuestsRelationManager extends RelationManager
                     ->fillForm(function (Guest $record): array {
                         /** @var Invitation $invitation */
                         $invitation = $this->getOwnerRecord();
-                        $url = route('invitation.show', ['slug' => $invitation->slug, 'to' => $record->code]);
-                        $defaultMessage = "Kepada Yth. {$record->name},\n\n"
-                            ."Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia pernikahan kami.\n\n"
-                            ."Tautan undangan resmi:\n{$url}\n\n"
-                            ."Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.\n\n"
-                            ."Terima kasih.\n"
-                            ."{$invitation->bride_nickname} & {$invitation->groom_nickname}";
+                        $defaultMessage = $invitation->generateWaMessage($record);
 
                         return [
                             'phone' => (string) $record->phone,

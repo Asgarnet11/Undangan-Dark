@@ -55,3 +55,22 @@ Route::get('/{slug}/gifts', [InvitationController::class, 'gifts'])
     ->middleware('throttle:60,1')
     ->where('slug', $slugPattern)
     ->name('invitation.gifts.index');
+
+Route::post('/{slug}/gifts/confirm', [InvitationController::class, 'storeGiftConfirmation'])
+    ->middleware('throttle:30,1')
+    ->where('slug', $slugPattern)
+    ->name('invitation.gifts.confirm');
+
+Route::get('/{slug}/check-in', [InvitationController::class, 'checkInPage'])
+    ->where('slug', $slugPattern)
+    ->name('invitation.check-in');
+
+Route::post('/{slug}/check-in', [InvitationController::class, 'processCheckIn'])
+    ->middleware('throttle:120,1')
+    ->where('slug', $slugPattern)
+    ->name('invitation.check-in.process');
+
+Route::post('/{slug}/check-in/{guest}/undo', [InvitationController::class, 'undoCheckIn'])
+    ->middleware('throttle:60,1')
+    ->where('slug', $slugPattern)
+    ->name('invitation.check-in.undo');

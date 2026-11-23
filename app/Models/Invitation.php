@@ -48,6 +48,7 @@ class Invitation extends Model implements HasMedia
         'verse_source',
         'cover_photo',
         'music_file',
+        'preset_music',
         'music_title',
         'video_url',
         'gallery_title',
@@ -56,8 +57,10 @@ class Invitation extends Model implements HasMedia
         'livestream_title',
         'livestream_note',
         'closing_text',
+        'wa_template',
         'thank_you_gift_note',
         'is_published',
+        'no_index',
         'active_days_after_event',
     ];
 
@@ -69,6 +72,7 @@ class Invitation extends Model implements HasMedia
         return [
             'theme_config' => 'array',
             'is_published' => 'boolean',
+            'no_index' => 'boolean',
             'active_days_after_event' => 'integer',
         ];
     }
@@ -121,6 +125,11 @@ class Invitation extends Model implements HasMedia
     public function visibleWishes(): HasMany
     {
         return $this->hasMany(Wish::class)->where('is_visible', true)->latest();
+    }
+
+    public function giftConfirmations(): HasMany
+    {
+        return $this->hasMany(GiftConfirmation::class)->latest();
     }
 
     public function registerMediaCollections(): void
@@ -265,5 +274,55 @@ class Invitation extends Model implements HasMedia
         $expiry = $this->expiresAt();
 
         return $expiry !== null && now()->greaterThan($expiry);
+    }
+
+    public function defaultWaTemplate(): string
+    {
+        return "Kepada Yth. {nama},\n\n"
+            ."Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia pernikahan kami.\n\n"
+            ."Tautan undangan resmi:\n{link}\n\n"
+            ."Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila berkenan hadir dan memberikan doa restu.\n\n"
+            ."Terima kasih.\n"
+            .'{mempelai}';
+    }
+
+    public function generateWaMessage(Guest $guest): string
+    {
+        $template = trim((string) $this->wa_template);
+        if ($template === '') {
+            $template = $this->defaultWaTemplate();
+        }
+
+        $url = route('invitation.show', ['slug' => $this->slug, 'to' => $guest->code]);
+        $mempelai = trim("{$this->bride_nickname} & {$this->groom_nickname}");
+        $firstEvent = $this->events()->first();
+        $tanggal = $firstEvent?->starts_at ? $firstEvent->starts_at->translatedFormat('l, d F Y') : '';
+        $lokasi = (string) ($firstEvent?->location_name ?? '');
+
+        return strtr($template, [
+            '{nama}' => $guest->name,
+            '{link}' => $url,
+            '{url}' => $url,
+            '{mempelai}' => $mempelai,
+            '{tanggal}' => $tanggal,
+            '{lokasi}' => $lokasi,
+        ]);
+    }
+
+    public function effectiveMusicUrl(): ?string
+    {
+        $customUrl = $this->resolveMediaOrPathUrl('music', $this->music_file);
+        if ($customUrl !== null && $customUrl !== '') {
+            return $customUrl;
+        }
+
+        if (! empty($this->preset_music)) {
+            $preset = config("invitation_music.presets.{$this->preset_music}");
+            if ($preset && ! empty($preset['file'])) {
+                return asset($preset['file']);
+            }
+        }
+
+        return null;
     }
 }
