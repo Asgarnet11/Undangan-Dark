@@ -938,6 +938,69 @@ body.theme-bugis-heritage {
     height: 100%;
 }
 
+.bh-btn--sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+}
+
+.bh-btn--glossary {
+    background-color: var(--bh-bg-elevated);
+    border-color: var(--bh-line);
+    color: var(--bh-accent);
+}
+
+.bh-btn--glossary:hover {
+    border-color: var(--bh-accent);
+}
+
+/* ==========================================================================
+   Modal Dialog (Glosarium & Kredit)
+   ========================================================================== */
+.bh-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 105;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.bh-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 8, 7, 0.88);
+    backdrop-filter: blur(4px);
+}
+
+.bh-modal-container {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    width: 100%;
+    background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-gold);
+    border-radius: var(--bh-radius);
+    padding: 2.25rem 1.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+}
+
+.bh-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: var(--bh-ink-soft);
+    cursor: pointer;
+    transition: color var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-modal-close:hover {
+    color: var(--bh-accent);
+}
+
 /* Reduced Motion Safeguard */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

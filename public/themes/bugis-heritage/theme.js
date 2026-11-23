@@ -260,6 +260,41 @@
         }
     };
 
+    const initGlossaryModal = () => {
+        const modal = document.getElementById('bh-glossary-modal');
+        const trigger = document.getElementById('bh-glossary-btn');
+        if (!modal || !trigger) {
+            return;
+        }
+
+        const closeBtn = document.getElementById('bh-glossary-close');
+        const backdrop = modal.querySelector('.bh-modal-backdrop');
+
+        const openModal = () => {
+            modal.hidden = false;
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+        };
+
+        const closeModal = () => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            trigger.focus();
+        };
+
+        trigger.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) {
+                closeModal();
+            }
+        });
+    };
+
     const finishOpening = () => {
         try {
             sessionStorage.setItem(OPEN_STORAGE_KEY, '1');
@@ -309,6 +344,7 @@
         initCountdown();
         initGalleryLightbox();
         initBottomNav();
+        initGlossaryModal();
 
         if (wasAlreadyOpened) {
             window.BugisHeritageTheme.opened = true;
