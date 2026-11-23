@@ -26,6 +26,7 @@ class Invitation extends Model implements HasMedia
         'theme_config',
         'timezone',
         'title',
+        'monogram_initial',
         'bride_name',
         'bride_nickname',
         'bride_father',
@@ -57,6 +58,7 @@ class Invitation extends Model implements HasMedia
         'livestream_title',
         'livestream_note',
         'closing_text',
+        'dress_note',
         'wa_template',
         'thank_you_gift_note',
         'is_published',
@@ -130,6 +132,11 @@ class Invitation extends Model implements HasMedia
     public function giftConfirmations(): HasMany
     {
         return $this->hasMany(GiftConfirmation::class)->latest();
+    }
+
+    public function lontaraTexts(): HasMany
+    {
+        return $this->hasMany(LontaraText::class);
     }
 
     public function registerMediaCollections(): void

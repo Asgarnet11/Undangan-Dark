@@ -248,6 +248,10 @@ class InvitationForm
                                             ->label('Judul Undangan')
                                             ->required()
                                             ->maxLength(160),
+                                        TextInput::make('monogram_initial')
+                                            ->label('Inisial Monogram (Opsional)')
+                                            ->maxLength(10)
+                                            ->helperText('Inisial monogram khusus jika nama diawali gelar adat (contoh: A&B atau S&E). Kosongkan untuk otomatis dari nama panggilan.'),
                                         TextInput::make('slug')
                                             ->label('Slug Tautan')
                                             ->required()
@@ -393,6 +397,10 @@ class InvitationForm
                                         Textarea::make('gallery_quote')->label('Kutipan Galeri')->rows(2),
                                         Textarea::make('thank_you_gift_note')->label('Catatan Terima Kasih Hadiah')->rows(2),
                                         Textarea::make('closing_text')->label('Kalimat Penutup')->rows(3),
+                                        Textarea::make('dress_note')
+                                            ->label('Catatan Busana / Pakaian Adat (Opsional)')
+                                            ->rows(2)
+                                            ->helperText('Contoh: Tamu undangan dimohon mengenakan busana adat / formal.'),
                                     ]),
                             ]),
 

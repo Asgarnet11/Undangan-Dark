@@ -13,7 +13,9 @@ class Event extends Model
      */
     protected $fillable = [
         'invitation_id',
+        'adat_event_type_id',
         'title',
+        'display_label_override',
         'starts_at',
         'ends_at',
         'venue_name',
@@ -37,6 +39,11 @@ class Event extends Model
     public function invitation(): BelongsTo
     {
         return $this->belongsTo(Invitation::class);
+    }
+
+    public function adatEventType(): BelongsTo
+    {
+        return $this->belongsTo(AdatEventType::class);
     }
 
     public function startsAtInTimezone(string $timezone): CarbonInterface

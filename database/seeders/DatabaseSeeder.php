@@ -156,5 +156,6 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(SupardinEkaSeeder::class);
+        $this->call(AdatCatalogSeeder::class);
     }
 }
