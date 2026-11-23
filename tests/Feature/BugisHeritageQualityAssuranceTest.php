@@ -149,6 +149,46 @@ class BugisHeritageQualityAssuranceTest extends TestCase
         $response->assertDontSee('mahar sebesar');
     }
 
+    public function test_modals_and_overlays_are_hidden_by_default_and_not_blocking_screen(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        AdatGlossaryEntry::create([
+            'term' => 'Sulapa Eppa',
+            'latin_reading' => 'Sulapa Eppa',
+            'lontara_text' => 'ᨔᨘᨒᨄ ᨕᨙᨄ',
+            'meaning_id' => 'Bentuk belah ketupat empat sisi.',
+            'status' => 'diverifikasi',
+            'is_published' => true,
+        ]);
+
+        $invitation = Invitation::first();
+        $config = ThemeRegistry::defaultConfig('bugis-heritage');
+        $config['adat']['showGlossary'] = true;
+
+        $invitation->update([
+            'theme' => 'bugis-heritage',
+            'theme_config' => $config,
+        ]);
+
+        $response = $this->get('/'.$invitation->slug);
+        $response->assertOk();
+
+        // Modals must have hidden attribute in rendered HTML
+        $response->assertSee('id="bh-credits-modal" class="bh-modal" role="dialog" aria-modal="true" aria-labelledby="bh-credits-title" hidden', false);
+        $response->assertSee('id="bh-glossary-modal" class="bh-modal" role="dialog" aria-modal="true" aria-labelledby="bh-glossary-title" hidden', false);
+        $response->assertSee('id="bh-gallery-lightbox" class="bh-lightbox" aria-hidden="true" role="dialog" aria-modal="true" hidden', false);
+        $response->assertSee('id="bh-bottom-nav" aria-label="Navigasi bagian undangan" hidden', false);
+
+        // CSS must enforce display none for hidden modals to prevent blocking overlay
+        $css = (string) File::get(public_path('themes/bugis-heritage/theme.css'));
+        $this->assertStringContainsString('[hidden]', $css);
+        $this->assertStringContainsString('.bh-modal[hidden]', $css);
+        $this->assertStringContainsString('.bh-modal:not(.is-open)', $css);
+        $this->assertStringContainsString('.bh-lightbox[hidden]', $css);
+        $this->assertStringContainsString('.bh-bottom-nav[hidden]', $css);
+    }
+
     public function test_existing_themes_remain_intact_and_functional_without_regressions(): void
     {
         $this->seed(DatabaseSeeder::class);

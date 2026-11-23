@@ -191,12 +191,14 @@
             if (targetImg) targetImg.src = src;
             if (captionEl) captionEl.textContent = caption || '';
             lightbox.hidden = false;
+            lightbox.classList.add('is-open');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
         };
 
         const closeLightbox = () => {
             lightbox.hidden = true;
+            lightbox.classList.remove('is-open');
             lightbox.setAttribute('aria-hidden', 'true');
             if (targetImg) targetImg.src = '';
             document.body.style.overflow = '';
@@ -262,16 +264,17 @@
 
     const initGlossaryModal = () => {
         const modal = document.getElementById('bh-glossary-modal');
-        const trigger = document.getElementById('bh-glossary-btn');
-        if (!modal || !trigger) {
+        if (!modal) {
             return;
         }
 
+        const trigger = document.getElementById('bh-glossary-btn');
         const closeBtn = document.getElementById('bh-glossary-close');
         const backdrop = modal.querySelector('.bh-modal-backdrop');
 
         const openModal = () => {
             modal.hidden = false;
+            modal.classList.add('is-open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             if (closeBtn) closeBtn.focus();
@@ -279,12 +282,13 @@
 
         const closeModal = () => {
             modal.hidden = true;
+            modal.classList.remove('is-open');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
-            trigger.focus();
+            if (trigger) trigger.focus();
         };
 
-        trigger.addEventListener('click', openModal);
+        if (trigger) trigger.addEventListener('click', openModal);
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
         if (backdrop) backdrop.addEventListener('click', closeModal);
 
@@ -297,16 +301,17 @@
 
     const initCreditsModal = () => {
         const modal = document.getElementById('bh-credits-modal');
-        const trigger = document.getElementById('bh-credits-btn');
-        if (!modal || !trigger) {
+        if (!modal) {
             return;
         }
 
+        const trigger = document.getElementById('bh-credits-btn');
         const closeBtn = document.getElementById('bh-credits-close');
         const backdrop = modal.querySelector('.bh-modal-backdrop');
 
         const openModal = () => {
             modal.hidden = false;
+            modal.classList.add('is-open');
             modal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
             if (closeBtn) closeBtn.focus();
@@ -314,12 +319,13 @@
 
         const closeModal = () => {
             modal.hidden = true;
+            modal.classList.remove('is-open');
             modal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
-            trigger.focus();
+            if (trigger) trigger.focus();
         };
 
-        trigger.addEventListener('click', openModal);
+        if (trigger) trigger.addEventListener('click', openModal);
         if (closeBtn) closeBtn.addEventListener('click', closeModal);
         if (backdrop) backdrop.addEventListener('click', closeModal);
 

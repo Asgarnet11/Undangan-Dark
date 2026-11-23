@@ -81,6 +81,10 @@
     padding: 0;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
     background-color: var(--bh-bg-deep);
@@ -772,6 +776,10 @@ body.theme-bugis-heritage {
     text-align: center;
 }
 
+.bh-countdown-elapsed[hidden] {
+    display: none !important;
+}
+
 /* ==========================================================================
    Gallery Section & Lightbox
    ========================================================================== */
@@ -828,6 +836,11 @@ body.theme-bugis-heritage {
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
+}
+
+.bh-lightbox[hidden],
+.bh-lightbox:not(.is-open) {
+    display: none !important;
 }
 
 .bh-lightbox-backdrop {
@@ -975,6 +988,10 @@ body.theme-bugis-heritage {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
 }
 
+.bh-bottom-nav[hidden] {
+    display: none !important;
+}
+
 .bh-nav-item {
     display: flex;
     flex-direction: column;
@@ -1039,6 +1056,11 @@ body.theme-bugis-heritage {
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
+}
+
+.bh-modal[hidden],
+.bh-modal:not(.is-open) {
+    display: none !important;
 }
 
 .bh-modal-backdrop {
