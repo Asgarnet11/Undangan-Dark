@@ -46,6 +46,10 @@
                     {{ $eventHeading }}
                 </h3>
 
+                <div class="bh-card-border-gold" aria-hidden="true" style="max-width: 220px; margin: 0.25rem 0 0.75rem; color: var(--bh-accent);">
+                    <x-bugis-heritage.svg name="border-gold" />
+                </div>
+
                 @if($verifiedAdatType && $event->title !== $eventHeading)
                     <p class="bh-body-serif" style="font-size: 0.85rem; color: var(--bh-ink-soft); font-style: italic; margin-bottom: 0.5rem;">
                         {{ $event->title }}

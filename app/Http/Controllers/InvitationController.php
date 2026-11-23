@@ -27,7 +27,11 @@ class InvitationController extends Controller
         ]);
 
         if ($invitation->isExpired() && ! auth()->check()) {
-            return view('themes.dark-boho.expired', [
+            $expiredView = view()->exists("themes.{$invitation->theme}.expired")
+                ? "themes.{$invitation->theme}.expired"
+                : 'themes.dark-boho.expired';
+
+            return view($expiredView, [
                 'invitation' => $invitation,
             ]);
         }

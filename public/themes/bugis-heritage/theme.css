@@ -42,22 +42,26 @@
 }
 
 /* Preset Overrides */
-[data-preset="marun-emas"] {
+[data-preset="marun-emas"],
+.bh-preset-marun-emas {
     --bh-accent: var(--bh-gold);
     --bh-accent-sub: var(--bh-maroon);
 }
 
-[data-preset="lumut-emas"] {
+[data-preset="lumut-emas"],
+.bh-preset-lumut-emas {
     --bh-accent: var(--bh-gold);
     --bh-accent-sub: var(--bh-moss);
 }
 
-[data-preset="terong-emas"] {
+[data-preset="terong-emas"],
+.bh-preset-terong-emas {
     --bh-accent: var(--bh-gold);
     --bh-accent-sub: var(--bh-aubergine);
 }
 
-[data-preset="krem-sutra"] {
+[data-preset="krem-sutra"],
+.bh-preset-krem-sutra {
     --bh-bg: #f3e6cf;
     --bh-bg-elevated: #eae0cb;
     --bh-bg-deep: #ded2bd;

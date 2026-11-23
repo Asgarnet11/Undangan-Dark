@@ -73,7 +73,7 @@
     $musicSrc = $invitation->effectiveMusicUrl() ?: asset('themes/bugis-heritage/audio/heritage-instrumental.mp3');
 @endphp
 <body
-    class="theme-bugis-heritage"
+    class="theme-bugis-heritage bh-preset-{{ $preset }}"
     data-theme="bugis-heritage"
     data-preset="{{ $preset }}"
     data-cover-style="{{ $coverStyle }}"

@@ -9,6 +9,10 @@
             <x-bugis-heritage.svg name="rumah-panggung" />
         </div>
 
+        <div class="bh-card-border-gold" aria-hidden="true" style="max-width: 260px; margin: 1rem auto; color: var(--bh-accent);">
+            <x-bugis-heritage.svg name="border-gold" />
+        </div>
+
         @if($invitation->closing_text)
             <p class="bh-body-serif bh-closing-text">
                 &ldquo;{{ $invitation->closing_text }}&rdquo;
