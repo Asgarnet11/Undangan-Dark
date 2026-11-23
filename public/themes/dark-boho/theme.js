@@ -26,7 +26,7 @@
     }
 
     window.addEventListener('scroll', () => {
-        if (root.classList.contains('is-locked') && window.scrollY > 40) {
+        if (!wasAlreadyOpened && root.classList.contains('is-locked') && window.scrollY > 40) {
             window.scrollTo(0, 0);
         }
     }, { passive: true });
@@ -1533,6 +1533,12 @@
 
             musicController.revealButton();
             startOpenedAnimations();
+            if (mainEl) {
+                mainEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+            if (typeof window.ScrollTrigger !== 'undefined') {
+                window.ScrollTrigger.refresh();
+            }
             document.dispatchEvent(new CustomEvent('dark-boho:opened'));
         } else {
             runCoverEntrance();

@@ -50,12 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
             musicToggle.hidden = false;
         }
         hydrateGifts();
+        const main = document.getElementById('sm-main');
+        if (main) {
+            main.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
     } else {
         window.scrollTo(0, 0);
     }
 
     window.addEventListener('scroll', () => {
-        if (body.classList.contains('is-locked') && window.scrollY > 40) {
+        if (!wasAlreadyOpened && body.classList.contains('is-locked') && window.scrollY > 40) {
             window.scrollTo(0, 0);
         }
     }, { passive: true });

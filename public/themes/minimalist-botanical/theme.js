@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if opened previously in session
     if (sessionStorage.getItem(invitationKey) === '1') {
         openInvitation(false);
+        const mainSection = document.getElementById('mb-countdown') || document.getElementById('mb-verse') || document.getElementById('mb-couple');
+        if (mainSection) {
+            mainSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
     }
 
     // Music toggle

@@ -33,7 +33,8 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/supardin', function () {
-    $target = Invitation::query()->where('slug', 'alfian-yuli')->first()
+    $target = Invitation::query()->where('slug', 'supardin-eka')->first()
+        ?? Invitation::query()->where('slug', 'alfian-yuli')->first()
         ?? Invitation::query()->where('is_published', true)->first();
 
     return $target !== null
