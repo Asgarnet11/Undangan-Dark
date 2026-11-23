@@ -31,17 +31,17 @@ Semua aset vektor tersimpan di `public/themes/bugis-heritage/svg/`. Dibuat orisi
 | Nama Berkas | Ukuran | Fungsi | Lokasi Penggunaan |
 |---|---|---|---|
 | `walasuji-tile.svg` | < 2 KB | Ubin pola belah ketupat walasuji bersusun | `theme.css` (`.bh-pattern-walasuji`) |
-| `walasuji-frame.svg` | < 3 KB | Bingkai belah ketupat geometris foto mempelai | `theme.css` (`.bh-photo-frame--walasuji`) |
+| `walasuji-frame.svg` | < 3 KB | Bingkai belah ketupat geometris foto mempelai | `couple.blade.php` (`.bh-photo-frame--diamond`) |
 | `lipa-check-tile.svg` | < 2 KB | Ubin pola kotak tekstur sarung sutra (lipa' sabbe) | `theme.css` (`.bh-pattern-lipa`) |
 | `border-gold.svg` | < 3 KB | Garis tepi emas geometris kartu acara & penutup | `theme.css` (`.bh-card--gold-border`) |
-| `corner-ornament.svg` | < 2 KB | Ornamen sudut geometris-floral cover & penutup | `index.blade.php` (`.bh-corner-ornament`) |
-| `rumah-panggung.svg` | < 4 KB | Siluet rumah panggung tradisional Bugis | Cover & siluet penutup |
-| `pacci-leaf.svg` | < 3 KB | Daun pacar (inai) halus untuk dekorasi acara | Kartu acara Mappacci |
-| `divider-diamond.svg` | < 2 KB | Pembatas seksi belah ketupat horizontal | `index.blade.php` (`.bh-divider`) |
-| `monogram-badge.svg` | < 2 KB | Lencana inisial berbingkai belah ketupat | `index.blade.php` (`.bh-cover-badge`), Navigasi |
-| `grain-silk.svg` | < 2 KB | Tekstur butiran kain sutra halus | `theme.css` (`.bh-grain`) |
-| `bg-pattern.svg` | < 2 KB | Pola geometris latar belakang desktop | `theme.css` (`.bh-desktop-frame`) |
-| `glossary-icon.svg` | < 2 KB | Ikon buku / lentera glosarium istilah adat | Tombol Glosarium Adat (Mengenal Istilah) |
+| `corner-ornament.svg` | < 2 KB | Ornamen sudut geometris-floral cover & penutup | `cover.blade.php`, `closing.blade.php` (`.bh-corner-ornament`) |
+| `rumah-panggung.svg` | < 4 KB | Siluet rumah panggung tradisional Bugis | `closing.blade.php` (`.bh-closing-silhouette`) |
+| `pacci-leaf.svg` | < 3 KB | Daun pacar (inai) halus untuk dekorasi acara | Kartu acara Mappacci (Fase 4) |
+| `divider-diamond.svg` | < 2 KB | Pembatas seksi belah ketupat horizontal | `verse.blade.php`, `couple.blade.php`, `countdown.blade.php`, `gallery.blade.php`, `events.blade.php`, `rsvp.blade.php`, `gift.blade.php`, `wishes.blade.php` |
+| `monogram-badge.svg` | < 2 KB | Lencana inisial berbingkai belah ketupat | `cover.blade.php` (`.bh-cover-badge`), `bottom-nav.blade.php` (`.bh-nav-monogram`) |
+| `grain-silk.svg` | < 2 KB | Tekstur butiran kain sutra halus | `theme.css` (`.bh-grain`), `layout.blade.php` |
+| `bg-pattern.svg` | < 2 KB | Pola geometris latar belakang desktop | `theme.css` (`.bh-desktop-frame`), `layout.blade.php` |
+| `glossary-icon.svg` | < 2 KB | Ikon buku / lentera glosarium istilah adat | Tombol Glosarium Adat / Mengenal Istilah (Fase 4) |
 
 ---
 
@@ -58,5 +58,5 @@ Semua aset vektor tersimpan di `public/themes/bugis-heritage/svg/`. Dibuat orisi
 
 | Nama Berkas | Peran | Lokasi Penggunaan |
 |---|---|---|
-| `theme.css` | Lembar gaya utama: design tokens, 4 preset warna, mobile-first 360-480 px | `<head>` di `layout.blade.php` & `expired.blade.php` |
-| `theme.js` | Skrip tema: pembukaan gerbang cover, pemutar audio, pencegahan freeze scroll | Akhir `<body>` di `layout.blade.php` |
+| `theme.css` | Lembar gaya utama: design tokens, 4 preset warna, cover styles, couple frames, countdown, gallery, mobile-first 360-480 px | `<head>` di `layout.blade.php` & `expired.blade.php` |
+| `theme.js` | Skrip tema: pembukaan gerbang cover, pemutar audio, hitung mundur, lightbox galeri, navigasi aktif, pencegahan freeze scroll | Akhir `<body>` di `layout.blade.php` |

@@ -356,6 +356,588 @@ body.theme-bugis-heritage {
     to { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   Cover Section
+   ========================================================================== */
+.bh-cover {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 3rem 1.5rem;
+    background-color: var(--bh-bg);
+}
+
+.bh-cover-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.bh-cover-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--bh-cover-overlay-color, #1f1a17);
+    opacity: var(--bh-cover-overlay-opacity, 0.50);
+}
+
+.bh-cover-frame-border {
+    position: absolute;
+    inset: 16px;
+    z-index: 2;
+    border: 1px solid var(--bh-line);
+    pointer-events: none;
+}
+
+.bh-cover-inner {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Cover Style Variants */
+.bh-cover--top {
+    justify-content: flex-start;
+    padding-top: 4.5rem;
+}
+
+.bh-cover--space-between .bh-cover-inner {
+    min-height: calc(100vh - 6rem);
+    justify-content: space-between;
+}
+
+.bh-cover-badge {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 1.25rem;
+    color: var(--bh-accent);
+}
+
+.bh-cover-badge svg {
+    width: 100%;
+    height: 100%;
+}
+
+.bh-cover-monogram-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--bh-font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--bh-accent);
+}
+
+.bh-cover-names {
+    font-size: 2.25rem;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+    color: var(--bh-cover-text-color, var(--bh-ink));
+}
+
+.bh-cover-names .bh-script {
+    font-size: 2rem;
+    margin: 0 0.35rem;
+}
+
+.bh-cover-date {
+    font-family: var(--bh-font-label);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bh-ink-soft);
+    margin-top: 0.25rem;
+}
+
+.bh-cover-guest-card {
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--bh-line);
+    border-radius: var(--bh-radius);
+    background-color: var(--bh-bg-elevated);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 320px;
+}
+
+.bh-cover-guest-name {
+    font-family: var(--bh-font-display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--bh-accent);
+    margin: 0.2rem 0;
+}
+
+.bh-cover-guest-group {
+    font-family: var(--bh-font-label);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--bh-ink-soft);
+}
+
+.bh-cover-open-btn {
+    margin-top: 0.75rem;
+    padding: 0.9rem 2rem;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   Verse & Introductory Section
+   ========================================================================== */
+.bh-verse-intro {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+    color: var(--bh-ink-soft);
+}
+
+.bh-verse-card {
+    margin-top: 1.5rem;
+    padding: 2rem 1.5rem;
+}
+
+.bh-verse-translation {
+    margin-top: 1.25rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--bh-ink-soft);
+}
+
+.bh-verse-source {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   Couple Section & Photo Frames
+   ========================================================================== */
+.bh-couple-card {
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+}
+
+.bh-photo-frame {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+}
+
+.bh-photo-frame--diamond {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bh-photo-frame-ornament {
+    position: absolute;
+    inset: -12px;
+    color: var(--bh-accent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bh-photo-frame-ornament svg {
+    width: 100%;
+    height: 100%;
+}
+
+.bh-photo-frame--diamond .bh-couple-img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    transform: rotate(45deg);
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.bh-photo-frame--arch {
+    width: 170px;
+    height: 220px;
+}
+
+.bh-photo-frame--arch .bh-couple-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 999px 999px 4px 4px;
+    border: 2px solid var(--bh-accent);
+    padding: 4px;
+}
+
+.bh-photo-frame--round {
+    width: 170px;
+    height: 170px;
+}
+
+.bh-photo-frame--round .bh-couple-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--bh-accent);
+    padding: 4px;
+}
+
+.bh-couple-name {
+    font-size: 1.65rem;
+    line-height: 1.25;
+    color: var(--bh-ink);
+    margin-bottom: 0.25rem;
+}
+
+.bh-couple-nickname {
+    font-size: 1.4rem;
+    color: var(--bh-accent);
+    margin-bottom: 0.5rem;
+}
+
+.bh-couple-order {
+    font-size: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.bh-couple-parents {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--bh-ink-soft);
+}
+
+.bh-couple-parents strong {
+    color: var(--bh-ink);
+    font-weight: 600;
+}
+
+.bh-couple-origin {
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+    color: var(--bh-ink-faint);
+}
+
+.bh-couple-ig {
+    margin-top: 1.25rem;
+    padding: 0.5rem 1.15rem;
+    font-size: 0.75rem;
+    border-color: var(--bh-line);
+}
+
+.bh-couple-ampersand {
+    font-family: var(--bh-font-script);
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--bh-accent);
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Countdown Section
+   ========================================================================== */
+.bh-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    max-width: 380px;
+    margin: 1.5rem auto 0;
+}
+
+.bh-countdown-box {
+    background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    border-radius: var(--bh-radius);
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.bh-countdown-number {
+    font-family: var(--bh-font-display);
+    font-size: 1.85rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--bh-accent);
+    margin-bottom: 0.35rem;
+}
+
+.bh-countdown-label {
+    font-family: var(--bh-font-label);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--bh-ink-soft);
+}
+
+.bh-countdown-elapsed {
+    max-width: 380px;
+    margin: 1.5rem auto 0;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Gallery Section & Lightbox
+   ========================================================================== */
+.bh-gallery-quote {
+    font-style: italic;
+    font-size: 0.9rem;
+    max-width: 380px;
+    margin: 0 auto 1.5rem;
+    color: var(--bh-ink-soft);
+}
+
+.bh-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.bh-gallery-item {
+    position: relative;
+    border-radius: var(--bh-radius);
+    overflow: hidden;
+    border: 1px solid var(--bh-line);
+    background-color: var(--bh-bg-elevated);
+    cursor: pointer;
+}
+
+.bh-gallery-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--bh-dur-base) var(--bh-ease);
+}
+
+.bh-gallery-item:hover .bh-gallery-img {
+    transform: scale(1.05);
+}
+
+.bh-gallery-caption {
+    font-family: var(--bh-font-label);
+    font-size: 0.72rem;
+    padding: 0.4rem;
+    background: rgba(31, 26, 23, 0.85);
+    color: var(--bh-ink);
+    text-align: center;
+}
+
+.bh-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.bh-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 8, 7, 0.92);
+    backdrop-filter: blur(6px);
+}
+
+.bh-lightbox-container {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+}
+
+.bh-lightbox-img {
+    width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: var(--bh-radius);
+    border: 1px solid var(--bh-gold);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+.bh-lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: var(--bh-ink);
+    cursor: pointer;
+}
+
+.bh-lightbox-caption {
+    margin-top: 0.75rem;
+    font-family: var(--bh-font-body);
+    font-size: 0.85rem;
+    color: var(--bh-ink-soft);
+}
+
+/* ==========================================================================
+   Closing Section
+   ========================================================================== */
+.bh-closing-section {
+    padding-bottom: 7rem;
+}
+
+.bh-closing-card {
+    position: relative;
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
+.bh-closing-silhouette {
+    max-width: 110px;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    color: var(--bh-accent);
+    opacity: 0.85;
+}
+
+.bh-closing-silhouette svg {
+    width: 100%;
+    height: auto;
+}
+
+.bh-closing-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 380px;
+    margin: 0 auto 1.5rem;
+    color: var(--bh-ink-soft);
+}
+
+.bh-closing-names {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0.5rem 0 1.5rem;
+    color: var(--bh-ink);
+}
+
+.bh-co-inviters {
+    margin: 2rem 0 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bh-line);
+}
+
+.bh-co-inviters-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    margin-top: 0.75rem;
+}
+
+.bh-co-inviters-list li {
+    font-size: 0.85rem;
+    color: var(--bh-ink-soft);
+}
+
+.bh-closing-credit {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--bh-line);
+    font-size: 0.75rem;
+    color: var(--bh-ink-faint);
+}
+
+.bh-credit-prompt {
+    margin-bottom: 0.25rem;
+}
+
+.bh-credit-link {
+    color: var(--bh-accent);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.bh-credit-brand {
+    margin-top: 0.5rem;
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   Sticky Bottom Navigation
+   ========================================================================== */
+.bh-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    z-index: 80;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--bh-bg-elevated);
+    border-top: 1px solid var(--bh-line);
+    padding: 0.5rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bh-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--bh-ink-soft);
+    text-decoration: none;
+    font-family: var(--bh-font-label);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    transition: color var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-nav-item svg {
+    width: 20px;
+    height: 20px;
+}
+
+.bh-nav-item:hover, .bh-nav-item.is-active {
+    color: var(--bh-accent);
+}
+
+.bh-nav-item--center {
+    color: var(--bh-accent);
+}
+
+.bh-nav-monogram {
+    width: 22px;
+    height: 22px;
+}
+
+.bh-nav-monogram svg {
+    width: 100%;
+    height: 100%;
+}
+
 /* Reduced Motion Safeguard */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
