@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" fill="none">
+  <!-- Outer clean rectangle -->
+  <rect x="10" y="10" width="180" height="240" rx="4" stroke="currentColor" stroke-width="1.2" opacity="0.7"/>
+  <!-- Inner thin offset rectangle -->
+  <rect x="18" y="18" width="164" height="224" rx="2" stroke="currentColor" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.4"/>
+  <!-- Corner botanical leaf sprigs -->
+  <path d="M10 24 C14 16 22 16 24 22 C26 28 16 30 10 24 Z" fill="currentColor" opacity="0.6"/>
+  <path d="M190 236 C186 244 178 244 176 238 C174 232 184 230 190 236 Z" fill="currentColor" opacity="0.6"/>
+</svg>

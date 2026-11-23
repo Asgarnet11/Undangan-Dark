@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+  <!-- Repeating subtle botanical leaf sprig pattern for desktop backdrop -->
+  <g opacity="0.06">
+    <path d="M20 20 C35 30 45 45 50 65" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <path d="M30 28 C34 22 42 24 40 32 C38 38 30 36 30 28 Z" fill="currentColor"/>
+    <path d="M42 42 C48 36 54 40 52 46 C50 52 44 50 42 42 Z" fill="currentColor"/>
+    
+    <path d="M80 80 C95 90 105 105 110 125" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <path d="M90 88 C94 82 102 84 100 92 C98 98 90 96 90 88 Z" fill="currentColor"/>
+    <path d="M102 102 C108 96 114 100 112 106 C110 112 104 110 102 102 Z" fill="currentColor"/>
+  </g>
+</svg>

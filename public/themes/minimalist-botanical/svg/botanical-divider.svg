@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 24" fill="none">
+  <line x1="10" y1="12" x2="95" y2="12" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <line x1="145" y1="12" x2="230" y2="12" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+  <!-- Center olive leaves pair -->
+  <path d="M120 12 C114 4 104 6 106 14 C108 20 118 18 120 12 Z" fill="currentColor" opacity="0.8"/>
+  <path d="M120 12 C126 4 136 6 134 14 C132 20 122 18 120 12 Z" fill="currentColor" opacity="0.8"/>
+  <circle cx="120" cy="12" r="2" fill="currentColor"/>
+</svg>

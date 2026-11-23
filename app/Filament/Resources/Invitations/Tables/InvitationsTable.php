@@ -43,10 +43,17 @@ class InvitationsTable
                 //
             ])
             ->recordActions([
+                Action::make('open_public')
+                    ->label('Buka Undangan')
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->color('success')
+                    ->visible(fn (Invitation $record): bool => (bool) $record->is_published)
+                    ->url(fn (Invitation $record): string => route('invitation.show', ['slug' => $record->slug]), shouldOpenInNewTab: true),
                 Action::make('preview_draft')
-                    ->label('Pratinjau')
+                    ->label('Pratinjau Draft')
                     ->icon('heroicon-o-eye')
                     ->color('gray')
+                    ->visible(fn (Invitation $record): bool => ! $record->is_published)
                     ->url(fn (Invitation $record): string => route('invitation.preview', ['invitation' => $record]), shouldOpenInNewTab: true),
                 Action::make('toggle_publish')
                     ->label(fn (Invitation $record): string => $record->is_published ? 'Nonaktifkan' : 'Publikasikan')
@@ -60,10 +67,6 @@ class InvitationsTable
                             ->success()
                             ->send();
                     }),
-                Action::make('open_public')
-                    ->label('Lihat')
-                    ->visible(fn (Invitation $record): bool => (bool) $record->is_published)
-                    ->url(fn (Invitation $record): string => route('invitation.show', ['slug' => $record->slug]), shouldOpenInNewTab: true),
                 EditAction::make()
                     ->label('Kelola'),
             ])

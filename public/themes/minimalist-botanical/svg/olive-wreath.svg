@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" fill="none">
+  <!-- Circular wreath path -->
+  <circle cx="80" cy="80" r="62" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.5"/>
+  <!-- Left wreath branch -->
+  <path d="M80 142 C45 140 22 115 22 80 C22 45 45 20 80 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Right wreath branch -->
+  <path d="M80 142 C115 140 138 115 138 80 C138 45 115 20 80 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  <!-- Olive leaves left -->
+  <path d="M30 46 C24 38 34 32 40 40 C44 46 36 52 30 46 Z" fill="currentColor" opacity="0.6"/>
+  <path d="M22 75 C14 70 20 60 28 66 C34 72 28 80 22 75 Z" fill="currentColor" opacity="0.7"/>
+  <path d="M26 105 C18 102 20 90 30 94 C38 98 34 108 26 105 Z" fill="currentColor" opacity="0.6"/>
+  <path d="M45 130 C38 132 36 122 44 118 C52 116 54 126 45 130 Z" fill="currentColor" opacity="0.65"/>
+  <!-- Olive leaves right -->
+  <path d="M130 46 C136 38 126 32 120 40 C116 46 124 52 130 46 Z" fill="currentColor" opacity="0.6"/>
+  <path d="M138 75 C146 70 140 60 132 66 C126 72 132 80 138 75 Z" fill="currentColor" opacity="0.7"/>
+  <path d="M134 105 C142 102 140 90 130 94 C122 98 126 108 134 105 Z" fill="currentColor" opacity="0.6"/>
+  <path d="M115 130 C122 132 124 122 116 118 C108 116 106 126 115 130 Z" fill="currentColor" opacity="0.65"/>
+  <!-- Bottom Ribbon tie -->
+  <path d="M72 144 C76 142 84 142 88 144 M74 145 L70 155 M86 145 L90 155" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

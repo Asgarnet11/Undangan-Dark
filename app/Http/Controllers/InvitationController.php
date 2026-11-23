@@ -66,11 +66,22 @@ class InvitationController extends Controller
         ]);
     }
 
-    public function preview(Request $request, Invitation $invitation): View
+    public function preview(Request $request, Invitation $invitation): View|RedirectResponse
     {
         $user = $request->user();
-        if ($user === null || ($invitation->user_id !== $user->id && ! $user->email)) {
-            abort(403);
+
+        // If accessed by an unauthenticated visitor or crawler:
+        if ($user === null && ! $request->hasValidSignature()) {
+            if ($invitation->is_published) {
+                return redirect()->route('invitation.show', ['slug' => $invitation->slug]);
+            }
+
+            return redirect()->guest('/admin/login');
+        }
+
+        // If authenticated but unauthorized:
+        if ($user !== null && $invitation->user_id !== $user->id && ! $user->email) {
+            abort(403, 'Anda tidak memiliki hak akses untuk melihat pratinjau draft undangan ini.');
         }
 
         $invitation->load([

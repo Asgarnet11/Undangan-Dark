@@ -17,10 +17,17 @@ class EditInvitation extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('preview_public')
+                ->label('Buka Undangan Publik')
+                ->icon('heroicon-o-arrow-top-right-on-square')
+                ->color('success')
+                ->visible(fn (): bool => (bool) $this->record->is_published)
+                ->url(fn (): string => route('invitation.show', ['slug' => $this->record->slug]), shouldOpenInNewTab: true),
             Action::make('preview_draft')
                 ->label('Pratinjau (Draft)')
                 ->icon('heroicon-o-eye')
                 ->color('gray')
+                ->visible(fn (): bool => ! $this->record->is_published)
                 ->url(fn (): string => route('invitation.preview', ['invitation' => $this->record]), shouldOpenInNewTab: true),
             Action::make('toggle_publish')
                 ->label(fn (): string => $this->record->is_published ? 'Nonaktifkan Undangan' : 'Publikasikan Undangan')
@@ -39,12 +46,6 @@ class EditInvitation extends EditRecord
                         ->success()
                         ->send();
                 }),
-            Action::make('preview_public')
-                ->label('Buka Undangan')
-                ->icon('heroicon-o-arrow-top-right-on-square')
-                ->color('info')
-                ->visible(fn (): bool => (bool) $this->record->is_published)
-                ->url(fn (): string => route('invitation.show', ['slug' => $this->record->slug]), shouldOpenInNewTab: true),
             Action::make('backup_database')
                 ->label('Backup DB')
                 ->icon('heroicon-o-circle-stack')

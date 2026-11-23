@@ -55,7 +55,15 @@ class InvitationForm
                                                                 ->mapWithKeys(fn (array $preset, string $key): array => [$key => (string) ($preset['label'] ?? $key)])
                                                                 ->all();
                                                         })
-                                                        ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? 'sunny' : 'terracotta')
+                                                        ->default(function ($get) {
+                                                            $theme = $get('theme') ?: 'dark-boho';
+
+                                                            return match ($theme) {
+                                                                'sunny-meadow' => 'sunny',
+                                                                'minimalist-botanical' => 'olive',
+                                                                default => 'terracotta',
+                                                            };
+                                                        })
                                                         ->required()
                                                         ->live(),
                                                 ]),
@@ -77,6 +85,14 @@ class InvitationForm
                                                                     ];
                                                                 }
 
+                                                                if ($theme === 'minimalist-botanical') {
+                                                                    return [
+                                                                        'default' => 'Sentuhan Olive Klasik (Default)',
+                                                                        'top' => 'Teks di Atas',
+                                                                        'frame' => 'Bingkai Garis Minimalis',
+                                                                    ];
+                                                                }
+
                                                                 return [
                                                                     'default' => 'Klasik Terracotta',
                                                                     'new' => 'Bingkai Emas Modern',
@@ -94,11 +110,27 @@ class InvitationForm
                                                             ->live(onBlur: true),
                                                         ColorPicker::make('theme_config.cover.overlayColor')
                                                             ->label('Warna Overlay Cover')
-                                                            ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? '#fff8ec' : '#1d1d1b')
+                                                            ->default(function ($get) {
+                                                                $theme = $get('theme') ?: 'dark-boho';
+
+                                                                return match ($theme) {
+                                                                    'sunny-meadow' => '#fff8ec',
+                                                                    'minimalist-botanical' => '#ffffff',
+                                                                    default => '#1d1d1b',
+                                                                };
+                                                            })
                                                             ->live(),
                                                         ColorPicker::make('theme_config.cover.textColor')
                                                             ->label('Warna Teks Cover')
-                                                            ->default(fn ($get) => ($get('theme') ?: 'dark-boho') === 'sunny-meadow' ? '#3b2f2a' : '#efe6d8')
+                                                            ->default(function ($get) {
+                                                                $theme = $get('theme') ?: 'dark-boho';
+
+                                                                return match ($theme) {
+                                                                    'sunny-meadow' => '#3b2f2a',
+                                                                    'minimalist-botanical' => '#232b24',
+                                                                    default => '#efe6d8',
+                                                                };
+                                                            })
                                                             ->live(),
                                                         Toggle::make('theme_config.cover.usephoto')
                                                             ->label('Tampilkan Foto Latar Cover')

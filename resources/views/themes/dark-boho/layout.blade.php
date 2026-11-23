@@ -21,6 +21,10 @@
         ? url($resolvedCover)
         : $resolvedCover;
 
+    $ogImageSecure = str_starts_with($ogImage, 'https://')
+        ? $ogImage
+        : (str_starts_with($ogImage, 'http://') ? 'https://' . substr($ogImage, 7) : $ogImage);
+
     $currentFullUrl = request()->fullUrl();
 @endphp
     <title>{{ $ogTitle }}</title>
@@ -37,7 +41,7 @@
     <meta property="og:description" content="{{ $ogDescription }}">
     <meta property="og:url" content="{{ $currentFullUrl }}">
     <meta property="og:image" content="{{ $ogImage }}">
-    <meta property="og:image:secure_url" content="{{ $ogImage }}">
+    <meta property="og:image:secure_url" content="{{ $ogImageSecure }}">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">

@@ -138,6 +138,17 @@ class ThemeRegistry
                 $config['cover']['overlayColor'] = '#fff8ec';
                 $config['cover']['overlayOpacity'] = 0.35;
             }
+        } elseif ($key === 'minimalist-botanical') {
+            // Minimalist Botanical requires dark readable text on light backgrounds
+            $textColor = $config['cover']['textColor'] ?? null;
+            if ($textColor !== null && $isLightHex($textColor) === true) {
+                $config['cover']['textColor'] = '#232b24';
+            }
+            $overlayColor = $config['cover']['overlayColor'] ?? null;
+            if ($overlayColor !== null && $isLightHex($overlayColor) === false) {
+                $config['cover']['overlayColor'] = '#ffffff';
+                $config['cover']['overlayOpacity'] = 0.35;
+            }
         }
 
         return $config;

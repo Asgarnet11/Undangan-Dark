@@ -3,8 +3,24 @@
 use App\Http\Controllers\InvitationController;
 use App\Models\Invitation;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 $slugPattern = '^(?!admin|livewire|up|storage|themes|preview)[a-z0-9-]+$';
+
+Route::get('/storage/{path}', function (string $path) {
+    if (str_contains($path, '..')) {
+        abort(404);
+    }
+
+    $disk = Storage::disk('public');
+    if (! $disk->exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($disk->path($path), [
+        'Cache-Control' => 'public, max-age=86400, stale-while-revalidate=604800',
+    ]);
+})->where('path', '.*')->name('storage.fallback');
 
 Route::get('/', function () {
     $first = Invitation::query()->where('is_published', true)->orderBy('id')->first();
@@ -26,7 +42,6 @@ Route::get('/supardin', function () {
 });
 
 Route::get('/preview/invitations/{invitation}', [InvitationController::class, 'preview'])
-    ->middleware('auth')
     ->name('invitation.preview');
 
 Route::get('/{slug}', [InvitationController::class, 'show'])
