@@ -249,6 +249,76 @@ body.theme-bugis-heritage {
 .bh-corner-ornament--bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
 .bh-corner-ornament--br { bottom: 12px; right: 12px; transform: scale(-1); }
 
+/* Form Inputs */
+.bh-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: var(--bh-font-body);
+    font-size: 0.92rem;
+    color: var(--bh-ink);
+    background-color: var(--bh-bg);
+    border: 1px solid var(--bh-line);
+    border-radius: var(--bh-radius);
+    outline: none;
+    transition: border-color var(--bh-dur-fast) var(--bh-ease), box-shadow var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-input:focus {
+    border-color: var(--bh-accent);
+    box-shadow: 0 0 10px var(--bh-glow);
+}
+
+.bh-input::placeholder {
+    color: var(--bh-ink-faint);
+}
+
+/* ==========================================================================
+   Love Story Section & Timeline
+   ========================================================================== */
+.bh-story-timeline {
+    position: relative;
+    max-width: 420px;
+    margin: 2rem auto 0;
+    padding: 0 0 0 1.5rem;
+}
+
+.bh-story-line {
+    position: absolute;
+    top: 12px;
+    bottom: 12px;
+    left: 10px;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--bh-gold), transparent);
+}
+
+.bh-story-step {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.bh-story-marker {
+    position: absolute;
+    top: 1.25rem;
+    left: -1.75rem;
+    width: 20px;
+    height: 20px;
+    color: var(--bh-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bh-bg);
+}
+
+.bh-story-marker svg {
+    width: 100%;
+    height: 100%;
+}
+
+.bh-story-card {
+    text-align: left;
+    padding: 1.5rem 1.25rem;
+}
+
 /* Card Components */
 .bh-card {
     background-color: var(--bh-bg-elevated);

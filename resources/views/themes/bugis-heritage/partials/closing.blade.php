@@ -47,6 +47,14 @@
                 {{ __('invitation.closing.watermark_cta', ['vendor' => config('app.vendor_name', 'a2dev.my.id')]) }}
             </a>
             <p class="bh-credit-brand">{{ config('app.name', 'Undangan Pernikahan Digital') }}</p>
+            <button
+                type="button"
+                id="bh-credits-btn"
+                class="bh-credit-btn"
+                style="background: none; border: none; color: var(--bh-ink-faint); font-size: 0.72rem; text-decoration: underline; cursor: pointer; margin-top: 0.75rem;"
+            >
+                Informasi Kredit &amp; Lisensi
+            </button>
         </div>
     </div>
 </footer>

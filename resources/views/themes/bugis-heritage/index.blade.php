@@ -18,6 +18,12 @@
 
         @include('themes.bugis-heritage.partials.couple')
 
+        @if(data_get($themeConfig, 'sections.loveStory', true) || $previewMode)
+            <div data-preview-section="loveStory" @if(!data_get($themeConfig, 'sections.loveStory', true)) hidden @endif>
+                @include('themes.bugis-heritage.partials.love-story')
+            </div>
+        @endif
+
         @if(data_get($themeConfig, 'sections.gallery', true) || $previewMode)
             <div data-preview-section="gallery" @if(!data_get($themeConfig, 'sections.gallery', true)) hidden @endif>
                 @include('themes.bugis-heritage.partials.gallery')
@@ -47,4 +53,6 @@
     </main>
 
     @include('themes.bugis-heritage.partials.bottom-nav')
+
+    @include('themes.bugis-heritage.partials.credits')
 @endsection

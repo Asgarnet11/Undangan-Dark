@@ -295,6 +295,107 @@
         });
     };
 
+    const initCreditsModal = () => {
+        const modal = document.getElementById('bh-credits-modal');
+        const trigger = document.getElementById('bh-credits-btn');
+        if (!modal || !trigger) {
+            return;
+        }
+
+        const closeBtn = document.getElementById('bh-credits-close');
+        const backdrop = modal.querySelector('.bh-modal-backdrop');
+
+        const openModal = () => {
+            modal.hidden = false;
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            if (closeBtn) closeBtn.focus();
+        };
+
+        const closeModal = () => {
+            modal.hidden = true;
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            trigger.focus();
+        };
+
+        trigger.addEventListener('click', openModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (backdrop) backdrop.addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.hidden) {
+                closeModal();
+            }
+        });
+    };
+
+    const initGiftPanel = () => {
+        const panel = document.querySelector('[data-gift-panel]');
+        if (!panel) {
+            return;
+        }
+
+        const endpoint = panel.getAttribute('data-gifts-endpoint');
+        const revealBtn = panel.querySelector('[data-gift-reveal-btn]');
+        const labelCopy = panel.getAttribute('data-label-copy') || 'Salin';
+        const labelCopied = panel.getAttribute('data-label-copied') || 'Tersalin!';
+
+        if (revealBtn && endpoint) {
+            revealBtn.addEventListener('click', () => {
+                revealBtn.disabled = true;
+                revealBtn.textContent = 'Memuat...';
+
+                fetch(endpoint, {
+                    credentials: 'same-origin',
+                    headers: { 'Accept': 'application/json' },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.accounts) {
+                            data.accounts.forEach((acc) => {
+                                const numEl = document.querySelector(`[data-gift-account-id="${acc.id}"] [data-gift-number]`);
+                                const copyBtn = document.querySelector(`[data-gift-account-id="${acc.id}"] [data-copy-btn]`);
+                                if (numEl) numEl.textContent = acc.account_number;
+                                if (copyBtn) {
+                                    copyBtn.disabled = false;
+                                    copyBtn.setAttribute('data-copy-number', acc.account_number);
+                                }
+                            });
+                        }
+                        if (data.addresses) {
+                            data.addresses.forEach((addr) => {
+                                const textEl = document.querySelector(`[data-gift-address-id="${addr.id}"] [data-gift-address-text]`);
+                                if (textEl) textEl.textContent = addr.address;
+                            });
+                        }
+                        revealBtn.style.display = 'none';
+                    })
+                    .catch(() => {
+                        revealBtn.disabled = false;
+                        revealBtn.textContent = 'Gagal memuat. Coba lagi.';
+                    });
+            });
+        }
+
+        panel.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-copy-btn]');
+            if (!btn) {
+                return;
+            }
+            const num = btn.getAttribute('data-copy-number');
+            if (num && navigator.clipboard) {
+                navigator.clipboard.writeText(num).then(() => {
+                    const originalText = btn.textContent;
+                    btn.textContent = labelCopied;
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                    }, 2000);
+                }).catch(() => {});
+            }
+        });
+    };
+
     const finishOpening = () => {
         try {
             sessionStorage.setItem(OPEN_STORAGE_KEY, '1');
@@ -345,6 +446,8 @@
         initGalleryLightbox();
         initBottomNav();
         initGlossaryModal();
+        initCreditsModal();
+        initGiftPanel();
 
         if (wasAlreadyOpened) {
             window.BugisHeritageTheme.opened = true;
