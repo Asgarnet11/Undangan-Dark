@@ -4,12 +4,7 @@
 
 @if($chapters->isNotEmpty() || !empty($isPreview))
 <section id="section-love-story" class="bh-section bh-love-story-section" aria-label="Kisah Perjalanan Cinta">
-    <div class="bh-divider" aria-hidden="true">
-        <x-bugis-heritage.svg name="divider-diamond" />
-    </div>
-
-    <p class="bh-kicker">Perjalanan Kasih</p>
-    <h2 class="bh-display bh-section-title">Kisah Cinta</h2>
+    <h2 class="bh-display bh-section-title">Kisah Cinta &amp; Perjalanan Kasih</h2>
     <p class="bh-body-serif bh-section-subtitle">
         Untaian cerita dan langkah kebersamaan kami menuju ikatan suci pernikahan.
     </p>

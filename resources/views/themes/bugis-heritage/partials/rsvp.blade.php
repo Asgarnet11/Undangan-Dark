@@ -10,20 +10,15 @@
 @endphp
 
 <section id="section-rsvp" class="bh-section bh-rsvp-section" aria-label="Konfirmasi Kehadiran">
-    <div class="bh-divider" aria-hidden="true">
-        <x-bugis-heritage.svg name="divider-diamond" />
-    </div>
-
-    <p class="bh-kicker">{{ __('invitation.rsvp.kicker') }}</p>
     <h2 class="bh-display bh-section-title">{{ __('invitation.rsvp.heading') }}</h2>
     <p class="bh-body-serif bh-section-subtitle">{{ __('invitation.rsvp.subtitle') }}</p>
 
     {{-- Digital Guest Book / QR Code Kehadiran --}}
     @if($guest !== null)
-        <div class="bh-card bh-card--gold-border" style="text-align: center; margin-bottom: 2rem; padding: 1.75rem 1.25rem;">
-            <p class="bh-kicker" style="font-size: 0.72rem; letter-spacing: 0.18em; margin-bottom: 0.5rem;">BUKU TAMU DIGITAL</p>
+        <div class="bh-card bh-qr-card" style="text-align: center; margin-bottom: 2rem; padding: 1.75rem 1.25rem;">
+            <p class="bh-qr-badge" style="font-family: var(--bh-font-label); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.18em; color: var(--bh-gold-soft); margin-bottom: 0.5rem; text-transform: uppercase;">BUKU TAMU DIGITAL</p>
             <h3 class="bh-display" style="font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--bh-accent);">QR Code Kehadiran Tamu</h3>
-            <p class="bh-body-serif" style="font-size: 0.85rem; max-width: 320px; margin: 0 auto 1.25rem; color: var(--bh-ink-soft);">
+            <p class="bh-body-serif" style="font-size: 0.88rem; max-width: 320px; margin: 0 auto 1.25rem; color: var(--bh-ink-soft);">
                 Tunjukkan QR Code ini kepada panitia saat tiba di lokasi untuk konfirmasi kehadiran langsung.
             </p>
             <div style="display: inline-block; background: #ffffff; padding: 0.85rem; border-radius: var(--bh-radius); box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid var(--bh-line);">

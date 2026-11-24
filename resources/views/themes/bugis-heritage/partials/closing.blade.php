@@ -1,5 +1,5 @@
 <footer id="section-closing" class="bh-section bh-closing-section" aria-label="Penutup dan Doa">
-    <div class="bh-closing-card bh-card bh-card--gold-border">
+    <div class="bh-closing-card bh-card">
         <x-bugis-heritage.svg name="corner-ornament" class="bh-corner-ornament bh-corner-ornament--tl" />
         <x-bugis-heritage.svg name="corner-ornament" class="bh-corner-ornament bh-corner-ornament--tr" />
         <x-bugis-heritage.svg name="corner-ornament" class="bh-corner-ornament bh-corner-ornament--bl" />
@@ -23,7 +23,7 @@
             </p>
         @endif
 
-        <p class="bh-kicker" style="margin-top: 1.5rem;">Kami yang berbahagia,</p>
+        <p class="bh-closing-subhead" style="margin-top: 1.5rem;">Kami yang berbahagia,</p>
 
         <h3 class="bh-display bh-closing-names">
             {{ $invitation->bride_nickname }} <span class="bh-script">&amp;</span> {{ $invitation->groom_nickname }}
@@ -31,7 +31,7 @@
 
         @if($invitation->coInviters->isNotEmpty())
             <div class="bh-co-inviters">
-                <p class="bh-kicker">{{ __('invitation.closing.co_inviters_heading') }}</p>
+                <p class="bh-closing-subhead">{{ __('invitation.closing.co_inviters_heading') }}</p>
                 <ul class="bh-co-inviters-list">
                     @foreach($invitation->coInviters as $coInviter)
                         <li class="bh-body-serif">{{ $coInviter->name }}</li>
@@ -55,7 +55,7 @@
                 type="button"
                 id="bh-credits-btn"
                 class="bh-credit-btn"
-                style="background: none; border: none; color: var(--bh-ink-faint); font-size: 0.72rem; text-decoration: underline; cursor: pointer; margin-top: 0.75rem;"
+                style="background: none; border: none; color: var(--bh-ink-faint); font-size: 0.85rem; text-decoration: underline; cursor: pointer; margin-top: 0.75rem;"
             >
                 Informasi Kredit &amp; Lisensi
             </button>

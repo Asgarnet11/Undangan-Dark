@@ -12,6 +12,7 @@
 /.phpunit.cache
 /.vscode
 /.zed
+/.taste-skill/
 /auth.json
 /node_modules
 /public/build

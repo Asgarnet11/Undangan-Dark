@@ -77,7 +77,7 @@
                             </p>
 
                             @if($entry->regional_note)
-                                <p class="bh-kicker" style="font-size: 0.68rem; margin-top: 0.5rem; color: var(--bh-ink-faint); text-transform: none; letter-spacing: normal;">
+                                <p class="bh-kicker" style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--bh-ink-faint); text-transform: none; letter-spacing: normal;">
                                     Catatan variasi: {{ $entry->regional_note }}
                                 </p>
                             @endif
@@ -87,7 +87,7 @@
             </div>
 
             <footer class="bh-modal-footer" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--bh-line); text-align: center;">
-                <p class="bh-kicker" style="font-size: 0.68rem; opacity: 0.7;">
+                <p class="bh-kicker" style="font-size: 0.85rem; opacity: 0.8;">
                     Istilah adat telah diverifikasi sesuai Kamus Konten Adat Bugis.
                 </p>
             </footer>

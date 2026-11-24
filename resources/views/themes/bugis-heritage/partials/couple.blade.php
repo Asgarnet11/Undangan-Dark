@@ -6,19 +6,14 @@
 @endphp
 
 <section id="section-couple" class="bh-section bh-couple-section" aria-label="Profil Kedua Mempelai">
-    <p class="bh-kicker">{{ __('invitation.couple.kicker') }}</p>
     <h2 class="bh-display bh-section-title">{{ __('invitation.couple.heading') }}</h2>
     <p class="bh-body-serif bh-section-subtitle">
         {{ __('invitation.couple.subtitle') }}
     </p>
 
-    <div class="bh-divider" aria-hidden="true">
-        <x-bugis-heritage.svg name="divider-diamond" />
-    </div>
-
     @if($brideFirst)
         {{-- Mempelai Wanita --}}
-        <article class="bh-card bh-couple-card bh-couple-card--bride" data-role="bride">
+        <article class="bh-couple-card bh-couple-card--bride" data-role="bride">
             @if($bridePhoto)
                 <div class="bh-photo-frame bh-photo-frame--{{ $photoFrame }}">
                     @if($photoFrame === 'diamond')
@@ -36,7 +31,7 @@
             @endif
 
             @if($invitation->bride_order_label)
-                <p class="bh-kicker bh-couple-order">{{ $invitation->bride_order_label }}</p>
+                <p class="bh-couple-order">{{ $invitation->bride_order_label }}</p>
             @endif
 
             @if($invitation->bride_father || $invitation->bride_mother)
@@ -68,7 +63,7 @@
         </div>
 
         {{-- Mempelai Pria --}}
-        <article class="bh-card bh-couple-card bh-couple-card--groom" data-role="groom">
+        <article class="bh-couple-card bh-couple-card--groom" data-role="groom">
             @if($groomPhoto)
                 <div class="bh-photo-frame bh-photo-frame--{{ $photoFrame }}">
                     @if($photoFrame === 'diamond')
@@ -86,7 +81,7 @@
             @endif
 
             @if($invitation->groom_order_label)
-                <p class="bh-kicker bh-couple-order">{{ $invitation->groom_order_label }}</p>
+                <p class="bh-couple-order">{{ $invitation->groom_order_label }}</p>
             @endif
 
             @if($invitation->groom_father || $invitation->groom_mother)
@@ -114,7 +109,7 @@
         </article>
     @else
         {{-- Mempelai Pria Terlebih Dahulu --}}
-        <article class="bh-card bh-couple-card bh-couple-card--groom" data-role="groom">
+        <article class="bh-couple-card bh-couple-card--groom" data-role="groom">
             @if($groomPhoto)
                 <div class="bh-photo-frame bh-photo-frame--{{ $photoFrame }}">
                     @if($photoFrame === 'diamond')
@@ -132,7 +127,7 @@
             @endif
 
             @if($invitation->groom_order_label)
-                <p class="bh-kicker bh-couple-order">{{ $invitation->groom_order_label }}</p>
+                <p class="bh-couple-order">{{ $invitation->groom_order_label }}</p>
             @endif
 
             @if($invitation->groom_father || $invitation->groom_mother)
@@ -164,7 +159,7 @@
         </div>
 
         {{-- Mempelai Wanita --}}
-        <article class="bh-card bh-couple-card bh-couple-card--bride" data-role="bride">
+        <article class="bh-couple-card bh-couple-card--bride" data-role="bride">
             @if($bridePhoto)
                 <div class="bh-photo-frame bh-photo-frame--{{ $photoFrame }}">
                     @if($photoFrame === 'diamond')
@@ -182,7 +177,7 @@
             @endif
 
             @if($invitation->bride_order_label)
-                <p class="bh-kicker bh-couple-order">{{ $invitation->bride_order_label }}</p>
+                <p class="bh-couple-order">{{ $invitation->bride_order_label }}</p>
             @endif
 
             @if($invitation->bride_father || $invitation->bride_mother)

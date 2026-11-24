@@ -42,8 +42,6 @@
                 <span class="bh-cover-monogram-text">{{ $monogram }}</span>
             </div>
 
-            <p class="bh-kicker">{{ __('invitation.cover.wedding_invitation') }}</p>
-
             <h1 class="bh-display bh-cover-names">
                 @if($brideFirst)
                     <span class="bh-name-part">{{ $invitation->bride_nickname }}</span>
@@ -56,17 +54,15 @@
                 @endif
             </h1>
 
-            @if($eventDate)
-                <p class="bh-cover-date">{{ $eventDate }}</p>
-            @endif
+            <p class="bh-cover-subtitle">
+                {{ __('invitation.cover.wedding_invitation') }}@if($eventDate) &bull; {{ $eventDate }}@endif
+            </p>
         </header>
 
         <div class="bh-cover-footer">
             @if(data_get($themeConfig, 'cover.showGuestName', true))
                 <div class="bh-cover-guest-card">
-                    <p class="bh-kicker" style="font-size: 0.7rem; margin-bottom: 0.25rem;">
-                        {{ __('invitation.cover.recipient_prefix') }}
-                    </p>
+                    <p class="bh-guest-prefix">{{ __('invitation.cover.recipient_prefix') }}</p>
                     <h2 class="bh-cover-guest-name">{{ $guestName }}</h2>
                     @if($guest && $guest->group)
                         <p class="bh-cover-guest-group">{{ $guest->group }}</p>

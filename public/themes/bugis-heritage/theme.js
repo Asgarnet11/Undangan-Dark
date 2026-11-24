@@ -149,7 +149,7 @@
         const minutesEl = document.getElementById('bh-minutes');
         const secondsEl = document.getElementById('bh-seconds');
 
-        const pad2 = (val) => String(Math.max(0, Math.floor(val))).padStart(2, '0');
+        const pad2 = (val) => String(Math.max(0, Math.floor(val)));
 
         const updateTimer = () => {
             const diff = targetMs - Date.now();

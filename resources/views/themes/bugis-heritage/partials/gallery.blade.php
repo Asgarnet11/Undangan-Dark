@@ -4,11 +4,6 @@
 
 @if(count($galleryItems) > 0)
     <section id="section-gallery" class="bh-section bh-gallery-section" aria-label="Galeri Foto Mempelai">
-        <div class="bh-divider" aria-hidden="true">
-            <x-bugis-heritage.svg name="divider-diamond" />
-        </div>
-
-        <p class="bh-kicker">{{ __('invitation.gallery.kicker') }}</p>
         <h2 class="bh-display bh-section-title">{{ $invitation->gallery_title ?: __('invitation.gallery.heading') }}</h2>
 
         @if($invitation->gallery_quote)

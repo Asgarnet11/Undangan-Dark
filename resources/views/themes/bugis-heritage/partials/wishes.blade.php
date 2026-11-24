@@ -1,14 +1,9 @@
 <section id="section-wishes" class="bh-section bh-wishes-section" aria-label="Ucapan dan Doa Restu">
-    <div class="bh-divider" aria-hidden="true">
-        <x-bugis-heritage.svg name="divider-diamond" />
-    </div>
-
-    <p class="bh-kicker">{{ __('invitation.wishes.kicker') }}</p>
     <h2 class="bh-display bh-section-title">{{ __('invitation.wishes.heading') }}</h2>
     <p class="bh-body-serif bh-section-subtitle">{{ __('invitation.wishes.subtitle') }}</p>
 
     {{-- Form Kirim Ucapan --}}
-    <div class="bh-card bh-card--gold-border bh-form-card" style="margin-bottom: 2rem;">
+    <div class="bh-card bh-form-card" style="margin-bottom: 2rem;">
         <form
             id="bh-wishes-form"
             method="POST"
@@ -83,12 +78,12 @@
                         <h4 class="bh-display" style="font-size: 1.1rem; color: var(--bh-accent);">
                             {{ $wish->name }}
                         </h4>
-                        <time class="bh-kicker" style="font-size: 0.68rem; opacity: 0.7;">
+                        <time class="bh-kicker" style="font-size: 0.85rem; opacity: 0.8;">
                             {{ $wish->created_at->diffForHumans() }}
                         </time>
                     </div>
                     @if($wish->origin)
-                        <p class="bh-kicker" style="font-size: 0.72rem; color: var(--bh-ink-faint); margin-bottom: 0.5rem; text-transform: none; letter-spacing: normal;">
+                        <p class="bh-kicker" style="font-size: 0.85rem; color: var(--bh-ink-faint); margin-bottom: 0.5rem; text-transform: none; letter-spacing: normal;">
                             {{ $wish->origin }}
                         </p>
                     @endif

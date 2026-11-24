@@ -3,11 +3,14 @@
 return [
     'cover' => [
         'subtitle' => 'Undangan Pernikahan',
+        'wedding_invitation' => 'Walimatul \'Urs',
         'guest_prefix' => 'Kepada Yth.',
+        'recipient_prefix' => 'Kepada Yth. Bapak/Ibu/Saudara/i',
         'default_guest' => 'Tamu Undangan',
         'open_button' => 'Buka Undangan',
     ],
     'countdown' => [
+        'kicker' => 'Hitung Mundur',
         'heading' => 'Menghitung Hari',
         'days' => 'Hari',
         'hours' => 'Jam',
@@ -20,6 +23,7 @@ return [
         'heading' => 'Doa dan Harapan',
     ],
     'couple' => [
+        'kicker' => 'Keluarga & Mempelai',
         'heading' => 'Mempelai',
         'daughter_of' => 'Putri dari',
         'son_of' => 'Putra dari',
@@ -57,6 +61,8 @@ return [
         'status_label' => 'Status Kehadiran',
         'attending_yes' => 'Hadir',
         'attending_no' => 'Tidak Hadir',
+        'status_attending' => 'Hadir',
+        'status_not_attending' => 'Tidak Hadir',
         'pax_label' => 'Jumlah Tamu',
         'pax_max_hint' => 'Maksimal :max tamu untuk undangan ini.',
         'message_label' => 'Pesan Singkat (Opsional)',

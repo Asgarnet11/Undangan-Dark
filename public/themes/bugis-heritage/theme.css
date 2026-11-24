@@ -1,31 +1,33 @@
 /* Bugis Heritage Theme CSS
-   Aesthetic: Warm, classic, solemn, dignified Bugis traditional wedding theme.
-   Silk, antique gold, walasuji geometric diamonds, and local local fonts.
+   Aesthetic: Regal, warm, authentic, architectural Bugis royal wedding theme.
+   Silk, antique gold, walasuji geometric diamonds, local fonts.
    Zero external CDN dependencies. */
 
 :root {
-    --bh-bg: #1f1a17;
-    --bh-bg-elevated: #2a2320;
-    --bh-bg-deep: #161210;
-    --bh-bg-silk: #f3e6cf;
+    --bh-bg: #15110e;
+    --bh-bg-elevated: #201a16;
+    --bh-bg-deep: #0c0807;
+    --bh-bg-silk: #f4ecdf;
 
-    --bh-ink: #f3e6cf;
-    --bh-ink-soft: #c9b99d;
-    --bh-ink-faint: #8a7d68;
-    --bh-ink-on-silk: #2a1f1a;
+    --bh-ink: #fcf8f2;
+    --bh-ink-soft: #dcd0bf;
+    --bh-ink-faint: #ad9e89;
+    --bh-ink-on-silk: #221a16;
 
     --bh-gold: #c9a45c;
-    --bh-gold-soft: #e2c98f;
-    --bh-maroon: #6b2a2f;
-    --bh-moss: #3f5a3a;
-    --bh-aubergine: #5b3a54;
+    --bh-gold-bright: #e8c67c;
+    --bh-gold-soft: #f4e3c1;
+    --bh-maroon: #732228;
+    --bh-moss: #3a5c37;
+    --bh-aubergine: #633658;
 
     --bh-accent: #c9a45c;
-    --bh-accent-sub: #6b2a2f;
+    --bh-accent-sub: #732228;
 
-    --bh-line: rgba(201, 164, 92, 0.35);
-    --bh-glow: rgba(201, 164, 92, 0.22);
-    --bh-radius: 4px;
+    --bh-line: rgba(201, 164, 92, 0.22);
+    --bh-glow: rgba(201, 164, 92, 0.16);
+    --bh-radius: 12px;
+    --bh-radius-sm: 6px;
 
     --bh-font-display: "Cormorant Garamond", Georgia, serif;
     --bh-font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -62,16 +64,16 @@
 
 [data-preset="krem-sutra"],
 .bh-preset-krem-sutra {
-    --bh-bg: #f3e6cf;
-    --bh-bg-elevated: #eae0cb;
-    --bh-bg-deep: #ded2bd;
-    --bh-ink: #2a1f1a;
+    --bh-bg: #f4ecdf;
+    --bh-bg-elevated: #eae0cf;
+    --bh-bg-deep: #ded2bf;
+    --bh-ink: #221a16;
     --bh-ink-soft: #4a3c33;
     --bh-ink-faint: #7a6659;
     --bh-accent: var(--bh-maroon);
     --bh-accent-sub: var(--bh-gold);
-    --bh-line: rgba(107, 42, 47, 0.3);
-    --bh-glow: rgba(201, 164, 92, 0.25);
+    --bh-line: rgba(115, 34, 40, 0.22);
+    --bh-glow: rgba(201, 164, 92, 0.18);
 }
 
 /* Global Reset & Base */
@@ -91,7 +93,7 @@ html {
     color: var(--bh-ink);
     font-family: var(--bh-font-body);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -103,7 +105,23 @@ body.theme-bugis-heritage {
     position: relative;
 }
 
-/* Desktop Backdrop Frame & Grain */
+.theme-bugis-heritage.bh-js.is-locked {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Global Links */
+a {
+    color: var(--bh-gold-soft);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--bh-gold-bright);
+}
+
+/* Desktop Backdrop Frame & Ambient Environment */
 .bh-desktop-frame {
     display: none;
 }
@@ -115,11 +133,17 @@ body.theme-bugis-heritage {
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        background-color: var(--bh-bg-deep);
+        background-color: #0c0807;
+    }
+
+    .bh-desktop-frame::before {
+        content: '';
+        position: absolute;
+        inset: 0;
         background-image: url('svg/bg-pattern.svg');
         background-repeat: repeat;
-        background-size: 180px 180px;
-        opacity: 0.18;
+        background-size: 160px 160px;
+        opacity: 0.08;
     }
 }
 
@@ -128,33 +152,29 @@ body.theme-bugis-heritage {
     inset: 0;
     z-index: 99;
     pointer-events: none;
+    opacity: 0.05;
     background-image: url('svg/grain-silk.svg');
     background-repeat: repeat;
-    background-size: 200px 200px;
-    opacity: 0.04;
-    mix-blend-mode: overlay;
+    background-size: 100px 100px;
 }
 
-/* Stage & Centered Canvas (Mobile 360px up to 480px on desktop) */
+/* Layout Stage & Canvas */
 .bh-stage {
     position: relative;
     z-index: 1;
+    width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 .bh-canvas {
-    width: 100%;
     max-width: 480px;
-    min-width: 360px;
-    min-height: 100vh;
-    background-color: var(--bh-bg);
+    margin: 0 auto;
     position: relative;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    background-color: var(--bh-bg);
 }
 
-/* Walasuji & Lipa Patterns */
+/* Background Pattern Utilities */
 .bh-pattern-walasuji {
     background-image: url('svg/walasuji-tile.svg');
     background-repeat: repeat;
@@ -167,271 +187,79 @@ body.theme-bugis-heritage {
     background-size: 40px 40px;
 }
 
-/* Typography Utility */
+.bh-photo-frame--walasuji {
+    border-image-source: url('svg/walasuji-frame.svg');
+}
+
+/* Typography Base */
 .bh-display {
     font-family: var(--bh-font-display);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    color: var(--bh-ink);
-}
-
-.bh-script {
-    font-family: var(--bh-font-script);
-    color: var(--bh-accent);
-}
-
-.bh-kicker {
-    font-family: var(--bh-font-label);
-    font-size: 0.72rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    color: var(--bh-accent);
+    letter-spacing: 0.01em;
+    font-weight: 600;
 }
 
 .bh-body-serif {
     font-family: var(--bh-font-serif);
-    color: var(--bh-ink-soft);
+    line-height: 1.75;
+}
+
+.bh-script {
+    font-family: var(--bh-font-script);
+    font-weight: 400;
 }
 
 .bh-arabic {
     font-family: var(--bh-font-arabic);
-    font-size: 1.4rem;
-    line-height: 2.2;
     direction: rtl;
-    text-align: right;
-    color: var(--bh-ink);
+    line-height: 2.2;
 }
 
 .bh-lontara {
     font-family: var(--bh-font-lontara);
-    letter-spacing: 0.05em;
-    color: var(--bh-accent);
+    letter-spacing: 0.04em;
 }
 
-/* Section Common Structure */
+/* Sections Global */
 .bh-section {
     padding: 3.5rem 1.5rem;
     position: relative;
-    text-align: center;
 }
 
 .bh-section-title {
-    font-size: 2rem;
-    line-height: 1.25;
-    margin-bottom: 0.75rem;
+    font-size: clamp(2rem, 5.5vw, 2.6rem);
+    color: var(--bh-gold-soft);
+    text-align: center;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
 }
 
 .bh-section-subtitle {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--bh-ink-soft);
-    max-width: 380px;
-    margin: 0 auto 2rem;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
 }
 
-/* Ornaments & Borders */
-.bh-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2rem auto;
-    color: var(--bh-accent);
+/* Shimmer & Dash Animation Tokens (Tested) */
+@keyframes bh-shimmer {
+    0% { transform: translate(-100%, -100%) rotate(25deg); }
+    20% { transform: translate(100%, 100%) rotate(25deg); }
+    100% { transform: translate(100%, 100%) rotate(25deg); }
 }
 
-.bh-divider svg {
-    max-width: 140px;
-    height: auto;
+@keyframes bh-draw-stroke {
+    to {
+        stroke-dashoffset: 0;
+    }
 }
 
-.bh-corner-ornament {
-    position: absolute;
-    width: 36px;
-    height: 36px;
-    color: var(--bh-accent);
-    opacity: 0.75;
-    pointer-events: none;
-}
-
-.bh-corner-ornament--tl { top: 12px; left: 12px; }
-.bh-corner-ornament--tr { top: 12px; right: 12px; transform: scaleX(-1); }
-.bh-corner-ornament--bl { bottom: 12px; left: 12px; transform: scaleY(-1); }
-.bh-corner-ornament--br { bottom: 12px; right: 12px; transform: scale(-1); }
-
-/* Form Inputs */
-.bh-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-family: var(--bh-font-body);
-    font-size: 0.92rem;
-    color: var(--bh-ink);
-    background-color: var(--bh-bg);
-    border: 1px solid var(--bh-line);
-    border-radius: var(--bh-radius);
-    outline: none;
-    transition: border-color var(--bh-dur-fast) var(--bh-ease), box-shadow var(--bh-dur-fast) var(--bh-ease);
-}
-
-.bh-input:focus {
-    border-color: var(--bh-accent);
-    box-shadow: 0 0 10px var(--bh-glow);
-}
-
-.bh-input::placeholder {
-    color: var(--bh-ink-faint);
-}
-
-/* ==========================================================================
-   Love Story Section & Timeline
-   ========================================================================== */
-.bh-story-timeline {
-    position: relative;
-    max-width: 420px;
-    margin: 2rem auto 0;
-    padding: 0 0 0 1.5rem;
-}
-
-.bh-story-line {
-    position: absolute;
-    top: 12px;
-    bottom: 12px;
-    left: 10px;
-    width: 2px;
-    background: linear-gradient(to bottom, transparent, var(--bh-gold), transparent);
-}
-
-.bh-story-step {
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-.bh-story-marker {
-    position: absolute;
-    top: 1.25rem;
-    left: -1.75rem;
-    width: 20px;
-    height: 20px;
-    color: var(--bh-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--bh-bg);
-}
-
-.bh-story-marker svg {
-    width: 100%;
-    height: 100%;
-}
-
-.bh-story-card {
-    text-align: left;
-    padding: 1.5rem 1.25rem;
-}
-
-/* Card Components */
-.bh-card {
-    background-color: var(--bh-bg-elevated);
-    border: 1px solid var(--bh-line);
-    border-radius: var(--bh-radius);
-    padding: 1.75rem 1.25rem;
-    position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-}
-
-.bh-card--gold-border {
-    border: 1px solid var(--bh-gold);
-}
-
-/* Buttons */
-.bh-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.75rem;
-    font-family: var(--bh-font-label);
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    border-radius: var(--bh-radius);
-    border: 1px solid var(--bh-accent);
-    background-color: var(--bh-bg-elevated);
-    color: var(--bh-ink);
-    cursor: pointer;
-    text-decoration: none;
-    transition: all var(--bh-dur-fast) var(--bh-ease);
-}
-
-.bh-btn:hover, .bh-btn:focus-visible {
-    background-color: var(--bh-accent);
-    color: var(--bh-bg-deep);
-    box-shadow: 0 0 16px var(--bh-glow);
-    outline: none;
-}
-
-.bh-btn--primary {
-    background-color: var(--bh-accent);
-    color: var(--bh-bg-deep);
-}
-
-.bh-btn--primary:hover {
-    background-color: var(--bh-gold-soft);
-    color: var(--bh-bg-deep);
-}
-
-/* Floating Music Button */
-.bh-music-btn {
-    position: fixed;
-    bottom: 5.5rem;
-    right: max(1rem, calc((100vw - 480px) / 2 + 1rem));
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--bh-bg-elevated);
-    border: 1px solid var(--bh-accent);
-    color: var(--bh-accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 90;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-    transition: transform var(--bh-dur-fast) var(--bh-ease), background var(--bh-dur-fast) var(--bh-ease);
-}
-
-.bh-music-btn:hover {
-    transform: scale(1.08);
-    background: var(--bh-bg);
-}
-
-.bh-music-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.bh-music-icon--play {
-    animation: bh-spin 12s linear infinite;
-}
-
-.bh-music-btn[aria-pressed="false"] .bh-music-icon--play {
-    display: none;
-}
-
-.bh-music-btn[aria-pressed="false"] .bh-music-icon--muted {
-    display: block;
-}
-
-.bh-music-btn[aria-pressed="true"] .bh-music-icon--play {
-    display: block;
-}
-
-.bh-music-btn[aria-pressed="true"] .bh-music-icon--muted {
-    display: none;
-}
-
-@keyframes bh-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.bh-divider svg path,
+.bh-divider svg polygon {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: bh-draw-stroke 2s var(--bh-ease) forwards;
 }
 
 /* ==========================================================================
@@ -445,7 +273,7 @@ body.theme-bugis-heritage {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 3rem 1.5rem;
+    padding: 3.5rem 1.5rem;
     background-color: var(--bh-bg);
 }
 
@@ -462,8 +290,8 @@ body.theme-bugis-heritage {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: var(--bh-cover-overlay-color, #1f1a17);
-    opacity: var(--bh-cover-overlay-opacity, 0.50);
+    background-color: var(--bh-cover-overlay-color, #15110e);
+    opacity: var(--bh-cover-overlay-opacity, 0.55);
 }
 
 .bh-cover-frame-border {
@@ -478,7 +306,7 @@ body.theme-bugis-heritage {
     position: relative;
     z-index: 3;
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -486,23 +314,12 @@ body.theme-bugis-heritage {
     align-items: center;
 }
 
-/* Cover Style Variants */
-.bh-cover--top {
-    justify-content: flex-start;
-    padding-top: 4.5rem;
-}
-
-.bh-cover--space-between .bh-cover-inner {
-    min-height: calc(100vh - 6rem);
-    justify-content: space-between;
-}
-
 .bh-cover-badge {
     position: relative;
-    width: 56px;
-    height: 56px;
+    width: 64px;
+    height: 64px;
     margin-bottom: 1.25rem;
-    color: var(--bh-accent);
+    color: var(--bh-gold);
 }
 
 .bh-cover-badge svg {
@@ -517,321 +334,435 @@ body.theme-bugis-heritage {
     align-items: center;
     justify-content: center;
     font-family: var(--bh-font-display);
-    font-size: 1.05rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    color: var(--bh-accent);
+    color: var(--bh-gold);
+}
+
+.bh-cover-subtitle {
+    font-family: var(--bh-font-label);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--bh-gold);
+    margin-top: 0.5rem;
 }
 
 .bh-cover-names {
-    font-size: 2.25rem;
-    line-height: 1.2;
-    margin: 0.5rem 0;
+    font-family: var(--bh-font-display);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 600;
+    line-height: 1.15;
     color: var(--bh-cover-text-color, var(--bh-ink));
+    margin: 0.6rem 0;
+    letter-spacing: 0.02em;
 }
 
 .bh-cover-names .bh-script {
-    font-size: 2rem;
+    font-size: clamp(2.2rem, 7vw, 3.4rem);
     margin: 0 0.35rem;
-}
-
-.bh-cover-date {
-    font-family: var(--bh-font-label);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--bh-ink-soft);
-    margin-top: 0.25rem;
+    color: var(--bh-gold-bright);
 }
 
 .bh-cover-guest-card {
-    margin: 1.5rem 0;
-    padding: 1rem 1.25rem;
-    border: 1px solid var(--bh-line);
-    border-radius: var(--bh-radius);
     background-color: var(--bh-bg-elevated);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-radius: var(--bh-radius);
+    padding: 1.6rem 1.5rem;
+    margin: 1.8rem auto 1.5rem;
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
+    text-align: center;
+}
+
+.bh-guest-prefix {
+    font-family: var(--bh-font-label);
+    font-size: 0.88rem;
+    color: var(--bh-ink-soft);
+    margin-bottom: 0.4rem;
 }
 
 .bh-cover-guest-name {
     font-family: var(--bh-font-display);
-    font-size: 1.35rem;
+    font-size: 1.7rem;
     font-weight: 600;
-    color: var(--bh-accent);
-    margin: 0.2rem 0;
+    color: var(--bh-gold-soft);
+    line-height: 1.25;
 }
 
 .bh-cover-guest-group {
     font-family: var(--bh-font-label);
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
+    font-size: 0.85rem;
     color: var(--bh-ink-soft);
+    margin-top: 0.3rem;
 }
 
 .bh-cover-open-btn {
-    margin-top: 0.75rem;
-    padding: 0.9rem 2rem;
-    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    background-color: var(--bh-gold);
+    color: #140f0c;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.95rem 2.6rem;
+    font-family: var(--bh-font-label);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.25s var(--bh-ease), filter 0.25s var(--bh-ease);
+}
+
+.bh-cover-open-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+/* Traditional Gate Doors Animation */
+.bh-cover-door {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50.1%;
+    z-index: 1;
+    background-color: var(--bh-bg-deep);
+    transition: transform 1.6s var(--bh-ease);
+    pointer-events: none;
+    opacity: 0.98;
+}
+
+.bh-cover-door--left {
+    left: 0;
+    transform-origin: left center;
+}
+
+.bh-cover-door--right {
+    right: 0;
+    transform-origin: right center;
+}
+
+.theme-bugis-heritage.is-opened .bh-cover-door--left {
+    transform: translate3d(-102%, 0, 0);
+}
+
+.theme-bugis-heritage.is-opened .bh-cover-door--right {
+    transform: translate3d(102%, 0, 0);
 }
 
 /* ==========================================================================
-   Verse & Introductory Section
+   Verse Section (Sacred Illumination)
    ========================================================================== */
-.bh-verse-intro {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    max-width: 400px;
-    margin: 0 auto 1.5rem;
-    color: var(--bh-ink-soft);
+.bh-verse-section {
+    text-align: center;
+    padding: 4.5rem 1.5rem 3.5rem;
 }
 
-.bh-verse-card {
-    margin-top: 1.5rem;
-    padding: 2rem 1.5rem;
+.bh-verse-container {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.bh-verse-arabic {
+    font-family: var(--bh-font-arabic);
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    line-height: 2.2;
+    color: var(--bh-ink);
+    margin-bottom: 1.5rem;
 }
 
 .bh-verse-translation {
-    margin-top: 1.25rem;
+    font-family: var(--bh-font-display);
+    font-size: 1.15rem;
     font-style: italic;
-    font-size: 0.9rem;
-    line-height: 1.75;
+    line-height: 1.8;
     color: var(--bh-ink-soft);
+    margin-bottom: 1.25rem;
 }
 
 .bh-verse-source {
-    display: block;
-    margin-top: 1rem;
-    font-size: 0.75rem;
-    font-style: normal;
-}
-
-/* ==========================================================================
-   Couple Section & Photo Frames
-   ========================================================================== */
-.bh-couple-card {
-    margin-bottom: 2rem;
-    text-align: center;
-    padding: 2.25rem 1.5rem;
-}
-
-.bh-photo-frame {
-    position: relative;
-    width: 180px;
-    height: 180px;
-    margin: 0 auto 1.5rem;
-}
-
-.bh-photo-frame--diamond {
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.bh-photo-frame-ornament {
-    position: absolute;
-    inset: -12px;
-    color: var(--bh-accent);
-    pointer-events: none;
-    z-index: 2;
-}
-
-.bh-photo-frame-ornament svg {
-    width: 100%;
-    height: 100%;
-}
-
-.bh-photo-frame--diamond .bh-couple-img {
-    width: 130px;
-    height: 130px;
-    object-fit: cover;
-    transform: rotate(45deg);
-    border-radius: 4px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-.bh-photo-frame--arch {
-    width: 170px;
-    height: 220px;
-}
-
-.bh-photo-frame--arch .bh-couple-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 999px 999px 4px 4px;
-    border: 2px solid var(--bh-accent);
-    padding: 4px;
-}
-
-.bh-photo-frame--round {
-    width: 170px;
-    height: 170px;
-}
-
-.bh-photo-frame--round .bh-couple-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid var(--bh-accent);
-    padding: 4px;
-}
-
-.bh-couple-name {
-    font-size: 1.65rem;
-    line-height: 1.25;
-    color: var(--bh-ink);
-    margin-bottom: 0.25rem;
-}
-
-.bh-couple-nickname {
-    font-size: 1.4rem;
-    color: var(--bh-accent);
-    margin-bottom: 0.5rem;
-}
-
-.bh-couple-order {
-    font-size: 0.75rem;
-    margin-bottom: 0.75rem;
-}
-
-.bh-couple-parents {
+    font-family: var(--bh-font-label);
     font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--bh-ink-soft);
-}
-
-.bh-couple-parents strong {
-    color: var(--bh-ink);
-    font-weight: 600;
-}
-
-.bh-couple-origin {
-    font-size: 0.8rem;
-    margin-top: 0.35rem;
-    color: var(--bh-ink-faint);
-}
-
-.bh-couple-ig {
-    margin-top: 1.25rem;
-    padding: 0.5rem 1.15rem;
-    font-size: 0.75rem;
-    border-color: var(--bh-line);
-}
-
-.bh-couple-ampersand {
-    font-family: var(--bh-font-script);
-    font-size: 2.8rem;
-    line-height: 1;
-    color: var(--bh-accent);
-    margin: 0 auto 2rem;
-    text-align: center;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bh-gold);
+    font-weight: 500;
 }
 
 /* ==========================================================================
    Countdown Section
    ========================================================================== */
+.bh-countdown-section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+}
+
 .bh-countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
-    max-width: 380px;
-    margin: 1.5rem auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
 }
 
 .bh-countdown-box {
-    background-color: var(--bh-bg-elevated);
-    border: 1px solid var(--bh-line);
-    border-radius: var(--bh-radius);
-    padding: 1rem 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    min-width: 58px;
 }
 
 .bh-countdown-number {
     font-family: var(--bh-font-display);
-    font-size: 1.85rem;
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
     font-weight: 600;
+    color: var(--bh-gold);
     line-height: 1;
-    color: var(--bh-accent);
-    margin-bottom: 0.35rem;
 }
 
 .bh-countdown-label {
     font-family: var(--bh-font-label);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
+    font-size: 0.88rem;
+    font-weight: 500;
     color: var(--bh-ink-soft);
-}
-
-.bh-countdown-elapsed {
-    max-width: 380px;
-    margin: 1.5rem auto 0;
-    text-align: center;
-}
-
-.bh-countdown-elapsed[hidden] {
-    display: none !important;
+    margin-top: 0.4rem;
+    letter-spacing: 0.05em;
 }
 
 /* ==========================================================================
-   Gallery Section & Lightbox
+   Couple Section
    ========================================================================== */
-.bh-gallery-quote {
+.bh-couple-section {
+    padding: 3.5rem 1.5rem;
+    text-align: center;
+}
+
+.bh-couple-greeting {
+    font-family: var(--bh-font-serif);
+    font-size: 1.05rem;
     font-style: italic;
-    font-size: 0.9rem;
-    max-width: 380px;
+    color: var(--bh-gold-soft);
+    margin-bottom: 0.5rem;
+}
+
+.bh-couple-card {
+    background-color: var(--bh-bg-elevated);
+    border-radius: var(--bh-radius);
+    padding: 2.4rem 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.bh-photo-frame {
+    width: 170px;
+    height: 220px;
+    border-radius: 90px 90px 12px 12px;
+    overflow: hidden;
     margin: 0 auto 1.5rem;
+    border: 2px solid var(--bh-gold);
+    position: relative;
+    background-color: var(--bh-bg-deep);
+}
+
+.bh-photo-frame--round {
+    border-radius: 50% !important;
+    width: 170px !important;
+    height: 170px !important;
+}
+
+.bh-couple-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bh-couple-name {
+    font-family: var(--bh-font-display);
+    font-size: 1.85rem;
+    font-weight: 600;
+    color: var(--bh-gold-soft);
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+}
+
+.bh-couple-parents {
+    font-family: var(--bh-font-body);
+    font-size: 0.95rem;
+    color: var(--bh-ink-soft);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.bh-couple-ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.25rem;
+    background-color: rgba(201, 164, 92, 0.12);
+    border-radius: 9999px;
+    font-family: var(--bh-font-label);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--bh-gold-soft);
+    text-decoration: none;
+    transition: background-color var(--bh-dur-fast) var(--bh-ease), color var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-couple-ig:hover {
+    background-color: var(--bh-gold);
+    color: #140f0c;
+}
+
+.bh-couple-ampersand-divider {
+    font-family: var(--bh-font-script);
+    font-size: 2.8rem;
+    color: var(--bh-gold-bright);
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1;
+}
+
+/* ==========================================================================
+   Events Section
+   ========================================================================== */
+.bh-events-section {
+    padding: 3.5rem 1.5rem;
+}
+
+.bh-event-card {
+    background-color: var(--bh-bg-elevated);
+    border-radius: var(--bh-radius);
+    padding: 2.2rem 1.75rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.bh-event-title {
+    font-family: var(--bh-font-display);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--bh-gold-soft);
+    margin-bottom: 1rem;
+}
+
+.bh-event-date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+}
+
+.bh-event-day {
+    font-family: var(--bh-font-label);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--bh-gold);
+}
+
+.bh-event-date-num {
+    font-family: var(--bh-font-display);
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+    font-weight: 600;
+    color: var(--bh-ink);
+    line-height: 1.1;
+    margin: 0.2rem 0;
+}
+
+.bh-event-month-year {
+    font-family: var(--bh-font-serif);
+    font-size: 1.05rem;
+    font-style: italic;
     color: var(--bh-ink-soft);
 }
 
-.bh-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.bh-event-detail-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--bh-ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+}
+
+.bh-event-detail-item svg {
+    color: var(--bh-gold);
+    flex-shrink: 0;
+}
+
+.bh-event-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75rem;
     margin-top: 1.5rem;
 }
 
+.bh-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.4rem;
+    background-color: rgba(201, 164, 92, 0.12);
+    border-radius: 9999px;
+    font-family: var(--bh-font-label);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--bh-gold-soft);
+    text-decoration: none;
+    transition: background-color var(--bh-dur-fast) var(--bh-ease), color var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-btn-outline:hover {
+    background-color: var(--bh-gold);
+    color: #140f0c;
+}
+
+/* ==========================================================================
+   Gallery Section
+   ========================================================================== */
+.bh-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
 .bh-gallery-item {
-    position: relative;
-    border-radius: var(--bh-radius);
+    border-radius: var(--bh-radius-sm);
     overflow: hidden;
-    border: 1px solid var(--bh-line);
+    position: relative;
+    aspect-ratio: 1 / 1;
     background-color: var(--bh-bg-elevated);
     cursor: pointer;
 }
 
+.bh-gallery-item:first-child {
+    grid-column: span 2;
+    aspect-ratio: 16 / 10;
+}
+
 .bh-gallery-img {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     object-fit: cover;
     display: block;
     transition: transform var(--bh-dur-base) var(--bh-ease);
 }
 
 .bh-gallery-item:hover .bh-gallery-img {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
-.bh-gallery-caption {
-    font-family: var(--bh-font-label);
-    font-size: 0.72rem;
-    padding: 0.4rem;
-    background: rgba(31, 26, 23, 0.85);
-    color: var(--bh-ink);
-    text-align: center;
-}
-
+/* Lightbox Modal */
 .bh-lightbox {
     position: fixed;
     inset: 0;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -846,130 +777,101 @@ body.theme-bugis-heritage {
 .bh-lightbox-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(10, 8, 7, 0.92);
-    backdrop-filter: blur(6px);
+    background-color: rgba(0, 0, 0, 0.92);
 }
 
-.bh-lightbox-container {
+.bh-lightbox-content {
     position: relative;
-    z-index: 2;
-    max-width: 440px;
-    width: 100%;
-    text-align: center;
-}
-
-.bh-lightbox-img {
-    width: 100%;
-    max-height: 75vh;
-    object-fit: contain;
-    border-radius: var(--bh-radius);
-    border: 1px solid var(--bh-gold);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    max-width: 90vw;
+    max-height: 85vh;
 }
 
 .bh-lightbox-close {
     position: absolute;
-    top: -40px;
+    top: -44px;
     right: 0;
     background: transparent;
     border: none;
     color: var(--bh-ink);
     cursor: pointer;
-}
-
-.bh-lightbox-caption {
-    margin-top: 0.75rem;
-    font-family: var(--bh-font-body);
-    font-size: 0.85rem;
-    color: var(--bh-ink-soft);
-}
-
-/* ==========================================================================
-   Closing Section
-   ========================================================================== */
-.bh-closing-section {
-    padding-bottom: 7rem;
-}
-
-.bh-closing-card {
-    position: relative;
-    padding: 3rem 1.5rem;
-    text-align: center;
-}
-
-.bh-closing-silhouette {
-    max-width: 110px;
-    height: auto;
-    margin: 0 auto 1.5rem;
-    color: var(--bh-accent);
-    opacity: 0.85;
-}
-
-.bh-closing-silhouette svg {
-    width: 100%;
-    height: auto;
-}
-
-.bh-closing-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    max-width: 380px;
-    margin: 0 auto 1.5rem;
-    color: var(--bh-ink-soft);
-}
-
-.bh-closing-names {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin: 0.5rem 0 1.5rem;
-    color: var(--bh-ink);
-}
-
-.bh-co-inviters {
-    margin: 2rem 0 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--bh-line);
-}
-
-.bh-co-inviters-list {
-    list-style: none;
+    width: 44px;
+    height: 44px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 0.5rem 1rem;
-    margin-top: 0.75rem;
-}
-
-.bh-co-inviters-list li {
-    font-size: 0.85rem;
-    color: var(--bh-ink-soft);
-}
-
-.bh-closing-credit {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--bh-line);
-    font-size: 0.75rem;
-    color: var(--bh-ink-faint);
-}
-
-.bh-credit-prompt {
-    margin-bottom: 0.25rem;
-}
-
-.bh-credit-link {
-    color: var(--bh-accent);
-    font-weight: 500;
-    text-decoration: underline;
-}
-
-.bh-credit-brand {
-    margin-top: 0.5rem;
-    opacity: 0.6;
 }
 
 /* ==========================================================================
-   Sticky Bottom Navigation
+   RSVP & Wishes Section
+   ========================================================================== */
+.bh-card {
+    background-color: var(--bh-bg-elevated);
+    border-radius: var(--bh-radius);
+    padding: 2rem 1.5rem;
+}
+
+.bh-form-group {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.bh-form-label {
+    display: block;
+    font-family: var(--bh-font-label);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--bh-gold-soft);
+    margin-bottom: 0.4rem;
+}
+
+.bh-form-input,
+.bh-form-select,
+.bh-form-textarea {
+    width: 100%;
+    background-color: #120e0c;
+    border: 1px solid rgba(201, 164, 92, 0.28);
+    border-radius: var(--bh-radius-sm);
+    color: var(--bh-ink);
+    font-family: var(--bh-font-body);
+    font-size: 16px;
+    padding: 0.85rem 1rem;
+    transition: border-color var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-form-input:focus,
+.bh-form-select:focus,
+.bh-form-textarea:focus {
+    outline: none;
+    border-color: var(--bh-gold);
+}
+
+.bh-btn--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    width: 100%;
+    background-color: var(--bh-gold);
+    color: #140f0c;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.95rem 2rem;
+    font-family: var(--bh-font-label);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: transform 0.2s var(--bh-ease), filter 0.2s var(--bh-ease);
+}
+
+.bh-btn--primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+/* ==========================================================================
+   Navigation & Floating Actions
    ========================================================================== */
 .bh-bottom-nav {
     position: fixed;
@@ -978,14 +880,12 @@ body.theme-bugis-heritage {
     transform: translateX(-50%);
     width: 100%;
     max-width: 480px;
-    z-index: 80;
+    z-index: 100;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: var(--bh-bg-elevated);
-    border-top: 1px solid var(--bh-line);
+    background-color: rgba(22, 17, 14, 0.95);
     padding: 0.5rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom));
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .bh-bottom-nav[hidden] {
@@ -997,12 +897,12 @@ body.theme-bugis-heritage {
     flex-direction: column;
     align-items: center;
     gap: 0.2rem;
-    color: var(--bh-ink-soft);
+    color: var(--bh-ink-faint);
     text-decoration: none;
     font-family: var(--bh-font-label);
-    font-size: 0.68rem;
-    letter-spacing: 0.05em;
-    padding: 0.25rem 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.3rem 0.6rem;
     transition: color var(--bh-dur-fast) var(--bh-ease);
 }
 
@@ -1011,47 +911,39 @@ body.theme-bugis-heritage {
     height: 20px;
 }
 
-.bh-nav-item:hover, .bh-nav-item.is-active {
-    color: var(--bh-accent);
+.bh-nav-item.is-active,
+.bh-nav-item:hover {
+    color: var(--bh-gold);
 }
 
-.bh-nav-item--center {
-    color: var(--bh-accent);
-}
-
-.bh-nav-monogram {
-    width: 22px;
-    height: 22px;
-}
-
-.bh-nav-monogram svg {
-    width: 100%;
-    height: 100%;
-}
-
-.bh-btn--sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-}
-
-.bh-btn--glossary {
+.bh-music-btn {
+    position: fixed;
+    bottom: 4.8rem;
+    right: 1.25rem;
+    z-index: 99;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     background-color: var(--bh-bg-elevated);
-    border-color: var(--bh-line);
-    color: var(--bh-accent);
+    border: none;
+    color: var(--bh-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-.bh-btn--glossary:hover {
-    border-color: var(--bh-accent);
+.bh-music-btn[hidden] {
+    display: none !important;
 }
 
 /* ==========================================================================
-   Modal Dialog (Glosarium & Kredit)
+   Modals Global
    ========================================================================== */
 .bh-modal {
     position: fixed;
     inset: 0;
-    z-index: 105;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1066,113 +958,37 @@ body.theme-bugis-heritage {
 .bh-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(10, 8, 7, 0.88);
-    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.85);
 }
 
 .bh-modal-container {
     position: relative;
-    z-index: 2;
-    max-width: 440px;
+    z-index: 1;
     width: 100%;
+    max-width: 440px;
     background-color: var(--bh-bg-elevated);
-    border: 1px solid var(--bh-gold);
     border-radius: var(--bh-radius);
-    padding: 2.25rem 1.75rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    padding: 2rem 1.75rem;
 }
 
 .bh-modal-close {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 14px;
+    right: 14px;
     background: transparent;
     border: none;
     color: var(--bh-ink-soft);
     cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: color var(--bh-dur-fast) var(--bh-ease);
 }
 
 .bh-modal-close:hover {
-    color: var(--bh-accent);
-}
-
-/* Traditional Gate Doors Animation */
-.bh-cover-door {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 50.5%;
-    z-index: 1;
-    background-color: var(--bh-bg-deep);
-    border: 1px solid var(--bh-line);
-    transition: transform 1.6s var(--bh-ease);
-    pointer-events: none;
-    opacity: 0.98;
-}
-
-.bh-cover-door--left {
-    left: 0;
-    border-right: 1px solid var(--bh-gold);
-    transform-origin: left center;
-}
-
-.bh-cover-door--right {
-    right: 0;
-    border-left: 1px solid var(--bh-gold);
-    transform-origin: right center;
-}
-
-.theme-bugis-heritage.is-opened .bh-cover-door--left {
-    transform: translate3d(-102%, 0, 0);
-}
-
-.theme-bugis-heritage.is-opened .bh-cover-door--right {
-    transform: translate3d(102%, 0, 0);
-}
-
-/* Gold Shimmer Effect (10s cycle) */
-.bh-card--gold-border {
-    position: relative;
-    overflow: hidden;
-}
-
-.bh-card--gold-border::after {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        60deg,
-        transparent 40%,
-        rgba(201, 164, 92, 0.12) 50%,
-        transparent 60%
-    );
-    pointer-events: none;
-    transform: rotate(25deg);
-    animation: bh-shimmer 10s infinite linear;
-}
-
-@keyframes bh-shimmer {
-    0% { transform: translate(-100%, -100%) rotate(25deg); }
-    20% { transform: translate(100%, 100%) rotate(25deg); }
-    100% { transform: translate(100%, 100%) rotate(25deg); }
-}
-
-/* Walasuji Line Stroke Dashoffset animation */
-.bh-divider svg path,
-.bh-divider svg polygon {
-    stroke-dasharray: 200;
-    stroke-dashoffset: 200;
-    animation: bh-draw-stroke 2s var(--bh-ease) forwards;
-}
-
-@keyframes bh-draw-stroke {
-    to {
-        stroke-dashoffset: 0;
-    }
+    color: var(--bh-gold);
 }
 
 /* Accessible Keyboard Focus Ring */
@@ -1188,8 +1004,5 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
-    }
-    .bh-music-icon--play {
-        animation: none !important;
     }
 }

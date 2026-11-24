@@ -4,11 +4,6 @@
 @endphp
 
 <section id="section-events" class="bh-section bh-events-section" aria-label="Rangkaian Acara Pernikahan Adat">
-    <div class="bh-divider" aria-hidden="true">
-        <x-bugis-heritage.svg name="divider-diamond" />
-    </div>
-
-    <p class="bh-kicker">{{ __('invitation.events.kicker') }}</p>
     <h2 class="bh-display bh-section-title">{{ __('invitation.events.heading') }}</h2>
     <p class="bh-body-serif bh-section-subtitle">
         Dengan memohon berkah Allah SWT, berikut merupakan rangkaian prosesi pernikahan kami.

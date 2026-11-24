@@ -1,5 +1,4 @@
 <div class="bh-gift-content">
-    <p class="bh-kicker">{{ __('invitation.gift.kicker') }}</p>
     <h2 class="bh-display bh-section-title">{{ __('invitation.gift.heading') }}</h2>
 
     @if($invitation->thank_you_gift_note)
