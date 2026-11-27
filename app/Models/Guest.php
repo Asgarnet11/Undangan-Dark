@@ -18,7 +18,11 @@ class Guest extends Model
         'name',
         'code',
         'group',
+        'seating_table_id',
+        'seat_label',
         'max_pax',
+        'max_adults',
+        'max_children',
         'phone',
         'opened_at',
         'checked_in_at',
@@ -32,6 +36,8 @@ class Guest extends Model
     {
         return [
             'max_pax' => 'integer',
+            'max_adults' => 'integer',
+            'max_children' => 'integer',
             'opened_at' => 'datetime',
             'checked_in_at' => 'datetime',
             'allowed_event_ids' => 'array',
@@ -41,6 +47,11 @@ class Guest extends Model
     public function invitation(): BelongsTo
     {
         return $this->belongsTo(Invitation::class);
+    }
+
+    public function seatingTable(): BelongsTo
+    {
+        return $this->belongsTo(SeatingTable::class, 'seating_table_id');
     }
 
     public function rsvp(): HasOne

@@ -24,6 +24,11 @@ class Invitation extends Model implements HasMedia
         'slug',
         'theme',
         'theme_config',
+        'feature_flags',
+        'seat_info_visibility',
+        'rsvp_mode',
+        'rsvp_thanks_attending',
+        'rsvp_thanks_declined',
         'timezone',
         'title',
         'monogram_initial',
@@ -61,6 +66,13 @@ class Invitation extends Model implements HasMedia
         'dress_note',
         'wa_template',
         'thank_you_gift_note',
+        'gift_note',
+        'gift_whatsapp_number',
+        'gift_whatsapp_template',
+        'love_story_title',
+        'love_story_intro',
+        'registry_intro',
+        'seating_unassigned_note',
         'is_published',
         'no_index',
         'active_days_after_event',
@@ -73,6 +85,7 @@ class Invitation extends Model implements HasMedia
     {
         return [
             'theme_config' => 'array',
+            'feature_flags' => 'array',
             'is_published' => 'boolean',
             'no_index' => 'boolean',
             'active_days_after_event' => 'integer',
@@ -117,6 +130,26 @@ class Invitation extends Model implements HasMedia
     public function rsvps(): HasMany
     {
         return $this->hasMany(Rsvp::class);
+    }
+
+    public function loveStoryChapters(): HasMany
+    {
+        return $this->hasMany(LoveStoryChapter::class)->orderBy('sort_order');
+    }
+
+    public function seatingTables(): HasMany
+    {
+        return $this->hasMany(SeatingTable::class)->orderBy('sort_order');
+    }
+
+    public function qrisAccounts(): HasMany
+    {
+        return $this->hasMany(QrisAccount::class)->orderBy('sort_order');
+    }
+
+    public function giftRegistryLinks(): HasMany
+    {
+        return $this->hasMany(GiftRegistryLink::class)->orderBy('sort_order');
     }
 
     public function wishes(): HasMany

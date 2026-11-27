@@ -21,6 +21,7 @@ class Event extends Model
         'venue_name',
         'address',
         'maps_query',
+        'maps_url',
         'sort_order',
     ];
 
