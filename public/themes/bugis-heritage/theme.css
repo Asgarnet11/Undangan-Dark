@@ -354,21 +354,11 @@ a:hover {
 }
 
 .bh-cover-arch {
-    position: absolute;
-    inset: 14px;
-    border: 1px solid rgba(201, 164, 92, 0.22);
-    border-radius: 180px 180px 14px 14px;
-    pointer-events: none;
-    z-index: 2;
-    opacity: 0.35;
+    display: none;
 }
 
-.bh-cover-arch::before {
-    content: '';
-    position: absolute;
-    inset: 6px;
-    border: 1px solid rgba(201, 164, 92, 0.16);
-    border-radius: 174px 174px 10px 10px;
+.bh-cover .bh-corner-ornament {
+    display: none;
 }
 
 .bh-cover-bg {
@@ -385,7 +375,17 @@ a:hover {
     inset: 0;
     z-index: 1;
     background-color: var(--bh-bg-silk);
-    opacity: 0.08;
+    opacity: 0;
+}
+
+.bh-cover .bh-ornate-divider {
+    color: #7c5618;
+    opacity: 0.95;
+}
+
+.bh-cover .bh-ornate-divider::before,
+.bh-cover .bh-ornate-divider::after {
+    background: linear-gradient(90deg, transparent, rgba(124, 86, 24, 0.65), transparent);
 }
 
 .bh-cover-frame-border {
