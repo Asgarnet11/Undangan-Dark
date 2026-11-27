@@ -137,6 +137,23 @@ class Invitation extends Model implements HasMedia
         return $this->hasMany(LoveStoryChapter::class)->orderBy('sort_order');
     }
 
+    public function visibleLoveStoryChapters(): HasMany
+    {
+        return $this->hasMany(LoveStoryChapter::class)
+            ->where('is_visible', true)
+            ->orderBy('sort_order');
+    }
+
+    public function isFeatureEnabled(string $feature, bool $default = true): bool
+    {
+        $flags = $this->feature_flags;
+        if (! is_array($flags) || ! array_key_exists($feature, $flags)) {
+            return $default;
+        }
+
+        return (bool) $flags[$feature];
+    }
+
     public function seatingTables(): HasMany
     {
         return $this->hasMany(SeatingTable::class)->orderBy('sort_order');

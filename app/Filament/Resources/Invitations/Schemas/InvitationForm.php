@@ -450,6 +450,13 @@ class InvitationForm
                                     ->schema([
                                         TextInput::make('gallery_title')->label('Judul Galeri'),
                                         Textarea::make('gallery_quote')->label('Kutipan Galeri')->rows(2),
+                                        TextInput::make('love_story_title')
+                                            ->label('Judul Section Kisah Cinta')
+                                            ->placeholder('Kisah Cinta')
+                                            ->maxLength(120),
+                                        Textarea::make('love_story_intro')
+                                            ->label('Pengantar Kisah Cinta (Opsional)')
+                                            ->rows(2),
                                         Textarea::make('thank_you_gift_note')->label('Catatan Terima Kasih Hadiah')->rows(2),
                                         Textarea::make('gift_note')->label('Pengantar Tanda Kasih (Opsional)')->rows(2),
                                         Textarea::make('registry_intro')

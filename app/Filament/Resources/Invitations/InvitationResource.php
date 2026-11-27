@@ -13,6 +13,7 @@ use App\Filament\Resources\Invitations\RelationManagers\GiftAddressesRelationMan
 use App\Filament\Resources\Invitations\RelationManagers\GiftConfirmationsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GiftRegistryLinksRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GuestsRelationManager;
+use App\Filament\Resources\Invitations\RelationManagers\LoveStoryChaptersRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\QrisAccountsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\RsvpsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\SeatingTablesRelationManager;
@@ -54,6 +55,7 @@ class InvitationResource extends Resource
     {
         return [
             EventsRelationManager::class,
+            LoveStoryChaptersRelationManager::class,
             GalleryPhotosRelationManager::class,
             GiftAccountsRelationManager::class,
             QrisAccountsRelationManager::class,

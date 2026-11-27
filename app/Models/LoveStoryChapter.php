@@ -5,9 +5,33 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 
 class LoveStoryChapter extends Model
 {
+    protected static function booted(): void
+    {
+        static::creating(function (self $chapter): void {
+            $count = self::query()
+                ->where('invitation_id', $chapter->invitation_id)
+                ->count();
+
+            if ($count >= 8) {
+                throw ValidationException::withMessages([
+                    'title' => 'Maksimal 8 bab Kisah Cinta per undangan telah tercapai.',
+                ]);
+            }
+        });
+
+        static::saving(function (self $chapter): void {
+            $chapter->title = trim(strip_tags((string) $chapter->title));
+            $chapter->time_label = $chapter->time_label !== null
+                ? (trim(strip_tags((string) $chapter->time_label)) ?: null)
+                : null;
+            $chapter->body = trim(strip_tags((string) $chapter->body));
+        });
+    }
+
     /**
      * @var list<string>
      */

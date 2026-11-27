@@ -22,6 +22,9 @@ class InvitationController extends Controller
             'galleryPhotos',
             'giftAccounts',
             'giftAddresses',
+            'qrisAccounts',
+            'giftRegistryLinks',
+            'visibleLoveStoryChapters',
             'coInviters',
             'media',
         ]);
@@ -41,7 +44,7 @@ class InvitationController extends Controller
             if ($guest->opened_at === null) {
                 $guest->update(['opened_at' => now()]);
             }
-            $guest->load('rsvp');
+            $guest->load(['rsvp.rsvpEvents', 'seatingTable']);
 
             if (! empty($guest->allowed_event_ids) && is_array($guest->allowed_event_ids)) {
                 $invitation->setRelation(
