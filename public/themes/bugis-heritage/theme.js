@@ -260,6 +260,12 @@
                 observer.observe(target);
             });
         }
+        window.addEventListener('scroll', () => {
+            if (bottomNavEl && root.classList.contains('is-opened')) {
+                const coverBottom = coverEl ? coverEl.getBoundingClientRect().bottom : 0;
+                bottomNavEl.style.transform = coverBottom > 80 ? 'translateX(-50%) translateY(120%)' : 'translateX(-50%) translateY(0)';
+            }
+        }, { passive: true });
     };
 
     const initGlossaryModal = () => {

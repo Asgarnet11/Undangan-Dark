@@ -37,10 +37,18 @@
 
     <div class="bh-cover-inner">
         <header class="bh-cover-header">
+            <div class="bh-cover-silhouette" aria-hidden="true">
+                <x-bugis-heritage.svg name="rumah-panggung" />
+            </div>
+
             <div class="bh-cover-badge" aria-hidden="true">
                 <x-bugis-heritage.svg name="monogram-badge" />
                 <span class="bh-cover-monogram-text">{{ $monogram }}</span>
             </div>
+
+            <p class="bh-cover-subtitle">
+                {{ __('invitation.cover.wedding_invitation') }}
+            </p>
 
             <h1 class="bh-display bh-cover-names">
                 @if($brideFirst)
@@ -54,9 +62,15 @@
                 @endif
             </h1>
 
-            <p class="bh-cover-subtitle">
-                {{ __('invitation.cover.wedding_invitation') }}@if($eventDate) &bull; {{ $eventDate }}@endif
-            </p>
+            <div class="bh-card-border-gold" aria-hidden="true" style="max-width: 200px; margin: 0.5rem auto 0.75rem; color: var(--bh-gold);">
+                <x-bugis-heritage.svg name="border-gold" />
+            </div>
+
+            @if($eventDate)
+                <p class="bh-cover-date" style="font-family: var(--bh-font-serif); font-size: 1.05rem; font-style: italic; color: var(--bh-ink-soft);">
+                    {{ $eventDate }}
+                </p>
+            @endif
         </header>
 
         <div class="bh-cover-footer">

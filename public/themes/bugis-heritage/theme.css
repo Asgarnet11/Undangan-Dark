@@ -263,8 +263,64 @@ a:hover {
 }
 
 /* ==========================================================================
-   Cover Section
+   Cover Section & Ornaments
    ========================================================================== */
+.bh-corner-ornament {
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    color: var(--bh-gold);
+    opacity: 0.85;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.bh-corner-ornament--tl {
+    top: 16px;
+    left: 16px;
+}
+
+.bh-corner-ornament--tr {
+    top: 16px;
+    right: 16px;
+    transform: scaleX(-1);
+}
+
+.bh-corner-ornament--bl {
+    bottom: 16px;
+    left: 16px;
+    transform: scaleY(-1);
+}
+
+.bh-corner-ornament--br {
+    bottom: 16px;
+    right: 16px;
+    transform: scale(-1);
+}
+
+.bh-cover-silhouette {
+    width: 76px;
+    height: 52px;
+    margin: 0 auto 0.75rem;
+    color: var(--bh-gold);
+    opacity: 0.9;
+}
+
+.bh-cover-silhouette svg {
+    width: 100%;
+    height: 100%;
+}
+
+.bh-card-border-gold {
+    color: var(--bh-gold);
+    opacity: 0.8;
+}
+
+.bh-card-border-gold svg {
+    width: 100%;
+    height: auto;
+}
+
 .bh-cover {
     position: relative;
     min-height: 100vh;
@@ -803,12 +859,65 @@ a:hover {
 }
 
 /* ==========================================================================
-   RSVP & Wishes Section
+   RSVP & Wishes Section & Buttons
    ========================================================================== */
 .bh-card {
     background-color: var(--bh-bg-elevated);
     border-radius: var(--bh-radius);
     padding: 2rem 1.5rem;
+}
+
+.bh-card--gold-border {
+    border: 1px solid var(--bh-line);
+    position: relative;
+}
+
+.bh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--bh-font-label);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all var(--bh-dur-fast) var(--bh-ease);
+}
+
+.bh-btn--sm {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.84rem;
+    background-color: rgba(201, 164, 92, 0.12);
+    border: 1px solid var(--bh-line);
+    color: var(--bh-gold-soft);
+}
+
+.bh-btn--sm:hover {
+    background-color: var(--bh-gold);
+    color: #120e0c;
+    border-color: var(--bh-gold);
+}
+
+.bh-btn--glossary {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+    background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    color: var(--bh-gold-soft);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bh-btn--glossary:hover {
+    background-color: var(--bh-gold);
+    color: #120e0c;
+    border-color: var(--bh-gold);
+}
+
+.bh-btn--glossary svg {
+    color: currentColor;
 }
 
 .bh-form-group {
@@ -888,6 +997,8 @@ a:hover {
     padding: 0.5rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom));
 }
 
+.theme-bugis-heritage:not(.is-opened) .bh-bottom-nav,
+.theme-bugis-heritage.is-locked .bh-bottom-nav,
 .bh-bottom-nav[hidden] {
     display: none !important;
 }

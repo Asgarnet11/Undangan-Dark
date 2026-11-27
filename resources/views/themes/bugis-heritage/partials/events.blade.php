@@ -30,7 +30,7 @@
                 );
             @endphp
 
-            <article class="bh-card bh-card--gold-border bh-event-card bh-pattern-lipa" style="margin-bottom: 2rem; position: relative;">
+            <article class="bh-card bh-card--gold-border bh-event-card" style="margin-bottom: 2rem; position: relative;">
                 @if($isMappacci)
                     <div class="bh-event-pacci-accent" aria-hidden="true" style="position: absolute; top: 12px; right: 12px; width: 32px; height: 32px; color: var(--bh-accent); opacity: 0.85;">
                         <x-bugis-heritage.svg name="pacci-leaf" />
@@ -78,7 +78,7 @@
                     @endif
                 </div>
 
-                <div class="bh-event-actions" style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <div class="bh-event-actions" style="display: flex; gap: 0.65rem; justify-content: center; flex-wrap: wrap;">
                     @if($event->googleMapsUrl())
                         <a
                             href="{{ $event->googleMapsUrl() }}"
@@ -86,7 +86,11 @@
                             rel="noopener noreferrer"
                             class="bh-btn bh-btn--sm"
                         >
-                            {{ __('invitation.events.view_location') }}
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="14" height="14" aria-hidden="true">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span>{{ __('invitation.events.view_location') }}</span>
                         </a>
                     @endif
                     <a
@@ -95,13 +99,24 @@
                         rel="noopener noreferrer"
                         class="bh-btn bh-btn--sm"
                     >
-                        {{ __('invitation.events.save_calendar') }}
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="14" height="14" aria-hidden="true">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <span>{{ __('invitation.events.save_calendar') }}</span>
                     </a>
                     <a
                         href="{{ route('invitation.event.ics', ['slug' => $invitation->slug, 'event' => $event->id]) }}"
                         class="bh-btn bh-btn--sm"
                     >
-                        .ICS
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="14" height="14" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>.ICS</span>
                     </a>
                 </div>
             </article>
