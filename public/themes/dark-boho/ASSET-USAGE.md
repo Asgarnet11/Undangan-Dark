@@ -26,6 +26,7 @@ Dokumen ini mencatat seluruh berkas aset di direktori `public/themes/dark-boho/`
 | `svg/grain.svg` | Tekstur Noise Halus Halaman | `public/themes/dark-boho/theme.css` (`.db-grain`) |
 | `svg/bg-pattern.svg` | Pola Latar Desktop | `public/themes/dark-boho/theme.css` (`.db-desktop-frame::before`, `.db-desktop-frame::after`) |
 | `img/cover-boho.webp` | Latar Foto Default Cover | `resources/views/themes/dark-boho/partials/cover.blade.php` |
+| `img/bg-navy-mandala.jpg` | Latar Belakang Navy Mandala Emas | `public/themes/dark-boho/theme.css` (`.db-cover`) |
 | `img/og-preview.jpg` | Thumbnail Open Graph & Pratinjau WhatsApp | `resources/views/themes/dark-boho/layout.blade.php` |
 | `audio/boho-serenade.mp3` | Musik Latar Default Bebas Lisensi | `resources/views/themes/dark-boho/layout.blade.php` (`#db-bgm`) |
 | `theme.css` | Token, Cover, Masking, Indikator Nav, & Reduced Motion | `resources/views/themes/dark-boho/layout.blade.php` |

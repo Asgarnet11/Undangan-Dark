@@ -290,12 +290,25 @@ a:hover {
 /* ==========================================================================
    Cover Section & Royal Bugis Gate Ornaments
    ========================================================================== */
+.bh-cover-silhouette {
+    width: 84px;
+    height: 58px;
+    margin: 0 auto 0.5rem;
+    color: var(--bh-royal);
+    opacity: 0.85;
+}
+
+.bh-cover-silhouette svg {
+    width: 100%;
+    height: 100%;
+}
+
 .bh-corner-ornament {
     position: absolute;
-    width: 44px;
-    height: 44px;
+    width: 34px;
+    height: 34px;
     color: var(--bh-gold-bright);
-    opacity: 0.9;
+    opacity: 0.35;
     pointer-events: none;
     z-index: 5;
 }
@@ -306,11 +319,7 @@ a:hover {
 .bh-corner-ornament--br { bottom: 18px; right: 18px; transform: scale(-1); }
 
 .bh-cover-silhouette {
-    width: 118px;
-    height: 82px;
-    margin: 0 auto 0.5rem;
-    color: var(--bh-gold-bright);
-    opacity: 0.95;
+    display: none;
 }
 
 .bh-cover-silhouette svg {
@@ -336,26 +345,29 @@ a:hover {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 3.5rem 1.75rem;
-    background-color: var(--bh-royal);
-    background-image: radial-gradient(circle at 50% 35%, rgba(201, 164, 92, 0.16) 0%, transparent 65%), url('svg/walasuji-tile.svg');
-    background-size: 100% 100%, 64px 64px;
+    padding: 9.5rem 2.25rem 3.75rem;
+    background-color: var(--bh-bg);
+    background-image: url('img/bg-royal-maroon.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bh-cover-arch {
     position: absolute;
     inset: 14px;
-    border: 1.5px solid rgba(201, 164, 92, 0.55);
+    border: 1px solid rgba(201, 164, 92, 0.22);
     border-radius: 180px 180px 14px 14px;
     pointer-events: none;
     z-index: 2;
+    opacity: 0.35;
 }
 
 .bh-cover-arch::before {
     content: '';
     position: absolute;
     inset: 6px;
-    border: 1px solid rgba(201, 164, 92, 0.28);
+    border: 1px solid rgba(201, 164, 92, 0.16);
     border-radius: 174px 174px 10px 10px;
 }
 
@@ -372,8 +384,8 @@ a:hover {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: var(--bh-royal-deep);
-    opacity: 0.72;
+    background-color: var(--bh-bg-silk);
+    opacity: 0.08;
 }
 
 .bh-cover-frame-border {
@@ -398,10 +410,10 @@ a:hover {
 
 .bh-cover-badge {
     position: relative;
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 0.85rem;
-    color: var(--bh-gold-bright);
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 0.65rem;
+    color: var(--bh-royal);
 }
 
 .bh-cover-badge svg {
@@ -416,51 +428,51 @@ a:hover {
     align-items: center;
     justify-content: center;
     font-family: var(--bh-font-display);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
 }
 
 .bh-cover-subtitle {
     font-family: var(--bh-font-label);
-    font-size: 0.88rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--bh-gold-bright);
+    color: var(--bh-royal);
     margin-top: 0.25rem;
 }
 
 .bh-cover-names {
     font-family: var(--bh-font-display);
-    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-size: clamp(2.15rem, 7vw, 3.1rem);
     font-weight: 600;
     line-height: 1.15;
-    color: var(--bh-ink-on-dark);
-    margin: 0.5rem 0;
+    color: var(--bh-ink);
+    margin: 0.45rem 0;
     letter-spacing: 0.02em;
 }
 
 .bh-cover-names .bh-script {
-    font-size: clamp(2rem, 7vw, 3rem);
-    margin: 0 0.3rem;
-    color: var(--bh-gold-bright);
+    font-size: clamp(1.85rem, 6vw, 2.6rem);
+    margin: 0 0.25rem;
+    color: var(--bh-royal);
 }
 
 .bh-cover-date {
-    color: var(--bh-gold-soft) !important;
+    color: var(--bh-ink-soft) !important;
 }
 
 .bh-cover-guest-card {
-    background-color: var(--bh-bg-silk);
+    background-color: rgba(255, 251, 244, 0.92);
     border: 1.5px solid var(--bh-gold);
     border-radius: var(--bh-radius);
-    padding: 1.35rem 1.5rem;
-    margin: 1.6rem auto 1.4rem;
+    padding: 1.15rem 1.35rem;
+    margin: 1.25rem auto;
     width: 100%;
-    max-width: 320px;
+    max-width: 280px;
     text-align: center;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 24px rgba(76, 20, 27, 0.12);
 }
 
 .bh-guest-prefix {
@@ -491,24 +503,24 @@ a:hover {
     justify-content: center;
     gap: 0.65rem;
     width: auto;
-    background-color: var(--bh-gold);
-    color: var(--bh-royal-deep);
-    border: 1px solid var(--bh-gold-bright);
+    background-color: var(--bh-royal);
+    color: var(--bh-gold-soft);
+    border: 1px solid var(--bh-gold);
     border-radius: 9999px;
-    padding: 0.95rem 2.4rem;
+    padding: 0.9rem 2.2rem;
     font-family: var(--bh-font-label);
-    font-size: 0.92rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 6px 20px rgba(76, 20, 27, 0.28);
     transition: transform 0.25s var(--bh-ease), background-color 0.25s var(--bh-ease);
 }
 
 .bh-btn.bh-cover-open-btn:hover {
     transform: translateY(-2px);
-    background-color: var(--bh-gold-bright);
+    background-color: var(--bh-royal-deep);
 }
 
 /* Traditional Gate Doors Animation */

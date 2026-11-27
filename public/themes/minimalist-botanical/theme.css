@@ -3,19 +3,19 @@
    Zero external CDN dependencies. */
 
 :root {
-    --mb-primary: #4a5d4e;
-    --mb-primary-hover: #3d4e41;
-    --mb-secondary: #8a9a86;
-    --mb-accent: #c29d59;
-    --mb-bg: #fdfdfc;
-    --mb-bg-soft: #f4f6f3;
+    --mb-primary: #142c4c;
+    --mb-primary-hover: #0e2038;
+    --mb-secondary: #5a7291;
+    --mb-accent: #c5a46d;
+    --mb-bg: #f8f4ec;
+    --mb-bg-soft: #f0ebe1;
     --mb-bg-card: #ffffff;
-    --mb-text-main: #232b24;
-    --mb-text-soft: #5e6b60;
-    --mb-border: rgba(74, 93, 78, 0.18);
-    --mb-border-light: rgba(74, 93, 78, 0.08);
-    --mb-shadow: 0 10px 30px rgba(44, 58, 48, 0.06);
-    --mb-shadow-sm: 0 4px 12px rgba(44, 58, 48, 0.04);
+    --mb-text-main: #182334;
+    --mb-text-soft: #4c5a6e;
+    --mb-border: rgba(20, 44, 76, 0.18);
+    --mb-border-light: rgba(20, 44, 76, 0.08);
+    --mb-shadow: 0 10px 30px rgba(20, 44, 76, 0.08);
+    --mb-shadow-sm: 0 4px 12px rgba(20, 44, 76, 0.05);
 
     --mb-font-display: "Cormorant Garamond", Georgia, serif;
     --mb-font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -231,11 +231,17 @@ body.is-locked {
     z-index: 100;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 3rem 1.5rem 4rem;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 4.5rem 2.25rem 4.25rem;
     text-align: center;
-    background: var(--mb-bg);
-    transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.85s ease;
+    background-color: var(--mb-bg);
+    background-image: url('img/bg-navy-floral.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.85s ease;
 }
 
 .mb-cover.is-opened {
@@ -246,32 +252,58 @@ body.is-locked {
 
 .mb-cover-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 14% 13% 12%;
+    width: 74%;
+    height: 74%;
     object-fit: cover;
-    z-index: -2;
+    border-radius: 14px;
+    opacity: 0.1;
+    mix-blend-mode: multiply;
+    z-index: 0;
 }
 
 .mb-cover-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 14% 13% 12%;
+    width: 74%;
+    height: 74%;
+    border-radius: 14px;
+    background: #f8f4ec;
+    opacity: 0.35;
+    z-index: 1;
+}
+
+.mb-cover-arch {
+    position: absolute;
+    inset: 3.25rem 2rem;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.16;
+    color: var(--mb-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-cover-arch svg {
     width: 100%;
     height: 100%;
-    background: #ffffff;
-    opacity: 0.35;
-    z-index: -1;
+}
+
+.mb-cover-header,
+.mb-cover-footer {
+    position: relative;
+    z-index: 3;
 }
 
 .mb-cover-corner-tl {
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
-    width: 110px;
-    height: 110px;
+    width: 96px;
+    height: 96px;
     color: var(--mb-primary);
+    opacity: 0.2;
     pointer-events: none;
     z-index: 2;
 }
@@ -280,18 +312,25 @@ body.is-locked {
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
-    width: 110px;
-    height: 110px;
+    width: 96px;
+    height: 96px;
     color: var(--mb-primary);
+    opacity: 0.2;
     pointer-events: none;
     z-index: 2;
 }
 
+@keyframes mb-float-sway {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-4px) rotate(1deg); }
+}
+
 .mb-cover-wreath {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 1rem;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 0.75rem;
     color: var(--mb-primary);
+    animation: mb-float-sway 6s ease-in-out infinite;
 }
 
 .mb-cover-title {

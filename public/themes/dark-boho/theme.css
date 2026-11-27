@@ -4,9 +4,9 @@
 
 .theme-dark-boho {
     /* Latar */
-    --db-bg: #1d1d1b;
-    --db-bg-elevated: #262522;
-    --db-bg-deep: #151513;
+    --db-bg: #08152b;
+    --db-bg-elevated: #0e1e38;
+    --db-bg-deep: #050d1c;
 
     /* Teks (WCAG AA >= 4.5:1 di atas --db-bg dan --db-bg-elevated) */
     --db-ink: #efe6d8;
@@ -56,8 +56,8 @@
     --db-gutter: clamp(1rem, 4.5vw, 1.5rem);
 
     /* Opsi cover */
-    --db-cover-overlay-color: #1d1d1b;
-    --db-cover-overlay-opacity: 0.55;
+    --db-cover-overlay-color: #08152b;
+    --db-cover-overlay-opacity: 0.16;
     --db-cover-text-color: #efe6d8;
 
     color-scheme: dark;
@@ -384,25 +384,31 @@
     text-align: center;
     overflow: hidden;
     background-color: var(--db-bg-deep);
+    background-image: url('img/bg-navy-mandala.jpg');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--db-cover-text-color, var(--db-ink));
 }
 
 .db-cover-photo {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    inset: 10% 13%;
+    width: 74%;
+    height: 80%;
     object-fit: cover;
+    border-radius: 999px 999px 20px 20px;
+    opacity: 0.24;
+    mix-blend-mode: lighten;
     z-index: 0;
-    transform: scale(1.02);
 }
 
 .db-cover-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: var(--db-cover-overlay-color, #1d1d1b);
-    opacity: var(--db-cover-overlay-opacity, 0.55);
+    background-color: var(--db-cover-overlay-color, #08152b);
+    opacity: min(var(--db-cover-overlay-opacity, 0.15), 0.2);
 }
 
 .db-cover::after {
@@ -412,8 +418,7 @@
     z-index: 1;
     pointer-events: none;
     background:
-        radial-gradient(circle at 50% 42%, transparent 32%, rgba(21, 21, 19, 0.72) 100%),
-        linear-gradient(180deg, rgba(21, 21, 19, 0.36) 0%, transparent 28%, rgba(21, 21, 19, 0.65) 100%);
+        radial-gradient(ellipse at 50% 45%, rgba(8, 21, 43, 0.1) 0%, rgba(5, 13, 28, 0.24) 100%);
 }
 
 /* Panel lengkung pembuka (Arch Doors) */
@@ -430,7 +435,7 @@
     position: relative;
     width: 50%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(29, 29, 27, 0.72) 0%, rgba(21, 21, 19, 0.88) 100%);
+    background: linear-gradient(180deg, rgba(8, 21, 43, 0.12) 0%, rgba(5, 13, 28, 0.2) 100%);
     will-change: transform;
 }
 

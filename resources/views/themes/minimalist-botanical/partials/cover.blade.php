@@ -24,7 +24,7 @@
     </div>
 
     <header class="mb-cover-header">
-        <p class="mb-kicker">{{ __('invitation.cover.kicker') }}</p>
+        <p class="mb-kicker">{{ __('invitation.cover.subtitle') }}</p>
         <div class="mb-cover-wreath" aria-hidden="true">
             <x-minimalist-botanical.svg name="olive-wreath" />
         </div>
@@ -40,7 +40,7 @@
 
     <div class="mb-cover-footer">
         <div class="mb-cover-guest-card">
-            <p class="mb-kicker" style="margin-bottom: 0.25rem; font-size: 0.7rem;">{{ __('invitation.cover.dear') }}</p>
+            <p class="mb-kicker" style="margin-bottom: 0.25rem; font-size: 0.7rem;">{{ __('invitation.cover.guest_prefix') }}</p>
             <h2 class="mb-cover-guest-name">{{ $guestName }}</h2>
             @if($guest && $guest->group)
                 <p class="mb-body-soft" style="font-size: 0.8rem; margin-top: 0.25rem;">{{ $guest->group }}</p>

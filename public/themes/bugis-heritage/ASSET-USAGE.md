@@ -51,6 +51,7 @@ Semua aset vektor tersimpan di `public/themes/bugis-heritage/svg/`. Dibuat orisi
 |---|---|---|---|---|
 | `audio/heritage-instrumental.mp3` | MP3 | Musik latar instrumental khidmat dan berlisensi bebas | Creative Commons / Royalty-Free | Elemen `<audio id="bh-bgm">` di `layout.blade.php` |
 | `img/og-preview.jpg` | JPEG | Cadangan pratinjau media sosial (Open Graph & Twitter Card) | Milik Sendiri / Proyek | Meta tag `og:image` & `twitter:image` di `layout.blade.php` |
+| `img/bg-royal-maroon.jpg` | JPEG | Latar belakang sampul bingkai marun, mawar, lentera, & kaligrafi | Aset Proyek | `theme.css` (`.bh-cover`) |
 
 ---
 

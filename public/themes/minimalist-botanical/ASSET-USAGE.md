@@ -13,6 +13,7 @@ Semua aset di bawah ini dibuat orisinal, berukuran ringan, dan dirancang khusus 
 | `bg-botanical-pattern.svg` | Pola daun zaitun halus untuk latar desktop | `public/themes/minimalist-botanical/theme.css` (`.mb-desktop-backdrop`) |
 | `geometric-frame.svg` | Bingkai persegi minimalis bergaris tipis untuk foto mempelai | `resources/views/themes/minimalist-botanical/partials/couple.blade.php` |
 | `og-preview.jpg` | Gambar Open Graph preview untuk WhatsApp / media sosial | `resources/views/themes/minimalist-botanical/layout.blade.php` |
+| `bg-navy-floral.jpg` | Latar belakang bingkai navy floral mutiara pada sampul | `public/themes/minimalist-botanical/theme.css` (`.mb-cover`) |
 | `botanical-harmony.mp3` | Musik latar bawaan tema berirama lembut | `resources/views/themes/minimalist-botanical/layout.blade.php` |
 | `fonts.css` | Deklarasi font lokal Cormorant Garamond, Allura, Jost, dan Amiri | `resources/views/themes/minimalist-botanical/layout.blade.php` |
 | `cormorant-garamond-latin-400-italic.woff2` | Font serif miring untuk kutipan dan ayat | `public/themes/minimalist-botanical/fonts/fonts.css` |

@@ -427,10 +427,11 @@
             const titleEl = section.querySelector('.bh-section-title');
             if (titleEl && ScrollTrigger) {
                 gsap.from(titleEl, {
-                    y: 28,
+                    y: 24,
                     opacity: 0,
-                    duration: 0.8,
+                    duration: 0.85,
                     ease: 'power3.out',
+                    clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: titleEl,
                         start: 'top 88%',
@@ -439,17 +440,18 @@
                 });
             }
 
-            const items = section.querySelectorAll('.bh-card, .bh-story-step, .bh-gallery-item');
+            const items = section.querySelectorAll('.bh-card, .bh-story-step, .bh-gallery-item, .bh-countdown-box');
             if (items.length > 0 && ScrollTrigger) {
                 gsap.from(items, {
-                    y: 32,
+                    y: 28,
                     opacity: 0,
                     duration: 0.85,
-                    stagger: 0.12,
+                    stagger: 0.1,
                     ease: 'power2.out',
+                    clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: section,
-                        start: 'top 85%',
+                        start: 'top 86%',
                         once: true,
                     },
                 });
@@ -460,13 +462,14 @@
         document.querySelectorAll('.bh-photo-frame').forEach((frame) => {
             if (ScrollTrigger) {
                 gsap.from(frame, {
-                    scale: 0.92,
+                    scale: 0.94,
                     opacity: 0,
                     duration: 1.0,
                     ease: 'power2.out',
+                    clearProps: 'transform,opacity',
                     scrollTrigger: {
                         trigger: frame,
-                        start: 'top 85%',
+                        start: 'top 86%',
                         once: true,
                     },
                 });
@@ -477,10 +480,11 @@
         const silhouette = document.querySelector('.bh-closing-silhouette');
         if (silhouette && ScrollTrigger) {
             gsap.from(silhouette, {
-                y: 35,
+                y: 30,
                 opacity: 0,
-                duration: 1.2,
+                duration: 1.1,
                 ease: 'power2.out',
+                clearProps: 'transform,opacity',
                 scrollTrigger: {
                     trigger: silhouette,
                     start: 'top 90%',
