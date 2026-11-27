@@ -1,33 +1,39 @@
 /* Bugis Heritage Theme CSS
-   Aesthetic: Regal, warm, authentic, architectural Bugis royal wedding theme.
-   Silk, antique gold, walasuji geometric diamonds, local fonts.
+   Aesthetic: Regal, warm, authentic Bugis royal wedding theme.
+   Royal maroon/moss/aubergine velvet, warm cream silk (lipa' sabbe), antique gold,
+   walasuji geometric diamonds, Saoraja architecture, and local fonts.
    Zero external CDN dependencies. */
 
 :root {
-    --bh-bg: #15110e;
-    --bh-bg-elevated: #201a16;
-    --bh-bg-deep: #0c0807;
-    --bh-bg-silk: #f4ecdf;
+    --bh-bg: #f7f0e3;
+    --bh-bg-elevated: #fcf8f0;
+    --bh-bg-soft: #efe5d4;
+    --bh-bg-deep: #240b0e;
+    --bh-bg-silk: #f7f0e3;
 
-    --bh-ink: #fcf8f2;
-    --bh-ink-soft: #dcd0bf;
-    --bh-ink-faint: #ad9e89;
-    --bh-ink-on-silk: #221a16;
+    --bh-royal: #4c141b;
+    --bh-royal-deep: #2b090e;
+    --bh-ink: #2a181a;
+    --bh-ink-soft: #5c4346;
+    --bh-ink-faint: #7d6265;
+    --bh-ink-on-dark: #fcf6ea;
+    --bh-ink-on-dark-soft: #e2d3be;
 
     --bh-gold: #c9a45c;
-    --bh-gold-bright: #e8c67c;
-    --bh-gold-soft: #f4e3c1;
-    --bh-maroon: #732228;
-    --bh-moss: #3a5c37;
-    --bh-aubergine: #633658;
+    --bh-gold-bright: #e5c478;
+    --bh-gold-soft: #f5e6c4;
+    --bh-maroon: #4c141b;
+    --bh-moss: #233b24;
+    --bh-aubergine: #3d2038;
 
-    --bh-accent: #c9a45c;
-    --bh-accent-sub: #732228;
+    --bh-accent: #4c141b;
+    --bh-accent-sub: #c9a45c;
 
-    --bh-line: rgba(201, 164, 92, 0.22);
-    --bh-glow: rgba(201, 164, 92, 0.16);
-    --bh-radius: 12px;
-    --bh-radius-sm: 6px;
+    --bh-line: rgba(201, 164, 92, 0.38);
+    --bh-line-dark: rgba(76, 20, 27, 0.16);
+    --bh-glow: rgba(201, 164, 92, 0.2);
+    --bh-radius: 14px;
+    --bh-radius-sm: 8px;
 
     --bh-font-display: "Cormorant Garamond", Georgia, serif;
     --bh-font-body: "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -46,34 +52,43 @@
 /* Preset Overrides */
 [data-preset="marun-emas"],
 .bh-preset-marun-emas {
-    --bh-accent: var(--bh-gold);
-    --bh-accent-sub: var(--bh-maroon);
+    --bh-royal: #4c141b;
+    --bh-royal-deep: #24090d;
+    --bh-accent: #4c141b;
+    --bh-accent-sub: #c9a45c;
 }
 
 [data-preset="lumut-emas"],
 .bh-preset-lumut-emas {
-    --bh-accent: var(--bh-gold);
-    --bh-accent-sub: var(--bh-moss);
+    --bh-royal: #233b24;
+    --bh-royal-deep: #122113;
+    --bh-accent: #233b24;
+    --bh-accent-sub: #c9a45c;
+    --bh-ink: #1b281c;
+    --bh-ink-soft: #435444;
+    --bh-ink-faint: #637564;
 }
 
 [data-preset="terong-emas"],
 .bh-preset-terong-emas {
-    --bh-accent: var(--bh-gold);
-    --bh-accent-sub: var(--bh-aubergine);
+    --bh-royal: #3d2038;
+    --bh-royal-deep: #210f1e;
+    --bh-accent: #3d2038;
+    --bh-accent-sub: #c9a45c;
+    --bh-ink: #291826;
+    --bh-ink-soft: #523b4e;
+    --bh-ink-faint: #755b70;
 }
 
 [data-preset="krem-sutra"],
 .bh-preset-krem-sutra {
-    --bh-bg: #f4ecdf;
-    --bh-bg-elevated: #eae0cf;
-    --bh-bg-deep: #ded2bf;
-    --bh-ink: #221a16;
-    --bh-ink-soft: #4a3c33;
-    --bh-ink-faint: #7a6659;
-    --bh-accent: var(--bh-maroon);
-    --bh-accent-sub: var(--bh-gold);
-    --bh-line: rgba(115, 34, 40, 0.22);
-    --bh-glow: rgba(201, 164, 92, 0.18);
+    --bh-bg: #faf5eb;
+    --bh-bg-elevated: #ffffff;
+    --bh-bg-soft: #f2e8d7;
+    --bh-royal: #5e2228;
+    --bh-royal-deep: #3d1418;
+    --bh-accent: #5e2228;
+    --bh-accent-sub: #c9a45c;
 }
 
 /* Global Reset & Base */
@@ -89,7 +104,7 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--bh-bg-deep);
+    background-color: var(--bh-royal-deep);
     color: var(--bh-ink);
     font-family: var(--bh-font-body);
     font-size: 16px;
@@ -98,7 +113,7 @@ html {
 }
 
 body.theme-bugis-heritage {
-    background-color: var(--bh-bg-deep);
+    background-color: var(--bh-royal-deep);
     color: var(--bh-ink);
     min-height: 100vh;
     overflow-x: hidden;
@@ -112,13 +127,13 @@ body.theme-bugis-heritage {
 
 /* Global Links */
 a {
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
 a:hover {
-    color: var(--bh-gold-bright);
+    color: var(--bh-gold);
 }
 
 /* Desktop Backdrop Frame & Ambient Environment */
@@ -133,7 +148,7 @@ a:hover {
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        background-color: #0c0807;
+        background-color: var(--bh-royal-deep);
     }
 
     .bh-desktop-frame::before {
@@ -143,7 +158,7 @@ a:hover {
         background-image: url('svg/bg-pattern.svg');
         background-repeat: repeat;
         background-size: 160px 160px;
-        opacity: 0.08;
+        opacity: 0.1;
     }
 }
 
@@ -152,7 +167,7 @@ a:hover {
     inset: 0;
     z-index: 99;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.04;
     background-image: url('svg/grain-silk.svg');
     background-repeat: repeat;
     background-size: 100px 100px;
@@ -172,13 +187,14 @@ a:hover {
     position: relative;
     z-index: 1;
     background-color: var(--bh-bg);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.55);
 }
 
 /* Background Pattern Utilities */
 .bh-pattern-walasuji {
     background-image: url('svg/walasuji-tile.svg');
     background-repeat: repeat;
-    background-size: 48px 48px;
+    background-size: 56px 56px;
 }
 
 .bh-pattern-lipa {
@@ -219,6 +235,15 @@ a:hover {
     letter-spacing: 0.04em;
 }
 
+.bh-kicker {
+    font-family: var(--bh-font-label);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bh-royal);
+}
+
 /* Sections Global */
 .bh-section {
     padding: 3.5rem 1.5rem;
@@ -226,10 +251,10 @@ a:hover {
 }
 
 .bh-section-title {
-    font-size: clamp(2rem, 5.5vw, 2.6rem);
-    color: var(--bh-gold-soft);
+    font-size: clamp(2rem, 5.5vw, 2.5rem);
+    color: var(--bh-royal);
     text-align: center;
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.45rem;
     line-height: 1.2;
 }
 
@@ -238,8 +263,8 @@ a:hover {
     color: var(--bh-ink-soft);
     text-align: center;
     max-width: 400px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.6;
+    margin: 0 auto 2.25rem;
+    line-height: 1.65;
 }
 
 /* Shimmer & Dash Animation Tokens (Tested) */
@@ -263,47 +288,29 @@ a:hover {
 }
 
 /* ==========================================================================
-   Cover Section & Ornaments
+   Cover Section & Royal Bugis Gate Ornaments
    ========================================================================== */
 .bh-corner-ornament {
     position: absolute;
-    width: 38px;
-    height: 38px;
-    color: var(--bh-gold);
-    opacity: 0.85;
+    width: 44px;
+    height: 44px;
+    color: var(--bh-gold-bright);
+    opacity: 0.9;
     pointer-events: none;
     z-index: 5;
 }
 
-.bh-corner-ornament--tl {
-    top: 16px;
-    left: 16px;
-}
-
-.bh-corner-ornament--tr {
-    top: 16px;
-    right: 16px;
-    transform: scaleX(-1);
-}
-
-.bh-corner-ornament--bl {
-    bottom: 16px;
-    left: 16px;
-    transform: scaleY(-1);
-}
-
-.bh-corner-ornament--br {
-    bottom: 16px;
-    right: 16px;
-    transform: scale(-1);
-}
+.bh-corner-ornament--tl { top: 18px; left: 18px; }
+.bh-corner-ornament--tr { top: 18px; right: 18px; transform: scaleX(-1); }
+.bh-corner-ornament--bl { bottom: 18px; left: 18px; transform: scaleY(-1); }
+.bh-corner-ornament--br { bottom: 18px; right: 18px; transform: scale(-1); }
 
 .bh-cover-silhouette {
-    width: 76px;
-    height: 52px;
-    margin: 0 auto 0.75rem;
-    color: var(--bh-gold);
-    opacity: 0.9;
+    width: 118px;
+    height: 82px;
+    margin: 0 auto 0.5rem;
+    color: var(--bh-gold-bright);
+    opacity: 0.95;
 }
 
 .bh-cover-silhouette svg {
@@ -313,7 +320,7 @@ a:hover {
 
 .bh-card-border-gold {
     color: var(--bh-gold);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .bh-card-border-gold svg {
@@ -329,8 +336,27 @@ a:hover {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding: 3.5rem 1.5rem;
-    background-color: var(--bh-bg);
+    padding: 3.5rem 1.75rem;
+    background-color: var(--bh-royal);
+    background-image: radial-gradient(circle at 50% 35%, rgba(201, 164, 92, 0.16) 0%, transparent 65%), url('svg/walasuji-tile.svg');
+    background-size: 100% 100%, 64px 64px;
+}
+
+.bh-cover-arch {
+    position: absolute;
+    inset: 14px;
+    border: 1.5px solid rgba(201, 164, 92, 0.55);
+    border-radius: 180px 180px 14px 14px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bh-cover-arch::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201, 164, 92, 0.28);
+    border-radius: 174px 174px 10px 10px;
 }
 
 .bh-cover-bg {
@@ -346,13 +372,13 @@ a:hover {
     position: absolute;
     inset: 0;
     z-index: 1;
-    background-color: var(--bh-cover-overlay-color, #15110e);
-    opacity: var(--bh-cover-overlay-opacity, 0.55);
+    background-color: var(--bh-royal-deep);
+    opacity: 0.72;
 }
 
 .bh-cover-frame-border {
     position: absolute;
-    inset: 16px;
+    inset: 24px;
     z-index: 2;
     border: 1px solid var(--bh-line);
     pointer-events: none;
@@ -360,9 +386,9 @@ a:hover {
 
 .bh-cover-inner {
     position: relative;
-    z-index: 3;
+    z-index: 4;
     width: 100%;
-    max-width: 400px;
+    max-width: 390px;
     margin: 0 auto;
     text-align: center;
     display: flex;
@@ -372,10 +398,10 @@ a:hover {
 
 .bh-cover-badge {
     position: relative;
-    width: 64px;
-    height: 64px;
-    margin-bottom: 1.25rem;
-    color: var(--bh-gold);
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 0.85rem;
+    color: var(--bh-gold-bright);
 }
 
 .bh-cover-badge svg {
@@ -390,91 +416,99 @@ a:hover {
     align-items: center;
     justify-content: center;
     font-family: var(--bh-font-display);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: var(--bh-gold);
+    color: var(--bh-gold-soft);
 }
 
 .bh-cover-subtitle {
     font-family: var(--bh-font-label);
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     font-weight: 500;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--bh-gold);
-    margin-top: 0.5rem;
+    color: var(--bh-gold-bright);
+    margin-top: 0.25rem;
 }
 
 .bh-cover-names {
     font-family: var(--bh-font-display);
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
     font-weight: 600;
     line-height: 1.15;
-    color: var(--bh-cover-text-color, var(--bh-ink));
-    margin: 0.6rem 0;
+    color: var(--bh-ink-on-dark);
+    margin: 0.5rem 0;
     letter-spacing: 0.02em;
 }
 
 .bh-cover-names .bh-script {
-    font-size: clamp(2.2rem, 7vw, 3.4rem);
-    margin: 0 0.35rem;
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin: 0 0.3rem;
     color: var(--bh-gold-bright);
 }
 
+.bh-cover-date {
+    color: var(--bh-gold-soft) !important;
+}
+
 .bh-cover-guest-card {
-    background-color: var(--bh-bg-elevated);
+    background-color: var(--bh-bg-silk);
+    border: 1.5px solid var(--bh-gold);
     border-radius: var(--bh-radius);
-    padding: 1.6rem 1.5rem;
-    margin: 1.8rem auto 1.5rem;
+    padding: 1.35rem 1.5rem;
+    margin: 1.6rem auto 1.4rem;
     width: 100%;
-    max-width: 340px;
+    max-width: 320px;
     text-align: center;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
 .bh-guest-prefix {
     font-family: var(--bh-font-label);
-    font-size: 0.88rem;
+    font-size: 0.84rem;
     color: var(--bh-ink-soft);
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.3rem;
 }
 
 .bh-cover-guest-name {
     font-family: var(--bh-font-display);
-    font-size: 1.7rem;
+    font-size: 1.65rem;
     font-weight: 600;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     line-height: 1.25;
 }
 
 .bh-cover-guest-group {
     font-family: var(--bh-font-label);
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--bh-ink-soft);
-    margin-top: 0.3rem;
+    margin-top: 0.25rem;
 }
 
-.bh-cover-open-btn {
+.bh-btn.bh-cover-open-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.65rem;
+    width: auto;
     background-color: var(--bh-gold);
-    color: #140f0c;
-    border: none;
+    color: var(--bh-royal-deep);
+    border: 1px solid var(--bh-gold-bright);
     border-radius: 9999px;
-    padding: 0.95rem 2.6rem;
+    padding: 0.95rem 2.4rem;
     font-family: var(--bh-font-label);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    transition: transform 0.25s var(--bh-ease), filter 0.25s var(--bh-ease);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s var(--bh-ease), background-color 0.25s var(--bh-ease);
 }
 
-.bh-cover-open-btn:hover {
+.bh-btn.bh-cover-open-btn:hover {
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    background-color: var(--bh-gold-bright);
 }
 
 /* Traditional Gate Doors Animation */
@@ -484,10 +518,10 @@ a:hover {
     bottom: 0;
     width: 50.1%;
     z-index: 1;
-    background-color: var(--bh-bg-deep);
+    background-color: var(--bh-royal-deep);
     transition: transform 1.6s var(--bh-ease);
     pointer-events: none;
-    opacity: 0.98;
+    opacity: 0.45;
 }
 
 .bh-cover-door--left {
@@ -509,11 +543,59 @@ a:hover {
 }
 
 /* ==========================================================================
-   Verse Section (Sacred Illumination)
+   Countdown Section (Royal Accent Band)
+   ========================================================================== */
+.bh-countdown-section {
+    padding: 3.25rem 1.5rem;
+    text-align: center;
+    background-color: var(--bh-royal);
+    color: var(--bh-ink-on-dark);
+    border-top: 2px solid var(--bh-gold);
+    border-bottom: 2px solid var(--bh-gold);
+}
+
+.bh-countdown-section .bh-section-title {
+    color: var(--bh-gold-soft);
+}
+
+.bh-countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.35rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+.bh-countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.bh-countdown-number {
+    font-family: var(--bh-font-display);
+    font-size: clamp(2.3rem, 6vw, 3rem);
+    font-weight: 600;
+    color: var(--bh-gold-bright);
+    line-height: 1;
+}
+
+.bh-countdown-label {
+    font-family: var(--bh-font-label);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--bh-ink-on-dark-soft);
+    margin-top: 0.4rem;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Verse Section (Warm Cream Silk)
    ========================================================================== */
 .bh-verse-section {
     text-align: center;
-    padding: 4.5rem 1.5rem 3.5rem;
+    padding: 4rem 1.5rem 3.25rem;
+    background-color: var(--bh-bg);
 }
 
 .bh-verse-container {
@@ -523,9 +605,9 @@ a:hover {
 
 .bh-verse-arabic {
     font-family: var(--bh-font-arabic);
-    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    font-size: clamp(1.55rem, 5vw, 2.05rem);
     line-height: 2.2;
-    color: var(--bh-ink);
+    color: var(--bh-royal);
     margin-bottom: 1.5rem;
 }
 
@@ -533,8 +615,8 @@ a:hover {
     font-family: var(--bh-font-display);
     font-size: 1.15rem;
     font-style: italic;
-    line-height: 1.8;
-    color: var(--bh-ink-soft);
+    line-height: 1.75;
+    color: var(--bh-ink);
     margin-bottom: 1.25rem;
 }
 
@@ -543,47 +625,8 @@ a:hover {
     font-size: 0.88rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--bh-gold);
-    font-weight: 500;
-}
-
-/* ==========================================================================
-   Countdown Section
-   ========================================================================== */
-.bh-countdown-section {
-    padding: 3rem 1.5rem;
-    text-align: center;
-}
-
-.bh-countdown-grid {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-}
-
-.bh-countdown-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 58px;
-}
-
-.bh-countdown-number {
-    font-family: var(--bh-font-display);
-    font-size: clamp(2.4rem, 6vw, 3.2rem);
+    color: var(--bh-royal);
     font-weight: 600;
-    color: var(--bh-gold);
-    line-height: 1;
-}
-
-.bh-countdown-label {
-    font-family: var(--bh-font-label);
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--bh-ink-soft);
-    margin-top: 0.4rem;
-    letter-spacing: 0.05em;
 }
 
 /* ==========================================================================
@@ -592,42 +635,46 @@ a:hover {
 .bh-couple-section {
     padding: 3.5rem 1.5rem;
     text-align: center;
+    background-color: var(--bh-bg-soft);
 }
 
 .bh-couple-greeting {
     font-family: var(--bh-font-serif);
     font-size: 1.05rem;
     font-style: italic;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     margin-bottom: 0.5rem;
 }
 
 .bh-couple-card {
     background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    border-top: 3px solid var(--bh-royal);
     border-radius: var(--bh-radius);
     padding: 2.4rem 1.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .bh-photo-frame {
-    width: 170px;
-    height: 220px;
-    border-radius: 90px 90px 12px 12px;
+    width: 175px;
+    height: 225px;
+    border-radius: 95px 95px 14px 14px;
     overflow: hidden;
     margin: 0 auto 1.5rem;
-    border: 2px solid var(--bh-gold);
+    border: 2.5px solid var(--bh-gold);
     position: relative;
-    background-color: var(--bh-bg-deep);
+    background-color: var(--bh-bg-soft);
 }
 
 .bh-photo-frame--round {
     border-radius: 50% !important;
-    width: 170px !important;
-    height: 170px !important;
+    width: 175px !important;
+    height: 175px !important;
 }
 
-.bh-couple-photo {
+.bh-couple-photo,
+.bh-couple-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -638,16 +685,35 @@ a:hover {
     font-family: var(--bh-font-display);
     font-size: 1.85rem;
     font-weight: 600;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     line-height: 1.25;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
+}
+
+.bh-couple-nickname {
+    font-size: 1.4rem;
+    color: var(--bh-gold);
+    margin-bottom: 0.6rem;
+}
+
+.bh-couple-order {
+    font-family: var(--bh-font-label);
+    font-size: 0.85rem;
+    color: var(--bh-ink-soft);
+    margin-bottom: 0.3rem;
 }
 
 .bh-couple-parents {
     font-family: var(--bh-font-body);
     font-size: 0.95rem;
     color: var(--bh-ink-soft);
-    line-height: 1.6;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+}
+
+.bh-couple-origin {
+    font-size: 0.9rem;
+    color: var(--bh-ink-faint);
     margin-bottom: 1rem;
 }
 
@@ -655,28 +721,46 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.55rem 1.25rem;
-    background-color: rgba(201, 164, 92, 0.12);
+    padding: 0.5rem 1.2rem;
+    background-color: var(--bh-bg-soft);
+    border: 1px solid var(--bh-line);
     border-radius: 9999px;
     font-family: var(--bh-font-label);
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     font-weight: 500;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     text-decoration: none;
     transition: background-color var(--bh-dur-fast) var(--bh-ease), color var(--bh-dur-fast) var(--bh-ease);
 }
 
 .bh-couple-ig:hover {
-    background-color: var(--bh-gold);
-    color: #140f0c;
+    background-color: var(--bh-royal);
+    color: var(--bh-ink-on-dark);
 }
 
-.bh-couple-ampersand-divider {
+.bh-couple-ampersand {
     font-family: var(--bh-font-script);
-    font-size: 2.8rem;
-    color: var(--bh-gold-bright);
-    margin: 0.5rem 0 1.5rem;
+    font-size: 3rem;
+    color: var(--bh-gold);
+    margin: 0.25rem 0 1.5rem;
     line-height: 1;
+}
+
+/* ==========================================================================
+   Love Story Section
+   ========================================================================== */
+.bh-story-section {
+    background-color: var(--bh-bg);
+}
+
+.bh-story-step {
+    background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    border-left: 3px solid var(--bh-gold);
+    border-radius: var(--bh-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+    text-align: left;
 }
 
 /* ==========================================================================
@@ -684,12 +768,15 @@ a:hover {
    ========================================================================== */
 .bh-events-section {
     padding: 3.5rem 1.5rem;
+    background-color: var(--bh-bg-soft);
 }
 
 .bh-event-card {
     background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
+    border-top: 3px solid var(--bh-royal);
     border-radius: var(--bh-radius);
-    padding: 2.2rem 1.75rem;
+    padding: 2.2rem 1.5rem;
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -698,90 +785,46 @@ a:hover {
     font-family: var(--bh-font-display);
     font-size: 1.7rem;
     font-weight: 600;
-    color: var(--bh-gold-soft);
-    margin-bottom: 1rem;
+    color: var(--bh-royal) !important;
+    margin-bottom: 0.75rem;
 }
 
-.bh-event-date-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-}
-
-.bh-event-day {
-    font-family: var(--bh-font-label);
-    font-size: 0.95rem;
+.bh-event-card .bh-kicker {
+    color: var(--bh-royal) !important;
     font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--bh-gold);
 }
 
-.bh-event-date-num {
-    font-family: var(--bh-font-display);
-    font-size: clamp(2.4rem, 6vw, 3.2rem);
-    font-weight: 600;
-    color: var(--bh-ink);
-    line-height: 1.1;
-    margin: 0.2rem 0;
+.bh-event-card .bh-display {
+    color: var(--bh-ink) !important;
 }
 
-.bh-event-month-year {
-    font-family: var(--bh-font-serif);
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--bh-ink-soft);
+.bh-event-card .bh-body-serif {
+    color: var(--bh-ink-soft) !important;
 }
 
-.bh-event-detail-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
-    color: var(--bh-ink);
-    margin-bottom: 0.6rem;
-    line-height: 1.5;
-}
-
-.bh-event-detail-item svg {
-    color: var(--bh-gold);
-    flex-shrink: 0;
-}
-
-.bh-event-actions {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-}
-
-.bh-btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.4rem;
-    background-color: rgba(201, 164, 92, 0.12);
-    border-radius: 9999px;
-    font-family: var(--bh-font-label);
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--bh-gold-soft);
-    text-decoration: none;
-    transition: background-color var(--bh-dur-fast) var(--bh-ease), color var(--bh-dur-fast) var(--bh-ease);
-}
-
-.bh-btn-outline:hover {
-    background-color: var(--bh-gold);
-    color: #140f0c;
+.bh-event-adat-desc {
+    background: var(--bh-bg-soft) !important;
+    color: var(--bh-ink) !important;
+    border-left: 3px solid var(--bh-gold) !important;
+    border-radius: 4px;
 }
 
 /* ==========================================================================
-   Gallery Section
+   Gallery Section (Royal Accent Showcase)
    ========================================================================== */
+.bh-gallery-section {
+    background-color: var(--bh-royal);
+    color: var(--bh-ink-on-dark);
+}
+
+.bh-gallery-section .bh-section-title {
+    color: var(--bh-gold-soft);
+}
+
+.bh-gallery-section .bh-section-subtitle {
+    color: var(--bh-ink-on-dark-soft);
+}
+
 .bh-gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -793,7 +836,8 @@ a:hover {
     overflow: hidden;
     position: relative;
     aspect-ratio: 1 / 1;
-    background-color: var(--bh-bg-elevated);
+    background-color: var(--bh-royal-deep);
+    border: 1px solid rgba(201, 164, 92, 0.35);
     cursor: pointer;
 }
 
@@ -849,7 +893,7 @@ a:hover {
     right: 0;
     background: transparent;
     border: none;
-    color: var(--bh-ink);
+    color: var(--bh-ink-on-dark);
     cursor: pointer;
     width: 44px;
     height: 44px;
@@ -859,10 +903,20 @@ a:hover {
 }
 
 /* ==========================================================================
-   RSVP & Wishes Section & Buttons
+   RSVP, Gift, Wishes & Buttons
    ========================================================================== */
+.bh-rsvp-section,
+.bh-wishes-section {
+    background-color: var(--bh-bg);
+}
+
+.bh-gift-section {
+    background-color: var(--bh-bg-soft);
+}
+
 .bh-card {
     background-color: var(--bh-bg-elevated);
+    border: 1px solid var(--bh-line);
     border-radius: var(--bh-radius);
     padding: 2rem 1.5rem;
 }
@@ -870,6 +924,10 @@ a:hover {
 .bh-card--gold-border {
     border: 1px solid var(--bh-line);
     position: relative;
+}
+
+.bh-qr-badge {
+    color: var(--bh-royal) !important;
 }
 
 .bh-btn {
@@ -890,30 +948,28 @@ a:hover {
 .bh-btn--sm {
     padding: 0.6rem 1.25rem;
     font-size: 0.84rem;
-    background-color: rgba(201, 164, 92, 0.12);
+    background-color: var(--bh-bg-soft);
     border: 1px solid var(--bh-line);
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
 }
 
 .bh-btn--sm:hover {
-    background-color: var(--bh-gold);
-    color: #120e0c;
-    border-color: var(--bh-gold);
+    background-color: var(--bh-royal);
+    color: var(--bh-ink-on-dark);
+    border-color: var(--bh-royal);
 }
 
 .bh-btn--glossary {
     padding: 0.8rem 1.8rem;
     font-size: 0.9rem;
-    background-color: var(--bh-bg-elevated);
-    border: 1px solid var(--bh-line);
+    background-color: var(--bh-royal);
+    border: 1px solid var(--bh-gold);
     color: var(--bh-gold-soft);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .bh-btn--glossary:hover {
     background-color: var(--bh-gold);
-    color: #120e0c;
-    border-color: var(--bh-gold);
+    color: var(--bh-royal-deep);
 }
 
 .bh-btn--glossary svg {
@@ -930,16 +986,17 @@ a:hover {
     font-family: var(--bh-font-label);
     font-size: 0.92rem;
     font-weight: 500;
-    color: var(--bh-gold-soft);
+    color: var(--bh-royal);
     margin-bottom: 0.4rem;
 }
 
 .bh-form-input,
 .bh-form-select,
-.bh-form-textarea {
+.bh-form-textarea,
+.bh-input {
     width: 100%;
-    background-color: #120e0c;
-    border: 1px solid rgba(201, 164, 92, 0.28);
+    background-color: #ffffff;
+    border: 1px solid var(--bh-line-dark);
     border-radius: var(--bh-radius-sm);
     color: var(--bh-ink);
     font-family: var(--bh-font-body);
@@ -950,9 +1007,10 @@ a:hover {
 
 .bh-form-input:focus,
 .bh-form-select:focus,
-.bh-form-textarea:focus {
+.bh-form-textarea:focus,
+.bh-input:focus {
     outline: none;
-    border-color: var(--bh-gold);
+    border-color: var(--bh-royal);
 }
 
 .bh-btn--primary {
@@ -961,9 +1019,9 @@ a:hover {
     justify-content: center;
     gap: 0.6rem;
     width: 100%;
-    background-color: var(--bh-gold);
-    color: #140f0c;
-    border: none;
+    background-color: var(--bh-royal);
+    color: var(--bh-gold-soft);
+    border: 1px solid var(--bh-gold);
     border-radius: 9999px;
     padding: 0.95rem 2rem;
     font-family: var(--bh-font-label);
@@ -971,12 +1029,62 @@ a:hover {
     font-weight: 600;
     letter-spacing: 0.08em;
     cursor: pointer;
-    transition: transform 0.2s var(--bh-ease), filter 0.2s var(--bh-ease);
+    transition: transform 0.2s var(--bh-ease), background-color 0.2s var(--bh-ease);
 }
 
 .bh-btn--primary:hover {
     transform: translateY(-2px);
-    filter: brightness(1.08);
+    background-color: var(--bh-royal-deep);
+}
+
+/* ==========================================================================
+   Closing Section (Royal Velvet Footer)
+   ========================================================================== */
+.bh-closing-section {
+    background-color: var(--bh-royal-deep);
+    color: var(--bh-ink-on-dark);
+    padding: 4rem 1.5rem 6rem;
+    border-top: 2px solid var(--bh-gold);
+}
+
+.bh-closing-card {
+    background-color: var(--bh-royal) !important;
+    border: 1px solid rgba(201, 164, 92, 0.45) !important;
+    color: var(--bh-ink-on-dark);
+    text-align: center;
+}
+
+.bh-closing-silhouette {
+    width: 120px;
+    margin: 0 auto 1rem;
+    color: var(--bh-gold-bright);
+}
+
+.bh-closing-text {
+    color: var(--bh-ink-on-dark-soft);
+}
+
+.bh-closing-subhead {
+    color: var(--bh-gold-soft);
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+.bh-closing-names {
+    font-size: 2rem;
+    color: var(--bh-gold-bright);
+    margin: 0.5rem 0 1.25rem;
+}
+
+.bh-closing-credit,
+.bh-credit-prompt,
+.bh-credit-brand {
+    color: var(--bh-ink-on-dark-soft);
+    font-size: 0.85rem;
+}
+
+.bh-credit-link {
+    color: var(--bh-gold-bright);
 }
 
 /* ==========================================================================
@@ -993,8 +1101,12 @@ a:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgba(22, 17, 14, 0.95);
+    background-color: rgba(36, 11, 14, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(201, 164, 92, 0.35);
     padding: 0.5rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom));
+    transition: transform 0.3s var(--bh-ease);
 }
 
 .theme-bugis-heritage:not(.is-opened) .bh-bottom-nav,
@@ -1008,7 +1120,7 @@ a:hover {
     flex-direction: column;
     align-items: center;
     gap: 0.2rem;
-    color: var(--bh-ink-faint);
+    color: var(--bh-ink-on-dark-soft);
     text-decoration: none;
     font-family: var(--bh-font-label);
     font-size: 0.82rem;
@@ -1024,7 +1136,7 @@ a:hover {
 
 .bh-nav-item.is-active,
 .bh-nav-item:hover {
-    color: var(--bh-gold);
+    color: var(--bh-gold-bright);
 }
 
 .bh-music-btn {
@@ -1035,13 +1147,14 @@ a:hover {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background-color: var(--bh-bg-elevated);
-    border: none;
-    color: var(--bh-gold);
+    background-color: var(--bh-royal);
+    border: 1px solid var(--bh-gold);
+    color: var(--bh-gold-bright);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 .bh-music-btn[hidden] {
@@ -1078,8 +1191,11 @@ a:hover {
     width: 100%;
     max-width: 440px;
     background-color: var(--bh-bg-elevated);
+    color: var(--bh-ink);
+    border: 1.5px solid var(--bh-gold);
     border-radius: var(--bh-radius);
     padding: 2rem 1.75rem;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
 }
 
 .bh-modal-close {
@@ -1088,7 +1204,7 @@ a:hover {
     right: 14px;
     background: transparent;
     border: none;
-    color: var(--bh-ink-soft);
+    color: var(--bh-royal);
     cursor: pointer;
     width: 44px;
     height: 44px;

@@ -35,6 +35,8 @@
         <div class="bh-cover-frame-border" aria-hidden="true"></div>
     @endif
 
+    <div class="bh-cover-arch" aria-hidden="true"></div>
+
     <div class="bh-cover-inner">
         <header class="bh-cover-header">
             <div class="bh-cover-silhouette" aria-hidden="true">

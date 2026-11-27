@@ -25,6 +25,7 @@ return [
     'couple' => [
         'kicker' => 'Keluarga & Mempelai',
         'heading' => 'Mempelai',
+        'subtitle' => 'Dengan memohon rahmat dan ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan putra-putri kami.',
         'daughter_of' => 'Putri dari',
         'son_of' => 'Putra dari',
     ],
