@@ -448,7 +448,7 @@ class InvitationController extends Controller
     public function checkInPage(Request $request, string $slug): View
     {
         $invitation = $this->resolvePublishedInvitation($slug);
-        $guests = $invitation->guests()->with('rsvp')->orderByRaw('checked_in_at IS NULL, checked_in_at DESC')->orderBy('name')->get();
+        $guests = $invitation->guests()->with(['rsvp', 'seatingTable'])->orderByRaw('checked_in_at IS NULL, checked_in_at DESC')->orderBy('name')->get();
 
         $totalGuests = $guests->count();
         $checkedInCount = $guests->whereNotNull('checked_in_at')->count();
@@ -475,9 +475,9 @@ class InvitationController extends Controller
 
         $guest = null;
         if ($guestId !== null) {
-            $guest = $invitation->guests()->with('rsvp')->find($guestId);
+            $guest = $invitation->guests()->with(['rsvp', 'seatingTable'])->find($guestId);
         } elseif ($code !== '') {
-            $guest = $invitation->guests()->with('rsvp')->where('code', $code)->first();
+            $guest = $invitation->guests()->with(['rsvp', 'seatingTable'])->where('code', $code)->first();
         }
 
         if ($guest === null) {
@@ -506,6 +506,8 @@ class InvitationController extends Controller
                 'code' => $guest->code,
                 'group' => $guest->group ?: 'Umum',
                 'pax' => $pax,
+                'table_name' => $guest->seatingTable?->name,
+                'seat_label' => $guest->seat_label,
                 'checked_in_at' => $guest->checked_in_at?->format('H:i:s d/m/Y'),
             ],
         ]);

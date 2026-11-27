@@ -242,6 +242,9 @@
                                     <span class="badge badge-code">{{ $guest->code }}</span>
                                     <span>{{ $guest->group ?: 'Umum' }}</span>
                                     <span>&bull; {{ $pax }} Pax</span>
+                                    @if($guest->seatingTable)
+                                        <span class="badge badge-code">{{ $guest->seatingTable->name }}@if($guest->seat_label) &bull; Kursi {{ $guest->seat_label }}@endif</span>
+                                    @endif
                                     @if($isChecked)
                                         <span class="badge badge-success check-time">{{ $guest->checked_in_at->format('H:i') }}</span>
                                     @endif
@@ -310,7 +313,14 @@
                     }
 
                     const type = data.already_checked_in ? 'warning' : 'success';
-                    showResult(data.message, data.guest ? `${data.guest.name} (${data.guest.pax} Pax) - ${data.guest.code}` : '', type);
+                    let detailText = '';
+                    if (data.guest) {
+                        const seatInfo = data.guest.table_name
+                            ? ` | Meja: ${data.guest.table_name}${data.guest.seat_label ? ' (Kursi ' + data.guest.seat_label + ')' : ''}`
+                            : ' | Meja: Belum ditetapkan';
+                        detailText = `${data.guest.name} (${data.guest.pax} Pax) - ${data.guest.code}${seatInfo}`;
+                    }
+                    showResult(data.message, detailText, type);
 
                     if (data.guest) {
                         updateGuestInList(data.guest.id, data.guest.checked_in_at, true);

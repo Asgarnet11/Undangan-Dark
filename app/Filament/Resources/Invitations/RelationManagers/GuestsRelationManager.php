@@ -5,7 +5,10 @@ namespace App\Filament\Resources\Invitations\RelationManagers;
 use App\Models\Event;
 use App\Models\Guest;
 use App\Models\Invitation;
+use App\Models\SeatingTable;
+use App\Support\SeatingValidator;
 use Filament\Actions\Action;
+use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\CreateAction;
 use Filament\Actions\DeleteAction;
@@ -22,6 +25,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -55,6 +59,31 @@ class GuestsRelationManager extends RelationManager
                     ->maxValue(20)
                     ->default(2)
                     ->required(),
+                TextInput::make('max_adults')
+                    ->label('Kuota Dewasa')
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(20)
+                    ->default(2),
+                TextInput::make('max_children')
+                    ->label('Kuota Anak')
+                    ->numeric()
+                    ->minValue(0)
+                    ->maxValue(20)
+                    ->default(0),
+                Select::make('seating_table_id')
+                    ->label('Meja Tempat Duduk (Opsional)')
+                    ->options(fn () => SeatingTable::query()
+                        ->where('invitation_id', $this->getOwnerRecord()->id)
+                        ->orderBy('sort_order')
+                        ->pluck('name', 'id')
+                        ->toArray())
+                    ->searchable()
+                    ->placeholder('Belum ditetapkan'),
+                TextInput::make('seat_label')
+                    ->label('Label / Nomor Kursi (Opsional)')
+                    ->maxLength(40)
+                    ->placeholder('Contoh: 3 atau 3-4'),
                 TextInput::make('phone')
                     ->label('Nomor WhatsApp (Contoh: 0812xxxx atau 62812xxxx)')
                     ->tel()
@@ -98,6 +127,13 @@ class GuestsRelationManager extends RelationManager
                 TextColumn::make('max_pax')
                     ->label('Maks. Pax')
                     ->sortable(),
+                TextColumn::make('seatingTable.name')
+                    ->label('Meja')
+                    ->badge()
+                    ->placeholder('-'),
+                TextColumn::make('seat_label')
+                    ->label('Kursi')
+                    ->placeholder('-'),
                 TextColumn::make('allowed_events')
                     ->label('Akses Acara')
                     ->state(fn (Guest $record): string => empty($record->allowed_event_ids) ? 'Semua Acara' : count($record->allowed_event_ids).' Acara')
@@ -183,7 +219,18 @@ class GuestsRelationManager extends RelationManager
                     ->icon('heroicon-o-qr-code')
                     ->color('primary')
                     ->url(fn (): string => route('invitation.check-in', ['slug' => $this->getOwnerRecord()->slug]), shouldOpenInNewTab: true),
-                CreateAction::make()->label('Tambah Tamu'),
+                CreateAction::make()
+                    ->label('Tambah Tamu')
+                    ->mutateFormDataUsing(function (array $data): array {
+                        SeatingValidator::validateAssignment(
+                            (int) $this->getOwnerRecord()->id,
+                            isset($data['seating_table_id']) && $data['seating_table_id'] !== '' ? (int) $data['seating_table_id'] : null,
+                            $data['seat_label'] ?? null,
+                            (int) ($data['max_pax'] ?? 1)
+                        );
+
+                        return $data;
+                    }),
                 Action::make('import_csv')
                     ->label('Impor CSV')
                     ->icon('heroicon-o-arrow-up-tray')
@@ -410,11 +457,64 @@ class GuestsRelationManager extends RelationManager
                             ->success()
                             ->send();
                     }),
-                EditAction::make(),
+                EditAction::make()
+                    ->mutateFormDataUsing(function (array $data, Guest $record): array {
+                        SeatingValidator::validateAssignment(
+                            (int) $this->getOwnerRecord()->id,
+                            isset($data['seating_table_id']) && $data['seating_table_id'] !== '' ? (int) $data['seating_table_id'] : null,
+                            $data['seat_label'] ?? null,
+                            (int) ($data['max_pax'] ?? 1),
+                            $record->id
+                        );
+
+                        return $data;
+                    }),
                 DeleteAction::make(),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
+                    BulkAction::make('assign_seating_table')
+                        ->label('Tetapkan ke Meja')
+                        ->icon('heroicon-o-squares-2x2')
+                        ->form([
+                            Select::make('seating_table_id')
+                                ->label('Pilih Meja')
+                                ->options(fn () => SeatingTable::query()
+                                    ->where('invitation_id', $this->getOwnerRecord()->id)
+                                    ->orderBy('sort_order')
+                                    ->pluck('name', 'id')
+                                    ->toArray())
+                                ->required(),
+                        ])
+                        ->action(function (Collection $records, array $data): void {
+                            $tableId = (int) $data['seating_table_id'];
+                            $invitationId = (int) $this->getOwnerRecord()->id;
+                            $table = SeatingTable::query()->where('id', $tableId)->where('invitation_id', $invitationId)->firstOrFail();
+
+                            $totalAddingPax = $records->sum(fn (Guest $g): int => max(1, (int) $g->max_pax));
+                            if (! $table->allow_over_capacity) {
+                                $existingOccupied = (int) Guest::query()
+                                    ->where('seating_table_id', $table->id)
+                                    ->whereNotIn('id', $records->pluck('id')->all())
+                                    ->sum('max_pax');
+
+                                if (($existingOccupied + $totalAddingPax) > $table->capacity) {
+                                    Notification::make()
+                                        ->title("Kapasitas meja {$table->name} tidak mencukupi ({$existingOccupied} + {$totalAddingPax} > {$table->capacity}).")
+                                        ->danger()
+                                        ->send();
+
+                                    return;
+                                }
+                            }
+
+                            foreach ($records as $guest) {
+                                $guest->update(['seating_table_id' => $table->id]);
+                            }
+
+                            Notification::make()->title("Tamu terpilih ditetapkan ke {$table->name}.")->success()->send();
+                        })
+                        ->deselectRecordsAfterCompletion(),
                     DeleteBulkAction::make(),
                 ]),
             ]);

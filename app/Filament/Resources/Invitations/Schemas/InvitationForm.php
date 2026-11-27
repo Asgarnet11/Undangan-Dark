@@ -475,6 +475,18 @@ class InvitationForm
                                         Textarea::make('rsvp_thanks_declined')
                                             ->label('Pesan Terima Kasih Jika Tidak Hadir (Opsional)')
                                             ->rows(2),
+                                        Select::make('seat_info_visibility')
+                                            ->label('Visibilitas Info Tempat Duduk di QR Tamu')
+                                            ->options([
+                                                'after_checkin' => 'Tampil Setelah Check-In (Default)',
+                                                'always' => 'Selalu Tampil di Modal QR',
+                                                'hidden' => 'Sembunyikan dari Tamu',
+                                            ])
+                                            ->default('after_checkin'),
+                                        TextInput::make('seating_unassigned_note')
+                                            ->label('Catatan Jika Meja Belum Ditetapkan (Opsional)')
+                                            ->maxLength(255)
+                                            ->placeholder('Meja dan kursi akan diinformasikan di lokasi.'),
                                         Textarea::make('closing_text')->label('Kalimat Penutup')->rows(3),
                                         Textarea::make('dress_note')
                                             ->label('Catatan Busana / Pakaian Adat (Opsional)')

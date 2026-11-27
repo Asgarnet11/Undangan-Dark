@@ -13,6 +13,7 @@ use App\Filament\Resources\Invitations\RelationManagers\GiftAddressesRelationMan
 use App\Filament\Resources\Invitations\RelationManagers\GiftConfirmationsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GuestsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\RsvpsRelationManager;
+use App\Filament\Resources\Invitations\RelationManagers\SeatingTablesRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\WishesRelationManager;
 use App\Filament\Resources\Invitations\Schemas\InvitationForm;
 use App\Filament\Resources\Invitations\Tables\InvitationsTable;
@@ -56,6 +57,7 @@ class InvitationResource extends Resource
             GiftAddressesRelationManager::class,
             GiftConfirmationsRelationManager::class,
             CoInvitersRelationManager::class,
+            SeatingTablesRelationManager::class,
             GuestsRelationManager::class,
             RsvpsRelationManager::class,
             WishesRelationManager::class,

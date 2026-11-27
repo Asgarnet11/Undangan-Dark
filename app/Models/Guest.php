@@ -73,4 +73,41 @@ class Guest extends Model
     {
         return $this->checked_in_at !== null;
     }
+
+    /**
+     * @return array{visible: bool, assigned: bool, table_name: ?string, seat_label: ?string, unassigned_note: string}|null
+     */
+    public function visibleSeatingInfo(): ?array
+    {
+        $invitation = $this->invitation;
+        if ($invitation === null) {
+            return null;
+        }
+
+        $flags = $invitation->feature_flags ?? [];
+        if (array_key_exists('seating', $flags) && ! $flags['seating']) {
+            return null;
+        }
+
+        $visibility = $invitation->seat_info_visibility ?: 'after_checkin';
+        if ($visibility === 'hidden') {
+            return null;
+        }
+
+        if ($visibility === 'after_checkin' && ! $this->isCheckedIn()) {
+            return null;
+        }
+
+        $tableName = $this->seatingTable?->name;
+        $seatLabel = trim((string) $this->seat_label) !== '' ? trim((string) $this->seat_label) : null;
+        $assigned = $tableName !== null;
+
+        return [
+            'visible' => true,
+            'assigned' => $assigned,
+            'table_name' => $tableName,
+            'seat_label' => $seatLabel,
+            'unassigned_note' => trim((string) $invitation->seating_unassigned_note) ?: 'Meja dan kursi akan diinformasikan di lokasi.',
+        ];
+    }
 }
