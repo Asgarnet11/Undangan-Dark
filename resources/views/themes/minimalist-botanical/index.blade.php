@@ -21,6 +21,7 @@
         @include('themes.minimalist-botanical.partials.events')
 
         @if(data_get($themeConfig, 'sections.gallery', true) || $previewMode)
+            <x-shared.love-story :invitation="$invitation" :is-preview="$previewMode" />
             <div data-preview-section="gallery" @if(!data_get($themeConfig, 'sections.gallery', true)) hidden @endif>
                 @include('themes.minimalist-botanical.partials.gallery')
             </div>

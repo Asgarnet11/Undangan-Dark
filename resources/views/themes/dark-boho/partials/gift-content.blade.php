@@ -60,6 +60,9 @@
         {{ __('invitation.gift.reveal_button') }}
     </button>
 
+    <x-shared.qris-modal :invitation="$invitation" />
+    <x-shared.gift-registry :invitation="$invitation" :guest="$guest ?? null" />
+
     <p class="db-form-feedback db-gift-status" data-gift-status role="status" aria-live="polite" hidden></p>
 
     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08); text-align: center;">

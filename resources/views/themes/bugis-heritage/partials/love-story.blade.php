@@ -1,8 +1,13 @@
 @php
-    $chapters = $invitation->relationLoaded('loveStoryChapters') ? $invitation->loveStoryChapters : collect();
+    $enabled = $invitation->isFeatureEnabled('love_story', true);
+    $chapters = $invitation->relationLoaded('visibleLoveStoryChapters')
+        ? $invitation->visibleLoveStoryChapters
+        : ($invitation->relationLoaded('loveStoryChapters')
+            ? $invitation->loveStoryChapters->filter(fn ($c) => ! isset($c->is_visible) || (bool) $c->is_visible)->values()
+            : $invitation->visibleLoveStoryChapters()->get());
 @endphp
 
-@if($chapters->isNotEmpty() || !empty($isPreview))
+@if($enabled && ($chapters->isNotEmpty() || !empty($isPreview)))
 <section id="section-love-story" class="bh-section bh-love-story-section" aria-label="Kisah Perjalanan Cinta">
     <h2 class="bh-display bh-section-title">Kisah Cinta &amp; Perjalanan Kasih</h2>
     <p class="bh-body-serif bh-section-subtitle">

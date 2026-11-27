@@ -32,6 +32,7 @@
                         Telah Check-In ({{ $guest->checked_in_at->translatedFormat('d M Y, H:i') }} {{ $invitation->timezoneAbbreviation() }})
                     </div>
                 @endif
+                <x-shared.seating-info :guest="$guest" />
             </div>
         </div>
     @endif

@@ -56,6 +56,9 @@
         {{ __('invitation.gift.reveal_button') }}
     </button>
 
+    <x-shared.qris-modal :invitation="$invitation" />
+    <x-shared.gift-registry :invitation="$invitation" :guest="$guest ?? null" />
+
     <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--mb-border); text-align: center;">
         <button
             type="button"
