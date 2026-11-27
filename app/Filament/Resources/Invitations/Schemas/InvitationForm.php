@@ -62,6 +62,7 @@ class InvitationForm
                                                                 'sunny-meadow' => 'sunny',
                                                                 'minimalist-botanical' => 'olive',
                                                                 'bugis-heritage' => 'marun-emas',
+                                                                'ivory-emboss' => 'ivory',
                                                                 default => 'terracotta',
                                                             };
                                                         })
@@ -103,6 +104,15 @@ class InvitationForm
                                                                     ];
                                                                 }
 
+                                                                if ($theme === 'ivory-emboss') {
+                                                                    return [
+                                                                        'default' => 'Komposisi Tengah (Default)',
+                                                                        'top' => 'Teks di Atas',
+                                                                        'space-between' => 'Teks Terpisah Atas-Bawah',
+                                                                        'frame' => 'Bingkai Karangan Melati',
+                                                                    ];
+                                                                }
+
                                                                 return [
                                                                     'default' => 'Klasik Terracotta',
                                                                     'new' => 'Bingkai Emas Modern',
@@ -127,6 +137,7 @@ class InvitationForm
                                                                     'sunny-meadow' => '#fff8ec',
                                                                     'minimalist-botanical' => '#ffffff',
                                                                     'bugis-heritage' => '#1f1a17',
+                                                                    'ivory-emboss' => '#efede8',
                                                                     default => '#1d1d1b',
                                                                 };
                                                             })
@@ -140,6 +151,7 @@ class InvitationForm
                                                                     'sunny-meadow' => '#3b2f2a',
                                                                     'minimalist-botanical' => '#232b24',
                                                                     'bugis-heritage' => '#f3e6cf',
+                                                                    'ivory-emboss' => '#131210',
                                                                     default => '#efe6d8',
                                                                 };
                                                             })
@@ -179,6 +191,14 @@ class InvitationForm
                                                                     ];
                                                                 }
 
+                                                                if ($theme === 'ivory-emboss') {
+                                                                    return [
+                                                                        'oval' => 'Oval Karangan Melati (Default)',
+                                                                        'arch' => 'Panel Lengkung (Arch)',
+                                                                        'rounded' => 'Sudut Membulat (Rounded)',
+                                                                    ];
+                                                                }
+
                                                                 return [
                                                                     'flower' => 'Bunga Ceria (Flower)',
                                                                     'blob' => 'Blob Organik (Blob)',
@@ -186,9 +206,13 @@ class InvitationForm
                                                                 ];
                                                             })
                                                             ->default(function ($get) {
-                                                                return ($get('theme') === 'bugis-heritage') ? 'diamond' : 'flower';
+                                                                return match ($get('theme')) {
+                                                                    'bugis-heritage' => 'diamond',
+                                                                    'ivory-emboss' => 'oval',
+                                                                    default => 'flower',
+                                                                };
                                                             })
-                                                            ->visible(fn ($get) => in_array($get('theme') ?: 'dark-boho', ['sunny-meadow', 'bugis-heritage']))
+                                                            ->visible(fn ($get) => in_array($get('theme') ?: 'dark-boho', ['sunny-meadow', 'bugis-heritage', 'ivory-emboss']))
                                                             ->live(),
                                                         Toggle::make('theme_config.layout.brideFirst')
                                                             ->label('Tampilkan Mempelai Wanita Terlebih Dahulu')
@@ -215,6 +239,42 @@ class InvitationForm
                                                             ->live(),
                                                         Toggle::make('theme_config.motion.floatingDecor')
                                                             ->label('Animasi Bunga Bobbing & Awan')
+                                                            ->default(true)
+                                                            ->live(),
+                                                    ]),
+
+                                                Section::make('Relief & Gerak (Ivory Emboss)')
+                                                    ->compact()
+                                                    ->columns(2)
+                                                    ->visible(fn ($get) => ($get('theme') ?: 'dark-boho') === 'ivory-emboss')
+                                                    ->schema([
+                                                        TextInput::make('theme_config.relief.depth')
+                                                            ->label('Kedalaman Relief (0 - 1.6)')
+                                                            ->numeric()
+                                                            ->minValue(0)
+                                                            ->maxValue(1.6)
+                                                            ->step(0.1)
+                                                            ->default(1.0)
+                                                            ->live(onBlur: true),
+                                                        Select::make('theme_config.relief.ornamentDensity')
+                                                            ->label('Kepadatan Ornamen')
+                                                            ->options([
+                                                                'minimal' => 'Minimal',
+                                                                'normal' => 'Normal (Default)',
+                                                                'rich' => 'Kaya (Rich)',
+                                                            ])
+                                                            ->default('normal')
+                                                            ->live(),
+                                                        Toggle::make('theme_config.motion.parallax')
+                                                            ->label('Parallax Ornamen Berlapis')
+                                                            ->default(true)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.motion.lightSweep')
+                                                            ->label('Sapuan Cahaya Lembut')
+                                                            ->default(true)
+                                                            ->live(),
+                                                        Toggle::make('theme_config.motion.ambient')
+                                                            ->label('Animasi Ambient Halus')
                                                             ->default(true)
                                                             ->live(),
                                                     ]),

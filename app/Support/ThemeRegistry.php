@@ -174,6 +174,16 @@ class ThemeRegistry
                     $config['cover']['overlayOpacity'] = 0.50;
                 }
             }
+        } elseif ($key === 'ivory-emboss') {
+            $textColor = $config['cover']['textColor'] ?? null;
+            if ($textColor !== null && $isLightHex($textColor) === true) {
+                $config['cover']['textColor'] = '#131210';
+            }
+            $overlayColor = $config['cover']['overlayColor'] ?? null;
+            if ($overlayColor !== null && $isLightHex($overlayColor) === false) {
+                $config['cover']['overlayColor'] = '#efede8';
+                $config['cover']['overlayOpacity'] = 0.15;
+            }
         }
 
         return $config;
