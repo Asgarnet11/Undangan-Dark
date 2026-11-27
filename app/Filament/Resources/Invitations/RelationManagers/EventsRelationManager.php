@@ -46,7 +46,11 @@ class EventsRelationManager extends RelationManager
                     ->required(),
                 DateTimePicker::make('ends_at')
                     ->label('Waktu Selesai (Opsional)')
-                    ->seconds(false),
+                    ->seconds(false)
+                    ->afterOrEqual('starts_at')
+                    ->validationMessages([
+                        'after_or_equal' => 'Waktu selesai tidak boleh lebih awal dari waktu mulai.',
+                    ]),
                 TextInput::make('venue_name')
                     ->label('Nama Tempat')
                     ->required()
@@ -56,6 +60,12 @@ class EventsRelationManager extends RelationManager
                     ->rows(2)
                     ->required()
                     ->columnSpanFull(),
+                TextInput::make('maps_url')
+                    ->label('Tautan Google Maps Khusus Acara (Opsional)')
+                    ->url()
+                    ->maxLength(500)
+                    ->placeholder('https://maps.google.com/...')
+                    ->helperText('Jika diisi, tombol Buka Peta acara ini mengarah langsung ke tautan ini.'),
                 TextInput::make('maps_query')
                     ->label('Kueri Peta Google Maps (Opsional)')
                     ->maxLength(255),

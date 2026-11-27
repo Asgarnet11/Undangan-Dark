@@ -446,11 +446,35 @@ class InvitationForm
                                             ->columnSpanFull(),
                                     ]),
 
-                                Section::make('Galeri, Hadiah, & Penutup')
+                                Section::make('Galeri, Hadiah, RSVP, & Penutup')
                                     ->schema([
                                         TextInput::make('gallery_title')->label('Judul Galeri'),
                                         Textarea::make('gallery_quote')->label('Kutipan Galeri')->rows(2),
                                         Textarea::make('thank_you_gift_note')->label('Catatan Terima Kasih Hadiah')->rows(2),
+                                        Textarea::make('gift_note')->label('Pengantar Tanda Kasih (Opsional)')->rows(2),
+                                        TextInput::make('gift_whatsapp_number')
+                                            ->label('Nomor WhatsApp Konfirmasi Kado (Opsional)')
+                                            ->tel()
+                                            ->maxLength(30)
+                                            ->regex('/^[0-9+\-\s]{8,25}$/')
+                                            ->helperText('Contoh: 6281234567890. Kosongkan jika tidak menampilkan tombol konfirmasi.'),
+                                        Textarea::make('gift_whatsapp_template')
+                                            ->label('Templat Pesan Konfirmasi Kado WhatsApp')
+                                            ->rows(2)
+                                            ->helperText('Variabel: {nama}, {mempelai}. Jangan sertakan nomor rekening atau kode tamu.'),
+                                        Select::make('rsvp_mode')
+                                            ->label('Mode Konfirmasi Kehadiran (RSVP)')
+                                            ->options([
+                                                'per_undangan' => 'Per Undangan (Standar)',
+                                                'per_acara' => 'Per Acara (Dewasa & Anak)',
+                                            ])
+                                            ->default('per_undangan'),
+                                        Textarea::make('rsvp_thanks_attending')
+                                            ->label('Pesan Terima Kasih Jika Hadir (Opsional)')
+                                            ->rows(2),
+                                        Textarea::make('rsvp_thanks_declined')
+                                            ->label('Pesan Terima Kasih Jika Tidak Hadir (Opsional)')
+                                            ->rows(2),
                                         Textarea::make('closing_text')->label('Kalimat Penutup')->rows(3),
                                         Textarea::make('dress_note')
                                             ->label('Catatan Busana / Pakaian Adat (Opsional)')

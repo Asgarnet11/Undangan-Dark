@@ -349,6 +349,33 @@ class Invitation extends Model implements HasMedia
         ]);
     }
 
+    public function giftWhatsappUrl(?string $guestName = null): ?string
+    {
+        $rawNumber = preg_replace('/\D+/', '', (string) $this->gift_whatsapp_number);
+        if ($rawNumber === null || strlen($rawNumber) < 8) {
+            return null;
+        }
+
+        if (str_starts_with($rawNumber, '0')) {
+            $rawNumber = '62'.substr($rawNumber, 1);
+        }
+
+        $template = trim((string) $this->gift_whatsapp_template);
+        if ($template === '') {
+            $template = 'Halo, saya {nama} ingin mengkonfirmasi pengiriman tanda kasih untuk pernikahan {mempelai}.';
+        }
+
+        $name = trim((string) $guestName) !== '' ? trim((string) $guestName) : 'Tamu Undangan';
+        $mempelai = trim("{$this->bride_nickname} & {$this->groom_nickname}");
+
+        $message = strtr($template, [
+            '{nama}' => $name,
+            '{mempelai}' => $mempelai,
+        ]);
+
+        return 'https://wa.me/'.$rawNumber.'?text='.rawurlencode($message);
+    }
+
     public function effectiveMusicUrl(): ?string
     {
         $customUrl = $this->resolveMediaOrPathUrl('music', $this->music_file);

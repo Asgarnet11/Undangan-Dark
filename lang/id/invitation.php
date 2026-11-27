@@ -72,6 +72,11 @@ return [
         'update_submit' => 'Perbarui Konfirmasi',
         'submitting' => 'Menyimpan...',
         'saved' => 'Terima kasih, konfirmasi kehadiran Anda telah tersimpan.',
+        'saved_attending' => 'Terima kasih, kami sangat menantikan kehadiran Anda pada hari bahagia kami.',
+        'saved_declined' => 'Terima kasih atas konfirmasi Anda. Doa restu Anda sangat berarti bagi kami.',
+        'adults_label' => 'Dewasa',
+        'children_label' => 'Anak',
+        'quota_note' => 'Batas undangan: :adults dewasa dan :children anak.',
         'error_generic' => 'Terjadi kendala saat menyimpan konfirmasi. Silakan periksa kembali isian Anda.',
     ],
     'livestream' => [
@@ -88,6 +93,7 @@ return [
         'physical_heading' => 'Alamat Pengiriman Kado',
         'floating_button' => 'Kirim Hadiah',
         'reveal_button' => 'Tampilkan Detail Rekening',
+        'whatsapp_confirm' => 'Konfirmasi via WhatsApp',
         'close_modal' => 'Tutup jendela tanda kasih',
     ],
     'wishes' => [

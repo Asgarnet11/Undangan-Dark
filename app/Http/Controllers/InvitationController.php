@@ -130,25 +130,73 @@ class InvitationController extends Controller
 
     public function storeRsvp(Request $request, string $slug): JsonResponse|RedirectResponse
     {
-        $invitation = $this->resolvePublishedInvitation($slug);
+        $invitation = $this->resolvePublishedInvitation($slug, ['events']);
         $guest = $this->resolveGuestByCode($invitation, (string) $request->input('guest_code', ''));
         $maxPax = $guest !== null ? max(1, $guest->max_pax) : 10;
+        $maxAdults = $guest !== null ? max(1, (int) ($guest->max_adults ?? $maxPax)) : 10;
+        $maxChildren = $guest !== null ? max(0, (int) ($guest->max_children ?? 0)) : 10;
+        $isPerEvent = $invitation->rsvp_mode === 'per_acara' && $request->has('events');
 
-        $validated = $request->validate([
+        $rules = [
             'guest_code' => ['nullable', 'string', 'max:64'],
             'name' => ['required', 'string', 'min:2', 'max:120'],
-            'attending' => ['required', 'boolean'],
+            'attending' => [$isPerEvent ? 'nullable' : 'required', 'boolean'],
             'pax' => ['nullable', 'integer', 'min:0', 'max:'.$maxPax],
             'message' => ['nullable', 'string', 'max:500'],
-        ], [], [
+        ];
+
+        if ($isPerEvent) {
+            $rules['events'] = ['required', 'array', 'min:1'];
+            $rules['events.*.attending'] = ['required', 'boolean'];
+            $rules['events.*.adults'] = ['nullable', 'integer', 'min:0', 'max:'.$maxAdults];
+            $rules['events.*.children'] = ['nullable', 'integer', 'min:0', 'max:'.$maxChildren];
+        }
+
+        $validated = $request->validate($rules, [], [
             'name' => __('invitation.rsvp.name_label'),
             'attending' => __('invitation.rsvp.status_label'),
             'pax' => __('invitation.rsvp.pax_label'),
             'message' => __('invitation.rsvp.message_label'),
         ]);
 
-        $attending = (bool) $validated['attending'];
-        $pax = $attending ? max(1, min($maxPax, (int) ($validated['pax'] ?? 1))) : 0;
+        $validEventIds = $invitation->events->pluck('id')->all();
+
+        if ($isPerEvent) {
+            $submittedEvents = $validated['events'];
+            foreach (array_keys($submittedEvents) as $eventId) {
+                if (! in_array((int) $eventId, $validEventIds, true)) {
+                    abort(422, 'Acara tidak ditemukan pada undangan ini.');
+                }
+            }
+
+            $anyAttending = false;
+            $totalPax = 0;
+            $eventPayloads = [];
+
+            foreach ($submittedEvents as $eventId => $row) {
+                $evAttending = (bool) $row['attending'];
+                $adults = $evAttending ? max(1, min($maxAdults, (int) ($row['adults'] ?? 1))) : 0;
+                $children = $evAttending ? max(0, min($maxChildren, (int) ($row['children'] ?? 0))) : 0;
+
+                if ($evAttending) {
+                    $anyAttending = true;
+                    $totalPax += ($adults + $children);
+                }
+
+                $eventPayloads[(int) $eventId] = [
+                    'attending' => $evAttending,
+                    'adults' => $adults,
+                    'children' => $children,
+                ];
+            }
+
+            $attending = $anyAttending;
+            $pax = $totalPax;
+        } else {
+            $attending = (bool) $validated['attending'];
+            $pax = $attending ? max(1, min($maxPax, (int) ($validated['pax'] ?? 1))) : 0;
+            $eventPayloads = [];
+        }
 
         $payload = [
             'name' => $this->cleanText($validated['name'], false),
@@ -164,22 +212,34 @@ class InvitationController extends Controller
             )
             : $invitation->rsvps()->create($payload);
 
+        foreach ($eventPayloads as $eventId => $evData) {
+            $rsvp->rsvpEvents()->updateOrCreate(
+                ['event_id' => $eventId],
+                $evData
+            );
+        }
+
+        $thankYouMessage = $attending
+            ? (trim((string) $invitation->rsvp_thanks_attending) ?: __('invitation.rsvp.saved_attending'))
+            : (trim((string) $invitation->rsvp_thanks_declined) ?: __('invitation.rsvp.saved_declined'));
+
         if ($request->expectsJson()) {
             return response()->json([
                 'ok' => true,
-                'message' => __('invitation.rsvp.saved'),
+                'message' => $thankYouMessage,
                 'rsvp' => [
                     'id' => $rsvp->id,
                     'name' => $rsvp->name,
                     'attending' => $rsvp->attending,
                     'pax' => $rsvp->pax,
                     'message' => $rsvp->message,
+                    'events' => $eventPayloads,
                 ],
             ]);
         }
 
         return back()
-            ->with('rsvp_status', __('invitation.rsvp.saved'))
+            ->with('rsvp_status', $thankYouMessage)
             ->withFragment('section-rsvp');
     }
 
@@ -364,12 +424,15 @@ class InvitationController extends Controller
      */
     private function serializeWish(Wish $wish): array
     {
+        $tz = $wish->invitation?->resolvedTimezone() ?? 'Asia/Jakarta';
+
         return [
             'id' => $wish->id,
             'name' => $wish->name,
             'origin' => $wish->origin,
             'message' => $wish->message,
-            'created_at_human' => $wish->created_at?->diffForHumans() ?? 'Baru saja',
+            'created_at_human' => $wish->created_at?->locale('id')->diffForHumans() ?? 'Baru saja',
+            'created_at_full' => $wish->created_at?->copy()->timezone($tz)->locale('id')->translatedFormat('d M Y, H:i') ?? '',
         ];
     }
 

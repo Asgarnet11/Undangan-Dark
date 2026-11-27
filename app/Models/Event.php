@@ -90,6 +90,13 @@ class Event extends Model
 
     public function googleMapsUrl(): string
     {
+        if (! empty($this->maps_url)) {
+            $url = trim($this->maps_url);
+            if (str_starts_with($url, 'http://') || str_starts_with($url, 'https://')) {
+                return $url;
+            }
+        }
+
         if (! empty($this->maps_query) && (str_starts_with(trim($this->maps_query), 'http://') || str_starts_with(trim($this->maps_query), 'https://'))) {
             return trim($this->maps_query);
         }
@@ -105,11 +112,11 @@ class Event extends Model
     public function googleCalendarUrl(Invitation $invitation): string
     {
         $timezone = $invitation->resolvedTimezone();
-        $start = $this->startsAtInTimezone($timezone);
-        $end = $this->resolvedEndsAt($timezone);
+        $start = $this->startsAtInTimezone($timezone)->copy()->utc();
+        $end = $this->resolvedEndsAt($timezone)->copy()->utc();
 
         $title = $this->title.' - '.$invitation->bride_nickname.' & '.$invitation->groom_nickname;
-        $dates = $start->format('Ymd\THis').'/'.$end->format('Ymd\THis');
+        $dates = $start->format('Ymd\THis\Z').'/'.$end->format('Ymd\THis\Z');
         $location = trim($this->venue_name.', '.$this->address);
         $details = $invitation->title.' ('.$this->venue_name.')';
 
