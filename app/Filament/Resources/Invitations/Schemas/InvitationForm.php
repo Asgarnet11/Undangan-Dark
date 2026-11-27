@@ -452,6 +452,22 @@ class InvitationForm
                                         Textarea::make('gallery_quote')->label('Kutipan Galeri')->rows(2),
                                         Textarea::make('thank_you_gift_note')->label('Catatan Terima Kasih Hadiah')->rows(2),
                                         Textarea::make('gift_note')->label('Pengantar Tanda Kasih (Opsional)')->rows(2),
+                                        Textarea::make('registry_intro')
+                                            ->label('Pengantar Daftar Kado (Opsional)')
+                                            ->rows(2)
+                                            ->placeholder('Kami telah menyiapkan daftar hadiah sebagai referensi bagi yang ingin berbagi kebahagiaan.'),
+                                        Toggle::make('feature_flags.love_story')
+                                            ->label('Aktifkan Fitur Kisah Cinta')
+                                            ->default(true),
+                                        Toggle::make('feature_flags.seating')
+                                            ->label('Aktifkan Fitur Tempat Duduk')
+                                            ->default(true),
+                                        Toggle::make('feature_flags.qris')
+                                            ->label('Aktifkan Fitur QRIS')
+                                            ->default(true),
+                                        Toggle::make('feature_flags.registry')
+                                            ->label('Aktifkan Fitur Daftar Kado (Registry)')
+                                            ->default(true),
                                         TextInput::make('gift_whatsapp_number')
                                             ->label('Nomor WhatsApp Konfirmasi Kado (Opsional)')
                                             ->tel()

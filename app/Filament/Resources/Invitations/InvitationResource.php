@@ -11,7 +11,9 @@ use App\Filament\Resources\Invitations\RelationManagers\GalleryPhotosRelationMan
 use App\Filament\Resources\Invitations\RelationManagers\GiftAccountsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GiftAddressesRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GiftConfirmationsRelationManager;
+use App\Filament\Resources\Invitations\RelationManagers\GiftRegistryLinksRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\GuestsRelationManager;
+use App\Filament\Resources\Invitations\RelationManagers\QrisAccountsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\RsvpsRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\SeatingTablesRelationManager;
 use App\Filament\Resources\Invitations\RelationManagers\WishesRelationManager;
@@ -54,6 +56,8 @@ class InvitationResource extends Resource
             EventsRelationManager::class,
             GalleryPhotosRelationManager::class,
             GiftAccountsRelationManager::class,
+            QrisAccountsRelationManager::class,
+            GiftRegistryLinksRelationManager::class,
             GiftAddressesRelationManager::class,
             GiftConfirmationsRelationManager::class,
             CoInvitersRelationManager::class,

@@ -311,21 +311,49 @@ class InvitationController extends Controller
 
     public function gifts(string $slug): JsonResponse
     {
-        $invitation = $this->resolvePublishedInvitation($slug, ['giftAccounts', 'giftAddresses']);
+        $invitation = $this->resolvePublishedInvitation($slug, ['giftAccounts', 'giftAddresses', 'qrisAccounts', 'giftRegistryLinks']);
         $themeConfig = $invitation->resolvedThemeConfig();
 
         if (! data_get($themeConfig, 'sections.gift', true)) {
             abort(404);
         }
 
+        $flags = $invitation->feature_flags ?? [];
+        $qrisEnabled = ! array_key_exists('qris', $flags) || (bool) $flags['qris'];
+        $registryEnabled = ! array_key_exists('registry', $flags) || (bool) $flags['registry'];
+
         return response()->json([
             'note' => $invitation->thank_you_gift_note,
+            'gift_note' => $invitation->gift_note,
+            'registry_intro' => $invitation->registry_intro ?: __('invitation.gift.registry_intro_default'),
             'accounts' => $invitation->giftAccounts->map(fn ($account): array => [
                 'id' => $account->id,
                 'bank_name' => $account->bank_name,
                 'account_number' => $account->account_number,
                 'account_name' => $account->account_name,
             ])->values(),
+            'qris' => $qrisEnabled
+                ? $invitation->qrisAccounts
+                    ->where('is_active', true)
+                    ->map(fn ($qris): array => [
+                        'id' => $qris->id,
+                        'label' => $qris->label ?: 'QRIS',
+                        'image_url' => $qris->imageUrl(),
+                    ])
+                    ->filter(fn (array $row): bool => ! empty($row['image_url']))
+                    ->values()
+                : [],
+            'registries' => $registryEnabled
+                ? $invitation->giftRegistryLinks
+                    ->where('is_active', true)
+                    ->filter(fn ($link): bool => str_starts_with(strtolower(trim($link->url)), 'https://'))
+                    ->map(fn ($link): array => [
+                        'id' => $link->id,
+                        'label' => $link->label,
+                        'url' => $link->url,
+                    ])
+                    ->values()
+                : [],
             'addresses' => $invitation->giftAddresses->map(fn ($address): array => [
                 'id' => $address->id,
                 'label' => $address->label,
