@@ -79,17 +79,17 @@
 
         @foreach($profiles as $index => $person)
             <article class="iv-couple-panel" data-role="{{ $person['role'] }}">
-                <img
-                    class="iv-arch-panel-bg"
-                    src="{{ asset('themes/ivory-emboss/relief/arch-panel.webp') }}"
-                    srcset="{{ asset('themes/ivory-emboss/relief/arch-panel.webp') }} 1x, {{ asset('themes/ivory-emboss/relief/arch-panel@2x.webp') }} 2x"
-                    alt=""
-                    aria-hidden="true"
-                    width="720"
-                    height="960"
-                    loading="lazy"
-                    decoding="async"
-                >
+                <div class="iv-couple-apex" aria-hidden="true">
+                    <img
+                        src="{{ asset('themes/ivory-emboss/relief/flower-open.webp') }}"
+                        srcset="{{ asset('themes/ivory-emboss/relief/flower-open.webp') }} 1x, {{ asset('themes/ivory-emboss/relief/flower-open@2x.webp') }} 2x"
+                        alt=""
+                        width="240"
+                        height="240"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </div>
 
                 <div class="iv-couple-panel-body">
                     @if($person['photo'])

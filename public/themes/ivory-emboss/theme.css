@@ -294,12 +294,13 @@
 
 .iv-relief-edge {
     position: absolute;
-    top: 8%;
-    width: clamp(84px, 22vw, 118px);
-    height: 84%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(82px, 21vw, 108px);
+    height: 300px;
     pointer-events: none;
     z-index: 1;
-    opacity: min(1, calc(0.85 * var(--iv-relief-depth, 1)));
+    opacity: min(1, calc(0.82 * var(--iv-relief-depth, 1)));
 }
 
 .iv-relief-edge img {
@@ -648,9 +649,42 @@ body:not(.is-locked) .iv-hero,
 /* Mempelai + Arch panel */
 .iv-couple-panel {
     position: relative;
-    padding: 2.75rem 1.5rem 2.25rem;
+    padding: 3.75rem 1.75rem 2.25rem;
     margin: 0 auto;
-    max-width: 340px;
+    max-width: 330px;
+    background-color: var(--iv-card);
+    border: 1px solid rgba(60, 52, 40, 0.14);
+    border-radius: 170px 170px 22px 22px;
+    box-shadow:
+        0 1px 0 var(--iv-relief-light) inset,
+        0 14px 32px rgba(19, 18, 16, 0.05);
+}
+
+.iv-couple-panel::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(60, 52, 40, 0.1);
+    border-radius: 162px 162px 15px 15px;
+    pointer-events: none;
+}
+
+.iv-couple-apex {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 46px;
+    height: 46px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.iv-couple-apex img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
 .iv-arch-panel-bg {

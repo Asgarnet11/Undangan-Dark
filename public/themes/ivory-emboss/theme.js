@@ -166,10 +166,10 @@
             return;
         }
         const y = window.scrollY || 0;
-        document.querySelectorAll('.iv-relief-edge--left').forEach(function (el) {
+        document.querySelectorAll('.iv-relief-edge--left img').forEach(function (el) {
             el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.back).toFixed(1) + 'px,0)';
         });
-        document.querySelectorAll('.iv-relief-edge--right').forEach(function (el) {
+        document.querySelectorAll('.iv-relief-edge--right img').forEach(function (el) {
             el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.front).toFixed(1) + 'px,0)';
         });
     }
