@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <style>
+    .iv-silhouette { fill: #d8d4cc; stroke: #c4bfb6; stroke-width: 0.7; stroke-linejoin: round; }
+    .iv-stem { fill: #d0ccc4; stroke: none; }
+    .iv-midrib { fill: none; stroke: #b4afa6; stroke-width: 1.1; stroke-linecap: round; }
+    .iv-vein { fill: none; stroke: #beb9b0; stroke-width: 0.75; stroke-linecap: round; }
+    .iv-center { fill: #bab4aa; stroke: #a8a298; stroke-width: 0.6; }
+    .iv-calyx { fill: #c6c1b8; stroke: none; }
+    .iv-ring-stroke { fill: none; stroke: #d4d0c8; stroke-linecap: round; }
+  </style>
+  <g class="iv-flower-open"><path class="iv-silhouette iv-petal-outer" d="M 120 120 C 126.01 92.89, 156.04 76.44, 176.23 77.38 C 171.67 97.06, 147.72 121.53, 120 120 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 120 C 152.79 120.64, 175.73 151.86, 176.96 175.68 C 153.12 174.99, 121.39 152.76, 120 120 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 120 C 117.4 150.84, 86.94 166.73, 64.7 163.49 C 66.79 141.11, 89.42 115.25, 120 120 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 120 C 90.57 118.73, 68.57 90.32, 66.38 69 C 87.79 70.11, 117.26 90.67, 120 120 Z"/><path class="iv-silhouette iv-petal-inner" d="M 120 120 C 137.06 100.92, 165.83 104.81, 179.49 117.43 C 166.97 131.18, 138.64 137.54, 120 120 Z"/><path class="iv-silhouette iv-petal-inner" d="M 120 120 C 123.76 145.62, 102.76 168.89, 84.62 173.98 C 82.05 155.32, 95.01 126.77, 120 120 Z"/><path class="iv-silhouette iv-petal-inner" d="M 120 120 C 97.5 112.8, 88.63 86.66, 93.1 70.08 C 109.41 75.46, 126.36 97.25, 120 120 Z"/><circle class="iv-center" cx="120" cy="120" r="11.1"/></g>
+</svg>

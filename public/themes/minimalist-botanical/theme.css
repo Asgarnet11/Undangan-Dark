@@ -224,9 +224,9 @@ body.is-locked {
 
 /* Cover Section */
 .mb-cover {
-    --mb-primary: #142c4c;
-    --mb-primary-hover: #0e2038;
-    --mb-accent: #b8924a;
+  --mb-primary: #142c4c;
+  --mb-primary-hover: #0e2038;
+  --mb-accent: #b8924a;
   position: fixed;
   top: 0;
   left: 50%;
@@ -253,14 +253,14 @@ body.is-locked {
 }
 
 .mb-cover .mb-btn {
-    background: linear-gradient(135deg, #142c4c 0%, #1c3a63 100%);
-    color: #f8f4ec;
-    border: 1px solid rgba(197, 164, 109, 0.55);
-    box-shadow: 0 8px 22px rgba(20, 44, 76, 0.28);
+  background: linear-gradient(135deg, #142c4c 0%, #1c3a63 100%);
+  color: #f8f4ec;
+  border: 1px solid rgba(197, 164, 109, 0.55);
+  box-shadow: 0 8px 22px rgba(20, 44, 76, 0.28);
 }
 
 .mb-cover .mb-btn:hover {
-    background: linear-gradient(135deg, #0e2038 0%, #142c4c 100%);
+  background: linear-gradient(135deg, #0e2038 0%, #142c4c 100%);
 }
 
 .mb-cover.is-opened {
@@ -293,12 +293,12 @@ body.is-locked {
 }
 
 .mb-cover-arch {
-    display: none;
+  display: none;
 }
 
 .mb-cover-corner-tl,
 .mb-cover-corner-br {
-    display: none;
+  display: none;
 }
 
 .mb-cover-header,
@@ -342,28 +342,28 @@ body.is-locked {
 }
 
 .mb-cover-wreath {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 0.75rem;
-    color: #9e7b36;
-    animation: mb-float-sway 6s ease-in-out infinite;
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 0.75rem;
+  color: #9e7b36;
+  animation: mb-float-sway 6s ease-in-out infinite;
 }
 
 .mb-cover-title {
-    font-size: 2.5rem;
-    color: #142c4c;
-    margin: 0.75rem 0;
+  font-size: 2.5rem;
+  color: #142c4c;
+  margin: 0.75rem 0;
 }
 
 .mb-cover-guest-card {
-    background: rgba(255, 255, 255, 0.94);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(197, 164, 109, 0.45);
-    border-radius: 1rem;
-    padding: 1.25rem;
-    margin: 1.25rem auto;
-    max-width: 320px;
-    box-shadow: 0 8px 24px rgba(20, 44, 76, 0.08);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 164, 109, 0.45);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  margin: 1.25rem auto;
+  max-width: 320px;
+  box-shadow: 0 8px 24px rgba(20, 44, 76, 0.08);
 }
 
 .mb-cover-guest-name {

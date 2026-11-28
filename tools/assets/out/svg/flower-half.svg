@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <style>
+    .iv-silhouette { fill: #d8d4cc; stroke: #c4bfb6; stroke-width: 0.7; stroke-linejoin: round; }
+    .iv-stem { fill: #d0ccc4; stroke: none; }
+    .iv-midrib { fill: none; stroke: #b4afa6; stroke-width: 1.1; stroke-linecap: round; }
+    .iv-vein { fill: none; stroke: #beb9b0; stroke-width: 0.75; stroke-linecap: round; }
+    .iv-center { fill: #bab4aa; stroke: #a8a298; stroke-width: 0.6; }
+    .iv-calyx { fill: #c6c1b8; stroke: none; }
+    .iv-ring-stroke { fill: none; stroke: #d4d0c8; stroke-linecap: round; }
+  </style>
+  <g class="iv-flower-half"><path class="iv-silhouette iv-petal-outer" d="M 120 165 C 93.69 151.53, 88.38 117.6, 97.52 98.16 C 116.55 108.13, 132.82 138.37, 120 165 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 165 C 96.83 142.86, 98.35 103.25, 111.18 83.78 C 127.89 100.04, 137.87 138.4, 120 165 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 165 C 102.13 138.4, 112.11 100.04, 128.82 83.78 C 141.65 103.25, 143.17 142.86, 120 165 Z"/><path class="iv-silhouette iv-petal-outer" d="M 120 165 C 107.18 138.37, 123.45 108.13, 142.48 98.16 C 151.62 117.6, 146.31 151.53, 120 165 Z"/><ellipse class="iv-calyx" cx="120" cy="165" rx="15.48" ry="10.32" transform="rotate(-90 120 165)"/></g>
+</svg>

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "corner-tl",
+    "scale": "1x",
+    "bytes": 25810,
+    "kb": 25.21
+  },
+  {
+    "id": "corner-tl",
+    "scale": "2x",
+    "bytes": 46872,
+    "kb": 45.77
+  },
+  {
+    "id": "corner-tr",
+    "scale": "1x",
+    "bytes": 27404,
+    "kb": 26.76
+  },
+  {
+    "id": "corner-tr",
+    "scale": "2x",
+    "bytes": 50348,
+    "kb": 49.17
+  },
+  {
+    "id": "corner-bl",
+    "scale": "1x",
+    "bytes": 29290,
+    "kb": 28.6
+  },
+  {
+    "id": "corner-bl",
+    "scale": "2x",
+    "bytes": 54494,
+    "kb": 53.22
+  },
+  {
+    "id": "corner-br",
+    "scale": "1x",
+    "bytes": 27540,
+    "kb": 26.89
+  },
+  {
+    "id": "corner-br",
+    "scale": "2x",
+    "bytes": 49816,
+    "kb": 48.65
+  },
+  {
+    "id": "edge-left-a",
+    "scale": "1x",
+    "bytes": 14752,
+    "kb": 14.41
+  },
+  {
+    "id": "edge-left-a",
+    "scale": "2x",
+    "bytes": 36780,
+    "kb": 35.92
+  },
+  {
+    "id": "edge-left-b",
+    "scale": "1x",
+    "bytes": 14226,
+    "kb": 13.89
+  },
+  {
+    "id": "edge-left-b",
+    "scale": "2x",
+    "bytes": 35506,
+    "kb": 34.67
+  },
+  {
+    "id": "edge-left-c",
+    "scale": "1x",
+    "bytes": 14690,
+    "kb": 14.35
+  },
+  {
+    "id": "edge-left-c",
+    "scale": "2x",
+    "bytes": 37556,
+    "kb": 36.68
+  },
+  {
+    "id": "edge-right-a",
+    "scale": "1x",
+    "bytes": 14468,
+    "kb": 14.13
+  },
+  {
+    "id": "edge-right-a",
+    "scale": "2x",
+    "bytes": 36984,
+    "kb": 36.12
+  },
+  {
+    "id": "edge-right-b",
+    "scale": "1x",
+    "bytes": 14454,
+    "kb": 14.12
+  },
+  {
+    "id": "edge-right-b",
+    "scale": "2x",
+    "bytes": 37250,
+    "kb": 36.38
+  },
+  {
+    "id": "edge-right-c",
+    "scale": "1x",
+    "bytes": 15768,
+    "kb": 15.4
+  },
+  {
+    "id": "edge-right-c",
+    "scale": "2x",
+    "bytes": 39086,
+    "kb": 38.17
+  },
+  {
+    "id": "wreath-oval",
+    "scale": "1x",
+    "bytes": 31556,
+    "kb": 30.82
+  },
+  {
+    "id": "wreath-oval",
+    "scale": "2x",
+    "bytes": 57852,
+    "kb": 56.5
+  },
+  {
+    "id": "emblem-melati",
+    "scale": "1x",
+    "bytes": 11546,
+    "kb": 11.28
+  },
+  {
+    "id": "emblem-melati",
+    "scale": "2x",
+    "bytes": 28730,
+    "kb": 28.06
+  },
+  {
+    "id": "flower-open",
+    "scale": "1x",
+    "bytes": 3242,
+    "kb": 3.17
+  },
+  {
+    "id": "flower-open",
+    "scale": "2x",
+    "bytes": 7874,
+    "kb": 7.69
+  },
+  {
+    "id": "flower-half",
+    "scale": "1x",
+    "bytes": 1686,
+    "kb": 1.65
+  },
+  {
+    "id": "flower-half",
+    "scale": "2x",
+    "bytes": 3986,
+    "kb": 3.89
+  },
+  {
+    "id": "bud-cluster",
+    "scale": "1x",
+    "bytes": 2454,
+    "kb": 2.4
+  },
+  {
+    "id": "bud-cluster",
+    "scale": "2x",
+    "bytes": 5802,
+    "kb": 5.67
+  },
+  {
+    "id": "divider-sprig",
+    "scale": "1x",
+    "bytes": 4744,
+    "kb": 4.63
+  },
+  {
+    "id": "divider-sprig",
+    "scale": "2x",
+    "bytes": 11464,
+    "kb": 11.2
+  },
+  {
+    "id": "arch-panel",
+    "scale": "1x",
+    "bytes": 18088,
+    "kb": 17.66
+  },
+  {
+    "id": "arch-panel",
+    "scale": "2x",
+    "bytes": 41454,
+    "kb": 40.48
+  },
+  {
+    "id": "monogram-ring",
+    "scale": "1x",
+    "bytes": 13818,
+    "kb": 13.49
+  },
+  {
+    "id": "monogram-ring",
+    "scale": "2x",
+    "bytes": 36602,
+    "kb": 35.74
+  },
+  {
+    "id": "scallop-mask",
+    "scale": "1x",
+    "bytes": 5018,
+    "kb": 4.9
+  },
+  {
+    "id": "scallop-mask",
+    "scale": "2x",
+    "bytes": 12840,
+    "kb": 12.54
+  },
+  {
+    "id": "closing-emblem",
+    "scale": "1x",
+    "bytes": 12120,
+    "kb": 11.84
+  },
+  {
+    "id": "closing-emblem",
+    "scale": "2x",
+    "bytes": 30382,
+    "kb": 29.67
+  }
+]

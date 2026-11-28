@@ -1,0 +1,25 @@
+{
+  "qa": {
+    "passed": true,
+    "failures": [],
+    "summary": {
+      "reliefCount": 20,
+      "textureCount": 5,
+      "firstScreenKB": 260.61,
+      "totalReliefKB": 646.17,
+      "totalTexturesKB": 72.16
+    }
+  },
+  "perf": {
+    "normal": {
+      "blendMode": "normal",
+      "avgFrameMs": 15.98,
+      "fps": 62.6
+    },
+    "softLight": {
+      "blendMode": "soft-light",
+      "avgFrameMs": 16.61,
+      "fps": 60.2
+    }
+  }
+}

@@ -455,11 +455,11 @@
 }
 
 .db-arch-door--left {
-    border-right: none;
+  border-right: none;
 }
 
 .db-arch-door--right {
-    border-left: none;
+  border-left: none;
 }
 
 .db-arch-door-trim {
@@ -484,13 +484,13 @@
 /* Pampas grass cover & penutup */
 .db-cover-pampas,
 .db-closing-pampas {
-    position: absolute;
-    bottom: -6px;
-    width: clamp(96px, 24vw, 132px);
-    color: #c9a45c;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0.34;
+  position: absolute;
+  bottom: -6px;
+  width: clamp(96px, 24vw, 132px);
+  color: #c9a45c;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.34;
 }
 
 .db-cover-pampas--left,
@@ -701,32 +701,34 @@
 }
 
 .db-cover-guest {
-    margin: 0 0 1.25rem;
-    padding: 0.95rem 1.35rem;
-    border: 1px solid rgba(201, 164, 92, 0.48);
-    border-radius: 16px;
-    background-color: rgba(8, 21, 43, 0.86);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(239, 230, 216, 0.12);
-    width: 100%;
-    max-width: 320px;
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 1.35rem;
+  border: 1px solid rgba(201, 164, 92, 0.48);
+  border-radius: 16px;
+  background-color: rgba(8, 21, 43, 0.86);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(239, 230, 216, 0.12);
+  width: 100%;
+  max-width: 320px;
 }
 
 .db-cover-guest-label {
-    display: block;
-    font-size: 0.76rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: #d4b06a;
-    font-weight: 500;
-    margin-bottom: 0.35rem;
+  display: block;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d4b06a;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
 }
 
 .db-cover .db-btn {
-    background: linear-gradient(135deg, #d4b06a 0%, #b88e44 100%);
-    color: #071226;
-    border: 1px solid rgba(255, 236, 194, 0.45);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  background: linear-gradient(135deg, #d4b06a 0%, #b88e44 100%);
+  color: #071226;
+  border: 1px solid rgba(255, 236, 194, 0.45);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
 }
 
 .db-cover-guest-name {

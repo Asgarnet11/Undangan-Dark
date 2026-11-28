@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 960" width="720" height="960">
+  <style>
+    .iv-silhouette { fill: #d8d4cc; stroke: #c4bfb6; stroke-width: 0.7; stroke-linejoin: round; }
+    .iv-stem { fill: #d0ccc4; stroke: none; }
+    .iv-midrib { fill: none; stroke: #b4afa6; stroke-width: 1.1; stroke-linecap: round; }
+    .iv-vein { fill: none; stroke: #beb9b0; stroke-width: 0.75; stroke-linecap: round; }
+    .iv-center { fill: #bab4aa; stroke: #a8a298; stroke-width: 0.6; }
+    .iv-calyx { fill: #c6c1b8; stroke: none; }
+    .iv-ring-stroke { fill: none; stroke: #d4d0c8; stroke-linecap: round; }
+  </style>
+  <path class="iv-ring-stroke" stroke-width="2.5" d="M 34 926 L 34 360 A 326 326 0 0 1 686 360 L 686 926 Z"/><path class="iv-ring-stroke" stroke-width="1.4" d="M 50 910 L 50 360 A 310 310 0 0 1 670 360 L 670 910 Z"/><g class="iv-flower-open"><path class="iv-silhouette iv-petal-outer" d="M 360 44 C 367.4 49.25, 367.37 59.68, 363.63 65.11 C 358.29 61.24, 354.78 51.42, 360 44 Z"/><path class="iv-silhouette iv-petal-outer" d="M 360 44 C 354.5 50.66, 343.67 51.3, 338.07 48.44 C 342.12 43.63, 352.34 40.01, 360 44 Z"/><path class="iv-silhouette iv-petal-outer" d="M 360 44 C 352.36 39.05, 350.85 28, 353.53 21.94 C 359.06 25.59, 363.76 35.71, 360 44 Z"/><path class="iv-silhouette iv-petal-outer" d="M 360 44 C 365.06 37.37, 374.93 37.34, 380.01 40.66 C 376.29 45.44, 366.94 48.62, 360 44 Z"/><path class="iv-silhouette iv-petal-inner" d="M 360 44 C 362.19 51.24, 357.01 58.57, 351.89 60.59 C 350.35 55.32, 352.94 46.72, 360 44 Z"/><path class="iv-silhouette iv-petal-inner" d="M 360 44 C 352.96 41.79, 350.06 33.62, 351.38 28.42 C 356.48 30.07, 361.87 36.86, 360 44 Z"/><path class="iv-silhouette iv-petal-inner" d="M 360 44 C 365.12 38.59, 373.62 39.8, 377.62 43.45 C 373.86 47.34, 365.45 49.07, 360 44 Z"/><circle class="iv-center" cx="360" cy="44" r="3.3"/></g><g class="iv-leaf-group">
+      <path class="iv-silhouette iv-leaf" d="M 342 46 C 332.26 53.7, 320.52 45.53, 314.03 35.11 C 325.47 31.61, 339.56 33.16, 342 46 Z"/>
+      <path class="iv-midrib" d="M 340.3 45.4 Q 328.62 40.64 317.39 36.4"/>
+      <path class="iv-vein" d="M 333.58 42.81 Q 330.43 45.41 327.49 47.42"/><path class="iv-vein" d="M 333.58 42.81 Q 332.78 38.79 331.77 35.38"/><path class="iv-vein" d="M 330.22 41.53 Q 327.14 43.93 324.25 45.76"/><path class="iv-vein" d="M 330.22 41.53 Q 329.34 37.72 328.27 34.48"/><path class="iv-vein" d="M 326.85 40.25 Q 323.84 42.44 321.02 44.11"/><path class="iv-vein" d="M 326.85 40.25 Q 325.9 36.65 324.77 33.57"/><path class="iv-vein" d="M 323.48 38.97 Q 320.55 40.96 317.79 42.46"/><path class="iv-vein" d="M 323.48 38.97 Q 322.46 35.58 321.27 32.67"/>
+    </g><g class="iv-leaf-group">
+      <path class="iv-silhouette iv-leaf" d="M 378 46 C 380.73 33.91, 394.95 32.76, 406.5 36.6 C 399.82 46.5, 387.9 54.21, 378 46 Z"/>
+      <path class="iv-midrib" d="M 379.7 45.4 Q 391.71 41.59 403.08 37.74"/>
+      <path class="iv-vein" d="M 385.96 43.32 Q 386.77 39.32 387.8 35.91"/><path class="iv-vein" d="M 385.96 43.32 Q 389.11 45.92 392.05 47.93"/><path class="iv-vein" d="M 388.81 42.36 Q 389.68 38.53 390.75 35.26"/><path class="iv-vein" d="M 388.81 42.36 Q 391.89 44.8 394.78 46.66"/><path class="iv-vein" d="M 391.65 41.41 Q 392.58 37.74 393.7 34.62"/><path class="iv-vein" d="M 391.65 41.41 Q 394.68 43.67 397.52 45.39"/><path class="iv-vein" d="M 394.49 40.45 Q 395.48 36.96 396.66 33.97"/><path class="iv-vein" d="M 394.49 40.45 Q 397.46 42.54 400.25 44.13"/><path class="iv-vein" d="M 397.34 39.49 Q 398.39 36.17 399.61 33.32"/><path class="iv-vein" d="M 397.34 39.49 Q 400.24 41.42 402.98 42.86"/>
+    </g>
+</svg>

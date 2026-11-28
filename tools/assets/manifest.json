@@ -1,0 +1,235 @@
+{
+  "version": "1.0.0",
+  "theme": "ivory-emboss",
+  "lightDirection": {
+    "azimuth": 225,
+    "elevation": 52,
+    "description": "Top-left directional light across all assets"
+  },
+  "budgets": {
+    "cornerOrEdgeMaxKB": 70,
+    "wreathEmblemPanelMaxKB": 90,
+    "texturesTotalMaxKB": 120,
+    "firstScreenMaxKB": 350,
+    "totalAllMaxKB": 900
+  },
+  "reliefAssets": [
+    {
+      "id": "corner-tl",
+      "category": "corner",
+      "seed": 104729,
+      "viewBox": [600, 600],
+      "maxKB": 70,
+      "usedIn": ["cover", "penutup"],
+      "params": { "corner": "tl", "branches": 3, "clusters": 3, "leafScale": 1.0 }
+    },
+    {
+      "id": "corner-tr",
+      "category": "corner",
+      "seed": 224737,
+      "viewBox": [600, 600],
+      "maxKB": 70,
+      "usedIn": ["cover"],
+      "params": { "corner": "tr", "branches": 3, "clusters": 3, "leafScale": 0.96 }
+    },
+    {
+      "id": "corner-bl",
+      "category": "corner",
+      "seed": 350377,
+      "viewBox": [600, 600],
+      "maxKB": 70,
+      "usedIn": ["cover"],
+      "params": { "corner": "bl", "branches": 3, "clusters": 2, "leafScale": 0.94 }
+    },
+    {
+      "id": "corner-br",
+      "category": "corner",
+      "seed": 479909,
+      "viewBox": [600, 600],
+      "maxKB": 70,
+      "usedIn": ["cover", "penutup"],
+      "params": { "corner": "br", "branches": 3, "clusters": 3, "leafScale": 0.98 }
+    },
+    {
+      "id": "edge-left-a",
+      "category": "edge",
+      "seed": 511213,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["hero", "kisah-cinta", "kado"],
+      "params": { "side": "left", "variant": "a", "nodes": 7, "clusters": 2 }
+    },
+    {
+      "id": "edge-left-b",
+      "category": "edge",
+      "seed": 619427,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["mempelai", "galeri"],
+      "params": { "side": "left", "variant": "b", "nodes": 6, "clusters": 2 }
+    },
+    {
+      "id": "edge-left-c",
+      "category": "edge",
+      "seed": 733189,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["acara", "rsvp-ucapan"],
+      "params": { "side": "left", "variant": "c", "nodes": 7, "clusters": 3 }
+    },
+    {
+      "id": "edge-right-a",
+      "category": "edge",
+      "seed": 821641,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["hero", "kisah-cinta"],
+      "params": { "side": "right", "variant": "a", "nodes": 7, "clusters": 2 }
+    },
+    {
+      "id": "edge-right-b",
+      "category": "edge",
+      "seed": 914327,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["mempelai", "rsvp-ucapan", "kado"],
+      "params": { "side": "right", "variant": "b", "nodes": 6, "clusters": 2 }
+    },
+    {
+      "id": "edge-right-c",
+      "category": "edge",
+      "seed": 1004591,
+      "viewBox": [360, 900],
+      "maxKB": 70,
+      "usedIn": ["hitung-mundur", "galeri"],
+      "params": { "side": "right", "variant": "c", "nodes": 7, "clusters": 3 }
+    },
+    {
+      "id": "wreath-oval",
+      "category": "wreath",
+      "seed": 1129093,
+      "viewBox": [640, 760],
+      "maxKB": 90,
+      "usedIn": ["hero", "cover-frame"],
+      "params": { "rx": 248, "ry": 310, "clusters": 4 }
+    },
+    {
+      "id": "emblem-melati",
+      "category": "emblem",
+      "seed": 1245677,
+      "viewBox": [420, 360],
+      "maxKB": 90,
+      "usedIn": ["cover", "penutup"],
+      "params": { "span": 320, "clusters": 3 }
+    },
+    {
+      "id": "flower-open",
+      "category": "accent",
+      "seed": 1357913,
+      "viewBox": [240, 240],
+      "maxKB": 70,
+      "usedIn": ["hitung-mundur", "pemisah", "kartu"],
+      "params": { "petals": 7, "layers": 2 }
+    },
+    {
+      "id": "flower-half",
+      "category": "accent",
+      "seed": 1469201,
+      "viewBox": [240, 240],
+      "maxKB": 70,
+      "usedIn": ["pemisah", "kartu"],
+      "params": { "petals": 5 }
+    },
+    {
+      "id": "bud-cluster",
+      "category": "accent",
+      "seed": 1580447,
+      "viewBox": [240, 240],
+      "maxKB": 70,
+      "usedIn": ["kado", "kartu"],
+      "params": { "buds": 3 }
+    },
+    {
+      "id": "divider-sprig",
+      "category": "divider",
+      "seed": 1692119,
+      "viewBox": [640, 120],
+      "maxKB": 70,
+      "usedIn": ["mempelai", "galeri", "pemisah"],
+      "params": { "width": 520 }
+    },
+    {
+      "id": "arch-panel",
+      "category": "panel",
+      "seed": 1804333,
+      "viewBox": [720, 960],
+      "maxKB": 90,
+      "usedIn": ["mempelai", "kisah-cinta"],
+      "params": { "doubleBorder": true }
+    },
+    {
+      "id": "monogram-ring",
+      "category": "ring",
+      "seed": 1916557,
+      "viewBox": [360, 360],
+      "maxKB": 70,
+      "usedIn": ["cover", "navigasi"],
+      "params": { "rx": 136, "ry": 150 }
+    },
+    {
+      "id": "scallop-mask",
+      "category": "mask",
+      "seed": 2028773,
+      "viewBox": [160, 160],
+      "maxKB": 70,
+      "usedIn": ["hitung-mundur"],
+      "params": { "scallops": 12 }
+    },
+    {
+      "id": "closing-emblem",
+      "category": "emblem",
+      "seed": 2140991,
+      "viewBox": [520, 460],
+      "maxKB": 90,
+      "usedIn": ["penutup"],
+      "params": { "span": 410, "clusters": 4 }
+    }
+  ],
+  "textureAssets": [
+    {
+      "id": "paper-grain",
+      "size": [512, 512],
+      "maxKB": 35,
+      "seamless": true,
+      "usedIn": ["layout-background"]
+    },
+    {
+      "id": "paper-fiber",
+      "size": [512, 512],
+      "maxKB": 25,
+      "seamless": true,
+      "usedIn": ["layout-texture"]
+    },
+    {
+      "id": "highlight-sweep",
+      "size": [512, 256],
+      "maxKB": 15,
+      "seamless": false,
+      "usedIn": ["motion-lightsweep"]
+    },
+    {
+      "id": "bg-desktop",
+      "size": [512, 512],
+      "maxKB": 30,
+      "seamless": true,
+      "usedIn": ["desktop-backdrop"]
+    },
+    {
+      "id": "og-default",
+      "size": [1200, 630],
+      "maxKB": 60,
+      "seamless": false,
+      "usedIn": ["og-meta"]
+    }
+  ]
+}

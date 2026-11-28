@@ -1,0 +1,142 @@
+[
+  {
+    "id": "corner-tl",
+    "seed": 104729,
+    "leafCount": 46,
+    "leafSizeCV": 0.204,
+    "svgBytes": 55955
+  },
+  {
+    "id": "corner-tr",
+    "seed": 224737,
+    "leafCount": 46,
+    "leafSizeCV": 0.197,
+    "svgBytes": 60117
+  },
+  {
+    "id": "corner-bl",
+    "seed": 350377,
+    "leafCount": 46,
+    "leafSizeCV": 0.199,
+    "svgBytes": 60607
+  },
+  {
+    "id": "corner-br",
+    "seed": 479909,
+    "leafCount": 46,
+    "leafSizeCV": 0.213,
+    "svgBytes": 56332
+  },
+  {
+    "id": "edge-left-a",
+    "seed": 511213,
+    "leafCount": 20,
+    "leafSizeCV": 0.16,
+    "svgBytes": 23348
+  },
+  {
+    "id": "edge-left-b",
+    "seed": 619427,
+    "leafCount": 18,
+    "leafSizeCV": 0.195,
+    "svgBytes": 23805
+  },
+  {
+    "id": "edge-left-c",
+    "seed": 733189,
+    "leafCount": 20,
+    "leafSizeCV": 0.188,
+    "svgBytes": 22902
+  },
+  {
+    "id": "edge-right-a",
+    "seed": 821641,
+    "leafCount": 20,
+    "leafSizeCV": 0.145,
+    "svgBytes": 24939
+  },
+  {
+    "id": "edge-right-b",
+    "seed": 914327,
+    "leafCount": 18,
+    "leafSizeCV": 0.148,
+    "svgBytes": 24276
+  },
+  {
+    "id": "edge-right-c",
+    "seed": 1004591,
+    "leafCount": 20,
+    "leafSizeCV": 0.207,
+    "svgBytes": 24821
+  },
+  {
+    "id": "wreath-oval",
+    "seed": 1129093,
+    "leafCount": 24,
+    "leafSizeCV": 0.088,
+    "svgBytes": 30294
+  },
+  {
+    "id": "emblem-melati",
+    "seed": 1245677,
+    "leafCount": 16,
+    "leafSizeCV": 0.145,
+    "svgBytes": 23471
+  },
+  {
+    "id": "flower-open",
+    "seed": 1357913,
+    "leafCount": 0,
+    "leafSizeCV": null,
+    "svgBytes": 1706
+  },
+  {
+    "id": "flower-half",
+    "seed": 1469201,
+    "leafCount": 0,
+    "leafSizeCV": null,
+    "svgBytes": 1334
+  },
+  {
+    "id": "bud-cluster",
+    "seed": 1580447,
+    "leafCount": 0,
+    "leafSizeCV": null,
+    "svgBytes": 1111
+  },
+  {
+    "id": "divider-sprig",
+    "seed": 1692119,
+    "leafCount": 10,
+    "leafSizeCV": 0.135,
+    "svgBytes": 10703
+  },
+  {
+    "id": "arch-panel",
+    "seed": 1804333,
+    "leafCount": 2,
+    "leafSizeCV": 0,
+    "svgBytes": 3660
+  },
+  {
+    "id": "monogram-ring",
+    "seed": 1916557,
+    "leafCount": 2,
+    "leafSizeCV": 0,
+    "svgBytes": 3615
+  },
+  {
+    "id": "scallop-mask",
+    "seed": 2028773,
+    "leafCount": 0,
+    "leafSizeCV": null,
+    "svgBytes": 2015
+  },
+  {
+    "id": "closing-emblem",
+    "seed": 2140991,
+    "leafCount": 16,
+    "leafSizeCV": 0.093,
+    "svgBytes": 19607
+  }
+]

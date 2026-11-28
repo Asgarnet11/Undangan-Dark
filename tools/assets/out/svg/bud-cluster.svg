@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  <style>
+    .iv-silhouette { fill: #d8d4cc; stroke: #c4bfb6; stroke-width: 0.7; stroke-linejoin: round; }
+    .iv-stem { fill: #d0ccc4; stroke: none; }
+    .iv-midrib { fill: none; stroke: #b4afa6; stroke-width: 1.1; stroke-linecap: round; }
+    .iv-vein { fill: none; stroke: #beb9b0; stroke-width: 0.75; stroke-linecap: round; }
+    .iv-center { fill: #bab4aa; stroke: #a8a298; stroke-width: 0.6; }
+    .iv-calyx { fill: #c6c1b8; stroke: none; }
+    .iv-ring-stroke { fill: none; stroke: #d4d0c8; stroke-linecap: round; }
+  </style>
+  <g class="iv-bud">
+      <path class="iv-silhouette" d="M 120 165 C 96.84 142.8, 103.33 107.28, 120 91 C 136.67 107.28, 143.16 142.8, 120 165 Z"/>
+    </g><g class="iv-bud">
+      <path class="iv-silhouette" d="M 95 165 C 72.14 154.82, 67.32 126.94, 75.11 110.52 C 91.65 118.06, 105.93 142.49, 95 165 Z"/>
+    </g><g class="iv-bud">
+      <path class="iv-silhouette" d="M 145 165 C 133.35 142.86, 147.44 119.39, 164.2 112.4 C 172.52 128.55, 168.18 155.58, 145 165 Z"/>
+    </g>
+</svg>
