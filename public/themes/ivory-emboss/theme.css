@@ -42,6 +42,16 @@
     --iv-dur-base: 800ms;
     --iv-dur-slow: 1400ms;
 
+    /* Alias komponen bersama */
+    --inv-surface: var(--iv-card);
+    --inv-border: var(--iv-card-border);
+    --inv-radius: var(--iv-radius-card);
+    --inv-font-display: var(--iv-font-display);
+    --inv-ink: var(--iv-ink);
+    --inv-ink-soft: var(--iv-ink-soft);
+    --inv-accent: var(--iv-accent);
+    --inv-accent-ink: var(--iv-accent-ink);
+
     margin: 0;
     padding: 0;
     min-height: 100dvh;
@@ -908,4 +918,467 @@ body:not(.is-locked) .iv-hero,
     .iv-countdown-number {
         transition-duration: 0.01ms !important;
     }
+}
+
+/* ==========================================================================
+   Fase 4: Acara, Kisah Cinta, Galeri, RSVP, Ucapan, Kado, Penutup & Kredit
+   ========================================================================== */
+
+.iv-events-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.iv-map-card {
+    margin-top: 1.5rem;
+}
+
+.iv-map-frame iframe {
+    width: 100%;
+    height: 240px;
+    border: 0;
+    border-radius: 14px;
+    display: block;
+}
+
+/* Kisah Cinta dalam arch-panel */
+.iv-story-arch-wrap {
+    position: relative;
+    padding: 2.5rem 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.iv-story-arch-inner {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+/* Video Facade */
+.iv-video-facade {
+    margin-top: 1.25rem;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+}
+
+.iv-video-trigger {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iv-video-facade iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Galeri 2 Kolom & Lightbox */
+.iv-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.iv-gallery-item {
+    margin: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    background-color: var(--iv-paper-deep);
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(19, 18, 16, 0.06);
+}
+
+.iv-gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s var(--iv-ease);
+}
+
+.iv-gallery-item:hover .iv-gallery-img {
+    transform: scale(1.04);
+}
+
+.iv-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.iv-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(19, 18, 16, 0.86);
+    backdrop-filter: blur(6px);
+}
+
+.iv-lightbox-dialog {
+    position: relative;
+    z-index: 1;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+}
+
+.iv-lightbox-img {
+    max-width: 100%;
+    max-height: 75dvh;
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto;
+}
+
+.iv-lightbox-caption {
+    color: #efede8;
+    font-size: 0.88rem;
+    margin: 0.75rem 0 0;
+}
+
+.iv-lightbox-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(19, 18, 16, 0.65);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.iv-lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(19, 18, 16, 0.65);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.iv-lightbox-nav--prev {
+    left: 0.5rem;
+}
+
+.iv-lightbox-nav--next {
+    right: 0.5rem;
+}
+
+/* Formulir RSVP & Ucapan */
+.iv-qr-frame {
+    display: inline-block;
+    background: #ffffff;
+    padding: 0.75rem;
+    border-radius: 16px;
+    margin: 1rem auto;
+    border: 1px solid var(--iv-card-border);
+}
+
+.iv-qr-frame img {
+    display: block;
+    width: 150px;
+    height: 150px;
+}
+
+.iv-qr-code {
+    font-family: monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin: 0 0 0.25rem;
+}
+
+.iv-qr-name {
+    font-weight: 500;
+    margin: 0;
+}
+
+.iv-form-card {
+    text-align: left;
+}
+
+.iv-field {
+    margin-bottom: 1.1rem;
+}
+
+.iv-field-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.68rem;
+}
+
+.iv-input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.7rem 0.95rem;
+    border-radius: 14px;
+    border: 1px solid rgba(40, 36, 30, 0.16);
+    background-color: var(--iv-paper-soft);
+    color: var(--iv-ink);
+    font-family: var(--iv-font-body);
+    font-size: 0.94rem;
+}
+
+.iv-input:focus {
+    outline: 2px solid var(--iv-ink);
+    outline-offset: 1px;
+}
+
+.iv-form-feedback {
+    margin: 0.85rem 0 0;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--iv-ink);
+    text-align: center;
+}
+
+/* Daftar Ucapan & Paginasi (aman di 360px) */
+.iv-wishes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    text-align: left;
+}
+
+.iv-wish-card {
+    padding: 1.15rem 1.2rem;
+}
+
+.iv-wish-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.35rem;
+    margin-bottom: 0.45rem;
+}
+
+.iv-wish-author {
+    font-size: 0.94rem;
+    font-weight: 600;
+}
+
+.iv-wish-origin,
+.iv-wish-time {
+    font-size: 0.78rem;
+    color: var(--iv-ink-soft);
+}
+
+.iv-wish-body {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--iv-ink-soft);
+    line-height: 1.6;
+}
+
+.iv-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.iv-page-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+}
+
+.iv-page-info {
+    font-size: 0.78rem;
+    color: var(--iv-ink-soft);
+    padding: 0 0.25rem;
+}
+
+/* Kado */
+.iv-bud-accent {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.25rem;
+}
+
+.iv-bud-accent img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.iv-gift-accounts,
+.iv-gift-addresses {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.iv-gift-number {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin: 0.5rem 0 0.35rem;
+}
+
+.iv-gift-holder {
+    font-size: 0.86rem;
+    color: var(--iv-ink-soft);
+    margin: 0 0 1rem;
+}
+
+.iv-gift-copy-btn {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.7rem;
+}
+
+/* Penutup & Pita Footer Kredit */
+.iv-closing {
+    padding-bottom: 0;
+}
+
+.iv-closing-emblem {
+    width: 210px;
+    margin: 1rem auto 1.25rem;
+}
+
+.iv-closing-emblem img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.iv-closing-text {
+    font-size: 0.92rem;
+    color: var(--iv-ink-soft);
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.iv-closing-names {
+    font-size: 1.45rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.iv-co-inviters {
+    margin: 1.25rem auto 2rem;
+}
+
+.iv-co-inviters-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--iv-ink-soft);
+}
+
+.iv-footer-band {
+    margin-top: 2.5rem;
+    padding: 2rem 1.5rem 6.5rem;
+    background-color: var(--iv-footer-bg);
+    color: var(--iv-footer-ink);
+    text-align: center;
+}
+
+.iv-footer-prompt {
+    font-size: 0.78rem;
+    opacity: 0.78;
+    margin: 0 0 0.35rem;
+}
+
+.iv-footer-link {
+    display: inline-block;
+    color: var(--iv-footer-ink);
+    font-family: var(--iv-font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+}
+
+.iv-footer-credits-btn {
+    background: transparent;
+    border: 0;
+    color: var(--iv-footer-ink);
+    opacity: 0.78;
+    font-size: 0.78rem;
+    text-decoration: underline;
+    cursor: pointer;
+    min-height: 44px;
+    padding: 0 0.5rem;
+}
+
+/* Modal Kredit */
+.iv-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 160;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+}
+
+.iv-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(19, 18, 16, 0.65);
+    backdrop-filter: blur(4px);
+}
+
+.iv-modal-dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    text-align: left;
+}
+
+.iv-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+}
+
+.iv-modal-close {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--iv-card-border);
+    background: transparent;
+    color: var(--iv-ink);
+    font-size: 1.35rem;
+    cursor: pointer;
 }
