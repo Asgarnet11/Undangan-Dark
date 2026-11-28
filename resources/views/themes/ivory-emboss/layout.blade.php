@@ -14,11 +14,12 @@
     }
 
     $resolvedCover = $invitation->resolveMediaOrPathUrl('cover', $invitation->cover_photo)
-        ?: $invitation->resolveMediaOrPathUrl('bride', $invitation->bride_photo);
+        ?: ($invitation->resolveMediaOrPathUrl('bride', $invitation->bride_photo)
+        ?: asset('themes/ivory-emboss/texture/og-default.webp'));
 
-    $ogImage = $resolvedCover
-        ? ((!str_starts_with($resolvedCover, 'http://') && !str_starts_with($resolvedCover, 'https://')) ? url($resolvedCover) : $resolvedCover)
-        : '';
+    $ogImage = (!str_starts_with($resolvedCover, 'http://') && !str_starts_with($resolvedCover, 'https://'))
+        ? url($resolvedCover)
+        : $resolvedCover;
 
     $ogImageSecure = $ogImage && str_starts_with($ogImage, 'http://')
         ? 'https://' . substr($ogImage, 7)
@@ -67,10 +68,10 @@
     $giftInline = data_get($themeConfig, 'layout.giftInline', true);
     $brideFirst = data_get($themeConfig, 'layout.brideFirst', true);
     $mapsBelow = data_get($themeConfig, 'layout.mapsAndRsvpBelowEvents', true);
-    $musicSrc = $invitation->effectiveMusicUrl() ?: '';
+    $musicSrc = $invitation->effectiveMusicUrl() ?: asset('themes/ivory-emboss/audio/ivory-instrumental.mp3');
 @endphp
 <body
-    class="theme-ivory-emboss"
+    class="theme-ivory-emboss {{ empty($isPreview) ? 'is-locked' : '' }}"
     data-theme="ivory-emboss"
     data-preset="{{ $preset }}"
     data-cover-style="{{ $coverStyle }}"

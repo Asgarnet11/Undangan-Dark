@@ -1,5 +1,5 @@
 /**
- * Ivory Emboss Theme JS — Fase 1: Fondasi & Pratinjau Admin
+ * Ivory Emboss Theme JS — Fase 3: Cover Opening, Countdown, Bottom Nav, Music & Preview
  */
 (function () {
     'use strict';
@@ -9,6 +9,9 @@
         return;
     }
 
+    const cover = document.getElementById('iv-cover');
+    const openBtn = document.getElementById('iv-open-invitation');
+    const bottomNav = document.getElementById('iv-bottom-nav');
     const bgm = document.getElementById('iv-bgm');
     const musicBtn = document.getElementById('iv-music-toggle');
 
@@ -37,18 +40,121 @@
         });
     }
 
-    const openBtn = document.getElementById('iv-open-invitation');
+    function openInvitation() {
+        root.classList.remove('is-locked');
+        if (cover) {
+            cover.classList.add('is-opening');
+            requestAnimationFrame(function () {
+                cover.classList.add('is-opened');
+            });
+            setTimeout(function () {
+                cover.classList.remove('is-opening');
+            }, 1200);
+        }
+        if (bottomNav) {
+            bottomNav.hidden = false;
+        }
+        if (musicBtn) {
+            musicBtn.hidden = false;
+        }
+        if (bgm && bgm.paused) {
+            bgm.play().then(() => setMusicState(true)).catch(() => setMusicState(false));
+        }
+    }
+
     if (openBtn) {
-        openBtn.addEventListener('click', function () {
-            if (musicBtn) {
-                musicBtn.hidden = false;
+        openBtn.addEventListener('click', openInvitation);
+    }
+
+    // Jika preview mode, buka navigasi
+    if (root.getAttribute('data-preview-mode') === 'true' && bottomNav) {
+        bottomNav.hidden = false;
+    }
+
+    // Kembali ke sampul dari tombol tengah navigasi bawah
+    document.querySelectorAll('.iv-nav-item[href="#iv-cover"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (cover) {
+                cover.classList.remove('is-opened');
+                root.classList.add('is-locked');
+                if (bottomNav) {
+                    bottomNav.hidden = true;
+                }
             }
-            if (bgm && bgm.paused) {
-                bgm.play().then(() => setMusicState(true)).catch(() => setMusicState(false));
+        });
+    });
+
+    // Hitung mundur langsung
+    const countdownEl = document.getElementById('iv-countdown');
+    const elapsedEl = document.getElementById('iv-countdown-elapsed');
+    if (countdownEl) {
+        const targetTs = Number(countdownEl.getAttribute('data-timestamp') || 0) * 1000;
+        const els = {
+            days: document.getElementById('iv-days'),
+            hours: document.getElementById('iv-hours'),
+            minutes: document.getElementById('iv-minutes'),
+            seconds: document.getElementById('iv-seconds'),
+        };
+
+        const setUnit = (el, val) => {
+            if (!el) {
+                return;
             }
-            const main = document.getElementById('iv-main');
-            if (main) {
-                main.scrollIntoView({ behavior: 'smooth' });
+            const formatted = String(val).padStart(2, '0');
+            if (el.textContent !== formatted) {
+                el.classList.add('is-ticking');
+                setTimeout(() => {
+                    el.textContent = formatted;
+                    el.classList.remove('is-ticking');
+                }, 110);
+            }
+        };
+
+        const updateCountdown = () => {
+            if (!targetTs) {
+                return;
+            }
+            const diff = targetTs - Date.now();
+            if (diff <= 0) {
+                countdownEl.hidden = true;
+                if (elapsedEl) {
+                    elapsedEl.hidden = false;
+                }
+                return;
+            }
+            const totalSec = Math.floor(diff / 1000);
+            setUnit(els.days, Math.floor(totalSec / 86400));
+            setUnit(els.hours, Math.floor((totalSec % 86400) / 3600));
+            setUnit(els.minutes, Math.floor((totalSec % 3600) / 60));
+            setUnit(els.seconds, totalSec % 60);
+        };
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
+    // Active indicator di bottom nav saat scroll
+    if ('IntersectionObserver' in window) {
+        const navItems = Array.from(document.querySelectorAll('.iv-nav-item[data-section]'));
+        const observer = new IntersectionObserver(
+            function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navItems.forEach((item) => {
+                            item.classList.toggle('is-active', item.getAttribute('data-section') === id);
+                        });
+                    }
+                });
+            },
+            { rootMargin: '-35% 0px -50% 0px', threshold: 0.01 }
+        );
+
+        ['section-couple', 'section-events', 'section-gallery', 'section-wishes'].forEach((id) => {
+            const sec = document.getElementById(id);
+            if (sec) {
+                observer.observe(sec);
             }
         });
     }

@@ -1,0 +1,30 @@
+[
+  {
+    "preset": "ivory",
+    "checkedElements": 34,
+    "minContrast": 8.02,
+    "worstSelector": "iv-kicker",
+    "failures": []
+  },
+  {
+    "preset": "pearl-blue",
+    "checkedElements": 34,
+    "minContrast": 7.9,
+    "worstSelector": "iv-kicker",
+    "failures": []
+  },
+  {
+    "preset": "blush",
+    "checkedElements": 34,
+    "minContrast": 7.82,
+    "worstSelector": "iv-kicker",
+    "failures": []
+  },
+  {
+    "preset": "sage",
+    "checkedElements": 34,
+    "minContrast": 7.91,
+    "worstSelector": "iv-kicker",
+    "failures": []
+  }
+]
