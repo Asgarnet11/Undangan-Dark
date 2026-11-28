@@ -1,5 +1,8 @@
 /**
- * Ivory Emboss Theme JS — Fase 4: Cover, Countdown, Nav, Maps, Video, Lightbox, RSVP, Wishes, Gift, Credits
+ * Ivory Emboss Theme JS — Fase 5 & 6:
+ * - 13 Animasi Bagian 11 + Burung Merpati Terbang (harmonized blind-emboss doves)
+ * - Parallax berlapis (rAF), Reveal sekali (IntersectionObserver), LightSweep, prefers-reduced-motion
+ * - Live Preview Admin lengkap + Aksesibilitas Modal Focus Trap
  */
 (function () {
     'use strict';
@@ -9,11 +12,41 @@
         return;
     }
 
+    const MOTION = window.IVORY_EMBOSS_MOTION || {
+        coverLiftMs: 1150,
+        revealDurationMs: 800,
+        eventStaggerMs: 120,
+        galleryStaggerMs: 70,
+        parallaxSpeed: { back: 0.06, mid: 0.1, front: -0.08 },
+        lightSweepIntervalMs: 11000,
+        dovesFlightDurationMs: 9500,
+    };
+
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reducedMotion) {
+        root.classList.add('iv-anim-ready');
+    }
+
     const cover = document.getElementById('iv-cover');
     const openBtn = document.getElementById('iv-open-invitation');
     const bottomNav = document.getElementById('iv-bottom-nav');
     const bgm = document.getElementById('iv-bgm');
     const musicBtn = document.getElementById('iv-music-toggle');
+    const dovesLayer = document.getElementById('iv-doves-layer');
+
+    function launchDoves() {
+        if (!dovesLayer || reducedMotion || root.getAttribute('data-motion-ambient') === 'false') {
+            return;
+        }
+        dovesLayer.hidden = false;
+        dovesLayer.classList.remove('is-flying');
+        void dovesLayer.offsetWidth;
+        dovesLayer.classList.add('is-flying');
+        setTimeout(function () {
+            dovesLayer.classList.remove('is-flying');
+            dovesLayer.hidden = true;
+        }, MOTION.dovesFlightDurationMs + 1400);
+    }
 
     function setMusicState(playing) {
         if (!musicBtn) {
@@ -49,7 +82,7 @@
             });
             setTimeout(function () {
                 cover.classList.remove('is-opening');
-            }, 1200);
+            }, MOTION.coverLiftMs);
         }
         if (bottomNav) {
             bottomNav.hidden = false;
@@ -60,6 +93,7 @@
         if (bgm && bgm.paused) {
             bgm.play().then(() => setMusicState(true)).catch(() => setMusicState(false));
         }
+        setTimeout(launchDoves, 450);
     }
 
     if (openBtn) {
@@ -82,6 +116,88 @@
             }
         });
     });
+
+    // Tagging elemen reveal + stagger untuk Kartu Acara & Galeri
+    document.querySelectorAll('.iv-section-title, .iv-section-subtitle, .iv-verse-card, .iv-couple-panel, .iv-scallop-card').forEach(function (el) {
+        el.setAttribute('data-iv-reveal', '');
+    });
+    document.querySelectorAll('.iv-event-item').forEach(function (el, idx) {
+        el.setAttribute('data-iv-reveal', '');
+        el.style.transitionDelay = (idx * MOTION.eventStaggerMs) + 'ms';
+    });
+    document.querySelectorAll('.iv-gallery-item').forEach(function (el, idx) {
+        el.setAttribute('data-iv-reveal', '');
+        el.style.transitionDelay = ((idx % 6) * MOTION.galleryStaggerMs) + 'ms';
+    });
+
+    // IntersectionObserver reveal sekali jalan
+    if ('IntersectionObserver' in window && !reducedMotion) {
+        let closingDovesFired = false;
+        const revealObserver = new IntersectionObserver(
+            function (entries, obs) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-revealed');
+                        obs.unobserve(entry.target);
+                        if (entry.target.classList.contains('iv-closing-emblem') && !closingDovesFired) {
+                            closingDovesFired = true;
+                            launchDoves();
+                        }
+                    }
+                });
+            },
+            { rootMargin: '0px 0px -8% 0px', threshold: 0.05 }
+        );
+
+        document.querySelectorAll('[data-iv-reveal], .iv-relief-edge, .iv-divider-sprig, .iv-hero, .iv-closing-emblem').forEach(function (el) {
+            revealObserver.observe(el);
+        });
+    } else {
+        document.querySelectorAll('[data-iv-reveal], .iv-relief-edge, .iv-divider-sprig, .iv-hero, .iv-closing-emblem').forEach(function (el) {
+            el.classList.add('is-revealed');
+        });
+    }
+
+    // Parallax ornamen berlapis (rAF throttled, mati saat reducedMotion atau motion.parallax=false)
+    let parallaxRaf = null;
+    function updateParallax() {
+        parallaxRaf = null;
+        if (reducedMotion || root.getAttribute('data-motion-parallax') === 'false') {
+            return;
+        }
+        const y = window.scrollY || 0;
+        document.querySelectorAll('.iv-relief-edge--left').forEach(function (el) {
+            el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.back).toFixed(1) + 'px,0)';
+        });
+        document.querySelectorAll('.iv-relief-edge--right').forEach(function (el) {
+            el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.front).toFixed(1) + 'px,0)';
+        });
+    }
+
+    window.addEventListener(
+        'scroll',
+        function () {
+            if (!parallaxRaf && !reducedMotion && root.getAttribute('data-motion-parallax') !== 'false') {
+                parallaxRaf = requestAnimationFrame(updateParallax);
+            }
+        },
+        { passive: true }
+    );
+
+    // Sapuan cahaya periodik (berhenti saat tab tidak aktif)
+    function triggerLightSweep() {
+        if (document.hidden || reducedMotion || root.getAttribute('data-motion-lightsweep') === 'false') {
+            return;
+        }
+        document.querySelectorAll('.iv-cover-emblem, .iv-closing-emblem').forEach(function (el) {
+            el.classList.remove('is-sweeping');
+            void el.offsetWidth;
+            el.classList.add('is-sweeping');
+        });
+    }
+
+    setInterval(triggerLightSweep, MOTION.lightSweepIntervalMs);
+    setTimeout(triggerLightSweep, 1800);
 
     // Hitung mundur langsung
     const countdownEl = document.getElementById('iv-countdown');
@@ -191,9 +307,34 @@
         }
     });
 
+    // Focus trap helper untuk modal aksesibel
+    function trapFocus(modalEl) {
+        modalEl.addEventListener('keydown', function (e) {
+            if (e.key !== 'Tab' || modalEl.hidden) {
+                return;
+            }
+            const focusable = Array.from(
+                modalEl.querySelectorAll('button:not([disabled]), a[href], input, textarea, [tabindex]:not([tabindex="-1"])')
+            ).filter((el) => el.offsetParent !== null);
+            if (!focusable.length) {
+                return;
+            }
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        });
+    }
+
     // Galeri Lightbox
     const lightbox = document.getElementById('iv-gallery-lightbox');
     if (lightbox) {
+        trapFocus(lightbox);
         const items = Array.from(document.querySelectorAll('[data-gallery-index]'));
         const lbImg = document.getElementById('iv-lightbox-img');
         const lbCaption = document.getElementById('iv-lightbox-caption');
@@ -213,6 +354,7 @@
                 lbCaption.textContent = img ? img.alt : '';
             }
             lightbox.hidden = false;
+            lightbox.querySelector('.iv-lightbox-close')?.focus();
         };
 
         items.forEach((item, idx) => {
@@ -352,7 +494,7 @@
                 const json = await res.json().catch(() => ({}));
                 if (res.ok && wishesList) {
                     const card = document.createElement('article');
-                    card.className = 'iv-card iv-wish-card';
+                    card.className = 'iv-card iv-wish-card is-new';
                     card.setAttribute('data-wish-item', '');
                     const head = document.createElement('div');
                     head.className = 'iv-wish-head';
@@ -454,22 +596,26 @@
     const creditsModal = document.getElementById('iv-credits-modal');
     const creditsBtn = document.getElementById('iv-credits-btn');
     if (creditsModal && creditsBtn) {
+        trapFocus(creditsModal);
         creditsBtn.addEventListener('click', function () {
             creditsModal.hidden = false;
+            document.getElementById('iv-credits-close')?.focus();
         });
         creditsModal.querySelectorAll('[data-credits-close]').forEach(function (el) {
             el.addEventListener('click', function () {
                 creditsModal.hidden = true;
+                creditsBtn.focus();
             });
         });
         document.addEventListener('keydown', function (e) {
             if (!creditsModal.hidden && e.key === 'Escape') {
                 creditsModal.hidden = true;
+                creditsBtn.focus();
             }
         });
     }
 
-    // Sinkronisasi pratinjau langsung dari panel admin
+    // Sinkronisasi pratinjau langsung dari panel admin (Fase 5)
     window.addEventListener('message', function (event) {
         const data = event.data;
         if (!data || data.type !== 'theme-preview-update' || !data.config) {
@@ -481,6 +627,17 @@
             root.setAttribute('data-preset', String(config.preset));
         }
 
+        if (config.cover) {
+            if (config.cover.style && cover) {
+                cover.className = 'iv-cover iv-cover--' + config.cover.style + (cover.classList.contains('is-opened') ? ' is-opened' : '');
+            }
+            if (config.cover.showGuestName !== undefined) {
+                document.querySelectorAll('.iv-cover-guest').forEach((el) => {
+                    el.hidden = !config.cover.showGuestName;
+                });
+            }
+        }
+
         if (config.relief) {
             if (config.relief.depth !== undefined) {
                 const depth = Math.max(0, Math.min(1.6, Number(config.relief.depth) || 1));
@@ -489,6 +646,18 @@
             }
             if (config.relief.ornamentDensity) {
                 root.setAttribute('data-ornament-density', String(config.relief.ornamentDensity));
+            }
+        }
+
+        if (config.motion) {
+            if (config.motion.parallax !== undefined) {
+                root.setAttribute('data-motion-parallax', config.motion.parallax ? 'true' : 'false');
+            }
+            if (config.motion.lightSweep !== undefined) {
+                root.setAttribute('data-motion-lightsweep', config.motion.lightSweep ? 'true' : 'false');
+            }
+            if (config.motion.ambient !== undefined) {
+                root.setAttribute('data-motion-ambient', config.motion.ambient ? 'true' : 'false');
             }
         }
 

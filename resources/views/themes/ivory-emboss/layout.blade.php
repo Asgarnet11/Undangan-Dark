@@ -68,6 +68,9 @@
     $giftInline = data_get($themeConfig, 'layout.giftInline', true);
     $brideFirst = data_get($themeConfig, 'layout.brideFirst', true);
     $mapsBelow = data_get($themeConfig, 'layout.mapsAndRsvpBelowEvents', true);
+    $motionParallax = (bool) data_get($themeConfig, 'motion.parallax', true);
+    $motionLightSweep = (bool) data_get($themeConfig, 'motion.lightSweep', true);
+    $motionAmbient = (bool) data_get($themeConfig, 'motion.ambient', true);
     $musicSrc = $invitation->effectiveMusicUrl() ?: asset('themes/ivory-emboss/audio/ivory-instrumental.mp3');
 @endphp
 <body
@@ -81,10 +84,26 @@
     data-gift-inline="{{ $giftInline ? 'true' : 'false' }}"
     data-bride-first="{{ $brideFirst ? 'true' : 'false' }}"
     data-maps-below="{{ $mapsBelow ? 'true' : 'false' }}"
+    data-motion-parallax="{{ $motionParallax ? 'true' : 'false' }}"
+    data-motion-lightsweep="{{ $motionLightSweep ? 'true' : 'false' }}"
+    data-motion-ambient="{{ $motionAmbient ? 'true' : 'false' }}"
     data-preview-mode="{{ !empty($isPreview) ? 'true' : 'false' }}"
     style="--iv-relief-depth: {{ $reliefDepth }};"
 >
     <div class="iv-desktop-backdrop" aria-hidden="true"></div>
+
+    {{-- Lapisan animasi burung merpati terbang (muncul lembut setelah undangan dibuka) --}}
+    <div id="iv-doves-layer" class="iv-doves-layer" aria-hidden="true" hidden>
+        @for($d = 1; $d <= 3; $d++)
+            <div class="iv-dove iv-dove--{{ $d }}">
+                <svg viewBox="0 0 64 40" width="64" height="40" fill="none">
+                    <path class="iv-dove-wing iv-dove-wing--back" d="M29 20 C24 9, 14 4, 6 7 C12 13, 19 18, 26 22 Z" />
+                    <path class="iv-dove-body" d="M16 25 C22 22, 30 21, 38 22 C43 22.5, 48 19.5, 52 17 C53.5 16, 56 16.5, 57 18 C55 19.5, 52 21, 49 23 C45 27, 37 29, 28 28 C21 27.5, 14 29, 9 32 C11 28, 13 26, 16 25 Z" />
+                    <path class="iv-dove-wing iv-dove-wing--front" d="M31 22 C28 10, 20 2, 11 2 C16 10, 22 17, 28 23 Z" />
+                </svg>
+            </div>
+        @endfor
+    </div>
 
     @if($musicSrc)
         <audio id="iv-bgm" src="{{ $musicSrc }}" preload="none" loop data-title="{{ $invitation->music_title ?: 'Musik Latar' }}"></audio>
@@ -111,6 +130,7 @@
             <circle cx="16.5" cy="16" r="2.5" opacity="0.4" />
             <path d="M4 4l16 16" stroke-linecap="round" />
         </svg>
+        <span class="iv-music-eq" aria-hidden="true"><i></i><i></i><i></i></span>
     </button>
 
     <div class="iv-stage">
@@ -119,6 +139,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('themes/ivory-emboss/motion.config.js') }}?v={{ @filemtime(public_path('themes/ivory-emboss/motion.config.js')) }}" defer></script>
     <script src="{{ asset('themes/ivory-emboss/theme.js') }}?v={{ @filemtime(public_path('themes/ivory-emboss/theme.js')) }}" defer></script>
 </body>
 </html>
