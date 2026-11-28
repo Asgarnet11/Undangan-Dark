@@ -265,6 +265,18 @@ class InvitationForm
                                                             ])
                                                             ->default('normal')
                                                             ->live(),
+                                                        Select::make('theme_config.relief.finish')
+                                                            ->label('Gaya Finishing Relief')
+                                                            ->options([
+                                                                'blind' => 'Blind Emboss Murni (Default)',
+                                                                'foil' => 'Aksen Champagne Foil Halus',
+                                                            ])
+                                                            ->default('blind')
+                                                            ->live(),
+                                                        Toggle::make('theme_config.cover.waxSeal')
+                                                            ->label('Segel Lilin Monogram di Cover')
+                                                            ->default(true)
+                                                            ->live(),
                                                         Toggle::make('theme_config.motion.parallax')
                                                             ->label('Parallax Ornamen Berlapis')
                                                             ->default(true)
@@ -274,7 +286,7 @@ class InvitationForm
                                                             ->default(true)
                                                             ->live(),
                                                         Toggle::make('theme_config.motion.ambient')
-                                                            ->label('Animasi Ambient Halus')
+                                                            ->label('Animasi Ambient & Burung Merpati')
                                                             ->default(true)
                                                             ->live(),
                                                     ]),

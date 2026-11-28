@@ -158,26 +158,36 @@
         });
     }
 
-    // Parallax ornamen berlapis (rAF throttled, mati saat reducedMotion atau motion.parallax=false)
+    // Parallax ornamen berlapis + Garis timeline progresif Kisah Cinta (rAF throttled)
     let parallaxRaf = null;
+    const storySection = document.getElementById('section-love-story');
+    const storyInner = document.querySelector('.iv-story-arch-inner');
+
     function updateParallax() {
         parallaxRaf = null;
-        if (reducedMotion || root.getAttribute('data-motion-parallax') === 'false') {
-            return;
+        if (!reducedMotion && root.getAttribute('data-motion-parallax') !== 'false') {
+            const y = window.scrollY || 0;
+            document.querySelectorAll('.iv-relief-edge--left img').forEach(function (el) {
+                el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.back).toFixed(1) + 'px,0)';
+            });
+            document.querySelectorAll('.iv-relief-edge--right img').forEach(function (el) {
+                el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.front).toFixed(1) + 'px,0)';
+            });
         }
-        const y = window.scrollY || 0;
-        document.querySelectorAll('.iv-relief-edge--left img').forEach(function (el) {
-            el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.back).toFixed(1) + 'px,0)';
-        });
-        document.querySelectorAll('.iv-relief-edge--right img').forEach(function (el) {
-            el.style.transform = 'translate3d(0,' + (y * MOTION.parallaxSpeed.front).toFixed(1) + 'px,0)';
-        });
+
+        if (storySection && storyInner) {
+            const rect = storySection.getBoundingClientRect();
+            const vh = window.innerHeight || 800;
+            const raw = (vh * 0.72 - rect.top) / Math.max(rect.height, 1);
+            const progress = Math.max(0, Math.min(1, raw));
+            storyInner.style.setProperty('--iv-story-progress', progress.toFixed(3));
+        }
     }
 
     window.addEventListener(
         'scroll',
         function () {
-            if (!parallaxRaf && !reducedMotion && root.getAttribute('data-motion-parallax') !== 'false') {
+            if (!parallaxRaf && !reducedMotion) {
                 parallaxRaf = requestAnimationFrame(updateParallax);
             }
         },
@@ -340,12 +350,13 @@
         const lbCaption = document.getElementById('iv-lightbox-caption');
         let currentIdx = 0;
 
-        const showIndex = (idx) => {
+        const showIndex = (idx, originEl) => {
             if (!items.length) {
                 return;
             }
             currentIdx = (idx + items.length) % items.length;
             const img = items[currentIdx].querySelector('img');
+            const thumbRect = originEl ? originEl.getBoundingClientRect() : null;
             if (img && lbImg) {
                 lbImg.src = img.getAttribute('data-full') || img.src;
                 lbImg.alt = img.alt;
@@ -354,11 +365,27 @@
                 lbCaption.textContent = img ? img.alt : '';
             }
             lightbox.hidden = false;
+
+            if (thumbRect && lbImg && !reducedMotion) {
+                const targetRect = lbImg.getBoundingClientRect();
+                if (targetRect.width > 0 && targetRect.height > 0) {
+                    const dx = thumbRect.left + thumbRect.width / 2 - (targetRect.left + targetRect.width / 2);
+                    const dy = thumbRect.top + thumbRect.height / 2 - (targetRect.top + targetRect.height / 2);
+                    const sx = thumbRect.width / targetRect.width;
+                    const sy = thumbRect.height / targetRect.height;
+                    lbImg.style.transition = 'none';
+                    lbImg.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${sx}, ${sy})`;
+                    requestAnimationFrame(() => {
+                        lbImg.style.transition = '';
+                        lbImg.style.transform = 'none';
+                    });
+                }
+            }
             lightbox.querySelector('.iv-lightbox-close')?.focus();
         };
 
         items.forEach((item, idx) => {
-            item.addEventListener('click', () => showIndex(idx));
+            item.addEventListener('click', () => showIndex(idx, item.querySelector('img')));
         });
 
         lightbox.querySelectorAll('[data-lightbox-close]').forEach((el) => {
@@ -636,6 +663,12 @@
                     el.hidden = !config.cover.showGuestName;
                 });
             }
+            if (config.cover.waxSeal !== undefined) {
+                root.setAttribute('data-wax-seal', config.cover.waxSeal ? 'true' : 'false');
+                document.querySelectorAll('.iv-wax-seal').forEach((el) => {
+                    el.hidden = !config.cover.waxSeal;
+                });
+            }
         }
 
         if (config.relief) {
@@ -646,6 +679,9 @@
             }
             if (config.relief.ornamentDensity) {
                 root.setAttribute('data-ornament-density', String(config.relief.ornamentDensity));
+            }
+            if (config.relief.finish) {
+                root.setAttribute('data-relief-finish', String(config.relief.finish));
             }
         }
 

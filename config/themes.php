@@ -300,6 +300,7 @@ return [
                 'cover' => [
                     'style' => 'default',
                     'usePhoto' => false,
+                    'waxSeal' => true,
                     'overlayColor' => '#efede8',
                     'overlayOpacity' => 0.15,
                     'textColor' => '#131210',
@@ -308,6 +309,7 @@ return [
                 'relief' => [
                     'depth' => 1.0,
                     'ornamentDensity' => 'normal',
+                    'finish' => 'blind',
                 ],
                 'layout' => [
                     'mapsAndRsvpBelowEvents' => true,

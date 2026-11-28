@@ -65,6 +65,8 @@
     $coverUsePhoto = data_get($themeConfig, 'cover.usePhoto', false);
     $reliefDepth = (float) data_get($themeConfig, 'relief.depth', 1.0);
     $ornamentDensity = data_get($themeConfig, 'relief.ornamentDensity', 'normal');
+    $reliefFinish = data_get($themeConfig, 'relief.finish', 'blind');
+    $waxSeal = (bool) data_get($themeConfig, 'cover.waxSeal', true);
     $giftInline = data_get($themeConfig, 'layout.giftInline', true);
     $brideFirst = data_get($themeConfig, 'layout.brideFirst', true);
     $mapsBelow = data_get($themeConfig, 'layout.mapsAndRsvpBelowEvents', true);
@@ -79,8 +81,10 @@
     data-preset="{{ $preset }}"
     data-cover-style="{{ $coverStyle }}"
     data-cover-use-photo="{{ $coverUsePhoto ? 'true' : 'false' }}"
+    data-wax-seal="{{ $waxSeal ? 'true' : 'false' }}"
     data-relief-depth="{{ $reliefDepth }}"
     data-ornament-density="{{ $ornamentDensity }}"
+    data-relief-finish="{{ $reliefFinish }}"
     data-gift-inline="{{ $giftInline ? 'true' : 'false' }}"
     data-bride-first="{{ $brideFirst ? 'true' : 'false' }}"
     data-maps-below="{{ $mapsBelow ? 'true' : 'false' }}"
@@ -94,7 +98,7 @@
 
     {{-- Lapisan animasi burung merpati terbang (muncul lembut setelah undangan dibuka) --}}
     <div id="iv-doves-layer" class="iv-doves-layer" aria-hidden="true" hidden>
-        @for($d = 1; $d <= 3; $d++)
+        @for($d = 1; $d <= 5; $d++)
             <div class="iv-dove iv-dove--{{ $d }}">
                 <svg viewBox="0 0 64 40" width="64" height="40" fill="none">
                     <path class="iv-dove-wing iv-dove-wing--back" d="M29 20 C24 9, 14 4, 6 7 C12 13, 19 18, 26 22 Z" />

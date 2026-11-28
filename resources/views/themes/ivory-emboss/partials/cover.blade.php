@@ -10,6 +10,10 @@
     $eventDate = $primaryEvent
         ? $primaryEvent->startsAtInTimezone($invitation->resolvedTimezone())->translatedFormat('l, d F Y')
         : null;
+    $monogram = $invitation->monogram_initial ?: (
+        strtoupper(substr($firstName ?: 'A', 0, 1)) . '&' . strtoupper(substr($secondName ?: 'B', 0, 1))
+    );
+    $showWaxSeal = (bool) data_get($themeConfig, 'cover.waxSeal', true);
     $coverPhoto = $coverUsePhoto
         ? ($invitation->resolveMediaOrPathUrl('cover', $invitation->cover_photo)
             ?: $invitation->resolveMediaOrPathUrl('bride', $invitation->bride_photo))
@@ -91,6 +95,14 @@
                     width="420"
                     height="360"
                 >
+            </div>
+        @endif
+
+        @if($showWaxSeal || !empty($isPreview))
+            <div class="iv-wax-seal" aria-hidden="true" @if(!$showWaxSeal) hidden @endif>
+                <span class="iv-wax-seal-ring">
+                    <span class="iv-wax-seal-initials">{{ $monogram }}</span>
+                </span>
             </div>
         @endif
 

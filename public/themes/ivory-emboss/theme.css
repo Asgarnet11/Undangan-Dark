@@ -1662,3 +1662,157 @@ body:not(.is-locked) .iv-hero,
         transition: none !important;
     }
 }
+
+/* ==========================================================================
+   Peningkatan Visual Kertas, Kedalaman Relief & Animasi Interaktif
+   ========================================================================== */
+
+/* 1. Efek Letterpress pada tipografi utama */
+.iv-cover-names,
+.iv-hero-names,
+.iv-section-title,
+.iv-countdown-number,
+.iv-closing-names {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* 2. Segel Lilin Monogram (Wax Seal) di Cover */
+.iv-wax-seal {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    margin: -0.25rem auto 0.25rem;
+    background: radial-gradient(circle at 32% 30%, #faf9f6 0%, var(--iv-paper) 58%, var(--iv-paper-deep) 100%);
+    border: 1px solid rgba(60, 52, 40, 0.14);
+    box-shadow:
+        0 2px 6px rgba(19, 18, 16, 0.12),
+        0 1px 0 rgba(255, 255, 255, 0.95) inset,
+        0 -2px 4px rgba(60, 52, 40, 0.1) inset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 320ms var(--iv-ease), box-shadow 320ms var(--iv-ease);
+}
+
+.iv-wax-seal-ring {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(60, 52, 40, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+}
+
+.iv-wax-seal-initials {
+    font-family: var(--iv-font-display);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--iv-ink-soft);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.iv-cover.is-opening .iv-wax-seal {
+    transform: scale(0.92);
+    box-shadow: 0 1px 3px rgba(19, 18, 16, 0.16);
+}
+
+.theme-ivory-emboss[data-wax-seal="false"] .iv-wax-seal {
+    display: none !important;
+}
+
+/* 3. Gaya Finishing Champagne Foil Halus */
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-couple-panel,
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-couple-panel::before,
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-wax-seal,
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-wax-seal-ring {
+    border-color: rgba(176, 145, 92, 0.52);
+}
+
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-hero-photo-box,
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-couple-photo-wrap {
+    box-shadow:
+        0 0 0 1px rgba(176, 145, 92, 0.45),
+        0 14px 32px rgba(19, 18, 16, 0.08);
+}
+
+.theme-ivory-emboss[data-relief-finish="foil"] .iv-wax-seal-initials {
+    color: #7c6236;
+}
+
+/* 4. Burung Merpati: kepadatan mengikuti ornamentDensity & terbang penuh di desktop */
+.iv-doves-layer {
+    max-width: 100%;
+}
+
+.theme-ivory-emboss[data-ornament-density="minimal"] .iv-dove--3,
+.theme-ivory-emboss[data-ornament-density="minimal"] .iv-dove--4,
+.theme-ivory-emboss[data-ornament-density="minimal"] .iv-dove--5 {
+    display: none;
+}
+
+.theme-ivory-emboss[data-ornament-density="normal"] .iv-dove--4,
+.theme-ivory-emboss[data-ornament-density="normal"] .iv-dove--5 {
+    display: none;
+}
+
+.iv-dove--4 { top: 38%; transform: scale(0.72); }
+.iv-dove--5 { top: 13%; transform: scale(0.58); }
+
+.iv-doves-layer.is-flying .iv-dove--4 {
+    animation: iv-dove-glide-2 10.2s var(--iv-ease-soft) 1.4s forwards;
+}
+
+.iv-doves-layer.is-flying .iv-dove--5 {
+    animation: iv-dove-glide-3 10.6s var(--iv-ease-soft) 1.85s forwards;
+}
+
+@media (min-width: 768px) {
+    @keyframes iv-dove-glide-1 {
+        0% { opacity: 0; transform: translate3d(0, 40px, 0) rotate(-6deg); }
+        12% { opacity: 0.94; }
+        55% { opacity: 0.92; transform: translate3d(680px, -60px, 0) rotate(-10deg); }
+        100% { opacity: 0; transform: translate3d(1480px, -140px, 0) rotate(-14deg); }
+    }
+
+    @keyframes iv-dove-glide-2 {
+        0% { opacity: 0; transform: translate3d(-10px, 50px, 0) scale(0.78) rotate(-4deg); }
+        14% { opacity: 0.88; }
+        58% { opacity: 0.85; transform: translate3d(640px, -44px, 0) scale(0.78) rotate(-8deg); }
+        100% { opacity: 0; transform: translate3d(1460px, -110px, 0) scale(0.78) rotate(-12deg); }
+    }
+
+    @keyframes iv-dove-glide-3 {
+        0% { opacity: 0; transform: translate3d(-20px, 30px, 0) scale(0.65) rotate(-8deg); }
+        16% { opacity: 0.82; }
+        60% { opacity: 0.8; transform: translate3d(620px, -68px, 0) scale(0.65) rotate(-11deg); }
+        100% { opacity: 0; transform: translate3d(1440px, -150px, 0) scale(0.65) rotate(-15deg); }
+    }
+}
+
+/* 5. Lightbox FLIP transition */
+.iv-lightbox-img {
+    transition: transform 380ms var(--iv-ease), opacity 260ms ease;
+    will-change: transform;
+}
+
+/* 6. Garis Timeline Progresif Kisah Cinta */
+.iv-story-arch-inner {
+    padding-left: 1.1rem;
+    border-left: 2px solid rgba(60, 52, 40, 0.1);
+}
+
+.iv-story-arch-inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 100%;
+    background-color: var(--iv-ink-soft);
+    transform-origin: top center;
+    transform: scaleY(var(--iv-story-progress, 0));
+    transition: transform 120ms linear;
+}
